@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TickyService</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=1.2">
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero-portada">
+    <div class="hero-inner"> 
+      <h1 class="hero-brand">TickyService</h1>
+      <p class="hero-lema">Todo en tecnología: Tienda, Repuestos y Servicio Técnico</p>
+      <div class="hero-secciones horizontal">
+        <a href="tienda.html" class="seccion-card tienda">
+          <i class="fas fa-store"></i>
+          <span>Tienda</span>
+        </a>
+        <a href="repuestos.html" class="seccion-card repuestos">
+          <i class="fas fa-cogs"></i>
+          <span>Repuestos</span>
+        </a>
+        <a href="servicio.html" class="seccion-card tecnico">
+          <i class="fas fa-tools"></i>
+          <span>Servicio Técnico</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="welcome">
+    <div class="welcome-content">
+      <h1 class="welcome-title">Bienvenidos</h1>
+      <p class="welcome-subtitle">El Mejor Servicio en reparación, repuestos y tecnología</p>
+      <p class="welcome-text">
+        En <strong>TickyService</strong> brindamos <b>servicio técnico profesional</b>, venta de repuestos y productos para notebooks, PC, consolas y joysticks.<br>
+        <span class="welcome-check"></i></span>
+        <b>Nos Caracterizamos por la Calidad y Rapidez que ofrecemos!</b>
+      </p>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <h2 class="section-title">Servicios</h2>
+  <div class="service-cards modern">
+    <div class="service-card modern">
+      <img src="img/note.png" alt="Notebook" class="service-image">
+      <h3>Notebook</h3>
+      <ul>
+        <li>Reparación de HDMI</li>
+        <li>Cambio de pasta térmica</li>
+        <li>Lectura de discos</li>
+        <li>Joysticks y mandos</li>
+      </ul>
+    </div>
+    <div class="service-card modern">
+      <img src="img/pc.png" alt="PC" class="service-image">
+      <h3>PC</h3>
+      <ul>
+        <li>Reparación de HDMI</li>
+        <li>Cambio de pasta térmica</li>
+        <li>Lectura de discos</li>
+        <li>Joysticks y mandos</li>
+      </ul>
+    </div>
+    <div class="service-card modern">
+      <img src="img/joy.png" alt="Joystick" class="service-image">
+      <h3>Joystick</h3>
+      <ul>
+        <li>Reparación de placas</li>
+        <li>Recuperación de botones</li>
+        <li>Soldadura fina</li>
+        <li>Calibrado y limpieza</li>
+      </ul>
+    </div>
+    <div class="service-card modern">
+      <img src="img/cons.png" alt="Consola" class="service-image">
+      <h3>Consola</h3>
+      <ul>
+        <li>Reparación de HDMI</li>
+        <li>Actualización de firmware</li>
+        <li>Cambio de fuente</li>
+        <li>Instalación de software</li>
+      </ul>
+    </div>
+  </div>
+
+<script>
+  document
+    .getElementById('ticky-form')
+    .addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombre   = this.nombre.value.trim();
+      const servicio = this.servicio.value;
+      const medio    = this.medio.value;
+      const mensaje  = this.mensaje.value.trim();
+
+      // Nuevo formato con etiquetas:
+      const texto = 
+        `Nombre: ${nombre}\n` +
+        `Tipo de Servicio: ${servicio}\n` +
+        `Consulta: ${mensaje}`;
+
+      if (medio === 'whatsapp') {
+        const waUrl = `https://wa.me/5492324588931?text=${encodeURIComponent(texto)}`;
+        window.open(waUrl, '_blank');
+      } else if (medio === 'instagram') {
+        navigator.clipboard.writeText(texto)
+          .then(() => {
+            alert('Mensaje copiado. Te llevamos a Instagram para que pegues y envíes.');
+            window.open('https://instagram.com/tickyservice', '_blank');
+          })
+          .catch(() => {
+            alert('No pudimos copiar el mensaje, por favor cópialo manualmente:\n\n' + texto);
+            window.open('https://instagram.com/tickyservice', '_blank');
+          });
+      }
+    });
+</script>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 - TickyService</p>
+  </footer>
+</body>
+</html>

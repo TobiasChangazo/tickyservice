@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Servicio Técnico – TickyService</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header / Hero -->
+  <header class="hero-portada">
+    <div class="hero-inner">
+      <h1 class="hero-brand">Servicio Técnico</h1>
+      <p class="hero-lema">Contactanos para poder resolver el problema!</p>
+      <div class="hero-secciones horizontal">
+        <a href="index.html" class="seccion-card tecnico">
+          <i class="fas fa-home"></i>
+          <span>Volver al Inicio</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Redes Sociales -->
+
+  <section class="contacto">
+  <div class="contacto-hero">
+    <h2 class="contacto-title">¿En qué te podemos ayudar?</h2>
+    <p class="contacto-desc">
+      Escribinos por WhatsApp, Instagram, o completá el formulario!
+    </p>
+  </div>
+
+  <div class="contacto-grid">
+    <!-- FORMULARIO -->
+    <form class="contact-form" id="ticky-form" autocomplete="off">
+      <input
+        type="text"
+        name="nombre"
+        placeholder="Tu nombre"
+        required
+      >
+
+      <select name="medio" required>
+        <option disabled selected>¿Por dónde te gustaría continuar?</option>
+        <option value="whatsapp">WhatsApp</option>
+        <option value="instagram">Instagram</option>
+      </select>
+
+      <select name="servicio" required>
+        <option disabled selected>¿Qué necesitás?</option>
+        <option>Notebook</option>
+        <option>PC</option>
+        <option>Joystick</option>
+        <option>Consola</option>
+      </select>
+
+      <textarea
+        name="mensaje"
+        placeholder="Tu consulta (opcional)"
+      ></textarea>
+
+      <button type="submit">Enviar mensaje</button>
+    </form>
+    
+<div class="contacto-info">
+  <div class="contact-buttons">
+    <a href="https://wa.me/..." class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://instagram.com/..." class="btn-instagram"><i class="fab fa-instagram"></i> Instagram</a>
+  </div>
+  <div class="contact-divider"></div>
+  
+  <div class="info-item horarios">
+    <div class="icon-circle"><i class="fas fa-clock"></i></div>
+    <div>
+      <span class="info-label">Horarios:</span>
+<div class="horarios-table">
+  <div class="horario-row"><span>Lunes:</span>    <strong>09:00 – 20:00</strong></div>
+  <div class="horario-row"><span>Martes:</span>   <strong>09:00 – 20:00</strong></div>
+  <div class="horario-row"><span>Miércoles:</span><strong>09:00 – 20:00</strong></div>
+  <div class="horario-row"><span>Jueves:</span>   <strong>09:00 – 20:00</strong></div>
+  <div class="horario-row"><span>Viernes:</span>  <strong>09:00 – 20:00</strong></div>
+  <div class="horario-row"><span>Sábados:</span>  <strong>Cerrado</strong></div>
+  <div class="horario-row"><span>Domingos:</span> <strong>Cerrado</strong></div>
+</div>
+    </div>
+  </div>
+
+  <div class="info-item ubicacion">
+    <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+    <div>
+      <span class="info-label">Ubicación:</span><br>
+      Mar de Ajó, Buenos Aires
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 – TickyService</p>
+  </footer>
+</body>
+</html>

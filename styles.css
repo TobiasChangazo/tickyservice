@@ -1,0 +1,777 @@
+/* ========== VARIABLES GLOBALES ========== */
+:root {
+  --primary: #673ab7;        /* Violeta principal */
+  --secondary: #9575cd;      /* Violeta secundario */
+  --accent: #009688;         /* Verde-acento */
+  --bg-light: #E4E2DD;       /* Fondo claro */
+  --text-dark: #333;         /* Texto oscuro */
+  --transition: all 0.3s ease; /* Transiciones globales */
+}
+
+/* ========== RESET Y BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Box-sizing border-box por defecto */
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Fuente principal */
+  color: var(--text-dark);            /* Color de texto principal */
+  line-height: 1.6;                   /* Altura de línea cómoda */
+  min-height: 100vh;                  /* Mínimo alto de pantalla */
+  background: linear-gradient(120deg, #3C00FF 0%, #673ab7 40%, #2e176b 100%);
+  background-attachment: fixed;        /* Fondo fijo para efecto parallax */
+}
+
+a {
+  text-decoration: none; /* Sin subrayado por defecto */
+  color: inherit;        /* Toman el color del padre */
+}
+
+/* ========== HERO: PORTADA SUPERIOR ========== */
+.hero-portada {
+  background: none;
+  position: relative;
+  width: 100%;
+  min-height: 390px;
+  padding-top: 60px;  /* Espacio arriba para separar del borde */
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 700px;    /* Máximo ancho del contenido centrado */
+  margin: 0 auto;      /* Centrado horizontal */
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-brand {
+  color: #fff;
+  font-size: 2.9rem;     /* Tamaño grande para la marca */
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 10px #0005; /* Sombra de texto */
+  margin-top: 0;
+  text-align: center;
+}
+
+.hero-lema {
+  color: #d4cafd;
+  font-size: 1.18rem;
+  margin-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 10px;
+}
+
+/* Contenedor de los botones grandes de secciones */
+.hero-secciones {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  flex-wrap: nowrap;
+}
+.hero-secciones.horizontal {
+  flex-direction: row;
+}
+
+/* ========== BOTONES/SECCIONES PRINCIPALES HERO ========== */
+.seccion-card {
+  flex: 1 1 0;                     /* Que crezcan igual */
+  max-width: 200px;                /* Máximo ancho */
+  min-width: 140px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.11);    /* Fondo blanco traslúcido */
+  border-radius: 18px;
+  box-shadow: 0 4px 18px #482eb330, 0 0 0 #fff0;
+  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.14);
+  transition: 
+    transform 0.18s, 
+    box-shadow 0.22s, 
+    background 0.22s, 
+    border-color 0.2s;
+  color: #fff;
+  font-size: 1.01rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: transform 0.18s, box-shadow 0.2s, background 0.22s;
+  border: 2px solid #a787fa;
+  text-decoration: none;
+  margin: 0;
+  padding: 12px 0 10px 0;
+  word-break: break-word;
+  text-align: center;
+}
+.seccion-card.tienda    { border-color: #7ecdf9; }
+.seccion-card.repuestos { border-color: #7ecdf9; }
+.seccion-card.tecnico   { border-color: #7ecdf9; }
+
+.seccion-card i {
+  font-size: 2em;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 6px #512ce180;
+}
+.seccion-card span {
+  font-size: 1em;
+  font-weight: 700;
+  color: #fff;
+}
+.seccion-card.tecnico span {
+  font-size: 0.97em;
+}
+
+.seccion-card:hover,
+.seccion-card:focus {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-10px) scale(1.07) rotate(-1.5deg);
+  box-shadow: 0 16px 38px #512ce160, 0 0 0 #fff0;
+  border-color: #fff;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.seccion-card:hover, .seccion-card:focus {
+  background: rgba(255,255,255,0.23);  /* Más opaco en hover */
+  transform: translateY(-6px) scale(1.045);
+  box-shadow: 0 12px 32px #4127a8b0;
+  border-color: #fff;
+}
+
+.seccion-card:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+/* ========== HERO RESPONSIVE ========== */
+@media (max-width: 950px) {
+  .hero-inner { max-width: 96vw; }
+  .hero-secciones { flex-direction: column; gap: 18px; align-items: center; }
+  .seccion-card { width: 94vw; max-width: 340px; min-width: 160px; }
+  .hero-brand { font-size: 1.7rem; }
+}
+
+/* ========== ANIMACIONES HERO ========== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-18px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+.hero-inner {
+  animation: fadeInDown 1s cubic-bezier(.18,1.24,.57,1.18);
+}
+
+/* ========== BIENVENIDA ========== */
+
+@keyframes bienvenidaFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.welcome {
+  position: relative;
+  z-index: 1;
+}
+/* Logo grande blanco de fondo */
+.welcome::before {
+  content: '';
+  position: absolute;
+  top: -350px;
+  left: -320px;
+  width: 1000px;
+  height: 800px;
+  background: url('img/blanco.png') no-repeat center center;
+  background-size: contain;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Caja blanca con el contenido de bienvenida */
+.welcome-content {
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 6px 32px rgba(99,58,183,0.20), 0 2px 12px #a484ff23;
+  border-radius: 18px;
+  padding: 34px 36px;
+  max-width: 640px;
+  width: 98%;
+  margin: 0 auto 32px auto;
+  transition: box-shadow 0.3s;
+  animation: bienvenidaFadeIn 1.3s cubic-bezier(.18,1.1,.57,1.12);
+}
+/* Tipografía uniforme */
+.welcome * {
+  font-family: Arial, sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+/* Título principal "Bienvenidos" */
+.welcome-title {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+  position: relative;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+/* Línea decorativa bajo el título */
+.welcome-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  margin: 10px auto 0;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+/* Subtítulo */
+.welcome-subtitle {
+  font-size: 1.13rem;
+  margin-bottom: 14px;
+  color: #000 !important;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+/* Texto de bienvenida */
+.welcome-text {
+  color: #000 !important;
+  font-size: 1.09rem;
+  line-height: 1.7;
+  margin-top: 8px;
+}
+/* Check de calidad */
+.welcome-check {
+  color: var(--primary);
+  font-size: 1.22em;
+  animation: checkBounce 1.2s cubic-bezier(.2,1.7,.57,1) 1;
+  margin: 0 6px 0 4px;
+  vertical-align: middle;
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(0.1) rotate(-10deg);}
+  70% { transform: scale(1.25) rotate(5deg);}
+  80% { transform: scale(0.95);}
+  100% { transform: scale(1);}
+}
+
+/* ========== SECCIÓN SERVICIOS (TARJETAS) ========== */
+.services {
+  padding: 60px 8px 40px 8px;
+  text-align: center;
+}
+
+/* Título de la sección */
+.section-title {
+  font-size: 2.3rem;
+  color: #fff;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+/* Línea decorativa bajo el título */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #fff;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Tarjetas grid */
+.service-cards.modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 38px;
+  margin-top: 38px;
+  text-align: left;
+  max-width: 1700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.service-card.modern,
+.service-card.modern h3,
+.service-card.modern ul li {
+  color: #000000 !important; 
+}
+.service-card.modern {
+  background: #e4e2dddc; /* Celeste claro con opacidad */
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(103, 58, 183, 0.12), 0 2px 18px #7ebdff25;
+  padding: 38px 34px 24px 34px;
+  border: 2px solid #000000;
+  transition: 
+    transform 0.18s cubic-bezier(.29,1.01,.37,1),
+    box-shadow 0.26s,
+    border-color 0.20s,
+    background 0.20s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 360px;
+  max-width: 99vw;
+}
+
+/* Sombra y fondo más claros en hover, resalta el borde */
+.service-card.modern:hover, .service-card.modern:focus {
+  background: rgba(255, 255, 255, 0.793);
+  box-shadow: 0 16px 38px #ec1bffb3, 0 2px 24px #ec1bffb3;
+  border-color: var(--primary);
+  z-index: 2;
+  transform: translateY(-12px) scale(1.04) rotate(-1deg);  /* <--- Esta línea! */
+}
+
+/* Imagen: igual tamaño pero mejor sombra */
+.service-card.modern img.service-image {
+  border-radius: 14px;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 18px #a484ff22;
+}
+
+/* Título más vibrante */
+.service-card.modern h3 {
+  font-size: 1.39rem;
+  margin-bottom: 18px;
+  color: #662bb7;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #be97fb18;
+}
+
+/* Lista un poco más grande y con color suave */
+.service-card.modern ul li {
+  font-size: 1.12rem;
+  margin-bottom: 13px;
+  color: #231b38;
+  list-style: disc inside;
+}
+
+/* Responsive servicios */
+@media (max-width: 1100px) {
+  .service-cards.modern { grid-template-columns: 1fr 1fr; max-width: 98vw; }
+}
+@media (max-width: 700px) {
+  .service-cards.modern { grid-template-columns: 1fr; gap: 18px; }
+  .service-card.modern { min-height: 210px; padding: 28px 8px 18px 8px; }
+  .service-card.modern h3 { font-size: 1.08rem; }
+  .service-card.modern img.service-image { width: 64px; height: 64px; }
+}
+
+/* ========== INFO CARDS: HORARIO, CONTACTO, UBICACIÓN ========== */
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+}
+.info-card {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px #653acb0a;
+  border-radius: 16px;
+  padding: 24px 28px;
+  width: 300px;
+  text-align: left;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 10px;
+  border-left: 6px solid #ddd; /* color por default, sobrescrito abajo */
+}
+
+/* Bordes temáticos según el orden */
+.info-card:nth-child(1) {
+  border-left: 6px solid var(--primary);  /* Horarios */
+}
+.info-card:nth-child(2) {
+  border-left: 6px solid #25d366;         /* Contacto: verde WhatsApp */
+}
+.info-card:nth-child(3) {
+  border-left: 6px solid #009688;         /* Ubicación: turquesa */
+}
+
+.info-card:hover {
+  transform: translateY(-10px) scale(1.025);
+  box-shadow: 0 16px 34px #653acb20;
+  z-index: 2;
+}
+
+/* Título con ícono más grande y animado */
+.icon-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #6a0dad;
+  margin-bottom: 12px;
+}
+
+.icon-title i {
+  font-size: 1.5em;
+  transition: transform 0.2s;
+}
+
+.info-card:hover .icon-title i {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.icon-title h4 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #6a0dad;
+}
+
+/* Texto principal */
+.info-card p {
+  margin: 4px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Texto detalle más visible */
+.info-card .detalle {
+  color: #925be7;
+  font-size: 0.90rem;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* ========== TARJETAS MODERNAS (BORDE VIOLETA) ========== */
+.modern-card {
+  background: linear-gradient(135deg, #f3ecff, #e5dbff, #dacfff);
+  border-left: 6px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(103, 58, 183, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+.modern-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(103, 58, 183, 0.25);
+}
+.info-detail p { margin-bottom: 10px; }
+.info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.info-link:hover { color: #4b2ba9; }
+
+/* ========== BOTONES REDONDEADOS WHATSAPP/INSTAGRAM ========== */
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  color: white;
+}
+.pill-button i { font-size: 1.2rem; }
+.pill-button.whatsapp { background-color: #25d366; }
+.pill-button.whatsapp:hover { background-color: #1ebe5d; }
+.pill-button.instagram { background-color: #e1306c; }
+.pill-button.instagram:hover { background-color: #cc2a60; }
+.center-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: linear-gradient(135deg, #5a3196 0%, #654693 100%);
+  color: #fff;
+  padding: 40px 0;
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* ========== RESPONSIVE PARA TITULOS EN MÓVIL ========== */
+@media (max-width: 768px) {
+  .hero-content h1 { font-size: 2.5rem; }
+  .services h2,
+  .welcome h2,
+  .testimonials h2 { font-size: 1.8rem; }
+}
+
+/* ========== SECCIÓN CONTACTO LIMPIA Y PRO ========== */
+
+.contacto {
+  margin: 60px auto 0 auto;
+  margin-top: 20px !important;
+  padding: 42px 10px 44px 10px;
+  max-width: 900px;
+  border-radius: 22px;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.contacto-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #4c2885;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contacto-desc {
+  text-align: center;
+  font-size: 1.06rem;
+  color: #6249a6;
+  margin-bottom: 34px;
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin-top: 10px;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 56px;
+}
+
+@media (max-width: 900px) {
+  .contacto-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* TARJETAS SIEMPRE BLANCAS */
+.contact-form,
+.contacto-info {
+  background: #fff !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 32px rgba(103,58,183,0.13), 0 2px 12px #a484ff22 !important;
+  padding: 26px 24px;
+  opacity: 1 !important;
+}
+
+/* FORMULARIO DE CONTACTO */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font-size: 1rem;
+  border: 1.5px solid #d6c4f1;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: #fff;
+  margin-bottom: 3px;
+  transition: border 0.18s;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: #8857ee;
+  outline: none;
+}
+
+.contact-form button {
+  background: linear-gradient(90deg, #8857ee 40%, #4bc3f7 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 0;
+  font-size: 1.09rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.16s;
+  margin-top: 6px;
+}
+
+.contact-form button:hover {
+  background: linear-gradient(90deg, #4bc3f7 15%, #8857ee 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* INFO DE CONTACTO */
+.contacto-info {
+  border: 2px solid #e9dafe;
+  box-shadow: 0 8px 32px rgba(103,58,183,0.11), 0 2px 12px #a484ff22;
+  border-radius: 18px;
+  padding: 26px 22px 24px 22px;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.btn-whatsapp, .btn-instagram {
+  display: inline-flex !important;
+  max-width: 180px;
+  min-width: 120px;
+  width: auto !important; 
+  align-items: center;
+  gap: 8px;
+  font-size: 0.96rem;
+  font-weight: bold;
+  border-radius: 22px;
+  padding: 8px 16px;
+  color: #fff;
+  background: #25d366;
+  transition: background 0.18s, transform 0.18s;
+  box-shadow: 0 2px 8px #b5ffda36;
+  text-decoration: none;
+  margin-bottom: 0;
+}
+.btn-instagram {
+  background: #e1306c;
+  box-shadow: 0 2px 8px #f5badb36;
+}
+.btn-whatsapp i, .btn-instagram i {
+  font-size: 1.1em;
+}
+
+.contacto-info .contact-divider {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #e4dbfb;
+  margin: 14px 0 12px 0;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 14px 0 0 0;
+}
+
+.icon-circle {
+  background: #e9dafe;
+  color: #6a0dad;
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15em;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.info-label {
+  color: #653acb;
+  font-weight: 600;
+  font-size: 1.09em;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.horario-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0;
+}
+.horario-list li {
+  font-size: 1.03em;
+  color: #322b4e;
+  margin-bottom: 1px;
+}
+
+.ubicacion .info-label { color: #6a0dad; }
+
+.info-item strong {
+  color: #5f329e;
+  font-weight: 600;
+  font-size: 1.06em;
+}
+
+/* CUADRO DE HERO/TÍTULO CONTACTO */
+.contacto-hero {
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px 18px 22px 18px;
+  max-width: 700px;
+  margin: 20px auto 20px auto !important;
+  box-shadow: 0 8px 32px rgba(103,58,183,0.12), 0 2px 12px #a484ff22;
+  text-align: center;
+}
+
+.contacto-hero .contacto-title {
+  margin-bottom: 8px;
+}
+
+.contacto-hero .contacto-desc {
+  margin-bottom: 0;
+  color: #6249a6;
+  font-size: 1.12rem;
+}
+
+.horarios-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+
+.horario-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.06em;
+  color: #362382;
+}
+
+.horario-row span {
+  width: auto;           /* Misma anchura para todos los días */
+  text-align: left;      /* Alinea el nombre del día a la derecha */
+  display: inline-block;
+  margin-right: 12px;
+  font-weight: 500;
+}
+
+.horario-row strong {
+  font-weight: 700;
+  color: #653acb;
+  text-align: right;
+}
