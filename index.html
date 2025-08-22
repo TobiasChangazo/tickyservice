@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TickyService</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css?v=1.2">
 </head>
@@ -39,7 +38,7 @@
       <p class="welcome-subtitle">El Mejor Servicio en reparación, repuestos y tecnología</p>
       <p class="welcome-text">
         En <strong>TickyService</strong> brindamos <b>servicio técnico profesional</b>, venta de repuestos y productos para notebooks, PC, consolas y joysticks.<br>
-        <span class="welcome-check"></i></span>
+        <span class="welcome-check"></span>
         <b>Nos Caracterizamos por la Calidad y Rapidez que ofrecemos!</b>
       </p>
       <ul class="welcome-badges">
@@ -50,64 +49,196 @@
     </div>
   </section>
 
-  <!-- Servicios -->
-  <h2 class="section-title">Servicios</h2>
-  <div class="service-cards modern">
-    <div class="service-card modern">
-      <img src="img/note.jpeg" alt="Notebook" class="service-image">
-      <h3>Notebook</h3>
-      <ul>
-        <li>Instalación de Sistema</li>
-        <li>Recuperación de Datos</li>
-        <li>Reemplazo de Disco</li>
-        <li>Mantenimiento</li>
-        <li>Eliminación de Malware</li>
-        <li>Instalación de Office</li>
-      </ul>
-    </div>
-    <div class="service-card modern">
-      <img src="img/pc.jpeg" alt="PC" class="service-image">
-      <h3>PC</h3>
-      <ul>
-        <li>Actualización de Hardware</li>
-        <li>Mantenimiento</li>
-        <li>Actualización de Bios</li>
-        <li>Recuperación de Datos</li>
-        <li>Instalación de Office</li>
-        <li>Instalación de Juegos</li>
-      </ul>
-    </div>
-    <div class="service-card modern">
-      <img src="img/joys.jpeg" alt="Joystick" class="service-image">
-      <h3>Joystick</h3>
-      <ul>
-        <li>Solución de Drift</li>
-        <li>Reemplazo de Analagos</li>
-        <li>Sustitución Pin de Carga</li>
-        <li>Mantenimiento</li>
-        <li>Reparación de Botones</li>
-        <li>Vinculación con Consola</li>
-      </ul>
-    </div>
-    <div class="service-card modern">
-      <img src="img/cons.png" alt="Consola" class="service-image">
-      <h3>Consola</h3>
-      <ul>
-        <li>limpieza de Lectora</li>
-        <li>Mantenimiento</li>
-        <li>Instalación de software</li>
-        <li>Reemplazo de Disco</li>
-        <li>Sustitución de HDMI</li>
-        <li>Sustitución de Fuente</li>
-      </ul>
-    </div>
+<h2 class="section-title" id="servicios">Servicios</h2>
+
+<section class="svc">
+  <!-- Tabs -->
+  <div class="svc-tabs" role="tablist" aria-label="Tipos de servicio">
+    <button class="svc-tab is-active" role="tab" aria-selected="true" aria-controls="tab-notebook" data-target="tab-notebook">
+      <i class="fas fa-laptop"></i> Notebook
+    </button>
+    <button class="svc-tab" role="tab" aria-selected="false" aria-controls="tab-pc" data-target="tab-pc">
+      <i class="fas fa-desktop"></i> PC
+    </button>
+    <button class="svc-tab" role="tab" aria-selected="false" aria-controls="tab-joystick" data-target="tab-joystick">
+      <i class="fas fa-gamepad"></i> Joystick
+    </button>
+    <button class="svc-tab" role="tab" aria-selected="false" aria-controls="tab-consola" data-target="tab-consola">
+      <i class="fas fa-tv"></i> Consola
+    </button>
   </div>
-  </main>
+
+  <!-- Panels -->
+  <div class="svc-panels">
+    <!-- NOTEBOOK -->
+    <section id="tab-notebook" class="svc-panel is-active" role="tabpanel">
+      <div class="svc-grid">
+        <figure class="svc-media">
+          <img src="img/note.jpeg" alt="Servicio para notebooks">
+        </figure>
+        <div class="svc-info">
+          <h3>Notebook</h3>
+          <div class="svc-columns">
+            <div>
+              <h4>Mantenimiento</h4>
+              <ul>
+                <li>cambio de Pasta Termica</li>
+                <li>Optimización de rendimiento</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Reparación</h4>
+              <ul>
+                <li>Reemplazo de Disco</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Software</h4>
+              <ul>
+                <li>Instalación de sistema</li>
+                <li>Recuperación de Datos</li>
+                <li>Eliminación de Malware</li>
+                <li>Instalación de Office</li>
+              </ul>
+            </div>
+          </div>
+          <div class="svc-actions">
+            <a class="btn-primary" href="servicio.html"><i class="fas fa-paper-plane"></i> Consultar por Notebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PC -->
+    <section id="tab-pc" class="svc-panel" role="tabpanel" hidden>
+      <div class="svc-grid">
+        <figure class="svc-media">
+          <img src="img/pc.jpeg" alt="Servicio para PC de escritorio">
+        </figure>
+        <div class="svc-info">
+          <h3>PC</h3>
+          <div class="svc-columns">
+            <div>
+              <h4>Mantenimiento</h4>
+              <ul>
+                <li>Cambio de Pasta</li>
+                <li>Gestión de temperaturas</li>
+                <li>Optimización de Arranque</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Actualización</h4>
+              <ul>
+                <li>Actualización de Hardware</li>
+                <li>Actualización de Bios</li>
+                <li>Armado De Componentes</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Software</h4>
+              <ul>
+                <li>Recuperación de Datos</li>
+                <li>Instalación de Office</li>
+                <li>Instalación de Juegos</li>
+              </ul>
+            </div>
+          </div>
+          <div class="svc-actions">
+            <a class="btn-primary" href="servicio.html"><i class="fas fa-paper-plane"></i> Consultar por PC</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOYSTICK -->
+    <section id="tab-joystick" class="svc-panel" role="tabpanel" hidden>
+      <div class="svc-grid">
+        <figure class="svc-media">
+          <img src="img/joys.jpeg" alt="Servicio para joysticks">
+        </figure>
+        <div class="svc-info">
+          <h3>Joystick</h3>
+          <div class="svc-columns">
+            <div>
+              <h4>Reparación</h4>
+              <ul>
+                <li>Solución de Drift</li>
+                <li>Reemplazo de analógicos</li>
+                <li>Sustitución Pin de Carga</li>
+                <li>Reparación de Botones</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Mantenimiento</h4>
+              <ul>
+                <li>Limpieza de placas y botones</li>
+                <li>Revisión de gatillos</li>
+                <li>Calibración</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Vinculación</h4>
+              <ul>
+                <li>Vinculación con Consola</li>
+              </ul>
+            </div>
+          </div>
+          <div class="svc-actions">
+            <a class="btn-primary" href="servicio.html"><i class="fas fa-paper-plane"></i> Consultar por Joystick</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSOLA -->
+    <section id="tab-consola" class="svc-panel" role="tabpanel" hidden>
+      <div class="svc-grid">
+        <figure class="svc-media">
+          <img src="img/cons.png" alt="Servicio para consolas">
+        </figure>
+        <div class="svc-info">
+          <h3>Consola</h3>
+          <div class="svc-columns">
+            <div>
+              <h4>Mantenimiento</h4>
+              <ul>
+                <li>Limpieza de Lectora</li>
+                <li>Cambio de pasta térmica</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Reparación</h4>
+              <ul>
+                <li>Sustitución de HDMI</li>
+                <li>Reemplazo de Disco</li>
+                <li>Sustitución de Fuente</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Software</h4>
+              <ul>
+                <li>Instalación de software</li>
+                <li>Vinculación con joysticks</li>
+              </ul>
+            </div>
+          </div>
+          <div class="svc-actions">
+            <a class="btn-primary" href="servicio.html"><i class="fas fa-paper-plane"></i> Consultar por Consola</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+
+</main>
 
 <script>
-  document
-    .getElementById('ticky-form')
-    .addEventListener('submit', function(e) {
+  // Enlazar el form SOLO si existe (en home no existe)
+  const form = document.getElementById('ticky-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
 
       const nombre   = this.nombre.value.trim();
@@ -115,8 +246,7 @@
       const medio    = this.medio.value;
       const mensaje  = this.mensaje.value.trim();
 
-      // Nuevo formato con etiquetas:
-      const texto = 
+      const texto =
         `Nombre: ${nombre}\n` +
         `Tipo de Servicio: ${servicio}\n` +
         `Consulta: ${mensaje}`;
@@ -136,7 +266,28 @@
           });
       }
     });
+  }
+
+  // Tabs Servicios
+  document.querySelectorAll('.svc-tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = btn.dataset.target;
+
+      // tabs
+      document.querySelectorAll('.svc-tab').forEach(t=>{
+        t.classList.toggle('is-active', t===btn);
+        t.setAttribute('aria-selected', t===btn ? 'true':'false');
+      });
+
+      // panels
+      document.querySelectorAll('.svc-panel').forEach(p=>{
+        if (p.id === target) { p.hidden = false; p.classList.add('is-active'); }
+        else { p.hidden = true; p.classList.remove('is-active'); }
+      });
+    });
+  });
 </script>
+
   <footer>
     <p>&copy; 2025 - TickyService</p>
   </footer> 
