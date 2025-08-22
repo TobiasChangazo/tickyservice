@@ -16,12 +16,18 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif; /* Fuente principal */
-  color: var(--text-dark);            /* Color de texto principal */
-  line-height: 1.6;                   /* Altura de línea cómoda */
-  min-height: 100vh;                  /* Mínimo alto de pantalla */
-  background: linear-gradient(120deg, #3C00FF 0%, #673ab7 40%, #2e176b 100%);
-  background-attachment: fixed;        /* Fondo fijo para efecto parallax */
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #673AB7 100%, #3C00FF 50%, #5420D7 0%);
+}
+
+.page-hero{
+  background: url('img/fondoticky.png') no-repeat left top fixed;
+  background-size: cover;     /* cubre TODO, sin dejar huecos */
+  min-height: 100vh;
+  padding-bottom: 60px;       /* reemplaza el margen del footer */
 }
 
 a {
@@ -54,14 +60,12 @@ a {
   letter-spacing: 1.5px;
   text-shadow: 0 2px 10px #0005; /* Sombra de texto */
   margin-top: 0;
-  text-align: center;
 }
 
 .hero-lema {
   color: #d4cafd;
   font-size: 1.18rem;
   margin-bottom: 50px;
-  font-family: 'Poppins', sans-serif;
   margin-top: 10px;
 }
 
@@ -75,9 +79,6 @@ a {
   margin-bottom: 10px;
   flex-wrap: nowrap;
 }
-.hero-secciones.horizontal {
-  flex-direction: row;
-}
 
 /* ========== BOTONES/SECCIONES PRINCIPALES HERO ========== */
 .seccion-card {
@@ -89,28 +90,27 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.11);    /* Fondo blanco traslúcido */
   border-radius: 18px;
   box-shadow: 0 4px 18px #482eb330, 0 0 0 #fff0;
   backdrop-filter: blur(6px);
   background: rgba(255,255,255,0.14);
   transition: 
-    transform 0.18s, 
-    box-shadow 0.22s, 
-    background 0.22s, 
-    border-color 0.2s;
+  transform 0.18s, 
+  box-shadow 0.22s, 
+  background 0.22s, 
+  border-color 0.2s;
   color: #fff;
   font-size: 1.01rem;
   font-weight: 600;
   letter-spacing: 1px;
-  transition: transform 0.18s, box-shadow 0.2s, background 0.22s;
-  border: 2px solid #a787fa;
+  border: 1.5px solid rgba(174,135,250,.85);
   text-decoration: none;
   margin: 0;
   padding: 12px 0 10px 0;
   word-break: break-word;
   text-align: center;
 }
+
 .seccion-card.tienda    { border-color: #7ecdf9; }
 .seccion-card.repuestos { border-color: #7ecdf9; }
 .seccion-card.tecnico   { border-color: #7ecdf9; }
@@ -127,16 +127,6 @@ a {
 }
 .seccion-card.tecnico span {
   font-size: 0.97em;
-}
-
-.seccion-card:hover,
-.seccion-card:focus {
-  background: rgba(255,255,255,0.28);
-  transform: translateY(-10px) scale(1.07) rotate(-1.5deg);
-  box-shadow: 0 16px 38px #512ce160, 0 0 0 #fff0;
-  border-color: #fff;
-  outline: 2px solid #fff;
-  outline-offset: 2px;
 }
 
 .seccion-card:hover, .seccion-card:focus {
@@ -186,48 +176,39 @@ a {
   position: relative;
   z-index: 1;
 }
-/* Logo grande blanco de fondo */
-.welcome::before {
-  content: '';
-  position: absolute;
-  top: -350px;
-  left: -320px;
-  width: 1000px;
-  height: 800px;
-  background: url('img/blanco.png') no-repeat center center;
-  background-size: contain;
-  opacity: 1;
-  z-index: 0;
-  pointer-events: none;
-}
+
 /* Caja blanca con el contenido de bienvenida */
 .welcome-content {
   backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.85);
+  background: radial-gradient(1200px 200px at 50% -40%, rgba(255,255,255,.95), rgba(255,255,255,.88)) !important;
   box-shadow: 0 6px 32px rgba(99,58,183,0.20), 0 2px 12px #a484ff23;
   border-radius: 18px;
   padding: 34px 36px;
-  max-width: 640px;
+  max-width: 600px;
   width: 98%;
   margin: 0 auto 32px auto;
   transition: box-shadow 0.3s;
   animation: bienvenidaFadeIn 1.3s cubic-bezier(.18,1.1,.57,1.12);
+  position: relative;
+  border: 1px solid rgba(103,58,183,.18);
 }
 /* Tipografía uniforme */
 .welcome * {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-transform: none;
   letter-spacing: normal;
 }
 /* Título principal "Bienvenidos" */
 .welcome-title {
   font-size: 2.2rem;
-  color: var(--primary);
   margin-bottom: 8px;
   position: relative;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
   text-align: center;
+  background: linear-gradient(90deg, #6f3bd3, #4bc3f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;   
 }
 /* Línea decorativa bajo el título */
 .welcome-title::after {
@@ -235,11 +216,36 @@ a {
   display: block;
   width: 60px;
   height: 4px;
-  background: var(--primary);
+  background: linear-gradient(90deg, #6f3bd3, #4bc3f7);
   margin: 10px auto 0;
   border-radius: 2px;
-  opacity: 0.6;
+  opacity: .85;
 }
+
+.welcome-badges{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0 6px;
+  padding: 0;
+  list-style: none;
+}
+.welcome-badges li{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+  color: #4c2885;
+  background: rgba(103,58,183,.10);
+  border: 1px solid rgba(103,58,183,.22);
+  box-shadow: 0 2px 10px rgba(103,58,183,.10);
+}
+.welcome-badges i{ font-size: 1rem; }
+
 /* Subtítulo */
 .welcome-subtitle {
   font-size: 1.13rem;
@@ -269,12 +275,6 @@ a {
   70% { transform: scale(1.25) rotate(5deg);}
   80% { transform: scale(0.95);}
   100% { transform: scale(1);}
-}
-
-/* ========== SECCIÓN SERVICIOS (TARJETAS) ========== */
-.services {
-  padding: 60px 8px 40px 8px;
-  text-align: center;
 }
 
 /* Título de la sección */
@@ -308,48 +308,37 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   max-width: 90vw;
   margin: 0 auto;
-  perspective: none; /* ya no hace falta perspectiva */
 }
 
-.service-card.modern h3,
-.service-card.modern ul li {
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
 .service-card.modern {
-  background: #e4e2dddc;
-  backdrop-filter: blur(18px);
+  background: #f4f1fbf2;               /* más claro */
+  backdrop-filter: blur(14px);
   border-radius: 22px;
-  box-shadow: 0 8px 32px rgba(103,58,183,0.12), 0 2px 18px #7ebdff25;
-  border: 2px solid #000;
+  border: 1px solid rgba(103,58,183,.22); /* antes: 2px sólido negro */
   padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   width: 100%;
-  max-width: 500px;       /* límite de ancho */
-  min-height: auto;       /* se ajusta al contenido */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  will-change: transform, box-shadow;
-  /* suavizado de texto */
-  -webkit-font-smoothing: subpixel-antialiased;
-  text-rendering: optimizeLegibility;
+  max-width: 500px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: 0 8px 24px rgba(103,58,183,.18);
 }
 
 /* Sombra y fondo más claros en hover, resalta el borde */
 .service-card.modern:hover,
 .service-card.modern:focus {
-  background: rgba(255,255,255,0.85);
-  box-shadow: 0 12px 24px #ec1bff99, 0 2px 16px #ec1bff88;
-  transform: translateY(-8px) scale(1.03); /* sin rotate */
-  z-index: 1;
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(103,58,183,.25);
+  border-color: rgba(103,58,183,.40);
+  transform: translateY(-8px) scale(1.03);
 }
 
 /* Imagen: igual tamaño pero mejor sombra */
 .service-card.modern img.service-image {
   width: 100%;            /* ocupa todo el ancho de la card */
-  height: auto;
+  height: 55%;
   object-fit: cover;
   border-radius: 14px;
   margin-bottom: 16px;
@@ -375,11 +364,25 @@ a {
 .service-card.modern ul li {
   font-size: 1rem;
   margin-bottom: 8px;
-  color: #231b38;
+  color: #7849f1;
   list-style: disc inside;
 }
 
-/* Responsive */
+/* ========== FOOTER ========== */
+footer {
+  background: linear-gradient(135deg, #5a3196 0%, #654693 100%);
+  color: #fff;
+  padding: 40px 0;
+  margin-top: 0;              /* antes 60px: causaba la franja */
+  text-align: center;
+}
+
+/* ========== RESPONSIVE PARA TITULOS EN MÓVIL ========== */
+
+@media (max-width: 900px) {
+  .contacto-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
 @media (max-width: 1100px) {
   .service-cards.modern {
     grid-template-columns: 1fr 1fr;
@@ -398,155 +401,13 @@ a {
     font-size: 0.95rem;
     margin-bottom: 6px;
   }
-}
-
-/* ========== INFO CARDS: HORARIO, CONTACTO, UBICACIÓN ========== */
-.info-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 20px;
-}
-.info-card {
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 24px #653acb0a;
-  border-radius: 16px;
-  padding: 24px 28px;
-  width: 300px;
-  text-align: left;
-  transition: transform 0.3s, box-shadow 0.3s;
-  margin-bottom: 10px;
-  border-left: 6px solid #ddd; /* color por default, sobrescrito abajo */
-}
-
-/* Bordes temáticos según el orden */
-.info-card:nth-child(1) {
-  border-left: 6px solid var(--primary);  /* Horarios */
-}
-.info-card:nth-child(2) {
-  border-left: 6px solid #25d366;         /* Contacto: verde WhatsApp */
-}
-.info-card:nth-child(3) {
-  border-left: 6px solid #009688;         /* Ubicación: turquesa */
-}
-
-.info-card:hover {
-  transform: translateY(-10px) scale(1.025);
-  box-shadow: 0 16px 34px #653acb20;
-  z-index: 2;
-}
-
-/* Título con ícono más grande y animado */
-.icon-title {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: #6a0dad;
-  margin-bottom: 12px;
-}
-
-.icon-title i {
-  font-size: 1.5em;
-  transition: transform 0.2s;
-}
-
-.info-card:hover .icon-title i {
-  transform: scale(1.15) rotate(-8deg);
-}
-
-.icon-title h4 {
-  font-size: 1.1rem;
-  margin: 0;
-  color: #6a0dad;
-}
-
-/* Texto principal */
-.info-card p {
-  margin: 4px 0;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Texto detalle más visible */
-.info-card .detalle {
-  color: #925be7;
-  font-size: 0.90rem;
-  margin-top: 8px;
-  font-weight: 600;
-}
-
-/* ========== TARJETAS MODERNAS (BORDE VIOLETA) ========== */
-.modern-card {
-  background: linear-gradient(135deg, #f3ecff, #e5dbff, #dacfff);
-  border-left: 6px solid var(--primary);
-  box-shadow: 0 10px 30px rgba(103, 58, 183, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter: blur(2px);
-}
-.modern-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(103, 58, 183, 0.25);
-}
-.info-detail p { margin-bottom: 10px; }
-.info-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--primary);
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-.info-link:hover { color: #4b2ba9; }
-
-/* ========== BOTONES REDONDEADOS WHATSAPP/INSTAGRAM ========== */
-.pill-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  margin-bottom: 10px;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  color: white;
-}
-.pill-button i { font-size: 1.2rem; }
-.pill-button.whatsapp { background-color: #25d366; }
-.pill-button.whatsapp:hover { background-color: #1ebe5d; }
-.pill-button.instagram { background-color: #e1306c; }
-.pill-button.instagram:hover { background-color: #cc2a60; }
-.center-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ========== FOOTER ========== */
-footer {
-  background: linear-gradient(135deg, #5a3196 0%, #654693 100%);
-  color: #fff;
-  padding: 40px 0;
-  margin-top: 60px;
-  text-align: center;
-}
-
-/* ========== RESPONSIVE PARA TITULOS EN MÓVIL ========== */
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 2.5rem; }
-  .services h2,
-  .welcome h2,
-  .testimonials h2 { font-size: 1.8rem; }
-}
+  .welcome-badges li{ font-size: .9rem; padding: 7px 10px;
+  }
 
 /* ========== SECCIÓN CONTACTO LIMPIA Y PRO ========== */
 
 .contacto {
-  margin: 60px auto 0 auto;
-  margin-top: 20px !important;
+  margin: 20px auto 0;
   padding: 42px 10px 44px 10px;
   max-width: 900px;
   border-radius: 22px;
@@ -560,7 +421,6 @@ footer {
   color: #4c2885;
   margin-bottom: 6px;
   letter-spacing: 1px;
-  font-family: 'Poppins', sans-serif;
 }
 
 .contacto-desc {
@@ -579,10 +439,6 @@ footer {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 56px;
-}
-
-@media (max-width: 900px) {
-  .contacto-grid { grid-template-columns: 1fr; gap: 32px; }
 }
 
 /* TARJETAS SIEMPRE BLANCAS */
@@ -720,17 +576,6 @@ footer {
   margin-bottom: 3px;
 }
 
-.horario-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 0 0;
-}
-.horario-list li {
-  font-size: 1.03em;
-  color: #322b4e;
-  margin-bottom: 1px;
-}
-
 .ubicacion .info-label { color: #6a0dad; }
 
 .info-item strong {
@@ -788,4 +633,5 @@ footer {
   font-weight: 700;
   color: #653acb;
   text-align: right;
+}
 }
