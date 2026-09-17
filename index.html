@@ -1,297 +1,733 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TickyService</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=1.2">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TickyService — Resolvelo vos o te ayudamos a resolverlo</title>
+<meta name="description" content="Guías, videos y diagnóstico guiado para notebooks, PC, consolas y joysticks. Si no se resuelve solo, TickyService te ayuda con servicio técnico en Mar de Ajó.">
+<meta name="theme-color" content="#5A3AD1">
+<link rel="icon" type="image/png" href="img/fondo.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="TickyService — Resolvelo vos o te ayudamos a resolverlo">
+<meta property="og:description" content="Guías, videos y diagnóstico guiado antes de traer el equipo. Servicio técnico, repuestos y tienda en Mar de Ajó.">
+<meta property="og:image" content="img/fondo.png">
+<meta property="og:locale" content="es_AR">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TickyService — Resolvelo vos o te ayudamos a resolverlo">
+<meta name="twitter:description" content="Guías, videos y diagnóstico guiado antes de traer el equipo a Mar de Ajó.">
+<meta name="twitter:image" content="img/fondo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ComputerRepairService",
+  "name": "TickyService",
+  "description": "Servicio técnico, repuestos y tienda de tecnología: notebooks, PC, consolas y joysticks.",
+  "image": "img/fondo.png",
+  "telephone": "+5492324588931",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mar de Ajó",
+    "addressRegion": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "areaServed": "Mar de Ajó y alrededores",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "20:00"
+    }
+  ],
+  "sameAs": ["https://instagram.com/tickyservice"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"¿Cuánto tarda una reparación?","acceptedAnswer":{"@type":"Answer","text":"La mayoría de los diagnósticos están en 24 a 48 horas. Te avisamos el tiempo estimado apenas confirmamos el presupuesto."}},
+    {"@type":"Question","name":"¿El presupuesto tiene costo?","acceptedAnswer":{"@type":"Answer","text":"No, el diagnóstico y el presupuesto son sin cargo. Solo abonás si decidís avanzar con la reparación."}},
+    {"@type":"Question","name":"¿Qué garantía tienen las reparaciones?","acceptedAnswer":{"@type":"Answer","text":"Todas nuestras reparaciones y repuestos instalados cuentan con garantía escrita, cuyo plazo informamos junto con el presupuesto."}},
+    {"@type":"Question","name":"¿Hacen retiro a domicilio?","acceptedAnswer":{"@type":"Answer","text":"Sí, coordinamos retiro y entrega en Mar de Ajó y alrededores."}},
+    {"@type":"Question","name":"¿Qué formas de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Efectivo, transferencia bancaria y tarjetas de débito y crédito."}}
+  ]
+}
+</script>
 </head>
 <body>
-  <main class="page-hero">
-  <!-- Hero -->
-  <header class="hero-portada">
-    <div class="hero-inner"> 
-      <h1 class="hero-brand">TickyService</h1>
-      <p class="hero-lema">Todo en tecnología: Tienda, Repuestos y Servicio Técnico</p>
-      <div class="hero-secciones horizontal">
-        <a href="tienda.html" class="seccion-card tienda">
-          <i class="fas fa-store"></i>
-          <span>Tienda</span>
-        </a>
-        <a href="repuestos.html" class="seccion-card repuestos">
-          <i class="fas fa-cogs"></i>
-          <span>Repuestos</span>
-        </a>
-        <a href="servicio.html" class="seccion-card tecnico">
-          <i class="fas fa-tools"></i>
-          <span>Servicio Técnico</span>
-        </a>
-      </div>
-    </div>
-  </header>
 
-  <section class="welcome">
-    <div class="welcome-content">
-      <h1 class="welcome-title">Bienvenidos a TickyService</h1>
-      <p class="welcome-subtitle">El Mejor Servicio en reparación, repuestos y tecnología</p>
-      <p class="welcome-text">
-        En <strong>TickyService</strong> brindamos <b>servicio técnico profesional</b>, venta de repuestos y productos para notebooks, PC, consolas y joysticks.<br>
-        <span class="welcome-check"></span>
-        <b>Nos Caracterizamos por la Calidad y Rapidez que ofrecemos!</b>
-      </p>
-      <ul class="welcome-badges">
-      <li></i> Atención rápida</li>
-      <li></i> Garantía en reparaciones</li>
-      <li></i> Retiro a domicilio</li>
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<!-- ============ SPRITE DE ICONOS SVG ============ -->
+<svg class="icon-sprite" aria-hidden="true">
+  <defs>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="icon-tools" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></symbol>
+    <symbol id="icon-laptop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/></symbol>
+    <symbol id="icon-desktop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="icon-gamepad" viewBox="0 0 24 24"><path d="M7 9h10a4 4 0 0 1 4 4v1a3 3 0 0 1-5.4 1.8L14 14h-4l-1.6 1.8A3 3 0 0 1 3 15v-1a4 4 0 0 1 4-4z"/><path d="M7.5 11.5v2M6.5 12.5h2M16 12h.01M18 14h.01"/></symbol>
+    <symbol id="icon-console" viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="8" rx="4"/><circle cx="7" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="17" cy="12" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="icon-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></symbol>
+    <symbol id="icon-truck" viewBox="0 0 24 24"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5v14l11-7z"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></symbol>
+    <symbol id="icon-check-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+    <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html">
+      <img class="brand__logo" src="img/fondo.png" alt="" width="42" height="42">
+      <span class="brand__word">TickyService</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="sr-only nav-toggle-input">
+    <label for="nav-toggle" class="nav-toggle">
+      <svg class="icon nav-toggle__open" aria-hidden="true"><use href="#icon-menu"></use></svg>
+      <svg class="icon nav-toggle__close" aria-hidden="true"><use href="#icon-close"></use></svg>
+      <span class="sr-only">Abrir menú de navegación</span>
+    </label>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="index.html" aria-current="page">Inicio</a></li>
+        <li><a class="nav__link" href="guias.html">Guías</a></li>
+        <li><a class="nav__link" href="index.html#servicios">Servicios</a></li>
+        <li><a class="nav__link" href="tienda.html">Tienda</a></li>
+        <li><a class="nav__link" href="contacto.html">Contacto</a></li>
       </ul>
+      <a class="btn btn--primary btn--sm nav__cta" href="https://wa.me/5492324588931">
+        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+        Escribinos
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero brand-surface" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div>
+        <h1 id="hero-title" class="hero__title">TickyService</h1>
+        <p class="hero__lead">Contanos qué te pasa y mirá si lo podés resolver vos. Tenemos guías, videos y un diagnóstico guiado para notebooks, PC, consolas y joysticks. Si no se resuelve, ahí sí estamos para ayudarte.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="#centro-de-ayuda">
+            Buscar mi problema
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+          </a>
+          <a class="btn btn--on-brand btn--lg" href="#servicios">Ver servicios</a>
+        </div>
+        <ul class="hero__badges">
+          <li class="chip chip--on-brand">
+            <svg class="icon" aria-hidden="true"><use href="#icon-bolt"></use></svg>
+            Atención rápida
+          </li>
+          <li class="chip chip--on-brand">
+            <svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>
+            Garantía en reparaciones
+          </li>
+          <li class="chip chip--on-brand">
+            <svg class="icon" aria-hidden="true"><use href="#icon-truck"></use></svg>
+            Retiro a domicilio
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
-<h2 class="section-title" id="servicios">Servicios</h2>
+  <!-- ============ CENTRO DE AYUDA ============ -->
+  <section class="section" id="centro-de-ayuda" aria-labelledby="help-title">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__eyebrow">Empezá acá</span>
+        <h2 id="help-title" class="section__title">Antes de traerlo, probá resolverlo</h2>
+        <p class="section__desc">Filtrá por tipo de equipo y mirá nuestras guías destacadas. Cada una te dice qué podés hacer vos, qué necesita herramientas y qué es directamente trabajo de taller.</p>
+      </div>
 
-<section class="svc">
-  <!-- Tabs -->
-  <div class="svc-tabs" role="tablist" aria-label="Tipos de servicio">
-    <button class="svc-tab is-active" role="tab" aria-selected="true" aria-controls="tab-notebook" data-target="tab-notebook">
-      <i class="fas fa-laptop"></i> Notebook
-    </button>
-    <button class="svc-tab" role="tab" aria-selected="false" aria-controls="tab-pc" data-target="tab-pc">
-      <i class="fas fa-desktop"></i> PC
-    </button>
-    <button class="svc-tab" role="tab" aria-selected="false" aria-controls="tab-joystick" data-target="tab-joystick">
-      <i class="fas fa-gamepad"></i> Joystick
-    </button>
-    <button class="svc-tab" role="tab" aria-selected="false" aria-controls="tab-consola" data-target="tab-consola">
-      <i class="fas fa-tv"></i> Consola
-    </button>
-  </div>
+      <ul class="level-legend">
+        <li class="chip chip--ok">Podés hacerlo vos</li>
+        <li class="chip chip--warn">Requiere herramientas</li>
+        <li class="chip chip--brand">Es trabajo de taller</li>
+      </ul>
 
-  <!-- Panels -->
-  <div class="svc-panels">
-    <!-- NOTEBOOK -->
-    <section id="tab-notebook" class="svc-panel is-active" role="tabpanel">
-      <div class="svc-grid">
-        <figure class="svc-media">
-          <img src="img/note.jpeg" alt="Servicio para notebooks">
-        </figure>
-        <div class="svc-info">
-          <h3>Notebook</h3>
-          <div class="svc-columns">
-            <div>
-              <h4>Mantenimiento</h4>
-              <ul>
-                <li>cambio de Pasta Termica</li>
-                <li>Optimización de rendimiento</li>
-              </ul>
+      <fieldset class="filter-bar">
+        <legend class="sr-only">Filtrar guías por tipo de equipo</legend>
+        <input type="radio" name="filter-home" id="f-todas" class="filter-bar__input sr-only" checked>
+        <label class="filter-bar__label" for="f-todas">Todas</label>
+        <input type="radio" name="filter-home" id="f-notebook" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-notebook">Notebook</label>
+        <input type="radio" name="filter-home" id="f-pc" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-pc">PC</label>
+        <input type="radio" name="filter-home" id="f-joystick" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-joystick">Joystick</label>
+        <input type="radio" name="filter-home" id="f-consola" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-consola">Consola</label>
+
+        <div class="guide-grid">
+
+          <article class="guide-card guide-card--notebook">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
             </div>
-            <div>
-              <h4>Reparación</h4>
-              <ul>
-                <li>Reemplazo de Disco</li>
-              </ul>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Notebook que no enciende: primeros pasos</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">5 min de lectura · Nivel fácil</p>
             </div>
-            <div>
-              <h4>Software</h4>
-              <ul>
-                <li>Instalación de sistema</li>
-                <li>Recuperación de Datos</li>
-                <li>Eliminación de Malware</li>
-                <li>Instalación de Office</li>
-              </ul>
+          </article>
+
+          <article class="guide-card guide-card--notebook">
+            <div class="guide-card__media guide-card__media--video">
+              <iframe src="" title="Video: Cómo limpiar la pasta térmica sin arruinar nada" loading="lazy" allowfullscreen></iframe>
+              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
+              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
+              <span class="chip chip--warn guide-card__type">Video</span>
             </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cómo limpiar la pasta térmica sin arruinar nada</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">8 min de video · Nivel medio</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--pc">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
+              <span class="chip chip--ok guide-card__type">Checklist</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">PC lenta: 6 cosas para probar antes de traerla</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">4 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--joystick">
+            <div class="guide-card__media guide-card__media--video">
+              <iframe src="" title="Video: Joystick con drift, cómo detectarlo y calibrarlo" loading="lazy" allowfullscreen></iframe>
+              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
+              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
+              <span class="chip chip--warn guide-card__type">Video</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Joystick con drift: cómo detectarlo y calibrarlo</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">6 min de video · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--consola">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">La consola no lee discos: guía de limpieza</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">5 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--pc">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
+              <span class="chip chip--ok guide-card__type">Checklist</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cómo hacer backup antes de llevar el equipo al taller</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">3 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+        </div>
+      </fieldset>
+
+      <p class="help-close"><a class="btn btn--ghost" href="guias.html">Ver las 24 guías <!-- TODO: número real de guías --> <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a></p>
+
+      <!-- ===== Diagnóstico guiado ===== -->
+      <div class="section__head section__head--sub">
+        <h3 class="section__subtitle">Diagnóstico guiado por síntoma</h3>
+        <p class="section__desc">Elegí lo que le pasa a tu equipo y probá estos pasos antes de escribirnos.</p>
+      </div>
+
+      <div class="diagnosis">
+        <details class="diagnosis-item">
+          <summary>No enciende o no arranca
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Probá con otro cargador o cable que sepas que funciona.</li>
+              <li>Mantené presionado el botón de encendido 15 segundos para descargar estática y volvé a intentar.</li>
+              <li>Si es notebook con batería removible, sacala y probá encenderla solo con el cargador conectado.</li>
+              <li>Fijate si prende alguna luz o se escucha el ventilador al conectar la carga.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Si no reacciona de ninguna manera, <strong>es una falla de hardware</strong> (fuente, placa o batería). <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
           </div>
-          <div class="svc-actions">
-            <a class="btn-primary" href="servicio.html"><i class="fas fa-paper-plane"></i> Consultar por Notebook</a>
+        </details>
+
+        <details class="diagnosis-item">
+          <summary>Se apaga solo o se reinicia
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Revisá que las rejillas de ventilación no estén tapadas de polvo o pelusa.</li>
+              <li>Usalo sobre una superficie dura y plana, nunca sobre la cama o el sillón.</li>
+              <li>Actualizá el sistema operativo y los controladores de video.</li>
+              <li>Desconectá periféricos que no uses y probá de nuevo.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Si se sigue apagando después de ventilarlo y actualizarlo, <strong>probablemente sea la pasta térmica o la fuente</strong>. <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
           </div>
+        </details>
+
+        <details class="diagnosis-item">
+          <summary>Se calienta mucho
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Usalo sobre una superficie dura, nunca sobre tela o almohadones.</li>
+              <li>Limpiá las rejillas de ventilación con aire comprimido si tenés.</li>
+              <li>Cerrá programas que no estés usando, sobre todo los que consumen mucho procesador.</li>
+              <li>Si tenés base con ventilador, usala en juegos o programas pesados.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Si se sigue calentando igual, <strong>es momento de un cambio de pasta térmica</strong> y limpieza interna, trabajo de taller. <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
+          </div>
+        </details>
+
+        <details class="diagnosis-item">
+          <summary>Pantalla rota, con manchas o líneas
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Anotá si el problema aparece siempre o solo al mover o abrir/cerrar la tapa.</li>
+              <li>Conectá el equipo a un monitor o TV externo para descartar que sea la placa de video.</li>
+              <li>Sacá fotos del problema con buena luz, ayuda a dar un presupuesto más rápido.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Esto casi siempre <strong>requiere reemplazo de pantalla o cable flex</strong>, es reparación de taller. <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
+          </div>
+        </details>
+
+        <details class="diagnosis-item">
+          <summary>Joystick con drift (se mueve solo)
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Actualizá el firmware del control desde la consola o PC.</li>
+              <li>Calibrá los analógicos desde la configuración del sistema.</li>
+              <li>Limpiá alrededor del stick con un cepillo suave, sin líquidos.</li>
+              <li>Probalo en otro dispositivo para confirmar que el problema es del control.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Si el drift sigue después de calibrar y limpiar, <strong>hay que reemplazar el potenciómetro</strong> del analógico. <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
+          </div>
+        </details>
+
+        <details class="diagnosis-item">
+          <summary>La consola no lee discos
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Probá con otro disco original en buen estado.</li>
+              <li>Limpiá el disco con un paño suave desde el centro hacia el borde.</li>
+              <li>Reiniciá la consola completamente: apagar, desenchufar 30 segundos y volver a encender.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Si ningún disco anda y la lectora hace ruido raro, <strong>la lente necesita limpieza o reemplazo</strong>. <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
+          </div>
+        </details>
+
+        <details class="diagnosis-item">
+          <summary>Anda muy lento
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Reiniciá el equipo (ayuda más de lo que parece).</li>
+              <li>Desinstalá programas que no uses y borrá archivos temporales.</li>
+              <li>Revisá el espacio libre en el disco: menos del 15% lo hace más lento.</li>
+              <li>Ejecutá un antivirus actualizado para descartar malware.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Si sigue lento igual, <strong>probablemente necesite un SSD o más memoria RAM</strong>. <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
+          </div>
+        </details>
+
+        <details class="diagnosis-item">
+          <summary>Sin conexión a internet o wifi
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="diagnosis-item__body">
+            <ol class="diagnosis-item__steps">
+              <li>Reiniciá el router y esperá un minuto antes de reconectar.</li>
+              <li>Probá conectarte a otra red (datos del celular) para descartar el problema del proveedor.</li>
+              <li>Olvidá la red guardada y volvé a conectarte escribiendo la contraseña de nuevo.</li>
+              <li>Revisá que el modo avión esté apagado y el wifi habilitado.</li>
+            </ol>
+            <p class="diagnosis-item__escalate">
+              <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
+              <span>Si otros dispositivos sí se conectan y el tuyo no, <strong>puede ser la placa de wifi</strong>. <a href="https://wa.me/5492324588931">Escribinos por WhatsApp</a>.</span>
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS (MATRIZ COMPACTA) ============ -->
+  <section class="section section--alt" id="servicios" aria-labelledby="servicios-title">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__eyebrow">Servicio técnico</span>
+        <h2 id="servicios-title" class="section__title">Un vistazo rápido por categoría</h2>
+        <p class="section__desc">Elegí el equipo y mirá qué hacemos en mantenimiento, reparación y software.</p>
+      </div>
+
+      <fieldset class="svc-tabs">
+        <legend class="sr-only">Categorías de servicio técnico</legend>
+
+        <input type="radio" name="svc" id="svc-notebook" class="svc-tabs__input sr-only" checked>
+        <label class="svc-tabs__label" for="svc-notebook" id="svc-label-notebook">
+          <svg class="icon" aria-hidden="true"><use href="#icon-laptop"></use></svg> Notebook
+        </label>
+
+        <input type="radio" name="svc" id="svc-pc" class="svc-tabs__input sr-only">
+        <label class="svc-tabs__label" for="svc-pc" id="svc-label-pc">
+          <svg class="icon" aria-hidden="true"><use href="#icon-desktop"></use></svg> PC
+        </label>
+
+        <input type="radio" name="svc" id="svc-joystick" class="svc-tabs__input sr-only">
+        <label class="svc-tabs__label" for="svc-joystick" id="svc-label-joystick">
+          <svg class="icon" aria-hidden="true"><use href="#icon-gamepad"></use></svg> Joystick
+        </label>
+
+        <input type="radio" name="svc" id="svc-consola" class="svc-tabs__input sr-only">
+        <label class="svc-tabs__label" for="svc-consola" id="svc-label-consola">
+          <svg class="icon" aria-hidden="true"><use href="#icon-console"></use></svg> Consola
+        </label>
+
+        <div class="svc-panels">
+
+          <article class="svc-panel" id="svc-panel-notebook" aria-labelledby="svc-label-notebook">
+            <div class="svc-panel__head">
+              <img class="svc-panel__thumb" src="img/note.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+              <h3 class="svc-panel__title">Notebook</h3>
+            </div>
+            <div class="svc-columns">
+              <div>
+                <h4>Mantenimiento</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Limpieza de teclado y carcasa <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Liberar espacio y actualizar Windows <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Cambio de pasta térmica <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Reparación</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Reemplazo de disco por SSD <span class="chip chip--brand">Taller</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Cambio de bisagra o carcasa <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Software</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Backup de archivos importantes <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Eliminación de virus <span class="chip chip--warn">Requiere herramientas</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Instalación de sistema operativo <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="svc-actions">
+              <a class="btn btn--ghost" href="guias.html">Ver guías de Notebook</a>
+              <a class="btn btn--secondary btn--sm" href="https://wa.me/5492324588931?text=Hola%2C%20quiero%20consultar%20por%20mi%20notebook">
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> Consultar por Notebook
+              </a>
+            </div>
+          </article>
+
+          <article class="svc-panel" id="svc-panel-pc" aria-labelledby="svc-label-pc">
+            <div class="svc-panel__head">
+              <img class="svc-panel__thumb" src="img/pc.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+              <h3 class="svc-panel__title">PC</h3>
+            </div>
+            <div class="svc-columns">
+              <div>
+                <h4>Mantenimiento</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Revisar conexión de cables <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Destapar y soplar el polvo <span class="chip chip--warn">Requiere herramientas</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Cambio de pasta térmica <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Actualización</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Sumar memoria RAM <span class="chip chip--warn">Requiere herramientas</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Actualizar placa de video <span class="chip chip--warn">Requiere herramientas</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Armado completo de PC <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Software</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Backup antes de formatear <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Instalación de Windows <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="svc-actions">
+              <a class="btn btn--ghost" href="guias.html">Ver guías de PC</a>
+              <a class="btn btn--secondary btn--sm" href="https://wa.me/5492324588931?text=Hola%2C%20quiero%20consultar%20por%20mi%20PC">
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> Consultar por PC
+              </a>
+            </div>
+          </article>
+
+          <article class="svc-panel" id="svc-panel-joystick" aria-labelledby="svc-label-joystick">
+            <div class="svc-panel__head">
+              <img class="svc-panel__thumb" src="img/joys.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+              <h3 class="svc-panel__title">Joystick</h3>
+            </div>
+            <div class="svc-columns">
+              <div>
+                <h4>Reparación</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Reemplazo de analógicos (drift) <span class="chip chip--brand">Taller</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Cambio de pin de carga <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Mantenimiento</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Limpieza de gatillos y botones <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Actualizar firmware <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Vinculación</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Emparejar con consola o PC <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="svc-actions">
+              <a class="btn btn--ghost" href="guias.html">Ver guías de Joystick</a>
+              <a class="btn btn--secondary btn--sm" href="https://wa.me/5492324588931?text=Hola%2C%20quiero%20consultar%20por%20mi%20joystick">
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> Consultar por Joystick
+              </a>
+            </div>
+          </article>
+
+          <article class="svc-panel" id="svc-panel-consola" aria-labelledby="svc-label-consola">
+            <div class="svc-panel__head">
+              <span class="svc-panel__thumb svc-panel__thumb--icon" aria-hidden="true"><svg class="icon"><use href="#icon-console"></use></svg></span>
+              <h3 class="svc-panel__title">Consola</h3>
+            </div>
+            <div class="svc-columns">
+              <div>
+                <h4>Mantenimiento</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Limpieza de lente lectora <span class="chip chip--warn">Requiere herramientas</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Ventilar y despolvar <span class="chip chip--warn">Requiere herramientas</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Reparación</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Cambio de fuente interna <span class="chip chip--brand">Taller</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Reemplazo de puerto HDMI <span class="chip chip--brand">Taller</span></li>
+                </ul>
+              </div>
+              <div>
+                <h4>Software</h4>
+                <ul>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Actualizar el sistema <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                  <li><svg class="icon" aria-hidden="true"><use href="#icon-tools"></use></svg> Vincular joysticks <span class="chip chip--ok">Podés hacerlo vos</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="svc-actions">
+              <a class="btn btn--ghost" href="guias.html">Ver guías de Consola</a>
+              <a class="btn btn--secondary btn--sm" href="https://wa.me/5492324588931?text=Hola%2C%20quiero%20consultar%20por%20mi%20consola">
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> Consultar por Consola
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__eyebrow">Preguntas frecuentes</span>
+        <h2 id="faq-title" class="section__title">Lo que más nos preguntan</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>¿Cuánto tarda una reparación?
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <p>La mayoría de los diagnósticos están en 24 a 48&nbsp;horas, y te avisamos el tiempo estimado apenas confirmamos el presupuesto.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿El presupuesto tiene costo?
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <p>No, el diagnóstico y el presupuesto son sin cargo. Solo abonás si decidís avanzar con la reparación.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué garantía tienen las reparaciones?
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <p>Todas nuestras reparaciones y repuestos instalados cuentan con garantía escrita, cuyo plazo te informamos junto con el presupuesto.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Hacen retiro a domicilio?
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <p>Sí, coordinamos el retiro y la entrega a domicilio en Mar de Ajó y alrededores. Consultanos la disponibilidad por WhatsApp.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué formas de pago aceptan?
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <p>Efectivo, transferencia bancaria y tarjetas de débito y crédito.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Tengo que hacer backup de mis datos antes de traerlo?
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <p>Sí, siempre te lo vamos a pedir. Algunas reparaciones implican borrar o reinstalar el sistema, así que un backup previo te evita disgustos. Tenemos una guía corta para hacerlo antes de traer el equipo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Hay equipos que no se pueden reparar?
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <p>Sí. Cuando el daño no tiene una reparación que valga la pena frente al costo de un equipo nuevo, o cuando ya no se consiguen repuestos, te lo decimos de entrada en el diagnóstico, sin vueltas.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE DE ESCALAMIENTO ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="escalate">
+        <h2 class="escalate__title">¿Lo probaste y sigue igual?</h2>
+        <p class="escalate__text">Si ya recorriste la guía o el diagnóstico y el problema sigue ahí, no le sigas metiendo mano: puede empeorar. Contanos qué probaste y seguimos nosotros.</p>
+        <div class="escalate__actions">
+          <a class="btn btn--primary" href="https://wa.me/5492324588931">
+            <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+            Escribinos por WhatsApp
+          </a>
+          <a class="btn btn--secondary" href="contacto.html">Ir a contacto</a>
         </div>
       </div>
-    </section>
-
-    <!-- PC -->
-    <section id="tab-pc" class="svc-panel" role="tabpanel" hidden>
-      <div class="svc-grid">
-        <figure class="svc-media">
-          <img src="img/pc.jpeg" alt="Servicio para PC de escritorio">
-        </figure>
-        <div class="svc-info">
-          <h3>PC</h3>
-          <div class="svc-columns">
-            <div>
-              <h4>Mantenimiento</h4>
-              <ul>
-                <li>Cambio de Pasta</li>
-                <li>Gestión de temperaturas</li>
-                <li>Optimización de Arranque</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Actualización</h4>
-              <ul>
-                <li>Actualización de Hardware</li>
-                <li>Actualización de Bios</li>
-                <li>Armado De Componentes</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Software</h4>
-              <ul>
-                <li>Recuperación de Datos</li>
-                <li>Instalación de Office</li>
-                <li>Instalación de Juegos</li>
-              </ul>
-            </div>
-          </div>
-          <div class="svc-actions">
-            <a class="btn-primary" href="servicio.html"><i class="fas fa-paper-plane"></i> Consultar por PC</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOYSTICK -->
-    <section id="tab-joystick" class="svc-panel" role="tabpanel" hidden>
-      <div class="svc-grid">
-        <figure class="svc-media">
-          <img src="img/joys.jpeg" alt="Servicio para joysticks">
-        </figure>
-        <div class="svc-info">
-        <h3>Joystick</h3>
-          <div class="svc-columns">
-            <div>
-              <h4>Reparación</h4>
-              <ul>
-                <li>Solución de Drift</li>
-                <li>Reemplazo de analógicos</li>
-                <li>Sustitución Pin de Carga</li>
-                <li>Reparación de Botones</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Mantenimiento</h4>
-              <ul>
-                <li>Limpieza de placas y botones</li>
-                <li>Revisión de gatillos</li>
-                <li>Calibración</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Vinculación</h4>
-              <ul>
-                <li>Vinculación con Consola</li>
-              </ul>
-            </div>
-          </div>
-          <div class="svc-actions">
-            <a class="btn-primary" href="servicio.html">
-              <i class="fas fa-paper-plane"></i> Consultar por Joystick
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONSOLA -->
-    <section id="tab-consola" class="svc-panel" role="tabpanel" hidden>
-      <div class="svc-grid">
-        <figure class="svc-media">
-          <img src="img/cons.png" alt="Servicio para consolas">
-        </figure>
-        <div class="svc-info">
-          <h3>Consola</h3>
-          <div class="svc-columns">
-            <div>
-              <h4>Mantenimiento</h4>
-              <ul>
-                <li>Limpieza de Lectora</li>
-                <li>Cambio de pasta térmica</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Reparación</h4>
-              <ul>
-                <li>Sustitución de HDMI</li>
-                <li>Reemplazo de Disco</li>
-                <li>Sustitución de Fuente</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Software</h4>
-              <ul>
-                <li>Instalación de software</li>
-                <li>Vinculación con joysticks</li>
-              </ul>
-            </div>
-          </div>
-          <div class="svc-actions">
-            <a class="btn-primary" href="servicio.html"><i class="fas fa-paper-plane"></i> Consultar por Consola</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</section>
-
+    </div>
+  </section>
 
 </main>
 
-<script>
-  // Enlazar el form SOLO si existe (en home no existe)
-  const form = document.getElementById('ticky-form');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer brand-surface">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="footer__brand" href="index.html">
+          <img class="footer__logo" src="img/fondo.png" alt="" width="32" height="32">
+          TickyService
+        </a>
+        <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó. Calidad y rapidez en cada reparación.</p>
+      </div>
+      <div>
+        <h3 class="footer__heading">Secciones</h3>
+        <ul class="footer__list">
+          <li><a href="guias.html">Guías</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Servicio técnico</h3>
+        <ul class="footer__list">
+          <li><a href="index.html#servicios">Notebook</a></li>
+          <li><a href="index.html#servicios">PC</a></li>
+          <li><a href="index.html#servicios">Joystick</a></li>
+          <li><a href="index.html#servicios">Consola</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Contacto</h3>
+        <ul class="footer__list">
+          <li><a href="https://wa.me/5492324588931">WhatsApp</a></li>
+          <li><a href="https://instagram.com/tickyservice">Instagram</a></li>
+          <li><a href="mailto:contacto@tickyservice.com.ar">contacto@tickyservice.com.ar</a></li>
+          <li>Mar de Ajó, Buenos Aires</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© 2025 TickyService. Todos los derechos reservados.</span>
+      <span>Hecho con dedicación en Mar de Ajó.</span>
+    </div>
+  </div>
+</footer>
 
-      const nombre   = this.nombre.value.trim();
-      const servicio = this.servicio.value;
-      const medio    = this.medio.value;
-      const mensaje  = this.mensaje.value.trim();
+<!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
+<a class="float-wa" href="https://wa.me/5492324588931">
+  <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+  <span class="sr-only">Escribinos por WhatsApp</span>
+  <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
+</a>
 
-      const texto =
-        `Nombre: ${nombre}\n` +
-        `Tipo de Servicio: ${servicio}\n` +
-        `Consulta: ${mensaje}`;
-
-      if (medio === 'whatsapp') {
-        const waUrl = `https://wa.me/5492324588931?text=${encodeURIComponent(texto)}`;
-        window.open(waUrl, '_blank');
-      } else if (medio === 'instagram') {
-        navigator.clipboard.writeText(texto)
-          .then(() => {
-            alert('Mensaje copiado. Te llevamos a Instagram para que pegues y envíes.');
-            window.open('https://instagram.com/tickyservice', '_blank');
-          })
-          .catch(() => {
-            alert('No pudimos copiar el mensaje, por favor cópialo manualmente:\n\n' + texto);
-            window.open('https://instagram.com/tickyservice', '_blank');
-          });
-      }
-    });
-  }
-
-  // Tabs Servicios
-  document.querySelectorAll('.svc-tab').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const target = btn.dataset.target;
-
-      // tabs
-      document.querySelectorAll('.svc-tab').forEach(t=>{
-        t.classList.toggle('is-active', t===btn);
-        t.setAttribute('aria-selected', t===btn ? 'true':'false');
-      });
-
-      // panels
-      document.querySelectorAll('.svc-panel').forEach(p=>{
-        if (p.id === target) { p.hidden = false; p.classList.add('is-active'); }
-        else { p.hidden = true; p.classList.remove('is-active'); }
-      });
-    });
-  });
-</script>
-
-  <footer>
-    <p>&copy; 2025 - TickyService</p>
-  </footer> 
 </body>
 </html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guías y videos — TickyService</title>
+<meta name="description" content="Biblioteca de guías, videos y checklists para diagnosticar y resolver problemas de notebooks, PC, consolas y joysticks antes de llevarlos al taller.">
+<meta name="theme-color" content="#5A3AD1">
+<link rel="icon" type="image/png" href="img/fondo.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guías y videos — TickyService">
+<meta property="og:description" content="Guías, videos y checklists para resolver problemas de notebooks, PC, consolas y joysticks antes de llevarlos al taller.">
+<meta property="og:image" content="img/fondo.png">
+<meta property="og:locale" content="es_AR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ComputerRepairService",
+  "name": "TickyService",
+  "description": "Servicio técnico, repuestos y tienda de tecnología: notebooks, PC, consolas y joysticks.",
+  "image": "img/fondo.png",
+  "telephone": "+5492324588931",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mar de Ajó",
+    "addressRegion": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "areaServed": "Mar de Ajó y alrededores"
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+<!-- ============ SPRITE DE ICONOS SVG ============ -->
+<svg class="icon-sprite" aria-hidden="true">
+  <defs>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5v14l11-7z"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></symbol>
+    <symbol id="icon-check-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html">
+      <img class="brand__logo" src="img/fondo.png" alt="" width="42" height="42">
+      <span class="brand__word">TickyService</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="sr-only nav-toggle-input">
+    <label for="nav-toggle" class="nav-toggle">
+      <svg class="icon nav-toggle__open" aria-hidden="true"><use href="#icon-menu"></use></svg>
+      <svg class="icon nav-toggle__close" aria-hidden="true"><use href="#icon-close"></use></svg>
+      <span class="sr-only">Abrir menú de navegación</span>
+    </label>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="index.html">Inicio</a></li>
+        <li><a class="nav__link" href="guias.html" aria-current="page">Guías</a></li>
+        <li><a class="nav__link" href="index.html#servicios">Servicios</a></li>
+        <li><a class="nav__link" href="tienda.html">Tienda</a></li>
+        <li><a class="nav__link" href="contacto.html">Contacto</a></li>
+      </ul>
+      <a class="btn btn--primary btn--sm nav__cta" href="https://wa.me/5492324588931">
+        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+        Escribinos
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO CORTO ============ -->
+  <section class="hero hero--compact brand-surface" aria-labelledby="hero-title">
+    <div class="container">
+      <nav aria-label="Ruta">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Inicio</a></li>
+          <li aria-current="page">Guías</li>
+        </ol>
+      </nav>
+      <h1 id="hero-title" class="hero__title">Guías y videos</h1>
+      <p class="hero__lead">Toda nuestra biblioteca de guías, videos y checklists <!-- TODO: número real de guías -->(24 y sumando) para notebooks, PC, consolas y joysticks.</p>
+    </div>
+  </section>
+
+  <!-- ============ BIBLIOTECA COMPLETA ============ -->
+  <section class="section" aria-labelledby="library-title">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__eyebrow">Biblioteca completa</span>
+        <h2 id="library-title" class="section__title">Filtrá por tipo de equipo</h2>
+        <p class="section__desc">Cada guía indica si lo podés hacer vos, si necesita herramientas, o si es trabajo de taller.</p>
+      </div>
+
+      <ul class="level-legend">
+        <li class="chip chip--ok">Podés hacerlo vos</li>
+        <li class="chip chip--warn">Requiere herramientas</li>
+        <li class="chip chip--brand">Es trabajo de taller</li>
+      </ul>
+
+      <fieldset class="filter-bar">
+        <legend class="sr-only">Filtrar guías por tipo de equipo</legend>
+        <input type="radio" name="filter-guias" id="f-todas" class="filter-bar__input sr-only" checked>
+        <label class="filter-bar__label" for="f-todas">Todas</label>
+        <input type="radio" name="filter-guias" id="f-notebook" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-notebook">Notebook</label>
+        <input type="radio" name="filter-guias" id="f-pc" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-pc">PC</label>
+        <input type="radio" name="filter-guias" id="f-joystick" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-joystick">Joystick</label>
+        <input type="radio" name="filter-guias" id="f-consola" class="filter-bar__input sr-only">
+        <label class="filter-bar__label" for="f-consola">Consola</label>
+
+        <div class="guide-grid">
+
+          <article class="guide-card guide-card--notebook">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Notebook que no enciende: primeros pasos</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">5 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--notebook">
+            <div class="guide-card__media guide-card__media--video">
+              <iframe src="" title="Video: Cómo limpiar la pasta térmica sin arruinar nada" loading="lazy" allowfullscreen></iframe>
+              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
+              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
+              <span class="chip chip--warn guide-card__type">Video</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cómo limpiar la pasta térmica sin arruinar nada</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">8 min de video · Nivel medio</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--notebook">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
+              <span class="chip chip--ok guide-card__type">Checklist</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Backup antes de llevar el equipo al taller</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">3 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--notebook">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Batería de notebook que no carga: qué revisar</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">4 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--pc">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
+              <span class="chip chip--ok guide-card__type">Checklist</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">PC lenta: 6 cosas para probar antes de traerla</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">4 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--pc">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">PC no bootea: pantalla negra al encender</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">6 min de lectura · Nivel medio</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--pc">
+            <div class="guide-card__media guide-card__media--video">
+              <iframe src="" title="Video: Cómo limpiar el polvo por dentro de tu PC" loading="lazy" allowfullscreen></iframe>
+              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
+              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
+              <span class="chip chip--warn guide-card__type">Video</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cómo limpiar el polvo por dentro de tu PC</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">7 min de video · Nivel medio</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--pc">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cuándo conviene sumar un SSD en vez de comprar una PC nueva</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">5 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--pc">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
+              <span class="chip chip--ok guide-card__type">Checklist</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Sin wifi o internet: diagnóstico rápido</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">3 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--joystick">
+            <div class="guide-card__media guide-card__media--video">
+              <iframe src="" title="Video: Joystick con drift, cómo detectarlo y calibrarlo" loading="lazy" allowfullscreen></iframe>
+              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
+              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
+              <span class="chip chip--warn guide-card__type">Video</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Joystick con drift: cómo detectarlo y calibrarlo</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">6 min de video · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--joystick">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Mi joystick no conecta por bluetooth</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">4 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--joystick">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
+              <span class="chip chip--ok guide-card__type">Checklist</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Limpieza de gatillos y botones pegados</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">3 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--consola">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">La consola no lee discos: guía de limpieza</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">5 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--consola">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+              <span class="chip chip--brand guide-card__type">Guía</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Consola que se apaga sola jugando</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">5 min de lectura · Nivel medio</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--consola">
+            <div class="guide-card__media guide-card__media--video">
+              <iframe src="" title="Video: Cómo vincular un joystick nuevo a tu consola" loading="lazy" allowfullscreen></iframe>
+              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
+              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
+              <span class="chip chip--warn guide-card__type">Video</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cómo vincular un joystick nuevo a tu consola</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">3 min de video · Nivel fácil</p>
+            </div>
+          </article>
+
+          <article class="guide-card guide-card--consola">
+            <div class="guide-card__media">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
+              <span class="chip chip--ok guide-card__type">Checklist</span>
+            </div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Actualizar el sistema de tu consola paso a paso</a></h3>
+              <!-- TODO: link real a la guía -->
+              <p class="guide-card__meta">4 min de lectura · Nivel fácil</p>
+            </div>
+          </article>
+
+        </div>
+      </fieldset>
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE DE ESCALAMIENTO ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="escalate">
+        <h2 class="escalate__title">¿No encontraste tu problema o ya lo probaste todo?</h2>
+        <p class="escalate__text">Contanos qué le pasa a tu equipo y qué ya probaste. Vemos si es algo rápido o si conviene que lo traigas.</p>
+        <div class="escalate__actions">
+          <a class="btn btn--primary" href="https://wa.me/5492324588931">
+            <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+            Escribinos por WhatsApp
+          </a>
+          <a class="btn btn--secondary" href="contacto.html">Ir a contacto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer brand-surface">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="footer__brand" href="index.html">
+          <img class="footer__logo" src="img/fondo.png" alt="" width="32" height="32">
+          TickyService
+        </a>
+        <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó. Calidad y rapidez en cada reparación.</p>
+      </div>
+      <div>
+        <h3 class="footer__heading">Secciones</h3>
+        <ul class="footer__list">
+          <li><a href="guias.html">Guías</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Servicio técnico</h3>
+        <ul class="footer__list">
+          <li><a href="index.html#servicios">Notebook</a></li>
+          <li><a href="index.html#servicios">PC</a></li>
+          <li><a href="index.html#servicios">Joystick</a></li>
+          <li><a href="index.html#servicios">Consola</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__heading">Contacto</h3>
+        <ul class="footer__list">
+          <li><a href="https://wa.me/5492324588931">WhatsApp</a></li>
+          <li><a href="https://instagram.com/tickyservice">Instagram</a></li>
+          <li><a href="mailto:contacto@tickyservice.com.ar">contacto@tickyservice.com.ar</a></li>
+          <li>Mar de Ajó, Buenos Aires</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© 2025 TickyService. Todos los derechos reservados.</span>
+      <span>Hecho con dedicación en Mar de Ajó.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
+<a class="float-wa" href="https://wa.me/5492324588931">
+  <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+  <span class="sr-only">Escribinos por WhatsApp</span>
+  <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
+</a>
+
+</body>
+</html>
