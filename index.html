@@ -94,8 +94,7 @@
 <header class="site-header">
   <div class="container header-bar">
     <a class="brand" href="index.html">
-      <img class="brand__logo" src="img/fondo.png" alt="" width="42" height="42">
-      <span class="brand__word">TickyService</span>
+      <img class="brand__logo" src="img/logo/logo1-trimmed.png" alt="TickyService" width="631" height="140">
     </a>
 
     <input type="checkbox" id="nav-toggle" class="sr-only nav-toggle-input">
@@ -112,11 +111,8 @@
         <li><a class="nav__link" href="index.html#servicios">Servicios</a></li>
         <li><a class="nav__link" href="tienda.html">Tienda</a></li>
         <li><a class="nav__link" href="contacto.html">Contacto</a></li>
+        <li><a class="nav__link" href="#">Nosotros</a></li>
       </ul>
-      <a class="btn btn--primary btn--sm nav__cta" href="https://wa.me/5492324588931">
-        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-        Escribinos
-      </a>
     </nav>
   </div>
 </header>
@@ -124,32 +120,34 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero brand-surface" aria-labelledby="hero-title">
-    <div class="container hero__grid">
-      <div>
-        <h1 id="hero-title" class="hero__title">TickyService</h1>
-        <p class="hero__lead">Contanos qué te pasa y mirá si lo podés resolver vos. Tenemos guías, videos y un diagnóstico guiado para notebooks, PC, consolas y joysticks. Si no se resuelve, ahí sí estamos para ayudarte.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary btn--lg" href="#centro-de-ayuda">
-            Buscar mi problema
-            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-          </a>
-          <a class="btn btn--on-brand btn--lg" href="#servicios">Ver servicios</a>
-        </div>
-        <ul class="hero__badges">
-          <li class="chip chip--on-brand">
-            <svg class="icon" aria-hidden="true"><use href="#icon-bolt"></use></svg>
-            Atención rápida
-          </li>
-          <li class="chip chip--on-brand">
-            <svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>
-            Garantía en reparaciones
-          </li>
-          <li class="chip chip--on-brand">
-            <svg class="icon" aria-hidden="true"><use href="#icon-truck"></use></svg>
-            Retiro a domicilio
-          </li>
-        </ul>
+  <section class="hero hero--slogan brand-surface" aria-labelledby="hero-title">
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="hero__fox" aria-hidden="true"></div>
+    <div class="container">
+      <h1 id="hero-title" class="hero__headline">
+        <span class="hero__headline-line1">TU <span class="hero__accent">HARDWARE</span></span>
+        <span class="hero__headline-line2">EN MANOS DE CONFIANZA</span>
+        <span class="hero__headline-sub"><span class="hero__accent">RENDIMIENTO</span> AL MÁXIMO</span>
+      </h1>
+      <h2 class="hero__subhead">"Nuestras primeras computadoras nacieron no por codicia o ego, sino por el espíritu revolucionario de ayudar a la gente común a superar a las instituciones más poderosas".</h2> 
+
+      <!-- Badges del hero: un <li class="hero__badge"> por ítem, editar acá -->
+      <ul class="hero__badges">
+        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>Reparación</li>
+        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>Mantenimiento</li>
+        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>Repuestos con garantía</li>
+        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-truck"></use></svg>Capacitación</li>
+      </ul>
+
+      <div class="hero__actions">
+        <a class="btn hero-btn hero-btn--primary" href="contacto.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+          Contactanos
+        </a>
+        <a class="btn hero-btn hero-btn--ghost" href="guias.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
+          Ver guías
+        </a>
       </div>
     </div>
   </section>
@@ -163,105 +161,104 @@
         <p class="section__desc">Filtrá por tipo de equipo y mirá nuestras guías destacadas. Cada una te dice qué podés hacer vos, qué necesita herramientas y qué es directamente trabajo de taller.</p>
       </div>
 
-      <ul class="level-legend">
-        <li class="chip chip--ok">Podés hacerlo vos</li>
-        <li class="chip chip--warn">Requiere herramientas</li>
-        <li class="chip chip--brand">Es trabajo de taller</li>
-      </ul>
+      <div class="gh-filters gh-filters--preview">
 
-      <fieldset class="filter-bar">
-        <legend class="sr-only">Filtrar guías por tipo de equipo</legend>
-        <input type="radio" name="filter-home" id="f-todas" class="filter-bar__input sr-only" checked>
-        <label class="filter-bar__label" for="f-todas">Todas</label>
-        <input type="radio" name="filter-home" id="f-notebook" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="f-notebook">Notebook</label>
-        <input type="radio" name="filter-home" id="f-pc" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="f-pc">PC</label>
-        <input type="radio" name="filter-home" id="f-joystick" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="f-joystick">Joystick</label>
-        <input type="radio" name="filter-home" id="f-consola" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="f-consola">Consola</label>
+        <fieldset class="gh-tabs">
+          <legend class="gh-filters__label">Equipo</legend>
+          <input type="radio" name="filter-home" id="f-todas" class="sr-only" checked>
+          <label class="gh-tab" for="f-todas">Todas</label>
+          <input type="radio" name="filter-home" id="f-notebook" class="sr-only">
+          <label class="gh-tab" for="f-notebook">Notebook</label>
+          <input type="radio" name="filter-home" id="f-pc" class="sr-only">
+          <label class="gh-tab" for="f-pc">PC</label>
+          <input type="radio" name="filter-home" id="f-joystick" class="sr-only">
+          <label class="gh-tab" for="f-joystick">Joystick</label>
+          <input type="radio" name="filter-home" id="f-consola" class="sr-only">
+          <label class="gh-tab" for="f-consola">Consola</label>
+        </fieldset>
 
-        <div class="guide-grid">
+        <fieldset class="gh-pills">
+          <legend class="gh-filters__label">Hasta dónde</legend>
+          <input type="radio" name="nivel-home" id="n-cualquiera" class="sr-only" checked>
+          <label class="gh-pill" for="n-cualquiera"><span class="level-bar level-bar--any" aria-hidden="true"><span></span><span></span><span></span></span>Cualquiera</label>
+          <input type="radio" name="nivel-home" id="n-ok" class="sr-only">
+          <label class="gh-pill" for="n-ok"><span class="level-bar level-bar--ok" aria-hidden="true"><span></span><span></span><span></span></span>Podés hacerlo vos</label>
+          <input type="radio" name="nivel-home" id="n-warn" class="sr-only">
+          <label class="gh-pill" for="n-warn"><span class="level-bar level-bar--warn" aria-hidden="true"><span></span><span></span><span></span></span>Requiere herramientas</label>
+          <input type="radio" name="nivel-home" id="n-brand" class="sr-only">
+          <label class="gh-pill" for="n-brand"><span class="level-bar level-bar--brand" aria-hidden="true"><span></span><span></span><span></span></span>Es trabajo de taller</label>
+        </fieldset>
 
-          <article class="guide-card guide-card--notebook">
-            <div class="guide-card__media">
-              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
-              <span class="chip chip--brand guide-card__type">Guía</span>
-            </div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Notebook que no enciende: primeros pasos</a></h3>
+        <ol class="gh-list">
+
+          <li class="gh-row gh-row--notebook gh-row--ok">
+            <span class="gh-row__num">01</span>
+            <div class="gh-row__body">
+              <p class="gh-meta">Guía · 5 min de lectura</p>
+              <h3 class="gh-row__title"><a href="#">Notebook que no enciende: primeros pasos</a></h3>
               <!-- TODO: link real a la guía -->
-              <p class="guide-card__meta">5 min de lectura · Nivel fácil</p>
+              <p class="gh-level"><span class="level-bar level-bar--ok" aria-hidden="true"><span></span><span></span><span></span></span>Podés hacerlo vos</p>
             </div>
-          </article>
+            <span class="gh-row__arrow" aria-hidden="true">→</span>
+          </li>
 
-          <article class="guide-card guide-card--notebook">
-            <div class="guide-card__media guide-card__media--video">
-              <iframe src="" title="Video: Cómo limpiar la pasta térmica sin arruinar nada" loading="lazy" allowfullscreen></iframe>
-              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
-              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
-              <span class="chip chip--warn guide-card__type">Video</span>
-            </div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cómo limpiar la pasta térmica sin arruinar nada</a></h3>
+          <li class="gh-row gh-row--pc gh-row--ok">
+            <span class="gh-row__num">02</span>
+            <div class="gh-row__body">
+              <p class="gh-meta">Checklist · 4 min de lectura</p>
+              <h3 class="gh-row__title"><a href="#">PC lenta: 6 cosas para probar antes de traerla</a></h3>
               <!-- TODO: link real a la guía -->
-              <p class="guide-card__meta">8 min de video · Nivel medio</p>
+              <p class="gh-level"><span class="level-bar level-bar--ok" aria-hidden="true"><span></span><span></span><span></span></span>Podés hacerlo vos</p>
             </div>
-          </article>
+            <span class="gh-row__arrow" aria-hidden="true">→</span>
+          </li>
 
-          <article class="guide-card guide-card--pc">
-            <div class="guide-card__media">
-              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
-              <span class="chip chip--ok guide-card__type">Checklist</span>
-            </div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title"><a class="guide-card__link" href="#">PC lenta: 6 cosas para probar antes de traerla</a></h3>
+          <li class="gh-row gh-row--joystick gh-row--ok">
+            <span class="gh-row__num">03</span>
+            <div class="gh-row__body">
+              <p class="gh-meta">Video · 6 min de video</p>
+              <h3 class="gh-row__title"><a href="#">Joystick con drift: cómo detectarlo y calibrarlo</a></h3>
               <!-- TODO: link real a la guía -->
-              <p class="guide-card__meta">4 min de lectura · Nivel fácil</p>
+              <p class="gh-level"><span class="level-bar level-bar--ok" aria-hidden="true"><span></span><span></span><span></span></span>Podés hacerlo vos</p>
             </div>
-          </article>
+            <span class="gh-row__arrow" aria-hidden="true">→</span>
+          </li>
 
-          <article class="guide-card guide-card--joystick">
-            <div class="guide-card__media guide-card__media--video">
-              <iframe src="" title="Video: Joystick con drift, cómo detectarlo y calibrarlo" loading="lazy" allowfullscreen></iframe>
-              <!-- TODO: reemplazar src="" por la URL real de YouTube -->
-              <span class="guide-card__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
-              <span class="chip chip--warn guide-card__type">Video</span>
-            </div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Joystick con drift: cómo detectarlo y calibrarlo</a></h3>
+          <li class="gh-row gh-row--consola gh-row--warn">
+            <span class="gh-row__num">04</span>
+            <div class="gh-row__body">
+              <p class="gh-meta">Guía · 5 min de lectura</p>
+              <h3 class="gh-row__title"><a href="#">La consola no lee discos: guía de limpieza</a></h3>
               <!-- TODO: link real a la guía -->
-              <p class="guide-card__meta">6 min de video · Nivel fácil</p>
+              <p class="gh-level"><span class="level-bar level-bar--warn" aria-hidden="true"><span></span><span></span><span></span></span>Requiere herramientas</p>
             </div>
-          </article>
+            <span class="gh-row__arrow" aria-hidden="true">→</span>
+          </li>
 
-          <article class="guide-card guide-card--consola">
-            <div class="guide-card__media">
-              <svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>
-              <span class="chip chip--brand guide-card__type">Guía</span>
-            </div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title"><a class="guide-card__link" href="#">La consola no lee discos: guía de limpieza</a></h3>
+          <li class="gh-row gh-row--notebook gh-row--ok">
+            <span class="gh-row__num">05</span>
+            <div class="gh-row__body">
+              <p class="gh-meta">Checklist · 3 min de lectura</p>
+              <h3 class="gh-row__title"><a href="#">Backup antes de llevar el equipo al taller</a></h3>
               <!-- TODO: link real a la guía -->
-              <p class="guide-card__meta">5 min de lectura · Nivel fácil</p>
+              <p class="gh-level"><span class="level-bar level-bar--ok" aria-hidden="true"><span></span><span></span><span></span></span>Podés hacerlo vos</p>
             </div>
-          </article>
+            <span class="gh-row__arrow" aria-hidden="true">→</span>
+          </li>
 
-          <article class="guide-card guide-card--pc">
-            <div class="guide-card__media">
-              <svg class="icon" aria-hidden="true"><use href="#icon-check-list"></use></svg>
-              <span class="chip chip--ok guide-card__type">Checklist</span>
-            </div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title"><a class="guide-card__link" href="#">Cómo hacer backup antes de llevar el equipo al taller</a></h3>
+          <li class="gh-row gh-row--notebook gh-row--ok">
+            <span class="gh-row__num">06</span>
+            <div class="gh-row__body">
+              <p class="gh-meta">Guía · 4 min de lectura</p>
+              <h3 class="gh-row__title"><a href="#">Batería de notebook que no carga: qué revisar</a></h3>
               <!-- TODO: link real a la guía -->
-              <p class="guide-card__meta">3 min de lectura · Nivel fácil</p>
+              <p class="gh-level"><span class="level-bar level-bar--ok" aria-hidden="true"><span></span><span></span><span></span></span>Podés hacerlo vos</p>
             </div>
-          </article>
+            <span class="gh-row__arrow" aria-hidden="true">→</span>
+          </li>
 
-        </div>
-      </fieldset>
+        </ol>
+      </div>
 
       <p class="help-close"><a class="btn btn--ghost" href="guias.html">Ver las 24 guías <!-- TODO: número real de guías --> <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a></p>
 
@@ -419,6 +416,7 @@
 
   <!-- ============ SERVICIOS (MATRIZ COMPACTA) ============ -->
   <section class="section section--alt" id="servicios" aria-labelledby="servicios-title">
+    <div class="grid-bg" aria-hidden="true"></div>
     <div class="container">
       <div class="section__head">
         <span class="section__eyebrow">Servicio técnico</span>
@@ -791,6 +789,7 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer brand-surface">
+  <div class="grid-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="footer__grid">
       <div>
@@ -798,7 +797,8 @@
           <img class="footer__logo" src="img/fondo.png" alt="" width="32" height="32">
           TickyService
         </a>
-        <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó. Calidad y rapidez en cada reparación.</p>
+        <p class="footer__desc">Servicio técnico especializado en Partido de la costa.</p>
+        <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
       </div>
       <div>
         <h3 class="footer__heading">Secciones</h3>
@@ -807,6 +807,7 @@
           <li><a href="index.html#servicios">Servicios</a></li>
           <li><a href="tienda.html">Tienda</a></li>
           <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="#">Nosotros</a></li>
         </ul>
       </div>
       <div>
@@ -829,8 +830,7 @@
       </div>
     </div>
     <div class="footer__legal">
-      <span>© 2025 TickyService. Todos los derechos reservados.</span>
-      <span>Hecho con dedicación en Mar de Ajó.</span>
+      <span>© 2026 TickyService. Todos los derechos reservados.</span>
     </div>
   </div>
 </footer>
