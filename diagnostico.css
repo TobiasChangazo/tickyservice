@@ -217,7 +217,7 @@
 
 /* ---------- Tablet ---------- */
 @media (max-width: 960px){
-  .diag-panel{ grid-template-columns:1fr; }
+  .diag-panel{ grid-template-columns: minmax(0,1fr); }
 
   .diag-list{
     padding: 14px;

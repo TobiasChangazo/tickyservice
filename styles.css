@@ -731,8 +731,8 @@ a{ text-decoration:none; color:inherit; }
 .footer__list a:hover{ color:#fff; }
 .footer__legal{ display:flex; flex-wrap:wrap; justify-content:space-between; gap: var(--space-3); padding-block-start: var(--space-6); font-size: var(--fs-xs); color: rgba(255,255,255,.65); }
 
-@media (max-width: 900px){ .footer__grid{ grid-template-columns: 1fr 1fr; } }
-@media (max-width: 480px){ .footer__grid{ grid-template-columns: 1fr; } }
+@media (max-width: 900px){ .footer__grid{ grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+@media (max-width: 480px){ .footer__grid{ grid-template-columns: minmax(0,1fr); } }
 
 /* ===== COMPONENTES: Botón flotante de WhatsApp ===== */
 .float-wa{
@@ -865,7 +865,7 @@ a{ text-decoration:none; color:inherit; }
 .gh-footer-row__cta span{ color: var(--ink-600); font-size: var(--fs-sm); }
 
 @media (max-width: 900px){
-  .gh-featured{ grid-template-columns:1fr; }
+  .gh-featured{ grid-template-columns: minmax(0,1fr); }
 }
 @media (max-width: 700px){
   .gh-footer-row{ justify-content:flex-start; }
@@ -926,13 +926,13 @@ a{ text-decoration:none; color:inherit; }
 .gd-related__title{ font-size: var(--fs-sm); font-weight:700; color: var(--ink-900); }
 
 @media (max-width: 900px){
-  .gd-layout{ grid-template-columns:1fr; }
+  .gd-layout{ grid-template-columns: minmax(0,1fr); }
   .gd-aside{ position:static; }
 }
 
 /* ===== MEDIA QUERIES GLOBALES ===== */
 @media (max-width: 1024px){
-  .contact__grid{ grid-template-columns: 1fr; }
+  .contact__grid{ grid-template-columns: minmax(0,1fr); }
 }
 @media (max-width: 480px){
   .container{ width: min(100% - 2 * var(--space-4), var(--container-max)); }

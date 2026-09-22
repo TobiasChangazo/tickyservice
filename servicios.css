@@ -348,14 +348,14 @@
   .serv-banner-content{ flex-direction:column; align-items:flex-start; }
   .serv-banner{ height:280px; }
 
-  .serv-cols{ grid-template-columns:1fr; }
+  .serv-cols{ grid-template-columns: minmax(0,1fr); }
   .serv-col{ border-right:none; border-block-end: 1px solid var(--lilac-200); }
   .serv-col:last-child{ border-block-end:none; }
 
   /* Sin hover en touch: la acción siempre visible */
   .serv-row-action{ opacity:1; transform:none; }
 
-  .serv-trust{ grid-template-columns:1fr; }
+  .serv-trust{ grid-template-columns: minmax(0,1fr); }
 }
 
 /* ---------- Mobile ---------- */
