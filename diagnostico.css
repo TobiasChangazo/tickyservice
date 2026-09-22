@@ -1,0 +1,260 @@
+/* =========================================================
+   TickyService — Diagnóstico por síntoma
+   Panel oscuro: lista de síntomas + detalle con pasos
+   Se apoya en los tokens de styles.css (--ink-900, --brand-600,
+   --hero-accent, --wa-green, --ease), que debe cargarse antes.
+   El encabezado (eyebrow/título/bajada) usa .section__head ya
+   existente en styles.css, no vive acá.
+
+   Markup:
+
+   <div class="diag-panel">
+     <div class="diag-list">
+       <p class="diag-list-label">Síntomas</p>
+       <div id="diag-items" role="tablist" aria-label="Síntomas"></div>
+     </div>
+     <div class="diag-detail" id="diag-detail" role="tabpanel" aria-live="polite"></div>
+   </div>
+   ========================================================= */
+
+:root{
+  /* Tokens nuevos: no había un panel oscuro con esta paleta en el sitio */
+  --diag-list-bg:#16132B;
+  --diag-line: rgba(255,255,255,.08);
+  --diag-text: rgba(255,255,255,.85);
+  --diag-muted: rgba(255,255,255,.5);
+  --wa-text:#0B2E18;
+}
+
+/* ---------- Panel ---------- */
+.diag-panel{
+  display:grid;
+  grid-template-columns: 340px minmax(0,1fr);
+  background: var(--ink-900);
+  border-radius: var(--r-lg);
+  overflow:hidden;
+  box-shadow: var(--sh-3);
+}
+
+/* ---------- Lista de síntomas ---------- */
+.diag-list{
+  padding: 18px;
+  background: var(--diag-list-bg);
+  border-right: 1px solid var(--diag-line);
+}
+
+.diag-list-label{
+  margin: 6px var(--space-3) var(--space-3);
+  font-size: .7rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color: rgba(255,255,255,.45);
+}
+
+.diag-item{
+  display:flex;
+  align-items:center;
+  gap: var(--space-3);
+  width:100%;
+  margin-block-end:2px;
+  padding: var(--space-3) 14px;
+  border:none;
+  border-radius: var(--r-md);
+  background:transparent;
+  font: inherit;
+  font-size: .95rem;
+  font-weight:500;
+  text-align:left;
+  color: rgba(255,255,255,.72);
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+}
+
+.diag-item svg{
+  flex-shrink:0;
+  width:19px;
+  height:19px;
+  color: rgba(255,255,255,.4);
+  transition: color .2s var(--ease);
+}
+
+.diag-item:hover{ background: rgba(255,255,255,.05); color:#fff; }
+
+.diag-item.is-active{ background: rgba(108,75,232,.28); color:#fff; }
+.diag-item.is-active svg{ color: var(--hero-accent); }
+
+/* ---------- Detalle ---------- */
+.diag-detail{
+  padding: 32px 36px;
+  animation: diagIn .35s var(--ease);
+}
+
+@keyframes diagIn{
+  from{ opacity:0; transform: translateY(6px); }
+  to{ opacity:1; transform:none; }
+}
+
+.diag-head{
+  display:flex;
+  align-items:center;
+  gap: var(--space-4);
+  margin-block-end: var(--space-6);
+}
+
+.diag-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:48px;
+  height:48px;
+  border-radius: var(--r-md);
+  background: rgba(34,211,238,.12);
+}
+.diag-icon svg{ width:24px; height:24px; color: var(--hero-accent); }
+
+.diag-detail-title{
+  margin:0;
+  font-size: 1.5rem;
+  font-weight:600;
+  color:#fff;
+}
+
+.diag-meta{
+  margin: 3px 0 0;
+  font-size: .82rem;
+  color: var(--diag-muted);
+}
+
+/* Pasos */
+.diag-steps{ margin:0; padding:0; list-style:none; }
+
+.diag-step{
+  display:flex;
+  gap: var(--space-4);
+  padding-block: 14px;
+  border-block-end: 1px solid rgba(255,255,255,.07);
+}
+.diag-step:last-child{ border-block-end:none; }
+
+.diag-step-num{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border: 1.5px solid rgba(34,211,238,.5);
+  font-size: .8rem;
+  font-weight:600;
+  color: var(--hero-accent);
+}
+
+.diag-step-text{
+  margin: 3px 0 0;
+  font-size: .98rem;
+  line-height:1.55;
+  color: var(--diag-text);
+}
+
+/* Cierre + WhatsApp */
+.diag-result{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: var(--space-5);
+  margin-block-start: var(--space-6);
+  padding: var(--space-5);
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.diag-result-text{
+  margin:0;
+  font-size: .92rem;
+  line-height:1.5;
+  color: rgba(255,255,255,.75);
+}
+.diag-result-text strong{ color:#fff; font-weight:700; }
+
+.btn-wa{
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  flex-shrink:0;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--r-pill);
+  background: var(--wa-green);
+  color: var(--wa-text);
+  font-size: .9rem;
+  font-weight:600;
+  text-decoration:none;
+  white-space:nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.btn-wa svg{ width:18px; height:18px; }
+.btn-wa:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,211,102,.3);
+}
+
+/* Foco */
+.diag-item:focus-visible,
+.btn-wa:focus-visible{
+  outline: 2px solid var(--hero-accent);
+  outline-offset:2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .diag-detail{ animation:none; }
+  .diag-item, .diag-item svg, .btn-wa{ transition:none; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 960px){
+  .diag-panel{ grid-template-columns:1fr; }
+
+  .diag-list{
+    padding: 14px;
+    border-right:none;
+    border-block-end: 1px solid var(--diag-line);
+  }
+  .diag-list-label{ display:none; }
+
+  /* Síntomas como chips con scroll horizontal */
+  #diag-items{
+    display:flex;
+    gap: var(--space-2);
+    overflow-x:auto;
+    scrollbar-width:none;
+    scroll-snap-type: x proximity;
+  }
+  #diag-items::-webkit-scrollbar{ display:none; }
+
+  .diag-item{
+    width:auto;
+    margin:0;
+    padding: 9px var(--space-4);
+    border-radius: var(--r-pill);
+    border: 1px solid rgba(255,255,255,.12);
+    font-size: .88rem;
+    white-space:nowrap;
+    scroll-snap-align:start;
+  }
+  .diag-item.is-active{ border-color: rgba(108,75,232,.8); }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px){
+  .diag-panel{ border-radius: var(--r-md); }
+  .diag-detail{ padding: var(--space-7) var(--space-5); }
+  .diag-detail-title{ font-size: 1.25rem; }
+
+  .diag-result{ flex-direction:column; align-items:stretch; }
+  .btn-wa{ justify-content:center; }
+}

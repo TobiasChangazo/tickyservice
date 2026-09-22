@@ -1,0 +1,374 @@
+/* =========================================================
+   TickyService — Servicios por equipo
+   Selector segmentado + panel con banner fotográfico
+   + 3 columnas de servicios + franja de garantías
+   Se apoya en los tokens de styles.css (--brand-*, --ink-*, --ok,
+   --warn, --danger, --lilac-*, --hero-accent, --wa-green, --ease),
+   que debe cargarse antes. El encabezado (eyebrow/título/bajada)
+   reusa .section__head, .serv-head solo aporta el layout en fila
+   con el selector.
+
+   Markup:
+
+   <div class="serv-head">
+     <div class="section__head">
+       <span class="section__eyebrow">Servicio técnico</span>
+       <h2 class="section__title">Un vistazo rápido por categoría</h2>
+       <p class="section__desc">...</p>
+     </div>
+     <div class="serv-seg" id="serv-seg" role="tablist" aria-label="Equipo"></div>
+   </div>
+
+   <div class="serv-panel" id="serv-panel" role="tabpanel"></div>
+
+   <div class="serv-trust">
+     <div class="trust-item">
+       <div class="trust-icon"><i data-lucide="search"></i></div>
+       <div><p class="trust-title">...</p><p class="trust-desc">...</p></div>
+     </div>
+     ...
+   </div>
+   ========================================================= */
+
+:root{
+  /* Tokens nuevos: no había un badge/ícono cian ni botón de WhatsApp
+     con este tratamiento fuera de diagnostico.css (que define el suyo) */
+  --cyan-bg:#E0F8FC;
+  --cyan-icon:#0891B2;
+  --wa-text:#0B2E18;
+}
+
+/* ---------- Encabezado ---------- */
+.serv-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap: var(--space-6);
+  margin-block-end: var(--space-8);
+}
+.serv-head .section__head{ margin-block-end:0; }
+
+/* ---------- Selector segmentado ---------- */
+.serv-seg{
+  display:inline-flex;
+  flex-shrink:0;
+  gap:4px;
+  padding:5px;
+  background:#fff;
+  border: 1px solid var(--lilac-300);
+  border-radius: var(--r-lg);
+}
+
+.seg-btn{
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border:none;
+  border-radius: var(--r-md);
+  background:transparent;
+  font: inherit;
+  font-size: .95rem;
+  font-weight:500;
+  color: var(--ink-600);
+  white-space:nowrap;
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+}
+
+.seg-btn svg{ width:18px; height:18px; }
+.seg-btn:hover{ color: var(--ink-900); background: var(--lilac-025); }
+
+.seg-btn.is-active{ background: var(--brand-600); color:#fff; }
+
+.seg-count{ font-size: .75rem; opacity:.6; }
+
+/* ---------- Panel ---------- */
+.serv-panel{
+  background:#fff;
+  border-radius: var(--r-lg);
+  overflow:hidden;
+  box-shadow: var(--sh-3);
+}
+
+/* Banner */
+.serv-banner{
+  position:relative;
+  height:230px;
+  overflow:hidden;
+  background: var(--brand-900);
+}
+
+.serv-banner-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:right center;
+  animation: bannerIn .5s var(--ease);
+}
+
+@keyframes bannerIn{
+  from{ opacity:0; transform: scale(1.04); }
+  to{ opacity:1; transform:none; }
+}
+
+.serv-banner-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(28,24,51,.92) 0%, rgba(40,25,100,.65) 45%, rgba(60,40,140,.15) 100%),
+    linear-gradient(0deg, rgba(28,24,51,.55) 0%, transparent 50%);
+}
+
+.serv-banner-content{
+  position:absolute;
+  left: var(--space-7);
+  right: var(--space-7);
+  bottom: var(--space-6);
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap: var(--space-5);
+}
+
+.serv-tag{
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  margin-block-end: var(--space-2);
+  padding: 5px 11px;
+  border-radius: var(--r-pill);
+  background: rgba(34,211,238,.16);
+  border: 1px solid rgba(34,211,238,.35);
+  color:#A5F3FC;
+  font-size: .8rem;
+  font-weight:500;
+}
+.serv-tag svg{ width:14px; height:14px; }
+
+.serv-name{
+  margin:0;
+  font-size:2.5rem;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-.01em;
+  color:#fff;
+}
+
+.serv-meta{
+  margin: var(--space-2) 0 0;
+  font-size: .95rem;
+  color: rgba(255,255,255,.75);
+}
+.serv-meta strong{ color:#86EFAC; font-weight:500; }
+
+.serv-actions{ display:flex; flex-shrink:0; gap: var(--space-3); }
+
+.btn-glass,
+.btn-wa{
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--r-pill);
+  font-size: .88rem;
+  text-decoration:none;
+  white-space:nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-glass svg,
+.btn-wa svg{ width:17px; height:17px; }
+
+.btn-glass{
+  font-weight:500;
+  color:#fff;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background-color .2s var(--ease);
+}
+.btn-glass:hover{ background: rgba(255,255,255,.2); }
+
+.btn-wa{
+  font-weight:600;
+  color: var(--wa-text);
+  background: var(--wa-green);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.btn-wa:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,211,102,.35);
+}
+
+/* ---------- Columnas ---------- */
+.serv-cols{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+
+.serv-col{
+  padding: var(--space-6) var(--space-4) var(--space-6);
+  border-right: 1px solid var(--lilac-200);
+}
+.serv-col:last-child{ border-right:none; }
+
+.serv-col-head{
+  display:flex;
+  align-items:center;
+  gap: var(--space-3);
+  padding: 0 var(--space-3) var(--space-4);
+}
+.serv-col-head svg{ width:18px; height:18px; color: var(--brand-600); }
+
+.serv-col-title{
+  margin:0;
+  font-size: var(--fs-2xs);
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color: var(--ink-900);
+}
+
+.serv-col-count{ margin-inline-start:auto; font-size: var(--fs-xs); color: var(--ink-400); }
+
+/* Fila de servicio */
+.serv-row{
+  display:flex;
+  justify-content:space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--r-md);
+  text-decoration:none;
+  color:inherit;
+  transition: background-color .2s var(--ease);
+}
+.serv-row:hover{ background: var(--lilac-025); }
+
+.serv-row-name{ margin: 0 0 var(--space-2); font-size: .95rem; font-weight:500; color: var(--ink-900); }
+
+.serv-row-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap: 6px var(--space-3);
+  font-size: .78rem;
+  color: var(--ink-600);
+}
+.serv-row-meta > span{ display:inline-flex; align-items:center; gap:5px; }
+.serv-row-meta svg{ width:14px; height:14px; color: var(--ink-400); }
+
+.serv-row-price{ flex-shrink:0; text-align:right; }
+
+.price-value--free{ font-size: .8rem; font-weight:500; color: var(--ink-600); }
+
+.serv-row-action{
+  margin: 4px 0 0;
+  font-size: .78rem;
+  font-weight:500;
+  color: var(--brand-600);
+  white-space:nowrap;
+  opacity:0;
+  transform: translateX(-4px);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.serv-row:hover .serv-row-action,
+.serv-row:focus-visible .serv-row-action{ opacity:1; transform:none; }
+
+/* Indicador de nivel: mismo sistema que guías, pero escalado más chico
+   y anidado bajo .serv-panel para no pisar el de guias.css */
+.serv-panel .level{ display:inline-flex; align-items:flex-end; gap:2px; }
+.serv-panel .level b{ display:block; width:4px; border-radius:1px; background: var(--paper-line-strong); }
+.serv-panel .level b:nth-child(1){ height:8px; }
+.serv-panel .level b:nth-child(2){ height:11px; }
+.serv-panel .level b:nth-child(3){ height:14px; }
+.serv-panel [data-level="1"] .level b:nth-child(-n+1){ background: var(--ok); }
+.serv-panel [data-level="2"] .level b:nth-child(-n+2){ background: var(--warn); }
+.serv-panel [data-level="3"] .level b:nth-child(-n+3){ background: var(--danger); }
+
+/* ---------- Garantías ---------- */
+.serv-trust{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: var(--space-4);
+  margin-block-start: var(--space-5);
+}
+
+.trust-item{
+  display:flex;
+  align-items:center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: rgba(255,255,255,.7);
+  border: 1px solid var(--lilac-300);
+  border-radius: var(--r-lg);
+}
+
+.trust-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:42px;
+  height:42px;
+  border-radius: var(--r-md);
+  background: var(--cyan-bg);
+}
+.trust-icon svg{ width:21px; height:21px; color: var(--cyan-icon); }
+
+.trust-title{ margin:0; font-size: .95rem; font-weight:600; color: var(--ink-900); }
+.trust-desc{ margin: 2px 0 0; font-size: .82rem; color: var(--ink-600); }
+
+/* ---------- Foco ---------- */
+.seg-btn:focus-visible,
+.serv-row:focus-visible,
+.btn-glass:focus-visible,
+.btn-wa:focus-visible{
+  outline: 2px solid var(--brand-600);
+  outline-offset:2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .serv-banner-img{ animation:none; }
+  .seg-btn, .serv-row, .serv-row-action,
+  .btn-glass, .btn-wa{ transition:none; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px){
+  .serv-head{ flex-direction:column; align-items:flex-start; }
+
+  .serv-seg{ max-width:100%; overflow-x:auto; scrollbar-width:none; }
+  .serv-seg::-webkit-scrollbar{ display:none; }
+
+  .serv-banner-content{ flex-direction:column; align-items:flex-start; }
+  .serv-banner{ height:280px; }
+
+  .serv-cols{ grid-template-columns:1fr; }
+  .serv-col{ border-right:none; border-block-end: 1px solid var(--lilac-200); }
+  .serv-col:last-child{ border-block-end:none; }
+
+  /* Sin hover en touch: la acción siempre visible */
+  .serv-row-action{ opacity:1; transform:none; }
+
+  .serv-trust{ grid-template-columns:1fr; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px){
+  .serv-panel{ border-radius: var(--r-md); }
+
+  .serv-banner{ height:300px; }
+  .serv-banner-content{ left: var(--space-5); right: var(--space-5); bottom: var(--space-5); }
+  .serv-name{ font-size:2rem; }
+
+  .serv-actions{ flex-direction:column; width:100%; }
+  .btn-glass,
+  .btn-wa{ justify-content:center; }
+
+  .serv-col{ padding: var(--space-5) var(--space-2) var(--space-5); }
+}

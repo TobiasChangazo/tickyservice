@@ -1,0 +1,291 @@
+/* =========================================================
+   TickyService — Sección "Guías destacadas"
+   (tabs de equipo + pills de dificultad + botón ver todas + cards)
+   Se apoya en los tokens de styles.css (--brand-*, --ink-*, --ok,
+   --warn, --danger, --paper-line*, --ease), que debe cargarse antes.
+
+   Markup mínimo (el resto lo arma guias.js):
+
+   <div class="guias-section" id="guias-section">
+     <p class="filter-label">Equipo</p>
+     <div class="filter-tabs" id="guias-tabs"></div>
+
+     <p class="filter-label">Dificultad</p>
+     <div class="filter-row">
+       <div class="filter-pills" id="guias-pills"></div>
+       <a class="btn-all" id="guias-all" href="guias.html">
+         <span>Ver las guías</span>
+         <i data-lucide="arrow-right"></i>
+       </a>
+     </div>
+
+     <div class="guias-grid" id="guias-grid"></div>
+   </div>
+   ========================================================= */
+
+:root{
+  /* Únicos tokens nuevos: no había un "badge cian" en el sitio */
+  --cyan-bg:#E0F8FC;
+  --cyan-border:#B5EEF8;
+  --cyan-text:#0E7490;
+  --cyan-icon:#0891B2;
+}
+
+/* ---------- Labels ---------- */
+.filter-label{
+  margin: 0 0 var(--space-3);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+
+/* ---------- Tabs: equipo ---------- */
+.filter-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 28px;
+  margin-block-end: 28px;
+}
+
+.filter-tab{
+  position:relative;
+  padding: 0 0 var(--space-3);
+  background:none;
+  border:none;
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight:500;
+  color: var(--ink-400);
+  cursor:pointer;
+  white-space:nowrap;
+  transition: color .25s var(--ease);
+}
+
+.filter-tab::after{
+  content:'';
+  position:absolute;
+  inset-inline:0;
+  bottom:-1px;
+  height:2px;
+  border-radius:2px;
+  background: var(--brand-700);
+  transform: scaleX(0);
+  transition: transform .3s var(--ease);
+}
+
+.filter-tab:hover{ color: var(--ink-900); }
+.filter-tab.is-active{ color: var(--brand-700); font-weight:600; }
+.filter-tab.is-active::after{ transform: scaleX(1); }
+
+.filter-count{
+  margin-inline-start:4px;
+  font-size: var(--fs-xs);
+  color: var(--ink-400);
+}
+.filter-tab.is-active .filter-count{ color: var(--brand-500); }
+
+/* ---------- Fila: pills + botón ---------- */
+.filter-row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap: var(--space-4);
+}
+
+.filter-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap: var(--space-2);
+}
+
+.filter-pill{
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--r-pill);
+  background:#fff;
+  border: 1px solid var(--paper-line-strong);
+  font: inherit;
+  font-size: var(--fs-xs);
+  font-weight:500;
+  color: var(--ink-600);
+  cursor:pointer;
+  white-space:nowrap;
+  transition: background-color .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
+}
+
+.filter-pill:hover{ background: var(--lilac-025); border-color: var(--lilac-300); color: var(--ink-900); }
+.filter-pill.is-active{ background: var(--lilac-100); border-color: var(--brand-600); color: var(--brand-700); }
+
+.filter-pill svg,
+.filter-pill i{ width:16px; height:16px; color: var(--brand-600); flex-shrink:0; }
+
+/* Botón "ver todas": oscuro sólido, se empuja a la derecha de la fila */
+.btn-all{
+  margin-inline-start:auto;
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--r-pill);
+  background: var(--ink-900);
+  color:#fff;
+  font-size: var(--fs-sm);
+  font-weight:500;
+  text-decoration:none;
+  white-space:nowrap;
+  transition: gap .25s var(--ease), background-color .25s var(--ease);
+}
+.btn-all svg,
+.btn-all i{ width:16px; height:16px; color: var(--hero-accent); }
+.btn-all:hover{ gap: var(--space-3); background:#0F0C22; }
+
+/* ---------- Indicador de nivel (3 barras ascendentes) ---------- */
+.level{
+  display:inline-flex;
+  align-items:flex-end;
+  gap:3px;
+  flex-shrink:0;
+}
+.level b{
+  display:block;
+  width:5px;
+  border-radius:2px;
+  background: var(--paper-line-strong);
+}
+.level b:nth-child(1){ height:9px; }
+.level b:nth-child(2){ height:12px; }
+.level b:nth-child(3){ height:15px; }
+
+[data-level="1"] .level b:nth-child(-n+1){ background: var(--ok); }
+[data-level="2"] .level b:nth-child(-n+2){ background: var(--warn); }
+[data-level="3"] .level b:nth-child(-n+3){ background: var(--danger); }
+
+/* ---------- Grilla y cards ---------- */
+.guias-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--space-8);
+  margin-block-start: var(--space-7);
+  padding-block-start: var(--space-7);
+  border-block-start: 1px solid var(--paper-line);
+}
+
+.guia-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  border-block-end: 1px solid var(--paper-line);
+  text-decoration:none;
+  color:inherit;
+}
+
+.guia-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-2xs);
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color: var(--ink-400);
+}
+
+/* Badge de categoría (solo se muestra en "Todas") */
+.guia-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding: 3px 9px;
+  border-radius: var(--r-sm);
+  background: var(--cyan-bg);
+  border: 1px solid var(--cyan-border);
+  color: var(--cyan-text);
+  font-size: var(--fs-xs);
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none;
+}
+.guia-badge svg,
+.guia-badge i{ width:14px; height:14px; color: var(--cyan-icon); }
+
+.guia-title{
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-md);
+  font-weight:600;
+  color: var(--ink-900);
+  transition: color .25s var(--ease);
+}
+
+.guia-level{
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--ink-600);
+}
+
+.guia-arrow{
+  flex-shrink:0;
+  width:20px;
+  height:20px;
+  color: var(--ink-400);
+  transition: transform .25s var(--ease), color .25s var(--ease);
+}
+
+.guia-card:hover .guia-title{ color: var(--brand-700); }
+.guia-card:hover .guia-arrow{ color: var(--brand-700); transform: translateX(4px); }
+
+/* Empty state */
+.guias-empty{
+  grid-column: 1 / -1;
+  padding-block: var(--space-9);
+  text-align:center;
+  font-size: var(--fs-md);
+  color: var(--ink-600);
+}
+.guias-empty a{ color: var(--brand-700); font-weight:600; text-decoration:none; }
+
+/* ---------- Foco ---------- */
+.filter-tab:focus-visible,
+.filter-pill:focus-visible,
+.btn-all:focus-visible,
+.guia-card:focus-visible{
+  outline: 3px solid var(--focus-ring);
+  outline-offset:2px;
+  border-radius: var(--r-sm);
+}
+.filter-pill:focus-visible,
+.btn-all:focus-visible{ border-radius: var(--r-pill); }
+
+@media (prefers-reduced-motion: reduce){
+  .filter-tab, .filter-tab::after, .filter-pill, .btn-all,
+  .guia-title, .guia-arrow{ transition:none; }
+}
+
+/* ---------- Tablet / mobile ---------- */
+@media (max-width: 1024px){
+  .filter-row{ flex-direction:column; align-items:flex-start; }
+  .btn-all{ margin-inline-start:0; }
+}
+
+@media (max-width: 900px){
+  .guias-grid{ grid-template-columns:1fr; }
+}
+
+@media (max-width: 700px){
+  .filter-tabs{ flex-wrap:nowrap; overflow-x:auto; gap:22px; scrollbar-width:none; }
+  .filter-tabs::-webkit-scrollbar{ display:none; }
+
+  .filter-pills{ flex-wrap:nowrap; overflow-x:auto; width:100%; scrollbar-width:none; }
+  .filter-pills::-webkit-scrollbar{ display:none; }
+
+  .btn-all{ width:100%; justify-content:center; }
+}
