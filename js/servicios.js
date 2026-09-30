@@ -27,14 +27,14 @@ const EQUIPOS = [
     nombre: 'Notebook',
     icono: 'laptop',
     tag: 'Reparación y mantenimiento',
-    imagen: 'img/notebook.jpg',
-    guias: 'guias.html',
+    imagen: 'img/servicios/notebook.jpg',
+    guias: 'guias.html?cat=notebook',
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
         servicios: [
           { nombre: 'Limpieza de teclado y carcasa', nivel: 1, guia: '#' },
-          { nombre: 'Liberar espacio y actualizar Windows', nivel: 1, guia: '#' },
+          { nombre: 'Liberar espacio y actualizar Windows', nivel: 1, guia: 'guia.html?g=pc-lenta' },
           { nombre: 'Cambio de pasta térmica', nivel: 3 },
         ],
       },
@@ -49,7 +49,7 @@ const EQUIPOS = [
       {
         nombre: 'Software', icono: 'code',
         servicios: [
-          { nombre: 'Backup de archivos importantes', nivel: 1, guia: '#' },
+          { nombre: 'Backup de archivos importantes', nivel: 1, guia: 'guia.html?g=backup-antes-del-taller' },
           { nombre: 'Eliminación de virus', nivel: 2 },
           { nombre: 'Instalación de sistema operativo', nivel: 3 },
         ],
@@ -61,8 +61,8 @@ const EQUIPOS = [
     nombre: 'PC',
     icono: 'cpu',
     tag: 'Armado y reparación',
-    imagen: 'img/pc.jpg',
-    guias: 'guias.html',
+    imagen: 'img/servicios/pc.jpg',
+    guias: 'guias.html?cat=pc',
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
@@ -83,7 +83,7 @@ const EQUIPOS = [
       {
         nombre: 'Software', icono: 'code',
         servicios: [
-          { nombre: 'Backup antes de formatear', nivel: 1, guia: '#' },
+          { nombre: 'Backup antes de formatear', nivel: 1, guia: 'guia.html?g=backup-antes-del-taller' },
           { nombre: 'Instalación de Windows', nivel: 3 },
         ],
       },
@@ -94,13 +94,13 @@ const EQUIPOS = [
     nombre: 'Joystick',
     icono: 'gamepad-2',
     tag: 'Reparación de drift y más',
-    imagen: 'img/joystick.jpg',
-    guias: 'guias.html',
+    imagen: 'img/servicios/joystick.jpg',
+    guias: 'guias.html?cat=joystick',
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
         servicios: [
-          { nombre: 'Limpieza de gatillos y botones', nivel: 1, guia: '#' },
+          { nombre: 'Limpieza de gatillos y botones', nivel: 1, guia: 'guia.html?g=gatillos-botones-pegados' },
           { nombre: 'Actualizar firmware', nivel: 1, guia: '#' },
         ],
       },
@@ -114,7 +114,7 @@ const EQUIPOS = [
       {
         nombre: 'Software', icono: 'code',
         servicios: [
-          { nombre: 'Emparejar con consola o PC', nivel: 1, guia: '#' },
+          { nombre: 'Emparejar con consola o PC', nivel: 1, guia: 'guia.html?g=joystick-bluetooth' },
         ],
       },
     ],
@@ -124,8 +124,8 @@ const EQUIPOS = [
     nombre: 'Consola',
     icono: 'gamepad',
     tag: 'PlayStation · Xbox · Nintendo',
-    imagen: 'img/consola.jpg',
-    guias: 'guias.html',
+    imagen: 'img/servicios/consola.jpg',
+    guias: 'guias.html?cat=consola',
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
@@ -144,8 +144,8 @@ const EQUIPOS = [
       {
         nombre: 'Software', icono: 'code',
         servicios: [
-          { nombre: 'Actualizar el sistema', nivel: 1, guia: '#' },
-          { nombre: 'Vincular joysticks', nivel: 1, guia: '#' },
+          { nombre: 'Actualizar el sistema', nivel: 1, guia: 'guia.html?g=actualizar-consola' },
+          { nombre: 'Vincular joysticks', nivel: 1, guia: 'guia.html?g=vincular-joystick-consola' },
         ],
       },
     ],
@@ -160,7 +160,9 @@ const WA_ICON = `
 const $seg   = document.getElementById('serv-seg');
 const $panel = document.getElementById('serv-panel');
 
-let actual = EQUIPOS[0].id;
+// servicios.html?eq=pc abre directo en ese equipo (lo usan los links del footer)
+const eqURL = new URLSearchParams(location.search).get('eq');
+let actual = EQUIPOS.some(e => e.id === eqURL) ? eqURL : EQUIPOS[0].id;
 
 /* ---------- Helpers ---------- */
 const levelBars = () => '<span class="level"><b></b><b></b><b></b></span>';
@@ -193,7 +195,7 @@ function renderSelector() {
 function renderFila(eq, s) {
   const esDIY = s.nivel === 1 && s.guia;
   const href = esDIY
-    ? s.guia
+    ? (s.guia === '#' ? eq.guias : s.guia)
     : waLink(`Hola! Quiero consultar por: ${s.nombre} (${eq.nombre}).`);
   const tiempo = esDIY ? '' : `<span><i data-lucide="clock"></i>24 a 48 hs</span>`;
 

@@ -1,0 +1,689 @@
+/* =========================================================
+   TickyService — Contacto
+   Encabezado blanco + formulario que arma el mensaje de WhatsApp
+   + panel oscuro con canales, horarios y ubicación
+
+   Markup:
+
+   <section class="contact" id="contacto">
+     <div class="contact-head">
+       <div>
+         <p class="eyebrow">Hablemos</p>
+         <h1 class="contact-title">Contacto</h1>
+         <p class="contact-sub">Contanos qué le pasa a tu equipo y te respondemos en el día.</p>
+       </div>
+       <a class="contact-tip" href="/#diagnostico">
+         <i data-lucide="lightbulb"></i>
+         <p><strong>¿Probaste el diagnóstico?</strong> Capaz lo resolvés en 5 minutos, sin esperar a nadie. →</p>
+       </a>
+     </div>
+
+     <div class="contact-grid">
+
+       <!-- FORMULARIO -->
+       <form class="contact-form" id="contact-form" novalidate>
+         <h2 class="form-title">Mandanos tu consulta</h2>
+         <p class="form-sub">Completá esto y se arma el mensaje para enviarlo por WhatsApp.</p>
+
+         <fieldset class="form-field">
+           <legend class="form-label">¿Qué necesitás?</legend>
+           <div class="form-chips" id="chips-necesidad"></div>
+         </fieldset>
+
+         <fieldset class="form-field">
+           <legend class="form-label">¿Qué equipo?</legend>
+           <div class="form-chips" id="chips-equipo"></div>
+         </fieldset>
+
+         <div class="form-field">
+           <label class="form-label" for="c-nombre">Tu nombre</label>
+           <input class="form-input" id="c-nombre" name="nombre" type="text" placeholder="Ej: Juan" autocomplete="given-name" required>
+           <p class="form-error" id="err-nombre">Decinos tu nombre así te respondemos.</p>
+         </div>
+
+         <div class="form-field">
+           <label class="form-label" for="c-mensaje">Tu consulta <span>(opcional)</span></label>
+           <textarea class="form-input" id="c-mensaje" name="mensaje" rows="4" placeholder="Qué le pasa y qué ya probaste"></textarea>
+         </div>
+
+         <div class="form-preview">
+           <p class="form-preview-label"><i data-lucide="eye"></i>Así nos va a llegar</p>
+           <div class="form-bubble" id="c-preview"></div>
+         </div>
+
+         <button class="form-submit" type="submit">
+           <!-- el JS inserta el ícono de WhatsApp -->
+           <span>Enviar por WhatsApp</span>
+         </button>
+
+         <p class="form-alt">¿Preferís mail? <a href="mailto:contacto@tickyservice.com.ar">contacto@tickyservice.com.ar</a></p>
+       </form>
+
+       <!-- PANEL -->
+       <aside class="contact-panel">
+         <p class="panel-label">Canales</p>
+
+         <a class="channel" id="ch-wa" href="#" target="_blank" rel="noopener">
+           <span class="channel-icon channel-icon--wa"><!-- ícono WA por JS --></span>
+           <span><span class="channel-title">WhatsApp</span><span class="channel-sub">La vía más rápida · respondemos en el día</span></span>
+           <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+         </a>
+
+         <a class="channel" href="https://instagram.com/tickyservice" target="_blank" rel="noopener">
+           <span class="channel-icon channel-icon--ig"><i data-lucide="instagram"></i></span>
+           <span><span class="channel-title">Instagram</span><span class="channel-sub">@tickyservice</span></span>
+           <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+         </a>
+
+         <a class="channel" href="mailto:contacto@tickyservice.com.ar">
+           <span class="channel-icon channel-icon--mail"><i data-lucide="mail"></i></span>
+           <span><span class="channel-title">Email</span><span class="channel-sub">contacto@tickyservice.com.ar</span></span>
+           <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+         </a>
+
+         <div class="panel-divider"></div>
+
+         <div class="panel-row-head">
+           <p class="panel-label">Horarios</p>
+           <span class="open-status" id="open-status"></span>
+         </div>
+         <div class="hours" id="hours"></div>
+
+         <div class="panel-divider"></div>
+
+         <p class="panel-label">Ubicación</p>
+         <div class="contact-map">
+           <!-- Opcional: reemplazá .map-deco + .map-pin por un <iframe> de Google Maps -->
+           <div class="map-deco"></div>
+           <div class="map-pin"><i data-lucide="wrench"></i></div>
+           <div class="map-bar">
+             <p>Mar de Ajó, Buenos Aires</p>
+             <a class="map-go" id="map-go" href="#" target="_blank" rel="noopener">
+               <i data-lucide="navigation"></i>Cómo llegar
+             </a>
+           </div>
+         </div>
+       </aside>
+
+     </div>
+   </section>
+   ========================================================= */
+
+/* Tokens scopeados a .contact: styles.css ya define --primary y --ease globales */
+.contact {
+  --primary: #6C4BE8;
+  --primary-dark: #4527B0;
+  --primary-50: #F1EDFD;
+  --primary-200: #CFC3F8;
+  --text: #1C1833;
+  --text-muted: #6B6785;
+  --label: #8A85A3;
+  --faint: #A8A3BF;
+  --line: #EEEBF5;
+  --pill-border: #E3DFEF;
+  --input-bg: #FAF9FD;
+  --cyan: #22D3EE;
+  --cyan-bg: #E0F8FC;
+  --cyan-border: #B5EEF8;
+  --cyan-text: #0E7490;
+  --cyan-icon: #0891B2;
+  --dark: #1C1833;
+  --wa: #25D366;
+  --wa-text: #0B2E18;
+  --danger: #E5484D;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Misma distancia al header que tienda y guías */
+.contact { padding-block: var(--space-9) var(--space-11); }
+
+/* ---------- Encabezado ---------- */
+.contact-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.contact-title {
+  margin: 0 0 10px;
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  color: var(--text);
+}
+
+.contact-sub {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #5B5675;
+}
+
+.contact-tip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  max-width: 360px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--cyan-bg);
+  border: 1px solid var(--cyan-border);
+  text-decoration: none;
+  transition: border-color .2s var(--ease);
+}
+.contact-tip:hover { border-color: var(--cyan); }
+.contact-tip svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--cyan-icon);
+}
+.contact-tip p {
+  margin: 0;
+  font-size: .85rem;
+  line-height: 1.4;
+  color: var(--cyan-text);
+}
+
+/* ---------- Grid ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ---------- Formulario ---------- */
+.contact .contact-form {
+  display: block; /* pisa el flex/gap del .contact-form viejo de styles.css */
+  color-scheme: light; /* evita que el modo oscuro del sistema pinte los inputs */
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #FFFFFF;
+}
+
+.form-title {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-sub {
+  margin: 0 0 24px;
+  font-size: .9rem;
+  color: var(--text-muted);
+}
+
+.form-field {
+  margin: 0 0 22px;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.form-label {
+  display: block;
+  margin: 0 0 10px;
+  padding: 0;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.form-label span {
+  font-weight: 400;
+  color: var(--faint);
+}
+
+/* Chips */
+.form-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.form-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1px solid var(--pill-border);
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 500;
+  color: #3A3558;
+  cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+}
+.form-chip svg {
+  width: 16px;
+  height: 16px;
+  color: var(--label);
+}
+.form-chip:hover {
+  background: #FAF8FF;
+  border-color: var(--primary-200);
+}
+.form-chip[aria-checked="true"] {
+  background: var(--primary-50);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+.form-chip[aria-checked="true"] svg { color: var(--primary); }
+
+/* Inputs */
+.form-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 16px;
+  border: 1px solid var(--pill-border);
+  border-radius: 12px;
+  background: var(--input-bg);
+  font: inherit;
+  font-size: .95rem;
+  color: var(--text);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+}
+.form-input::placeholder { color: var(--faint); }
+.form-input:hover { border-color: var(--primary-200); }
+.form-input:focus {
+  border-color: var(--primary);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(108, 75, 232, .12);
+}
+textarea.form-input {
+  min-height: 96px;
+  resize: vertical;
+}
+
+/* Error */
+.form-error {
+  display: none;
+  margin: 6px 0 0;
+  font-size: .8rem;
+  color: var(--danger);
+}
+.form-field.has-error .form-input {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 4px rgba(229, 72, 77, .1);
+}
+.form-field.has-error .form-error { display: block; }
+
+/* Vista previa estilo WhatsApp */
+.form-preview {
+  margin: 4px 0 20px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #EFEAE2;
+}
+
+.form-preview-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #8A8578;
+}
+.form-preview-label svg { width: 14px; height: 14px; }
+
+.form-bubble {
+  margin-left: auto;
+  max-width: 88%;
+  width: fit-content;
+  padding: 10px 12px;
+  border-radius: 12px 12px 2px 12px;
+  background: #D9FDD3;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
+  font-size: .9rem;
+  line-height: 1.5;
+  color: #111111;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+/* Enviar */
+.form-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 999px;
+  background: var(--wa);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--wa-text);
+  cursor: pointer;
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.form-submit svg { width: 20px; height: 20px; }
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, .3);
+}
+
+.form-alt {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: .82rem;
+  color: var(--label);
+}
+.form-alt a {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+.form-alt a:hover { text-decoration: underline; }
+
+/* ---------- Panel oscuro ---------- */
+.contact-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border-radius: 22px;
+  background: var(--dark);
+  isolation: isolate;
+}
+
+.contact-panel::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -80px;
+  right: -80px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108, 75, 232, .5), transparent 70%);
+}
+
+.panel-label {
+  margin: 0 0 14px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .5);
+}
+
+.panel-divider {
+  height: 1px;
+  margin: 22px 0;
+  background: rgba(255, 255, 255, .1);
+}
+
+/* Canales */
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .08);
+  text-decoration: none;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.channel:hover {
+  background: rgba(255, 255, 255, .09);
+  border-color: rgba(255, 255, 255, .18);
+}
+
+.channel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+.channel-icon svg { width: 21px; height: 21px; }
+
+.channel-icon--wa   { background: rgba(37, 211, 102, .15); color: #4ADE80; }
+.channel-icon--ig   { background: rgba(236, 72, 153, .15); color: #F472B6; }
+.channel-icon--mail { background: rgba(34, 211, 238, .14); color: var(--cyan); }
+
+.channel-title {
+  display: block;
+  font-size: .95rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.channel-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: .82rem;
+  color: rgba(255, 255, 255, .55);
+}
+
+.channel-arrow {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  color: rgba(255, 255, 255, .4);
+  transition: color .2s var(--ease), transform .2s var(--ease);
+}
+.channel:hover .channel-arrow {
+  color: var(--cyan);
+  transform: translate(2px, -2px);
+}
+
+/* Horarios */
+.panel-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.panel-row-head .panel-label { margin: 0; }
+
+.open-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 500;
+}
+.open-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.open-status.is-open {
+  background: rgba(74, 222, 128, .12);
+  border: 1px solid rgba(74, 222, 128, .3);
+  color: #86EFAC;
+}
+.open-status.is-open::before {
+  background: #4ADE80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, .25);
+}
+.open-status.is-closed {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .15);
+  color: rgba(255, 255, 255, .7);
+}
+.open-status.is-closed::before { background: rgba(255, 255, 255, .4); }
+
+.contact .hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: .92rem;
+  color: rgba(255, 255, 255, .7);
+}
+.contact .hours-row strong {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+.hours-row.is-closed strong { color: rgba(255, 255, 255, .45); }
+.hours-row.is-today span::after {
+  content: " · hoy";
+  color: var(--cyan);
+}
+
+/* Mapa */
+.contact-map {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #2A2448;
+}
+
+.contact-map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(.3) contrast(1.05);
+}
+
+.map-deco {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.map-deco::after {
+  content: "";
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 56%;
+  height: 8px;
+  background: rgba(255, 255, 255, .08);
+  transform: rotate(-8deg);
+}
+
+.map-pin {
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--primary);
+  box-shadow: 0 0 0 8px rgba(108, 75, 232, .25);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.map-pin svg {
+  width: 17px;
+  height: 17px;
+  color: #FFFFFF;
+  transform: rotate(45deg);
+}
+
+.map-bar {
+  position: absolute;
+  z-index: 1;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.map-bar p {
+  margin: 0;
+  font-size: .9rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+}
+
+.map-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: transform .2s var(--ease);
+}
+.map-go:hover { transform: translateY(-1px); }
+.map-go svg {
+  width: 15px;
+  height: 15px;
+  color: var(--primary);
+}
+
+/* ---------- Foco ---------- */
+.form-chip:focus-visible,
+.form-submit:focus-visible,
+.contact-tip:focus-visible,
+.form-alt a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.channel:focus-visible,
+.map-go:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-chip, .form-input, .form-submit, .channel,
+  .channel-arrow, .map-go, .contact-tip { transition: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .contact-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact-tip { max-width: none; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .contact .contact-form,
+  .contact-panel {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+  .form-chip {
+    padding: 8px 12px;
+    font-size: .85rem;
+  }
+}

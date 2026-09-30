@@ -1,0 +1,446 @@
+/* =========================================================
+   TickyService — Tienda
+   Sin franja violeta: título + aviso,
+   filtros en pills + switch de stock, grilla de cards clickeables
+
+   Markup:
+
+   <section class="shop" id="tienda">
+     <div class="shop-head">
+       <div>
+         <p class="eyebrow">Equipos y repuestos</p>
+         <h1 class="shop-title">Tienda</h1>
+         <p class="shop-sub">Equipos y repuestos para notebooks, PC, consolas y joysticks.</p>
+       </div>
+       <div class="shop-note">
+         <i data-lucide="info"></i>
+         <span>Precios de referencia. Tocá una card y te confirmamos stock y valor por WhatsApp.</span>
+       </div>
+     </div>
+
+     <div class="shop-filters">
+       <div class="shop-pills" id="shop-pills"></div>
+       <button class="shop-toggle" id="shop-toggle" role="switch" aria-checked="false">
+         <span class="shop-switch"></span>Solo con stock
+       </button>
+     </div>
+
+     <div class="shop-grid" id="shop-grid"></div>
+   </section>
+   ========================================================= */
+
+/* Tokens scopeados a .shop: styles.css ya define --primary y --ease globales */
+.shop {
+  --primary: #6C4BE8;
+  --primary-dark: #4527B0;
+  --primary-50: #F1EDFD;
+  --primary-200: #CFC3F8;
+  --text: #1C1833;
+  --text-muted: #6B6785;
+  --label: #8A85A3;
+  --faint: #A8A3BF;
+  --line: #EEEBF5;
+  --pill-border: #E3DFEF;
+  --cyan-bg: #E0F8FC;
+  --cyan-border: #B5EEF8;
+  --cyan-text: #0E7490;
+  --cyan-icon: #0891B2;
+  --stock-1: #22A55A;
+  --stock-2: #E0A020;
+  --stock-3: #E5484D;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* Misma distancia al header que la cabecera de guías */
+.shop { padding-block: var(--space-9) var(--space-11); }
+
+/* ---------- Encabezado ---------- */
+.shop-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.shop-title {
+  margin: 0 0 10px;
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  color: var(--text);
+}
+
+.shop-sub {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #5B5675;
+}
+
+.shop-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  max-width: 340px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--cyan-bg);
+  border: 1px solid var(--cyan-border);
+  font-size: .85rem;
+  line-height: 1.4;
+  color: var(--cyan-text);
+}
+.shop-note svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--cyan-icon);
+}
+
+/* ---------- Filtros ---------- */
+.shop-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.shop-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.shop-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1px solid var(--pill-border);
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 500;
+  color: #3A3558;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+}
+.shop-pill svg {
+  width: 16px;
+  height: 16px;
+  color: var(--label);
+}
+.shop-pill:hover {
+  background: #FAF8FF;
+  border-color: var(--primary-200);
+}
+.shop-pill.is-active {
+  background: var(--primary-50);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+.shop-pill.is-active svg { color: var(--primary); }
+
+.shop-pill-count {
+  font-size: .75rem;
+  color: var(--faint);
+}
+
+/* Switch "Solo con stock" */
+.shop-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: .88rem;
+  color: #5B5675;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.shop-switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--pill-border);
+  transition: background .2s var(--ease);
+}
+.shop-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+  transition: transform .2s var(--ease);
+}
+.shop-toggle[aria-checked="true"] .shop-switch { background: var(--primary); }
+.shop-toggle[aria-checked="true"] .shop-switch::after { transform: translateX(16px); }
+
+/* ---------- Grilla ---------- */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* ---------- Card ---------- */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #FFFFFF;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+
+a.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-200);
+  box-shadow: 0 16px 36px rgba(60, 30, 140, .12);
+}
+
+/* Imagen */
+.product-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(160deg, #F1EDFD 0%, #E4DAFA 100%);
+}
+
+.product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s var(--ease);
+}
+
+.product-media > svg {
+  width: 64px;
+  height: 64px;
+  color: var(--primary);
+  opacity: .85;
+  transition: transform .35s var(--ease);
+}
+
+a.product-card:hover .product-media img,
+a.product-card:hover .product-media > svg { transform: scale(1.06); }
+
+/* Badges sobre la imagen */
+.stock-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 2px 8px rgba(28, 24, 51, .08);
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.stock-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.stock-badge[data-stock="1"]::before { background: var(--stock-1); }
+.stock-badge[data-stock="2"]::before { background: var(--stock-2); }
+.stock-badge[data-stock="3"]::before { background: var(--stock-3); }
+
+.qty-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(28, 24, 51, .75);
+  font-size: .72rem;
+  color: #FFFFFF;
+}
+
+/* Cuerpo */
+.product-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.product-cat {
+  margin: 0 0 6px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.product-name {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color .2s var(--ease);
+}
+a.product-card:hover .product-name { color: var(--primary); }
+
+.product-desc {
+  flex: 1;
+  margin: 0 0 16px;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.product-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid #F1EFF7;
+}
+
+.product-price { margin: 0; }
+.product-price small {
+  display: block;
+  margin-bottom: 1px;
+  font-size: .72rem;
+  color: var(--faint);
+}
+.product-price strong {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.product-price span {
+  margin-left: 3px;
+  font-size: .7rem;
+  color: var(--faint);
+}
+
+/* Flecha */
+.product-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--pill-border);
+  transition: background .25s var(--ease), border-color .25s var(--ease);
+}
+.product-arrow svg {
+  width: 17px;
+  height: 17px;
+  color: var(--primary);
+  transition: transform .25s var(--ease), color .25s var(--ease);
+}
+a.product-card:hover .product-arrow {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+a.product-card:hover .product-arrow svg {
+  color: #FFFFFF;
+  transform: rotate(-45deg);
+}
+
+/* Sin stock */
+.product-card.is-out .product-media {
+  filter: grayscale(1);
+  opacity: .55;
+}
+.product-card.is-out .product-name { color: var(--label); }
+.product-card.is-out .product-price strong {
+  color: var(--faint);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* Empty state */
+.shop-empty {
+  grid-column: 1 / -1;
+  padding: 48px 0;
+  text-align: center;
+  font-size: .95rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Foco ---------- */
+.shop-pill:focus-visible,
+.shop-toggle:focus-visible,
+.product-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card, .product-media img, .product-media > svg,
+  .product-name, .product-arrow, .product-arrow svg,
+  .shop-pill, .shop-switch, .shop-switch::after { transition: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .shop-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .shop-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .shop-note { max-width: none; }
+
+  .shop-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .shop-pills {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .shop-pills::-webkit-scrollbar { display: none; }
+
+  .shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .shop-grid { gap: 12px; }
+  .product-body { padding: 14px; }
+  .product-desc { display: none; }
+  .product-name { font-size: .95rem; }
+  .product-price strong { font-size: 1.05rem; }
+  .product-arrow { width: 32px; height: 32px; }
+  .qty-badge { display: none; }
+}

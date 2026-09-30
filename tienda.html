@@ -6,17 +6,18 @@
 <title>Tienda — TickyService</title>
 <meta name="description" content="Notebooks, PC armadas, consolas, joysticks y repuestos en Mar de Ajó. Precios de referencia, stock y valor final se confirman por WhatsApp.">
 <meta name="theme-color" content="#5A3AD1">
-<link rel="icon" type="image/png" href="img/fondo.png">
+<link rel="icon" type="image/png" href="img/logo/fondo.png">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tienda — TickyService">
 <meta property="og:description" content="Notebooks, PC armadas, consolas, joysticks y repuestos en Mar de Ajó.">
-<meta property="og:image" content="img/fondo.png">
+<meta property="og:image" content="img/logo/fondo.png">
 <meta property="og:locale" content="es_AR">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/tienda.css">
 </head>
 <body>
 
@@ -57,10 +58,10 @@
       <ul class="nav__list">
         <li><a class="nav__link" href="index.html">Inicio</a></li>
         <li><a class="nav__link" href="guias.html">Guías</a></li>
-        <li><a class="nav__link" href="index.html#servicios">Servicios</a></li>
+        <li><a class="nav__link" href="servicios.html">Servicios</a></li>
         <li><a class="nav__link" href="tienda.html" aria-current="page">Tienda</a></li>
         <li><a class="nav__link" href="contacto.html">Contacto</a></li>
-        <li><a class="nav__link" href="#">Nosotros</a></li>
+        <li><a class="nav__link" href="nosotros.html">Nosotros</a></li>
       </ul>
     </nav>
   </div>
@@ -69,174 +70,28 @@
 
 <main id="main">
 
-  <!-- ============ HERO CORTO ============ -->
-  <section class="hero hero--compact brand-surface" aria-labelledby="hero-title">
-    <div class="grid-bg" aria-hidden="true"></div>
+  <section class="shop" id="tienda" aria-labelledby="shop-title">
     <div class="container">
-      <nav aria-label="Ruta">
-        <ol class="breadcrumb">
-          <li><a href="index.html">Inicio</a></li>
-          <li aria-current="page">Tienda</li>
-        </ol>
-      </nav>
-      <h1 id="hero-title" class="hero__title">Tienda</h1>
-      <p class="hero__lead">Equipos y repuestos para notebooks, PC, consolas y joysticks.</p>
-    </div>
-  </section>
-
-  <!-- ============ GRILLA DE PRODUCTOS ============ -->
-  <section class="section" aria-labelledby="shop-title">
-    <div class="container">
-      <div class="section__head">
-        <span class="section__eyebrow">Equipos y repuestos</span>
-        <h2 id="shop-title" class="section__title">Lo que tenemos disponible</h2>
-        <p class="section__desc">Precios de referencia "desde". Confirmamos stock y valor final por WhatsApp antes de la compra.</p>
+      <div class="shop-head">
+        <div>
+          <p class="gh-eyebrow">Equipos y repuestos</p>
+          <h1 class="shop-title" id="shop-title">Tienda</h1>
+          <p class="shop-sub">Equipos y repuestos para notebooks, PC, consolas y joysticks.</p>
+        </div>
+        <div class="shop-note">
+          <i data-lucide="info"></i>
+          <span>Precios de referencia. Tocá una card y te confirmamos stock y valor por WhatsApp.</span>
+        </div>
       </div>
 
-      <fieldset class="filter-bar">
-        <legend class="sr-only">Filtrar productos por categoría</legend>
-        <input type="radio" name="shop-filter" id="shop-todas" class="filter-bar__input sr-only" checked>
-        <label class="filter-bar__label" for="shop-todas">Todas</label>
-        <input type="radio" name="shop-filter" id="shop-notebooks" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="shop-notebooks">Notebooks</label>
-        <input type="radio" name="shop-filter" id="shop-pc" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="shop-pc">PC</label>
-        <input type="radio" name="shop-filter" id="shop-consolas" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="shop-consolas">Consolas</label>
-        <input type="radio" name="shop-filter" id="shop-joysticks" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="shop-joysticks">Joysticks</label>
-        <input type="radio" name="shop-filter" id="shop-repuestos" class="filter-bar__input sr-only">
-        <label class="filter-bar__label" for="shop-repuestos">Repuestos</label>
+      <div class="shop-filters">
+        <div class="shop-pills" id="shop-pills"></div>
+        <button class="shop-toggle" id="shop-toggle" role="switch" aria-checked="false">
+          <span class="shop-switch"></span>Solo con stock
+        </button>
+      </div>
 
-        <div class="shop__grid">
-
-          <article class="product product--notebooks">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-laptop"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">Notebooks</h3>
-                <span class="chip chip--ok">En stock</span>
-              </div>
-              <p class="product__desc">Ultrabooks y notebooks gamer, nuevas y reacondicionadas con garantía.</p>
-              <p class="product__price">Desde $450.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--secondary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20consultar%20por%20notebooks">Consultar precio</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product product--pc">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-desktop"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">PC armadas</h3>
-                <span class="chip chip--ok">En stock</span>
-              </div>
-              <p class="product__desc">Equipos a medida para trabajo, diseño o gaming, con armado incluido.</p>
-              <p class="product__price">Desde $600.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--secondary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20armar%20una%20PC">Consultar precio</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product product--consolas">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-console"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">Consolas</h3>
-                <span class="chip chip--warn">Poco stock</span>
-              </div>
-              <p class="product__desc">PlayStation, Xbox y Nintendo, nuevas y de segunda mano revisadas.</p>
-              <p class="product__price">Desde $380.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--secondary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20consultar%20por%20consolas">Consultar precio</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product product--joysticks">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">Joysticks y mandos</h3>
-                <span class="chip chip--ok">En stock</span>
-              </div>
-              <p class="product__desc">Mandos originales y compatibles para PC y consolas.</p>
-              <p class="product__price">Desde $35.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--secondary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20consultar%20por%20joysticks">Consultar precio</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product product--repuestos">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-battery"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">Baterías</h3>
-                <span class="chip chip--ok">En stock</span>
-              </div>
-              <p class="product__desc">Baterías de reemplazo para notebook, de las principales marcas.</p>
-              <p class="product__price">Desde $18.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--secondary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20consultar%20por%20bater%C3%ADas">Consultar precio</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product product--repuestos">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-desktop"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">Pantallas</h3>
-                <span class="chip chip--warn">Poco stock</span>
-              </div>
-              <p class="product__desc">Reemplazo de pantallas para notebook y celular, colocación incluida.</p>
-              <p class="product__price">Desde $45.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--secondary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20consultar%20por%20pantallas">Consultar precio</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product product--repuestos">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-plug"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">Fuentes y cargadores</h3>
-                <span class="chip chip--ok">En stock</span>
-              </div>
-              <p class="product__desc">Fuentes de PC y cargadores universales para notebook.</p>
-              <p class="product__price">Desde $12.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--secondary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20consultar%20por%20fuentes%20y%20cargadores">Consultar precio</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="product product--repuestos product--sin-stock">
-            <div class="product__media"><svg class="icon" aria-hidden="true"><use href="#icon-memory"></use></svg></div>
-            <div class="product__body">
-              <div class="product__top">
-                <h3 class="product__title">Memorias y SSD</h3>
-                <span class="chip chip--danger">Sin stock</span>
-              </div>
-              <p class="product__desc">Ampliá la RAM o sumá un SSD para acelerar tu equipo.</p>
-              <p class="product__price">Desde $22.000 <span>ARS</span></p>
-              <div class="product__actions">
-                <a class="btn btn--primary btn--sm" href="https://wa.me/549232323232?text=Hola%2C%20quiero%20que%20me%20avisen%20cuando%20haya%20memorias%20y%20SSD">Avísenme cuando haya</a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </fieldset>
-
-      <p class="contact-note">
-        <svg class="icon" aria-hidden="true"><use href="#icon-info"></use></svg>
-        <span>Los precios son de referencia. Confirmamos stock y valor final por WhatsApp antes de cerrar la compra.</span>
-      </p>
+      <div class="shop-grid" id="shop-grid"></div>
     </div>
   </section>
 
@@ -249,8 +104,8 @@
     <div class="footer__grid">
       <div>
         <a class="footer__brand" href="index.html">
-          <img class="footer__logo" src="img/fondo.png" alt="" width="32" height="32">
-          TickyService
+          <img class="footer__logo" src="img/logo/fondo.png" alt="" width="32" height="32">
+          <img class="footer__wordmark" src="img/logo/logo3-trimmed.png" alt="TickyService" width="1250" height="268">
         </a>
         <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó.</p>
         <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
@@ -259,19 +114,19 @@
         <h3 class="footer__heading">Secciones</h3>
         <ul class="footer__list">
           <li><a href="guias.html">Guías</a></li>
-          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="tienda.html">Tienda</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="#">Nosotros</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
         </ul>
       </div>
       <div>
         <h3 class="footer__heading">Servicio técnico</h3>
         <ul class="footer__list">
-          <li><a href="index.html#servicios">Notebook</a></li>
-          <li><a href="index.html#servicios">PC</a></li>
-          <li><a href="index.html#servicios">Joystick</a></li>
-          <li><a href="index.html#servicios">Consola</a></li>
+          <li><a href="servicios.html?eq=notebook">Notebook</a></li>
+          <li><a href="servicios.html?eq=pc">PC</a></li>
+          <li><a href="servicios.html?eq=joystick">Joystick</a></li>
+          <li><a href="servicios.html?eq=consola">Consola</a></li>
         </ul>
       </div>
       <div>
@@ -286,7 +141,6 @@
     </div>
     <div class="footer__legal">
       <span>© 2025 TickyService. Todos los derechos reservados.</span>
-      <span>Hecho con dedicación en Mar de Ajó.</span>
     </div>
   </div>
 </footer>
@@ -297,6 +151,9 @@
   <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
 </a>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="js/tienda.js"></script>
 
 </body>
 </html>

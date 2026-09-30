@@ -11,47 +11,18 @@
 
 const PREVIEW = window.GUIAS_PREVIEW === true;
 
-// Orden fijo de categorías (define también el orden en "Todas")
-const CATEGORIAS = [
-  { id: 'notebook', nombre: 'Notebook', icono: 'laptop' },
-  { id: 'pc',       nombre: 'PC',       icono: 'cpu' },
-  { id: 'joystick', nombre: 'Joystick', icono: 'gamepad-2' },
-  { id: 'consola',  nombre: 'Consola',  icono: 'gamepad' },
-];
-
-const NIVELES = [
-  { id: 0, nombre: 'Todas' },
-  { id: 1, nombre: 'Podés hacerlo vos' },
-  { id: 2, nombre: 'Requiere herramientas' },
-  { id: 3, nombre: 'Es trabajo de taller' },
-];
-
-// Mismas 15 guías que antes vivían como HTML estático en guias.html
-const GUIAS = [
-  { titulo: 'Notebook que no enciende: primeros pasos', categoria: 'notebook', tipo: 'Guía', duracion: '5 min de lectura', nivel: 1, destacada: true, url: '#' },
-  { titulo: 'Backup antes de llevar el equipo al taller', categoria: 'notebook', tipo: 'Checklist', duracion: '3 min de lectura', nivel: 1, destacada: false, url: '#' },
-  { titulo: 'Batería de notebook que no carga: qué revisar', categoria: 'notebook', tipo: 'Guía', duracion: '4 min de lectura', nivel: 1, destacada: true, url: '#' },
-
-  { titulo: 'PC lenta: 6 cosas para probar antes de traerla', categoria: 'pc', tipo: 'Checklist', duracion: '4 min de lectura', nivel: 1, destacada: true, url: '#' },
-  { titulo: 'PC no bootea: pantalla negra al encender', categoria: 'pc', tipo: 'Guía', duracion: '6 min de lectura', nivel: 3, destacada: false, url: '#' },
-  { titulo: 'Cómo limpiar el polvo por dentro de tu PC', categoria: 'pc', tipo: 'Video', duracion: '7 min de video', nivel: 2, destacada: false, url: '#' },
-  { titulo: 'Cuándo conviene sumar un SSD en vez de comprar una PC nueva', categoria: 'pc', tipo: 'Guía', duracion: '5 min de lectura', nivel: 1, destacada: true, url: '#' },
-  { titulo: 'Sin wifi o internet: diagnóstico rápido', categoria: 'pc', tipo: 'Checklist', duracion: '3 min de lectura', nivel: 1, destacada: false, url: '#' },
-
-  { titulo: 'Joystick con drift: cómo detectarlo y calibrarlo', categoria: 'joystick', tipo: 'Video', duracion: '6 min de video', nivel: 1, destacada: true, url: '#' },
-  { titulo: 'Mi joystick no conecta por bluetooth', categoria: 'joystick', tipo: 'Guía', duracion: '4 min de lectura', nivel: 1, destacada: true, url: '#' },
-  { titulo: 'Limpieza de gatillos y botones pegados', categoria: 'joystick', tipo: 'Checklist', duracion: '3 min de lectura', nivel: 2, destacada: false, url: '#' },
-
-  { titulo: 'La consola no lee discos: guía de limpieza', categoria: 'consola', tipo: 'Guía', duracion: '5 min de lectura', nivel: 2, destacada: true, url: '#' },
-  { titulo: 'Consola que se apaga sola jugando', categoria: 'consola', tipo: 'Guía', duracion: '5 min de lectura', nivel: 3, destacada: false, url: '#' },
-  { titulo: 'Cómo vincular un joystick nuevo a tu consola', categoria: 'consola', tipo: 'Video', duracion: '3 min de video', nivel: 1, destacada: true, url: '#' },
-  { titulo: 'Actualizar el sistema de tu consola paso a paso', categoria: 'consola', tipo: 'Checklist', duracion: '4 min de lectura', nivel: 1, destacada: false, url: '#' },
-];
+// Categorías, niveles y guías vienen de guias-data.js
+const { CATEGORIAS, NIVELES, GUIAS } = window.TICKY_GUIAS;
 
 const POR_CATEGORIA = PREVIEW ? 2 : Infinity;
 const URL_GUIAS = 'guias.html';
 
-const state = { categoria: 'todas', nivel: 0 };
+// guias.html?cat=pc abre directo en esa categoría (lo usa el breadcrumb del detalle)
+const catURL = new URLSearchParams(location.search).get('cat');
+const state = {
+  categoria: CATEGORIAS.some(c => c.id === catURL) ? catURL : 'todas',
+  nivel: 0,
+};
 
 const $tabs  = document.getElementById('guias-tabs');
 const $pills = document.getElementById('guias-pills');
@@ -131,7 +102,7 @@ function renderGrid() {
     const cat = CATEGORIAS.find(c => c.id === g.categoria);
     const nivel = NIVELES.find(n => n.id === g.nivel);
     return `
-      <a class="guia-card" href="${g.url}">
+      <a class="guia-card" href="guia.html?g=${g.slug}">
         <div>
           <p class="guia-meta">
             ${mostrarBadge ? `<span class="guia-badge"><i data-lucide="${cat.icono}"></i>${cat.nombre}</span>` : ''}

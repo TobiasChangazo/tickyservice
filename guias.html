@@ -6,18 +6,18 @@
 <title>Guías y videos — TickyService</title>
 <meta name="description" content="Biblioteca de guías, videos y checklists para diagnosticar y resolver problemas de notebooks, PC, consolas y joysticks antes de llevarlos al taller.">
 <meta name="theme-color" content="#5A3AD1">
-<link rel="icon" type="image/png" href="img/fondo.png">
+<link rel="icon" type="image/png" href="img/logo/fondo.png">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Guías y videos — TickyService">
 <meta property="og:description" content="Guías, videos y checklists para resolver problemas de notebooks, PC, consolas y joysticks antes de llevarlos al taller.">
-<meta property="og:image" content="img/fondo.png">
+<meta property="og:image" content="img/logo/fondo.png">
 <meta property="og:locale" content="es_AR">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="guias.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/guias.css">
 
 <script type="application/ld+json">
 {
@@ -25,7 +25,7 @@
   "@type": "ComputerRepairService",
   "name": "TickyService",
   "description": "Servicio técnico, repuestos y tienda de tecnología: notebooks, PC, consolas y joysticks.",
-  "image": "img/fondo.png",
+  "image": "img/logo/fondo.png",
   "telephone": "+549232323232",
   "address": {
     "@type": "PostalAddress",
@@ -69,10 +69,10 @@
       <ul class="nav__list">
         <li><a class="nav__link" href="index.html">Inicio</a></li>
         <li><a class="nav__link" href="guias.html" aria-current="page">Guías</a></li>
-        <li><a class="nav__link" href="index.html#servicios">Servicios</a></li>
+        <li><a class="nav__link" href="servicios.html">Servicios</a></li>
         <li><a class="nav__link" href="tienda.html">Tienda</a></li>
         <li><a class="nav__link" href="contacto.html">Contacto</a></li>
-        <li><a class="nav__link" href="#">Nosotros</a></li>
+        <li><a class="nav__link" href="nosotros.html">Nosotros</a></li>
       </ul>
     </nav>
   </div>
@@ -113,17 +113,17 @@
         </div>
 
         <div class="gh-featured">
-          <a class="gh-featured__media" href="guia-pasta-termica.html">
+          <a class="gh-featured__media" href="guia.html?g=pasta-termica">
             <span class="gh-featured__badge">Video destacado</span>
             <span class="gh-featured__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
             <span class="gh-featured__note">[ Reemplazar por el thumbnail real del video ]</span>
           </a>
           <div class="gh-featured__body">
             <p class="gh-meta">Video · 8 min · PC y notebook</p>
-            <h3 class="gh-featured__title"><a href="guia-pasta-termica.html">Cómo limpiar la pasta térmica sin arruinar nada</a></h3>
+            <h3 class="gh-featured__title"><a href="guia.html?g=pasta-termica">Cómo limpiar la pasta térmica sin arruinar nada</a></h3>
             <p class="gh-featured__desc">El 70% de los equipos que entran por "se apaga solo" son temperatura. Te mostramos cuánta pasta va, con qué se limpia y en qué momento conviene frenar y traerlo.</p>
             <p class="gh-level"><span class="level-bar level-bar--warn" aria-hidden="true"><span></span><span></span><span></span></span>Requiere herramientas — destornillador, alcohol isopropílico, pasta</p>
-            <a class="gh-link-arrow" href="guia-pasta-termica.html">Ver el video paso a paso →</a>
+            <a class="gh-link-arrow" href="guia.html?g=pasta-termica">Ver el video paso a paso →</a>
           </div>
         </div>
 
@@ -153,8 +153,8 @@
     <div class="footer__grid">
       <div>
         <a class="footer__brand" href="index.html">
-          <img class="footer__logo" src="img/fondo.png" alt="" width="32" height="32">
-          TickyService
+          <img class="footer__logo" src="img/logo/fondo.png" alt="" width="32" height="32">
+          <img class="footer__wordmark" src="img/logo/logo3-trimmed.png" alt="TickyService" width="1250" height="268">
         </a>
         <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó.</p>
         <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
@@ -163,19 +163,19 @@
         <h3 class="footer__heading">Secciones</h3>
         <ul class="footer__list">
           <li><a href="guias.html">Guías</a></li>
-          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="tienda.html">Tienda</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="#">Nosotros</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
         </ul>
       </div>
       <div>
         <h3 class="footer__heading">Servicio técnico</h3>
         <ul class="footer__list">
-          <li><a href="index.html#servicios">Notebook</a></li>
-          <li><a href="index.html#servicios">PC</a></li>
-          <li><a href="index.html#servicios">Joystick</a></li>
-          <li><a href="index.html#servicios">Consola</a></li>
+          <li><a href="servicios.html?eq=notebook">Notebook</a></li>
+          <li><a href="servicios.html?eq=pc">PC</a></li>
+          <li><a href="servicios.html?eq=joystick">Joystick</a></li>
+          <li><a href="servicios.html?eq=consola">Consola</a></li>
         </ul>
       </div>
       <div>
@@ -189,8 +189,7 @@
       </div>
     </div>
     <div class="footer__legal">
-      <span>© 2025 TickyService. Todos los derechos reservados.</span>
-      <span>Hecho con dedicación en Mar de Ajó.</span>
+      <span>© 2026 TickyService. Todos los derechos reservados.</span>
     </div>
   </div>
 </footer>
@@ -203,7 +202,8 @@
 </a>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="guias.js"></script>
+<script src="js/guias-data.js"></script>
+<script src="js/guias.js"></script>
 
 </body>
 </html>
