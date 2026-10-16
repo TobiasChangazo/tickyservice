@@ -4,28 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>TickyService — Resolvelo vos o te ayudamos a resolverlo</title>
-<meta name="description" content="Guías, videos y diagnóstico guiado para notebooks, PC, consolas y joysticks. Si no se resuelve solo, TickyService te ayuda con servicio técnico en Mar de Ajó.">
-<meta name="theme-color" content="#5A3AD1">
-<link rel="icon" type="image/png" href="img/logo/fondo.png">
+<meta name="description" content="Guías, videos y diagnóstico guiado para notebooks, PC, consolas y joysticks. Si no se resuelve solo, TickyService te ayuda con servicio técnico en Mar de Ajó, Partido de la Costa.">
+<!-- hex justificado: <meta> no lee variables CSS (= --brand-700 en tokens.css) -->
+<meta name="theme-color" content="#470C78">
+<link rel="icon" type="image/png" href="img/marca/favicon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="TickyService — Resolvelo vos o te ayudamos a resolverlo">
-<meta property="og:description" content="Guías, videos y diagnóstico guiado antes de traer el equipo. Servicio técnico, repuestos y tienda en Mar de Ajó.">
-<meta property="og:image" content="img/logo/fondo.png">
+<meta property="og:description" content="Guías, videos y diagnóstico guiado antes de traer el equipo. Servicio técnico, repuestos y tienda en Mar de Ajó, Partido de la Costa.">
+<meta property="og:image" content="img/marca/logo-zorro.png">
 <meta property="og:locale" content="es_AR">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TickyService — Resolvelo vos o te ayudamos a resolverlo">
-<meta name="twitter:description" content="Guías, videos y diagnóstico guiado antes de traer el equipo a Mar de Ajó.">
-<meta name="twitter:image" content="img/logo/fondo.png">
+<meta name="twitter:description" content="Guías, videos y diagnóstico guiado antes de traer el equipo a Mar de Ajó, Partido de la Costa.">
+<meta name="twitter:image" content="img/marca/logo-zorro.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/guias.css">
-<link rel="stylesheet" href="css/diagnostico.css">
-<link rel="stylesheet" href="css/servicios.css">
 <link rel="stylesheet" href="css/faq.css">
+<link rel="stylesheet" href="css/home.css">
 
 <script type="application/ld+json">
 {
@@ -33,11 +34,11 @@
   "@type": "ComputerRepairService",
   "name": "TickyService",
   "description": "Servicio técnico, repuestos y tienda de tecnología: notebooks, PC, consolas y joysticks.",
-  "image": "img/logo/fondo.png",
-  "telephone": "+549232323232",
+  "image": "img/marca/logo-zorro.png",
+  "telephone": "+5492233024504",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Mar de Ajó",
+    "addressLocality": "Mar de Ajó, Partido de la Costa",
     "addressRegion": "Buenos Aires",
     "addressCountry": "AR"
   },
@@ -71,251 +72,223 @@
 
 <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
-<!-- ============ SPRITE DE ICONOS SVG ============ -->
-<svg class="icon-sprite" aria-hidden="true">
-  <defs>
-    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
-    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
-    <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"/></symbol>
-    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
-    <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></symbol>
-    <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5v14l11-7z"/></symbol>
-    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></symbol>
-    <symbol id="icon-fan" viewBox="0 0 24 24"><path d="M12 12c-3-1-3-6 0-9 3 3 3 8 0 9z"/><path d="M12 12c-3-1-3-6 0-9 3 3 3 8 0 9z" transform="rotate(120 12 12)"/><path d="M12 12c-3-1-3-6 0-9 3 3 3 8 0 9z" transform="rotate(240 12 12)"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
-  </defs>
-</svg>
-
-<!-- ============ HEADER ============ -->
-<header class="site-header">
-  <div class="container header-bar">
-    <a class="brand" href="index.html">
-      <img class="brand__logo" src="img/logo/logo1-trimmed.png" alt="TickyService" width="631" height="140">
-    </a>
-
-    <input type="checkbox" id="nav-toggle" class="sr-only nav-toggle-input">
-    <label for="nav-toggle" class="nav-toggle">
-      <svg class="icon nav-toggle__open" aria-hidden="true"><use href="#icon-menu"></use></svg>
-      <svg class="icon nav-toggle__close" aria-hidden="true"><use href="#icon-close"></use></svg>
-      <span class="sr-only">Abrir menú de navegación</span>
-    </label>
-
-    <nav class="nav" aria-label="Navegación principal">
-      <ul class="nav__list">
-        <li><a class="nav__link" href="index.html" aria-current="page">Inicio</a></li>
-        <li><a class="nav__link" href="guias.html">Guías</a></li>
-        <li><a class="nav__link" href="servicios.html">Servicios</a></li>
-        <li><a class="nav__link" href="tienda.html">Tienda</a></li>
-        <li><a class="nav__link" href="contacto.html">Contacto</a></li>
-        <li><a class="nav__link" href="nosotros.html">Nosotros</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+<div id="site-header"></div>
+<script src="js/config.js"></script>
+<script src="js/guias-data.js"></script>
+<script src="js/layout.js"></script>
 
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero hero--slogan brand-surface" aria-labelledby="hero-title">
-    <div class="grid-bg" aria-hidden="true"></div>
+  <section class="home-hero h-grid-dark h-dark" id="inicio" aria-labelledby="hero-title">
+    <!-- Zorro decorativo: solo desde 768px y sin tocar el texto (css/home.css) -->
     <div class="hero__fox" aria-hidden="true"></div>
-    <div class="container">
-      <h1 id="hero-title" class="hero__headline">
-        <span class="hero__headline-line1">TU <span class="hero__accent">HARDWARE</span></span>
-        <span class="hero__headline-line2">EN MANOS DE CONFIANZA</span>
-        <span class="hero__headline-sub"><span class="hero__accent">RENDIMIENTO</span> AL MÁXIMO</span>
-      </h1>
-      <h2 class="hero__subhead">"Nuestras primeras computadoras nacieron no por codicia o ego, sino por el espíritu revolucionario de ayudar a la gente común a superar a las instituciones más poderosas".</h2> 
+    <div class="h-wrap home-hero__inner">
+      <p class="h-label">Servicio técnico · Mar de Ajó</p>
+      <h1 id="hero-title" class="home-hero__title">Tu hardware en manos de <span>confianza.</span></h1>
+      <p class="home-hero__lead">Antes de traerlo, probá resolverlo con nuestras guías paso a paso. Si no sale, lo reparamos con presupuesto sin cargo.</p>
 
-      <!-- Badges del hero: un <li class="hero__badge"> por ítem, editar acá -->
-      <ul class="hero__badges">
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"></use></svg>Reparación</li>
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-fan"></use></svg>Mantenimiento</li>
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>Repuestos con garantía</li>
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>Capacitación</li>
-      </ul>
-
-      <div class="hero__actions">
-        <a class="btn hero-btn hero-btn--primary" href="contacto.html">
-          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-          Contactanos
+      <div class="home-hero__ctas">
+        <a class="home-hero__cta" href="#sintomas">
+          <i data-lucide="search"></i>
+          <span>¿Qué le pasa a tu equipo?</span>
+          <i data-lucide="arrow-down"></i>
         </a>
-        <a class="btn hero-btn hero-btn--ghost" href="guias.html">
-          Ver guías
-          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+        <a class="home-hero__wa" href="contacto.html" data-wa="Hola! Quiero pedir un presupuesto.">
+          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+          Pedir presupuesto
         </a>
       </div>
+
+      <ul class="home-hero__trust">
+        <li><i data-lucide="search-check"></i>Diagnóstico sin cargo</li>
+        <li><i data-lucide="clock"></i>Entrega en 24 a 48 hs</li>
+        <li><i data-lucide="shield-check"></i>30 días de garantía</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ============ CENTRO DE AYUDA ============ -->
-  <section class="section" id="centro-de-ayuda" aria-labelledby="help-title">
-    <div class="container">
-      <div class="section__head">
-        <span class="section__eyebrow">Empezá acá</span>
-        <h2 id="help-title" class="section__title">Antes de traerlo, probá resolverlo</h2>
-        <p class="section__desc">Filtrá por tipo de equipo y mirá nuestras guías destacadas. Cada una te dice qué podés hacer vos, qué necesita herramientas y qué es directamente trabajo de taller.</p>
+  <!-- ============ 01 — SÍNTOMAS ============ -->
+  <section class="h-section h-grid-lilac" id="sintomas" aria-labelledby="sintomas-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">01 — Empezá acá</p>
+        <h2 class="h-title" id="sintomas-title">¿Qué le pasa a tu equipo?</h2>
+        <p class="h-text">Elegí el síntoma y te llevamos a los pasos para probar en casa.</p>
       </div>
 
-      <div class="guias-section" id="guias-section">
-
-        <p class="filter-label">Equipo</p>
-        <div class="filter-tabs" id="guias-tabs"></div>
-
-        <p class="filter-label">Dificultad</p>
-        <div class="filter-row">
-          <div class="filter-pills" id="guias-pills"></div>
-          <a class="btn-all" id="guias-all" href="guias.html">
-            <span>Ver las guías</span>
-            <i data-lucide="arrow-right"></i>
+      <ul class="sintomas">
+        <li>
+          <a class="sintoma" href="guia.html?g=notebook-no-enciende">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="power"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">No enciende</span>
+              <span class="sintoma__equipos">Notebook · PC · Consola</span>
+            </span>
           </a>
-        </div>
+        </li>
+        <li>
+          <a class="sintoma" href="guia.html?g=pasta-termica">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="flame"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">Se calienta</span>
+              <span class="sintoma__equipos">Notebook · PC · Consola</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="sintoma" href="guia.html?g=consola-se-apaga">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="refresh-cw"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">Se apaga solo</span>
+              <span class="sintoma__equipos">Notebook · PC · Consola</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="sintoma" href="guia.html?g=joystick-drift">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="gamepad-2"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">Drift en el joystick</span>
+              <span class="sintoma__equipos">Joystick</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <a class="sintomas__otro" href="servicios.html#diagnostico">
+        Otro problema · Ver todos los síntomas
+        <i data-lucide="arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 02 — GUÍAS ============ -->
+  <section class="h-section home-guias" id="guias" aria-labelledby="guias-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">02 — Probá resolverlo</p>
+        <h2 class="h-title" id="guias-title">Guías paso a paso</h2>
+        <p class="h-text">Cada guía te dice si lo podés hacer vos, si necesitás herramientas o si ya es trabajo de taller.</p>
+      </div>
+
+      <!-- Filtro por equipo, tarjetas y botón: los arma js/guias.js (modo preview) -->
+      <div class="guias-section" id="guias-section">
+        <div class="filter-tabs" id="guias-tabs" role="group" aria-label="Filtrar por equipo"></div>
+
+        <!-- En el home la dificultad es una leyenda (no filtra); el filtro sigue en guias.html -->
+        <ul class="guias-leyenda" aria-label="Niveles de dificultad">
+          <li data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</li>
+          <li data-level="2"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Con herramientas</li>
+          <li data-level="3"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Taller</li>
+        </ul>
 
         <div class="guias-grid" id="guias-grid"></div>
 
-      </div>
-
-      <!-- ===== Diagnóstico guiado ===== -->
-      <div class="section__head section__head--sub" id="diagnostico">
-        <span class="section__eyebrow">Diagnóstico</span>
-        <h3 class="section__subtitle">Diagnóstico guiado por síntoma</h3>
-        <p class="section__desc">Elegí lo que le pasa a tu equipo y probá estos pasos antes de escribirnos.</p>
-      </div>
-
-      <div class="diag-panel">
-        <div class="diag-list">
-          <p class="diag-list-label">Síntomas</p>
-          <div id="diag-items" role="tablist" aria-label="Síntomas"></div>
-        </div>
-        <div class="diag-detail" id="diag-detail" role="tabpanel" aria-live="polite"></div>
+        <a class="btn-all" id="guias-all" href="guias.html">
+          <span>Ver las guías</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ============ SERVICIOS (MATRIZ COMPACTA) ============ -->
-  <section class="section section--alt" id="servicios" aria-labelledby="servicios-title">
-    <div class="grid-bg" aria-hidden="true"></div>
-    <div class="container">
-      <div class="serv-head">
-        <div class="section__head">
-          <span class="section__eyebrow">Servicio técnico</span>
-          <h2 id="servicios-title" class="section__title">Un vistazo rápido por categoría</h2>
-          <p class="section__desc">Elegí el equipo y mirá qué hacemos en mantenimiento, reparación y software.</p>
-        </div>
-        <div class="serv-seg" id="serv-seg" role="tablist" aria-label="Equipo"></div>
+  <!-- ============ 03 — ¿NO SE SOLUCIONÓ? ============ -->
+  <section class="h-section h-grid-dark h-dark home-repara" id="reparacion" aria-labelledby="reparacion-title">
+    <div class="h-wrap home-repara__inner">
+      <div class="h-head">
+        <p class="h-label">03 — ¿No se solucionó?</p>
+        <h2 class="h-title" id="reparacion-title">Lo reparamos nosotros</h2>
+        <p class="h-text">Si la guía no alcanza, seguís con nosotros sin empezar de cero.</p>
       </div>
 
-      <div class="serv-panel" id="serv-panel" role="tabpanel"></div>
+      <ol class="pasos">
+        <li class="paso">
+          <span class="paso__num mono" aria-hidden="true">1</span>
+          <div class="paso__body">
+            <h3 class="paso__title">Escribinos por WhatsApp</h3>
+            <p class="paso__text">Contanos qué guía probaste y qué pasó.</p>
+          </div>
+        </li>
+        <li class="paso">
+          <span class="paso__num mono" aria-hidden="true">2</span>
+          <div class="paso__body">
+            <h3 class="paso__title">Presupuesto sin cargo</h3>
+            <p class="paso__text">Te decimos cuánto sale antes de tocar nada.</p>
+          </div>
+        </li>
+        <li class="paso">
+          <span class="paso__num mono" aria-hidden="true">3</span>
+          <div class="paso__body">
+            <h3 class="paso__title">Turno y entrega en 24 a 48 hs</h3>
+            <p class="paso__text">Con 30 días de garantía en mano de obra y repuestos.</p>
+          </div>
+        </li>
+      </ol>
 
-      <div class="serv-trust">
-        <div class="trust-item">
-          <div class="trust-icon"><i data-lucide="search"></i></div>
-          <div><p class="trust-title">Diagnóstico sin cargo</p><p class="trust-desc">Te pasamos presupuesto antes de tocar nada</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon"><i data-lucide="zap"></i></div>
-          <div><p class="trust-title">Entrega en 24 a 48 hs</p><p class="trust-desc">La mayoría sale el mismo día</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon"><i data-lucide="shield-check"></i></div>
-          <div><p class="trust-title">30 días de garantía</p><p class="trust-desc">En mano de obra y repuestos</p></div>
-        </div>
-      </div>
+      <a class="home-repara__wa" href="contacto.html" data-wa="Hola! Probé las guías de la web y no se solucionó. ¿Me pasan presupuesto y un turno?">
+        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+        Pedir presupuesto y turno
+      </a>
     </div>
   </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="section" aria-labelledby="faq-title">
-    <div class="container">
-      <div class="faq-section" id="faq">
-        <aside class="faq-aside">
-          <div class="section__head">
-            <span class="section__eyebrow">Preguntas frecuentes</span>
-            <h2 id="faq-title" class="section__title">Lo que más nos preguntan</h2>
-            <p class="section__desc">Si tu duda no está acá, escribinos y te respondemos.</p>
-          </div>
-
-          <div class="faq-cta">
-            <div class="faq-cta-icon"><i data-lucide="message-circle-question"></i></div>
-            <p class="faq-cta-title">¿Lo probaste y sigue igual?</p>
-            <p class="faq-cta-text">No le sigas metiendo mano, puede empeorar. Contanos qué probaste y seguimos nosotros.</p>
-            <a class="faq-cta-wa" id="faq-wa" href="#" target="_blank" rel="noopener">
-              <span>Escribinos por WhatsApp</span>
-            </a>
-            <a class="faq-cta-link" href="contacto.html">
-              Ir a contacto <i data-lucide="arrow-right"></i>
-            </a>
-          </div>
-        </aside>
-
-        <div class="faq-list" id="faq-list"></div>
+  <!-- ============ 04 — SERVICIOS ============ -->
+  <section class="h-section home-serv" id="servicios" aria-labelledby="servicios-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">04 — Qué reparamos</p>
+        <h2 class="h-title" id="servicios-title">Servicio técnico por equipo</h2>
       </div>
+
+      <!-- Filas generadas por js/servicios.js con los datos reales de cada equipo.
+           El panel completo con pestañas está en servicios.html. -->
+      <ul class="serv-resumen" id="serv-resumen"></ul>
+
+      <a class="h-link home-serv__all" href="servicios.html">
+        Ver todos los servicios
+        <i data-lucide="arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 05 — FAQ ============ -->
+  <section class="h-section home-faq" id="faq" aria-labelledby="faq-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">05 — Preguntas frecuentes</p>
+        <h2 class="h-title" id="faq-title">Lo que más nos preguntan</h2>
+      </div>
+
+      <!-- Preguntas y respuestas de js/faq.js: se ven las primeras 4 y el botón despliega el resto -->
+      <div class="faq-list" id="faq-list" data-limite="4"></div>
+
+      <button type="button" class="h-link faq-mas" id="faq-mas" aria-controls="faq-list">
+        Ver todas las preguntas
+        <i data-lucide="chevron-down"></i>
+      </button>
     </div>
   </section>
 
 </main>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer brand-surface">
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="footer__grid">
-      <div>
-        <a class="footer__brand" href="index.html">
-          <img class="footer__logo" src="img/logo/fondo.png" alt="" width="32" height="32">
-          <img class="footer__wordmark" src="img/logo/logo3-trimmed.png" alt="TickyService" width="1250" height="268">
-        </a>
-        <p class="footer__desc">Servicio técnico especializado en Partido de la costa.</p>
-        <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
-      </div>
-      <div>
-        <h3 class="footer__heading">Secciones</h3>
-        <ul class="footer__list">
-          <li><a href="guias.html">Guías</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="tienda.html">Tienda</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Servicio técnico</h3>
-        <ul class="footer__list">
-          <li><a href="servicios.html?eq=notebook">Notebook</a></li>
-          <li><a href="servicios.html?eq=pc">PC</a></li>
-          <li><a href="servicios.html?eq=joystick">Joystick</a></li>
-          <li><a href="servicios.html?eq=consola">Consola</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Contacto</h3>
-        <ul class="footer__list">
-          <li><a href="https://wa.me/549232323232">WhatsApp</a></li>
-          <li><a href="https://instagram.com/tickyservice">Instagram</a></li>
-          <li><a href="mailto:contacto@tickyservice.com.ar">contacto@tickyservice.com.ar</a></li>
-          <li>Mar de Ajó, Buenos Aires</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__legal">
-      <span>© 2026 TickyService. Todos los derechos reservados.</span>
-    </div>
-  </div>
-</footer>
-
-<!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
-<a class="float-wa" href="https://wa.me/549232323232">
-  <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-  <span class="sr-only">Escribinos por WhatsApp</span>
-  <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
-</a>
+<div id="site-footer"></div>
 
 <script>window.GUIAS_PREVIEW = true;</script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="js/guias-data.js"></script>
+<script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
 <script src="js/guias.js"></script>
-<script src="js/diagnostico.js"></script>
 <script src="js/servicios.js"></script>
 <script src="js/faq.js"></script>
 

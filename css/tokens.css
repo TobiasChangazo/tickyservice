@@ -1,0 +1,179 @@
+/* =========================================================
+   TickyService — Tokens de diseño
+   ÚNICA fuente de colores del sitio. Se linkea antes que
+   styles.css en todas las páginas. Ningún otro CSS define
+   hex sueltos: todo sale de acá.
+
+   Paleta oficial (Figma):
+     violeta oscuro  #470C78  → --brand-700  (fondos de marca, títulos)
+     violeta medio   #7A509E  → --brand-500  (decorativo, zorro)
+     lila            #D5B9EA  → --lilac-300  (superficies claras)
+     verde agua      #0FB89B  → --accent-500 (acento / llamados a la acción)
+   El resto de cada escala se deriva mezclando esos valores con
+   blanco o negro.
+
+   Contraste WCAG AA verificado (texto normal ≥ 4.5:1, íconos ≥ 3:1):
+     --ink-900 / --ink-600 / --ink-400 sobre blanco, --lilac-050 y --lilac-100
+     --brand-700 sobre blanco 13.2 · sobre --lilac-200 9.8
+     --brand-600 sobre blanco 10.1 · blanco sobre --brand-600 10.1
+     --brand-500 sobre blanco 6.0
+     --accent-500 sobre --brand-700 5.3 · --brand-900 6.8 · --ink-900 7.1
+     --accent-500 sobre blanco 2.5 → NO usar como texto sobre claro:
+       ahí va --accent-text (5.7 sobre --accent-bg) o --accent-icon (3.8)
+     --on-accent sobre --accent-500 5.8 (blanco no pasa: 2.5)
+     --accent-ink sobre blanco 5.9 · sobre --accent-bg 5.3
+     --ink-500 sobre blanco 9.0 · sobre --lilac-100 7.7
+
+   Rediseño del home (docs/rediseno-home-mobile.md): los colores de la
+   spec que difieren ±2 de un token existente lo reutilizan:
+     #2A0748 → --brand-900 · #1C1330 → --ink-900 · #FBF8FE → --lilac-050
+     #F3EAFB y #F0E8F8 → --lilac-100 · #F7F1FC → --lilac-025
+     #E6D9F3 → --lilac-200 · #E3F6F1 → --accent-bg
+     --wa-text sobre --wa-green 7.5
+   ========================================================= */
+
+:root{
+  color-scheme: light;
+
+  /* ---------- Marca (violeta) ---------- */
+  --brand-900:#2C074A;  /* #470C78 + 38% negro: final de degradados */
+  --brand-800:#3A0A62;  /* #470C78 + 18% negro */
+  --brand-700:#470C78;  /* OFICIAL violeta oscuro: fondos de marca, títulos, links */
+  --brand-600:#5B2787;  /* 60% oscuro + 40% medio: botones primarios */
+  --brand-500:#7A509E;  /* OFICIAL violeta medio: decorativo, zorro, hovers */
+
+  /* ---------- Lila (superficies claras) ---------- */
+  --lilac-400:#BC9CD5;  /* lila + 28% violeta medio: bordes */
+  --lilac-350:#C9B3E2;  /* bordes punteados / íconos + del FAQ (home) */
+  --lilac-300:#D5B9EA;  /* OFICIAL */
+  --lilac-250:#E0D2EF;  /* borde de chips de filtro (home) */
+  --lilac-200:#E8D8F3;  /* lila 55% sobre blanco: borde de tarjetas */
+  --lilac-100:#F2EAF9;  /* lila 30% */
+  --lilac-025:#F7F2FB;  /* lila 18% */
+  --lilac-050:#FBF9FD;  /* lila 9%: fondo de página */
+
+  /* ---------- Acento (verde agua) ---------- */
+  --accent-500:#0FB89B;    /* OFICIAL: texto/íconos sobre fondos oscuros, botones */
+  --accent-300:#6FD4C3;    /* acento 60% sobre blanco: hover y texto claro sobre oscuro */
+  --accent-bg:#E2F6F3;     /* acento 12%: fondo de badges/avisos */
+  --accent-border:#A4E4D9; /* acento 38% */
+  --accent-text:#096B5A;   /* acento + 42% negro: texto sobre claro */
+  --accent-icon:#0B8A74;   /* acento + 25% negro: íconos sobre claro */
+  --accent-ink:#08715F;    /* etiquetas y chips en verde agua sobre claro */
+  --on-accent:#0B2E25;     /* texto sobre botones --accent-500 */
+
+  /* ---------- Texto / neutros ---------- */
+  --ink-950:#16132B;
+  --ink-900:#1C1330;
+  --ink-800:#2A2448;
+  --ink-600:#4A3D63;
+  --ink-500:#4F4366;  /* texto secundario del home */
+  --ink-400:#6E6286;  /* oscurecido para pasar AA sobre --lilac-100 */
+  --on-brand:#FFFFFF;
+
+  /* ---------- Superficies y líneas ---------- */
+  --surface:#FFFFFF;
+  --line:#EEEBF5;
+  --line-strong:#E3DFEF;
+  --line-lilac:#ECE2F6;   /* línea suave: header y separadores del home */
+  --level-off:#DDD3E8;    /* barra de nivel vacía */
+
+  /* Sobre fondos oscuros (paneles --ink-900 / degradados de marca) */
+  --line-on-dark: rgba(255,255,255,.08);
+  --text-on-dark: rgba(255,255,255,.85);
+  --muted-on-dark: rgba(255,255,255,.5);
+
+  /* Look editorial de guías */
+  --paper:#F6F3EC;
+  --paper-line: color-mix(in srgb, var(--ink-900) 12%, transparent);
+  --paper-line-strong: color-mix(in srgb, var(--ink-900) 24%, transparent);
+
+  /* ---------- Estado ---------- */
+  --ok:#2E9E6B;
+  --ok-text:#185C3D;
+  --ok-300:#86EFAC;  /* texto "ok" sobre oscuro */
+  --ok-400:#4ADE80;  /* punto/ícono "ok" sobre oscuro */
+  --warn:#C98A15;
+  --warn-text:#6B4A0A;
+  --danger:#C8384A;
+  --danger-text:#8C2436;
+  --focus-ring:#FFD166;
+
+  /* ---------- Marcas de terceros ---------- */
+  /* Verde de WhatsApp: SOLO botones/íconos de WhatsApp */
+  --wa-green:#25D366;
+  --wa-text:#0B2E18;
+  /* Vista previa estilo chat de WhatsApp (contacto) */
+  --wa-chat-bg:#EFEAE2;
+  --wa-chat-bubble:#D9FDD3;
+  --wa-chat-label:#8A8578;
+  --wa-chat-text:#111111;
+  /* Instagram (canal en contacto) */
+  --ig-pink:#F472B6;
+
+  /* ---------- Tipografía ---------- */
+  --font-display:'Poppins','Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'Cascadia Mono',monospace; /* etiquetas, números, metadatos */
+  --fs-2xs: clamp(.6875rem, .67rem + .1vw, .75rem);
+  --fs-xs: clamp(.75rem, .72rem + .15vw, .8125rem);
+  --fs-sm: clamp(.875rem, .85rem + .2vw, .9375rem);
+  --fs-md: clamp(1rem, .96rem + .25vw, 1.0625rem);
+  --fs-lg: clamp(1.125rem, 1.05rem + .4vw, 1.375rem);
+  --fs-xl: clamp(1.5rem, 1.3rem + .9vw, 2rem);
+  --fs-2xl: clamp(2rem, 1.6rem + 1.8vw, 3rem);
+  --fs-3xl: clamp(2.5rem, 1.9rem + 2.8vw, 4rem);
+
+  /* ---------- Espaciado (base 4px) ---------- */
+  --space-1:.25rem;
+  --space-2:.5rem;
+  --space-3:.75rem;
+  --space-4:1rem;
+  --space-5:1.25rem;
+  --space-6:1.5rem;
+  --space-7:2rem;
+  --space-8:2.5rem;
+  --space-9:3rem;
+  --space-10:4rem;
+  --space-11:5rem;
+  --space-12:6rem;
+
+  /* ---------- Radios ---------- */
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:20px;
+  --r-pill:999px;
+
+  /* ---------- Elevación (siempre con tinte violeta, nunca negro puro) ---------- */
+  --sh-1: 0 1px 2px color-mix(in srgb, var(--brand-900) 8%, transparent);
+  --sh-2: 0 6px 18px -6px color-mix(in srgb, var(--brand-900) 18%, transparent);
+  --sh-3: 0 20px 45px -20px color-mix(in srgb, var(--brand-900) 30%, transparent);
+
+  /* ---------- Movimiento ---------- */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --ease-out: cubic-bezier(.22,1,.36,1); /* contacto, tienda, nosotros */
+  --dur: 180ms;
+
+  /* ---------- Layout de soporte ---------- */
+  --header-h: 4rem;
+  --container-max: 1200px;
+
+  /* ---------- Cuadrícula decorativa (blueprint) ----------
+     Todas las intensidades viven acá para subirlas/bajarlas parejo. */
+  --grid-size: 48px;
+  --grid-line: rgba(0,0,0,.10);               /* sobre fondos claros (body) */
+  --grid-line-map: rgba(255,255,255,.10);     /* mapa decorativo de contacto */
+  --grid-road-map: rgba(255,255,255,.16);     /* "calle" del mapa de contacto */
+  --grid-line-cta: rgba(255,255,255,.07);     /* cierre de nosotros */
+  --grid-focus: 30% 40%;
+  --grid-fade: 90%;                           /* radio de la máscara radial */
+  /* #000 en la máscara solo define opacidad, no es un color visible */
+  --grid-mask: radial-gradient(circle at var(--grid-focus), #000 0%, transparent var(--grid-fade));
+  /* Cuadrícula pareja (sin máscara) del rediseño del home: celda chica */
+  --grid-cell-sm: 32px;
+  --grid-line-brand: rgba(255,255,255,.07);  /* hero, sección 03 y menú */
+  --grid-line-lilac: color-mix(in srgb, var(--brand-700) 6%, transparent); /* sección 01 */
+}
+
+@media (prefers-contrast: more){
+  :root{ --lilac-400: var(--brand-500); --ink-600:#241A3B; }
+}

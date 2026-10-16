@@ -6,8 +6,7 @@
    Íconos: Lucide (data-lucide). WhatsApp va como SVG inline.
    ========================================================= */
 
-// Mismo número que en el resto del sitio
-const WHATSAPP_NUMERO = '549232323232';
+// Número de WhatsApp y waLink(): js/config.js
 
 // Link de Google Maps (buscá tu local y copiá "Compartir → Copiar vínculo")
 const MAPS_URL = 'https://maps.google.com/?q=Mar+de+Ajó,+Buenos+Aires';
@@ -118,8 +117,7 @@ $form.addEventListener('submit', e => {
   }
   $field.classList.remove('has-error');
 
-  const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(armarMensaje())}`;
-  window.open(url, '_blank', 'noopener');
+  window.open(waLink(armarMensaje()), '_blank', 'noopener');
 });
 
 $nombre.addEventListener('input', () => {
@@ -198,7 +196,6 @@ function renderHorarios() {
 }
 
 /* ---------- Links ---------- */
-document.getElementById('ch-wa').href = `https://wa.me/${WHATSAPP_NUMERO}`;
 document.querySelector('.channel-icon--wa').innerHTML = WA_ICON;
 document.getElementById('map-go').href = MAPS_URL;
 $form.querySelector('.form-submit').insertAdjacentHTML('afterbegin', WA_ICON);

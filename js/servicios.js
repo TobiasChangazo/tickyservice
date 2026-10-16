@@ -10,9 +10,6 @@
    ========================================================= */
 (function(){
 
-// Mismo número que usa el resto del sitio (footer, botón flotante, etc.)
-const WHATSAPP_NUMERO = '549232323232';
-
 const NIVELES = {
   1: 'Podés hacerlo vos',
   2: 'Requiere herramientas',
@@ -29,6 +26,7 @@ const EQUIPOS = [
     tag: 'Reparación y mantenimiento',
     imagen: 'img/servicios/notebook.jpg',
     guias: 'guias.html?cat=notebook',
+    resumen: 'Limpieza, SSD, bisagras, teclado, Windows', // línea de ejemplos del resumen del home
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
@@ -63,6 +61,7 @@ const EQUIPOS = [
     tag: 'Armado y reparación',
     imagen: 'img/servicios/pc.jpg',
     guias: 'guias.html?cat=pc',
+    resumen: 'Armado, RAM, placa de video, Windows', // línea de ejemplos del resumen del home
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
@@ -96,6 +95,7 @@ const EQUIPOS = [
     tag: 'Reparación de drift y más',
     imagen: 'img/servicios/joystick.jpg',
     guias: 'guias.html?cat=joystick',
+    resumen: 'Drift, pin de carga, gatillos y botones', // línea de ejemplos del resumen del home
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
@@ -126,6 +126,7 @@ const EQUIPOS = [
     tag: 'PlayStation · Xbox · Nintendo',
     imagen: 'img/servicios/consola.jpg',
     guias: 'guias.html?cat=consola',
+    resumen: 'Lente lectora, fuente, puerto HDMI', // línea de ejemplos del resumen del home
     categorias: [
       {
         nombre: 'Mantenimiento', icono: 'sparkles',
@@ -167,14 +168,32 @@ let actual = EQUIPOS.some(e => e.id === eqURL) ? eqURL : EQUIPOS[0].id;
 /* ---------- Helpers ---------- */
 const levelBars = () => '<span class="level"><b></b><b></b><b></b></span>';
 
-const waLink = texto =>
-  `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
-
 const totalServicios = eq =>
   eq.categorias.reduce((acc, c) => acc + c.servicios.length, 0);
 
 const totalDIY = eq =>
   eq.categorias.reduce((acc, c) => acc + c.servicios.filter(s => s.nivel === 1).length, 0);
+
+/* ---------- Resumen del home (#serv-resumen) ----------
+   Una fila por equipo; la cantidad sale de los datos de EQUIPOS. */
+const $resumen = document.getElementById('serv-resumen');
+if ($resumen) {
+  $resumen.innerHTML = EQUIPOS.map(eq => `
+    <li>
+      <a class="serv-res" href="servicios.html?eq=${eq.id}">
+        <span class="serv-res__icon"><i data-lucide="${eq.icono}"></i></span>
+        <span class="serv-res__body">
+          <span class="serv-res__name">${eq.nombre} <span class="serv-res__count mono">${totalServicios(eq)} servicios</span></span>
+          <span class="serv-res__desc">${eq.resumen}</span>
+        </span>
+        <i data-lucide="chevron-right" class="serv-res__chev"></i>
+      </a>
+    </li>`).join('');
+  if (window.lucide) lucide.createIcons();
+}
+
+// El panel con pestañas solo existe en servicios.html
+if (!$seg || !$panel) return;
 
 // Precarga de las fotos para que el cambio de equipo sea instantáneo
 EQUIPOS.forEach(eq => { const img = new Image(); img.src = eq.imagen; });

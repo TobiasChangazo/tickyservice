@@ -6,7 +6,6 @@
 (function(){
 
 const { CATEGORIAS, NIVELES, GUIAS } = window.TICKY_GUIAS;
-const WHATSAPP = '549232323232';
 
 const slug = new URLSearchParams(location.search).get('g');
 const guia = GUIAS.find(g => g.slug === slug);
@@ -19,8 +18,6 @@ const $layout = document.getElementById('gd-layout');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 
 const levelBar = nivel => `<span class="level-bar level-bar--${nivel.barra}" aria-hidden="true"><span></span><span></span><span></span></span>`;
-
-const waLink = texto => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
 
 /* ---------- Guía no encontrada ---------- */
 if (!guia) {
@@ -106,6 +103,40 @@ function relacionadas(max = 2) {
   return [...misma, ...resto].slice(0, max);
 }
 
+/* ---------- ¿Se solucionó? (cierre del flujo del MVP) ---------- */
+// Sí → estado de éxito en el mismo lugar · No → WhatsApp con presupuesto y turno
+function renderPregunta() {
+  const mensaje = `Hola! Seguí la guía "${guia.titulo}" (${cat.nombre}) y sigue igual. ¿Me pasan presupuesto y un turno?`;
+  return `
+    <h3 class="gd-cta__title" id="gd-outcome-title">¿Se solucionó?</h3>
+    <p class="gd-cta__text">Contanos cómo te fue después de seguir los pasos.</p>
+    <div class="gd-outcome__actions">
+      <button type="button" class="btn gd-outcome__btn gd-outcome__btn--yes" data-outcome="si">
+        <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+        Sí, se solucionó
+      </button>
+      <a class="btn gd-outcome__btn gd-outcome__btn--wa" href="${waLink(mensaje)}" target="_blank" rel="noopener" aria-describedby="gd-outcome-note">
+        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+        No, sigue igual
+      </a>
+    </div>
+    <p class="gd-outcome__note" id="gd-outcome-note">Se abre WhatsApp para pedirnos presupuesto y turno. El diagnóstico es sin cargo.</p>`;
+}
+
+function renderExito() {
+  return `
+    <span class="gd-outcome__icon" aria-hidden="true"><svg class="icon"><use href="#icon-check"></use></svg></span>
+    <h3 class="gd-cta__title" id="gd-outcome-title" tabindex="-1">¡Genial, quedó resuelto!</h3>
+    <p class="gd-cta__text">Lo solucionaste vos. Guardate esta guía por si vuelve a pasar.</p>
+    <ul class="gd-outcome__links">
+      <li><a class="gd-outcome__link" href="guias.html?cat=${cat.id}">Ver más guías de ${esc(cat.nombre)} <span aria-hidden="true">→</span></a></li>
+      <li><a class="gd-outcome__link" href="${INSTAGRAM_URL}" target="_blank" rel="noopener">
+        <svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>
+        Seguí aprendiendo en Instagram
+      </a></li>
+    </ul>`;
+}
+
 function renderAside() {
   const necesitas = guia.necesitas && guia.necesitas.length
     ? `<ul class="gd-needs">${guia.necesitas.map(n => `<li>${esc(n)}</li>`).join('')}</ul>`
@@ -130,14 +161,11 @@ function renderAside() {
         ${tienda}
       </div>
 
-      <div class="gd-cta">
-        <h3 class="gd-cta__title">¿Lo hiciste y sigue igual?</h3>
-        <p class="gd-cta__text">Contanos qué probaste y te decimos si vale la pena traerlo. Diagnóstico sin cargo.</p>
-        <a class="btn btn--primary" href="${waLink(`Hola! Seguí la guía "${guia.titulo}" y sigue igual.`)}">
-          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-          Escribinos por WhatsApp
-        </a>
-      </div>
+      <section class="gd-cta gd-outcome" aria-labelledby="gd-outcome-title">
+        <div class="gd-outcome__region" id="gd-outcome" aria-live="polite">
+          ${renderPregunta()}
+        </div>
+      </section>
 
       <div class="gd-box">
         <span class="gd-box__label">Seguí con</span>
@@ -159,5 +187,15 @@ $layout.innerHTML = `
     ${renderFrena()}
   </div>
   ${renderAside()}`;
+
+// "Sí": reemplaza la pregunta por el estado de éxito sin recargar. La región
+// es aria-live, así que se anuncia; el foco pasa al nuevo título porque el
+// botón que lo tenía deja de existir.
+const $outcome = document.getElementById('gd-outcome');
+$outcome.addEventListener('click', e => {
+  if (!e.target.closest('[data-outcome="si"]')) return;
+  $outcome.innerHTML = renderExito();
+  $outcome.querySelector('#gd-outcome-title').focus();
+});
 
 })();

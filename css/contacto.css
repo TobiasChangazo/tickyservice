@@ -97,7 +97,7 @@
            <div class="map-deco"></div>
            <div class="map-pin"><i data-lucide="wrench"></i></div>
            <div class="map-bar">
-             <p>Mar de Ajó, Buenos Aires</p>
+             <p>Mar de Ajó, Partido de la Costa</p>
              <a class="map-go" id="map-go" href="#" target="_blank" rel="noopener">
                <i data-lucide="navigation"></i>Cómo llegar
              </a>
@@ -108,31 +108,6 @@
      </div>
    </section>
    ========================================================= */
-
-/* Tokens scopeados a .contact: styles.css ya define --primary y --ease globales */
-.contact {
-  --primary: #6C4BE8;
-  --primary-dark: #4527B0;
-  --primary-50: #F1EDFD;
-  --primary-200: #CFC3F8;
-  --text: #1C1833;
-  --text-muted: #6B6785;
-  --label: #8A85A3;
-  --faint: #A8A3BF;
-  --line: #EEEBF5;
-  --pill-border: #E3DFEF;
-  --input-bg: #FAF9FD;
-  --cyan: #22D3EE;
-  --cyan-bg: #E0F8FC;
-  --cyan-border: #B5EEF8;
-  --cyan-text: #0E7490;
-  --cyan-icon: #0891B2;
-  --dark: #1C1833;
-  --wa: #25D366;
-  --wa-text: #0B2E18;
-  --danger: #E5484D;
-  --ease: cubic-bezier(.22, 1, .36, 1);
-}
 
 /* Misma distancia al header que tienda y guías */
 .contact { padding-block: var(--space-9) var(--space-11); }
@@ -152,13 +127,13 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -.015em;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .contact-sub {
   margin: 0;
   font-size: 1.05rem;
-  color: #5B5675;
+  color: var(--ink-600);
 }
 
 .contact-tip {
@@ -169,23 +144,23 @@
   max-width: 360px;
   padding: 12px 16px;
   border-radius: 14px;
-  background: var(--cyan-bg);
-  border: 1px solid var(--cyan-border);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
   text-decoration: none;
-  transition: border-color .2s var(--ease);
+  transition: border-color .2s var(--ease-out);
 }
-.contact-tip:hover { border-color: var(--cyan); }
+.contact-tip:hover { border-color: var(--accent-500); }
 .contact-tip svg {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  color: var(--cyan-icon);
+  color: var(--accent-icon);
 }
 .contact-tip p {
   margin: 0;
   font-size: .85rem;
   line-height: 1.4;
-  color: var(--cyan-text);
+  color: var(--accent-text);
 }
 
 /* ---------- Grid ---------- */
@@ -203,20 +178,20 @@
   padding: 30px;
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: #FFFFFF;
+  background: var(--surface);
 }
 
 .form-title {
   margin: 0 0 4px;
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .form-sub {
   margin: 0 0 24px;
   font-size: .9rem;
-  color: var(--text-muted);
+  color: var(--ink-600);
 }
 
 .form-field {
@@ -232,11 +207,11 @@
   padding: 0;
   font-size: .82rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 .form-label span {
   font-weight: 400;
-  color: var(--faint);
+  color: var(--ink-400);
 }
 
 /* Chips */
@@ -252,30 +227,30 @@
   gap: 7px;
   padding: 9px 14px;
   border-radius: 999px;
-  background: #FFFFFF;
-  border: 1px solid var(--pill-border);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
   font: inherit;
   font-size: .88rem;
   font-weight: 500;
-  color: #3A3558;
+  color: var(--ink-600);
   cursor: pointer;
-  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+  transition: background .2s var(--ease-out), border-color .2s var(--ease-out), color .2s var(--ease-out);
 }
 .form-chip svg {
   width: 16px;
   height: 16px;
-  color: var(--label);
+  color: var(--ink-400);
 }
 .form-chip:hover {
-  background: #FAF8FF;
-  border-color: var(--primary-200);
+  background: var(--lilac-025);
+  border-color: var(--lilac-300);
 }
 .form-chip[aria-checked="true"] {
-  background: var(--primary-50);
-  border-color: var(--primary);
-  color: var(--primary-dark);
+  background: var(--lilac-100);
+  border-color: var(--brand-600);
+  color: var(--brand-700);
 }
-.form-chip[aria-checked="true"] svg { color: var(--primary); }
+.form-chip[aria-checked="true"] svg { color: var(--brand-600); }
 
 /* Inputs */
 .form-input {
@@ -283,23 +258,23 @@
   width: 100%;
   box-sizing: border-box;
   padding: 13px 16px;
-  border: 1px solid var(--pill-border);
+  border: 1px solid var(--line-strong);
   border-radius: 12px;
-  background: var(--input-bg);
+  background: var(--lilac-050);
   font: inherit;
   font-size: .95rem;
-  color: var(--text);
+  color: var(--ink-900);
   outline: none;
   -webkit-appearance: none;
   appearance: none;
-  transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+  transition: border-color .2s var(--ease-out), box-shadow .2s var(--ease-out), background .2s var(--ease-out);
 }
-.form-input::placeholder { color: var(--faint); }
-.form-input:hover { border-color: var(--primary-200); }
+.form-input::placeholder { color: var(--ink-400); }
+.form-input:hover { border-color: var(--lilac-300); }
 .form-input:focus {
-  border-color: var(--primary);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(108, 75, 232, .12);
+  border-color: var(--brand-600);
+  background: var(--surface);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-600) 12%, transparent);
 }
 textarea.form-input {
   min-height: 96px;
@@ -315,7 +290,7 @@ textarea.form-input {
 }
 .form-field.has-error .form-input {
   border-color: var(--danger);
-  box-shadow: 0 0 0 4px rgba(229, 72, 77, .1);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger) 10%, transparent);
 }
 .form-field.has-error .form-error { display: block; }
 
@@ -324,7 +299,7 @@ textarea.form-input {
   margin: 4px 0 20px;
   padding: 14px;
   border-radius: 14px;
-  background: #EFEAE2;
+  background: var(--wa-chat-bg);
 }
 
 .form-preview-label {
@@ -336,7 +311,7 @@ textarea.form-input {
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: #8A8578;
+  color: var(--wa-chat-label);
 }
 .form-preview-label svg { width: 14px; height: 14px; }
 
@@ -346,11 +321,11 @@ textarea.form-input {
   width: fit-content;
   padding: 10px 12px;
   border-radius: 12px 12px 2px 12px;
-  background: #D9FDD3;
+  background: var(--wa-chat-bubble);
   box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
   font-size: .9rem;
   line-height: 1.5;
-  color: #111111;
+  color: var(--wa-chat-text);
   white-space: pre-line;
   word-break: break-word;
 }
@@ -365,28 +340,28 @@ textarea.form-input {
   padding: 15px;
   border: none;
   border-radius: 999px;
-  background: var(--wa);
+  background: var(--wa-green);
   font: inherit;
   font-size: 1rem;
   font-weight: 600;
   color: var(--wa-text);
   cursor: pointer;
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+  transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
 }
 .form-submit svg { width: 20px; height: 20px; }
 .form-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 211, 102, .3);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--wa-green) 30%, transparent);
 }
 
 .form-alt {
   margin: 12px 0 0;
   text-align: center;
   font-size: .82rem;
-  color: var(--label);
+  color: var(--ink-400);
 }
 .form-alt a {
-  color: var(--primary);
+  color: var(--brand-600);
   font-weight: 500;
   text-decoration: none;
 }
@@ -398,7 +373,7 @@ textarea.form-input {
   overflow: hidden;
   padding: 28px;
   border-radius: 22px;
-  background: var(--dark);
+  background: var(--ink-900);
   isolation: isolate;
 }
 
@@ -411,7 +386,7 @@ textarea.form-input {
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(108, 75, 232, .5), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand-500) 50%, transparent), transparent 70%);
 }
 
 .panel-label {
@@ -440,7 +415,7 @@ textarea.form-input {
   background: rgba(255, 255, 255, .05);
   border: 1px solid rgba(255, 255, 255, .08);
   text-decoration: none;
-  transition: background .2s var(--ease), border-color .2s var(--ease);
+  transition: background .2s var(--ease-out), border-color .2s var(--ease-out);
 }
 .channel:hover {
   background: rgba(255, 255, 255, .09);
@@ -458,15 +433,15 @@ textarea.form-input {
 }
 .channel-icon svg { width: 21px; height: 21px; }
 
-.channel-icon--wa   { background: rgba(37, 211, 102, .15); color: #4ADE80; }
-.channel-icon--ig   { background: rgba(236, 72, 153, .15); color: #F472B6; }
-.channel-icon--mail { background: rgba(34, 211, 238, .14); color: var(--cyan); }
+.channel-icon--wa   { background: color-mix(in srgb, var(--wa-green) 15%, transparent); color: var(--ok-400); }
+.channel-icon--ig   { background: color-mix(in srgb, var(--ig-pink) 15%, transparent); color: var(--ig-pink); }
+.channel-icon--mail { background: color-mix(in srgb, var(--accent-500) 14%, transparent); color: var(--accent-500); }
 
 .channel-title {
   display: block;
   font-size: .95rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--on-brand);
 }
 
 .channel-sub {
@@ -482,10 +457,10 @@ textarea.form-input {
   height: 18px;
   margin-left: auto;
   color: rgba(255, 255, 255, .4);
-  transition: color .2s var(--ease), transform .2s var(--ease);
+  transition: color .2s var(--ease-out), transform .2s var(--ease-out);
 }
 .channel:hover .channel-arrow {
-  color: var(--cyan);
+  color: var(--accent-500);
   transform: translate(2px, -2px);
 }
 
@@ -514,13 +489,13 @@ textarea.form-input {
   border-radius: 50%;
 }
 .open-status.is-open {
-  background: rgba(74, 222, 128, .12);
-  border: 1px solid rgba(74, 222, 128, .3);
-  color: #86EFAC;
+  background: color-mix(in srgb, var(--ok-400) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ok-400) 30%, transparent);
+  color: var(--ok-300);
 }
 .open-status.is-open::before {
-  background: #4ADE80;
-  box-shadow: 0 0 0 3px rgba(74, 222, 128, .25);
+  background: var(--ok-400);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok-400) 25%, transparent);
 }
 .open-status.is-closed {
   background: rgba(255, 255, 255, .06);
@@ -539,12 +514,12 @@ textarea.form-input {
 }
 .contact .hours-row strong {
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--on-brand);
 }
 .hours-row.is-closed strong { color: rgba(255, 255, 255, .45); }
 .hours-row.is-today span::after {
   content: " · hoy";
-  color: var(--cyan);
+  color: var(--accent-500);
 }
 
 /* Mapa */
@@ -553,7 +528,7 @@ textarea.form-input {
   height: 150px;
   overflow: hidden;
   border-radius: 14px;
-  background: #2A2448;
+  background: var(--ink-800);
 }
 
 .contact-map iframe {
@@ -569,8 +544,8 @@ textarea.form-input {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+    linear-gradient(var(--grid-line-map) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-map) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 .map-deco::after {
@@ -580,7 +555,7 @@ textarea.form-input {
   right: -10%;
   top: 56%;
   height: 8px;
-  background: rgba(255, 255, 255, .08);
+  background: var(--grid-road-map);
   transform: rotate(-8deg);
 }
 
@@ -595,14 +570,14 @@ textarea.form-input {
   width: 38px;
   height: 38px;
   border-radius: 50% 50% 50% 0;
-  background: var(--primary);
-  box-shadow: 0 0 0 8px rgba(108, 75, 232, .25);
+  background: var(--brand-600);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand-500) 25%, transparent);
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 .map-pin svg {
   width: 17px;
   height: 17px;
-  color: #FFFFFF;
+  color: var(--on-brand);
   transform: rotate(45deg);
 }
 
@@ -621,7 +596,7 @@ textarea.form-input {
   margin: 0;
   font-size: .9rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--on-brand);
   text-shadow: 0 1px 4px rgba(0, 0, 0, .4);
 }
 
@@ -632,18 +607,18 @@ textarea.form-input {
   flex-shrink: 0;
   padding: 7px 12px;
   border-radius: 999px;
-  background: #FFFFFF;
+  background: var(--surface);
   font-size: .82rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
   text-decoration: none;
-  transition: transform .2s var(--ease);
+  transition: transform .2s var(--ease-out);
 }
 .map-go:hover { transform: translateY(-1px); }
 .map-go svg {
   width: 15px;
   height: 15px;
-  color: var(--primary);
+  color: var(--brand-600);
 }
 
 /* ---------- Foco ---------- */
@@ -651,12 +626,12 @@ textarea.form-input {
 .form-submit:focus-visible,
 .contact-tip:focus-visible,
 .form-alt a:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--brand-600);
   outline-offset: 3px;
 }
 .channel:focus-visible,
 .map-go:focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--accent-500);
   outline-offset: 2px;
 }
 

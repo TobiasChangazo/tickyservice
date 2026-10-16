@@ -1,220 +1,104 @@
 /* =========================================================
-   TickyService — FAQ + CTA "¿Lo probaste y sigue igual?"
-   Reemplaza al FAQ (acordeón <details>) y al bloque suelto
-   del CTA de escalamiento (.escalate). Se apoya en los tokens
-   de styles.css (--brand-*, --ink-*, --lilac-*, --hero-accent,
-   --wa-green, --header-h, --ease), que debe cargarse antes.
-   El encabezado (eyebrow/título) reusa .section__eyebrow /
-   .section__title, no vive acá.
+   TickyService — FAQ del home (sección 05)
+   Acordeón: el markup lo arma js/faq.js dentro de #faq-list.
+   Medidas de docs/home-mobile.dc.html. Se apoya en tokens.css y en
+   las clases de sección de home.css (.h-section, .h-head, .h-link).
 
-   Markup:
-
-   <div class="faq-section" id="faq">
-     <aside class="faq-aside">
-       <span class="section__eyebrow">Preguntas frecuentes</span>
-       <h2 class="section__title">Lo que más nos preguntan</h2>
-       <p class="section__desc">...</p>
-
-       <div class="faq-cta">
-         <div class="faq-cta-icon"><i data-lucide="message-circle-question"></i></div>
-         <p class="faq-cta-title">¿Lo probaste y sigue igual?</p>
-         <p class="faq-cta-text">...</p>
-         <a class="faq-cta-wa" id="faq-wa" href="#" target="_blank" rel="noopener">
-           <span>Escribinos por WhatsApp</span>
-         </a>
-         <a class="faq-cta-link" href="contacto.html">
-           Ir a contacto <i data-lucide="arrow-right"></i>
-         </a>
-       </div>
-     </aside>
-
-     <div class="faq-list" id="faq-list"></div>
-   </div>
+   <div class="faq-list" id="faq-list" data-limite="4"></div>
+   <button class="h-link faq-mas" id="faq-mas">Ver todas las preguntas</button>
    ========================================================= */
 
-:root{
-  /* Único token nuevo: no había un texto "on-dark" específico para el CTA */
-  --wa-text:#0B2E18;
-}
+.home-faq{ background: var(--surface); border-block-start: 1px solid var(--line-lilac); }
 
-/* ---------- Layout ---------- */
-.faq-section{
-  display:grid;
-  grid-template-columns: 380px minmax(0,1fr);
-  gap: var(--space-11);
-  align-items:start;
-}
-
-.faq-aside{
-  position:sticky;
-  top: calc(var(--header-h) + var(--space-7));
-}
-.faq-aside .section__head{ margin-block-end: var(--space-7); }
-
-/* ---------- CTA ---------- */
-.faq-cta{
-  position:relative;
-  overflow:hidden;
-  padding: var(--space-6) var(--space-6) var(--space-6);
-  border-radius: var(--r-lg);
-  background: var(--ink-900);
-  isolation:isolate;
-}
-
-.faq-cta::before{
-  content:'';
-  position:absolute;
-  z-index:-1;
-  top:-60px;
-  right:-60px;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background: radial-gradient(circle, rgba(108,75,232,.55), transparent 70%);
-}
-
-.faq-cta-icon{
+.faq-list{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  width:44px;
-  height:44px;
-  margin-block-end: var(--space-4);
-  border-radius: var(--r-md);
-  background: rgba(34,211,238,.14);
+  flex-direction:column;
+  gap:8px;
+  max-inline-size: 800px;
 }
-.faq-cta-icon svg{ width:22px; height:22px; color: var(--hero-accent); }
-
-.faq-cta-title{ margin: 0 0 var(--space-2); font-size: 1.35rem; font-weight:600; color:#fff; }
-
-.faq-cta-text{ margin: 0 0 var(--space-5); font-size: .92rem; line-height:1.55; color: rgba(255,255,255,.72); }
-
-.faq-cta-wa{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: var(--space-2);
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--r-pill);
-  background: var(--wa-green);
-  color: var(--wa-text);
-  font-size: .95rem;
-  font-weight:600;
-  text-decoration:none;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
-}
-.faq-cta-wa svg{ width:18px; height:18px; }
-.faq-cta-wa:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,.35); }
-
-.faq-cta-link{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: 6px;
-  margin-block-start: var(--space-3);
-  font-size: .9rem;
-  font-weight:500;
-  color: rgba(255,255,255,.75);
-  text-decoration:none;
-  -webkit-tap-highlight-color: transparent;
-  transition: color .2s var(--ease), gap .2s var(--ease);
-}
-.faq-cta-link svg{ width:16px; height:16px; }
-.faq-cta-link:hover{ color:#fff; gap: var(--space-3); }
-
-/* ---------- Acordeón ---------- */
-.faq-list{ border-block-start: 1px solid var(--lilac-200); }
 
 .faq-item{
-  border-block-end: 1px solid var(--lilac-200);
-  transition: border-color .3s var(--ease);
+  border-radius:14px;
+  background: var(--surface);
+  border:1px solid var(--lilac-200);
+  transition: background-color .3s var(--ease);
 }
-.faq-item.is-open{ border-block-end-color: var(--lilac-300); }
+.faq-item[hidden]{ display:none; }
+.faq-item.is-open{ background: var(--lilac-025); }
+
+.faq-h{ margin:0; font-size:inherit; line-height:inherit; }
 
 .faq-q{
+  inline-size:100%;
+  min-block-size:56px;
+  padding: 14px 16px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap: var(--space-5);
-  width:100%;
-  padding: var(--space-5) 4px;
-  border:none;
-  background:none;
-  font: inherit;
+  gap:12px;
+  border-radius:14px;
   text-align:left;
-  cursor:pointer;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.35;
+  color: var(--ink-900);
   -webkit-tap-highlight-color: transparent;
 }
+.faq-q:hover .faq-q-text{ color: var(--brand-700); }
 
-.faq-q-text{ margin:0; font-size: 1.05rem; font-weight:500; color: var(--ink-900); transition: color .2s var(--ease); }
-.faq-q:hover .faq-q-text,
-.faq-item.is-open .faq-q-text{ color: var(--brand-600); }
-
+/* "+" con borde cuando está cerrada; "−" en círculo violeta cuando está abierta */
 .faq-toggle{
+  flex-shrink:0;
+  inline-size:28px;
+  block-size:28px;
+  border-radius:999px;
+  border:1px solid var(--lilac-350);
+  color: var(--brand-700);
   display:flex;
   align-items:center;
   justify-content:center;
-  flex-shrink:0;
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  border: 1px solid var(--lilac-300);
-  transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease);
+  transition: background-color .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
 }
-.faq-toggle svg{ width:16px; height:16px; color: var(--ink-400); transition: color .3s var(--ease); }
+.faq-toggle svg{ width:16px; height:16px; }
+.faq-ic-menos{ display:none; }
+.faq-item.is-open .faq-toggle{ background: var(--brand-700); border-color: var(--brand-700); color: var(--on-brand); }
+.faq-item.is-open .faq-ic-mas{ display:none; }
+.faq-item.is-open .faq-ic-menos{ display:block; }
 
-.faq-item.is-open .faq-toggle{ transform: rotate(45deg); background: var(--brand-600); border-color: var(--brand-600); }
-.faq-item.is-open .faq-toggle svg{ color:#fff; }
-
-/* Animación de altura sin JS: grid 0fr → 1fr */
+/* Animación de altura sin JS: grid 0fr → 1fr. La respuesta cerrada queda
+   fuera del árbol de accesibilidad con visibility (sin cortar la animación). */
 .faq-a-wrap{
   display:grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows .35s var(--ease);
 }
 .faq-item.is-open .faq-a-wrap{ grid-template-rows: 1fr; }
-
-.faq-a-inner{ overflow:hidden; }
+.faq-a-inner{ overflow:hidden; visibility:hidden; transition: visibility 0s .35s; }
+.faq-item.is-open .faq-a-inner{ visibility:visible; transition-delay: 0s; }
 
 .faq-a{
   margin:0;
-  padding: 0 var(--space-11) var(--space-5) 4px;
-  font-size: .98rem;
-  line-height:1.65;
-  color: var(--ink-600);
+  padding: 0 16px 16px;
+  font-size:14px;
+  line-height:1.6;
+  color: var(--ink-500);
 }
 .faq-a strong{ color: var(--ink-900); font-weight:600; }
 
+.faq-mas{ margin-block-start:12px; padding:0; }
+.faq-mas[hidden]{ display:none; } /* .h-link pisa el display del atributo hidden */
+
 /* ---------- Foco ---------- */
-.faq-q:focus-visible,
-.faq-cta-wa:focus-visible,
-.faq-cta-link:focus-visible{
+.faq-q:focus-visible{
   outline: 3px solid var(--focus-ring);
   outline-offset:2px;
-  border-radius: var(--r-sm);
 }
-.faq-cta-wa:focus-visible{ border-radius: var(--r-pill); }
 
 @media (prefers-reduced-motion: reduce){
-  .faq-item, .faq-q-text, .faq-toggle, .faq-toggle svg,
-  .faq-a-wrap, .faq-cta-wa, .faq-cta-link{ transition:none; }
+  .faq-item, .faq-toggle, .faq-a-wrap, .faq-a-inner{ transition:none; }
 }
 
-/* ---------- Tablet / mobile ---------- */
-@media (max-width: 960px){
-  .faq-section{ grid-template-columns: minmax(0,1fr); gap:0; }
-
-  /* En mobile el CTA va al final, después de las preguntas */
-  .faq-aside{ position:static; display:contents; }
-  .faq-aside > :not(.faq-cta){ order:0; }
-  .faq-list{ order:1; margin-block-start: var(--space-6); }
-  .faq-cta{ order:2; margin-block-start: var(--space-7); }
-}
-
-@media (max-width: 600px){
-  .faq-q{ padding: var(--space-5) 2px; }
-  .faq-q-text{ font-size: 1rem; }
-  .faq-a{ padding: 0 var(--space-3) var(--space-5) 2px; }
-  .faq-cta{ padding: var(--space-6) var(--space-5) var(--space-5); }
+@media (min-width: 768px){
+  .faq-q{ font-size:16px; padding-inline:20px; }
+  .faq-a{ padding: 0 20px 20px; font-size:15px; }
 }
