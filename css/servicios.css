@@ -2,9 +2,8 @@
    TickyService — Servicios por equipo
    Selector segmentado + panel con banner fotográfico
    + 3 columnas de servicios + franja de garantías
-   Se apoya en los tokens de styles.css (--brand-*, --ink-*, --ok,
-   --warn, --danger, --lilac-*, --hero-accent, --wa-green, --ease),
-   que debe cargarse antes. El encabezado (eyebrow/título/bajada)
+   Se apoya en los tokens de tokens.css (--brand-*, --ink-*, --ok,
+   --warn, --danger, --lilac-*, --accent-*, --wa-*, --ease). El encabezado (eyebrow/título/bajada)
    reusa .section__head, .serv-head solo aporta el layout en fila
    con el selector.
 
@@ -34,14 +33,6 @@
    </section>
    ========================================================= */
 
-:root{
-  /* Tokens nuevos: no había un badge/ícono cian ni botón de WhatsApp
-     con este tratamiento fuera de diagnostico.css (que define el suyo) */
-  --cyan-bg:#E0F8FC;
-  --cyan-icon:#0891B2;
-  --wa-text:#0B2E18;
-}
-
 /* ---------- Encabezado ---------- */
 .serv-head{
   display:flex;
@@ -61,7 +52,7 @@
   min-inline-size:0;
   gap:4px;
   padding:5px;
-  background:#fff;
+  background:var(--white);
   border: 1px solid var(--lilac-300);
   border-radius: var(--r-lg);
 }
@@ -87,13 +78,13 @@
 .seg-btn svg{ width:18px; height:18px; }
 .seg-btn:hover{ color: var(--ink-900); background: var(--lilac-025); }
 
-.serv-radio:checked + .seg-btn{ background: var(--brand-600); color:#fff; }
+.serv-radio:checked + .seg-btn{ background: var(--brand-600); color:var(--white); }
 
 .seg-count{ font-size: .75rem; opacity:.6; }
 
 /* ---------- Panel ---------- */
 .serv-panel{
-  background:#fff;
+  background:var(--white);
   border-radius: var(--r-lg);
   overflow:hidden;
   box-shadow: var(--sh-3);
@@ -110,6 +101,7 @@
 
 /* Banner */
 .serv-banner{
+  --focus-ring: var(--focus-ring-on-dark);
   position:relative;
   height:230px;
   overflow:hidden;
@@ -135,8 +127,8 @@
   position:absolute;
   inset:0;
   background:
-    linear-gradient(90deg, rgba(28,24,51,.92) 0%, rgba(40,25,100,.65) 45%, rgba(60,40,140,.15) 100%),
-    linear-gradient(0deg, rgba(28,24,51,.55) 0%, transparent 50%);
+    linear-gradient(90deg, color-mix(in srgb, var(--ink-900) 92%, transparent) 0%, color-mix(in srgb, var(--brand-700) 65%, transparent) 45%, color-mix(in srgb, var(--brand-600) 15%, transparent) 100%),
+    linear-gradient(0deg, color-mix(in srgb, var(--ink-900) 55%, transparent) 0%, transparent 50%);
 }
 
 .serv-banner-content{
@@ -157,9 +149,9 @@
   margin-block-end: var(--space-2);
   padding: 5px 11px;
   border-radius: var(--r-pill);
-  background: rgba(34,211,238,.16);
-  border: 1px solid rgba(34,211,238,.35);
-  color:#A5F3FC;
+  background: color-mix(in srgb, var(--accent-500) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-500) 35%, transparent);
+  color:var(--accent-200);
   font-size: .8rem;
   font-weight:500;
 }
@@ -171,7 +163,7 @@
   font-weight:700;
   line-height:1;
   letter-spacing:-.01em;
-  color:#fff;
+  color:var(--white);
 }
 
 .serv-meta{
@@ -179,7 +171,7 @@
   font-size: .95rem;
   color: rgba(255,255,255,.75);
 }
-.serv-meta strong{ color:#86EFAC; font-weight:500; }
+.serv-meta strong{ color:var(--ok-on-dark); font-weight:500; }
 
 .serv-actions{ display:flex; flex-shrink:0; gap: var(--space-3); }
 
@@ -200,7 +192,7 @@
 
 .btn-glass{
   font-weight:500;
-  color:#fff;
+  color:var(--white);
   background: rgba(255,255,255,.1);
   border: 1px solid rgba(255,255,255,.3);
   backdrop-filter: blur(6px);
@@ -217,7 +209,7 @@
 }
 .btn-wa:hover{
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37,211,102,.35);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--wa-green) 35%, transparent);
 }
 
 /* ---------- Columnas ---------- */
@@ -331,9 +323,9 @@
   width:42px;
   height:42px;
   border-radius: var(--r-md);
-  background: var(--cyan-bg);
+  background: var(--accent-bg);
 }
-.trust-icon svg{ width:21px; height:21px; color: var(--cyan-icon); }
+.trust-icon svg{ width:21px; height:21px; color: var(--accent-icon); }
 
 .trust-title{ margin:0; font-size: .95rem; font-weight:600; color: var(--ink-900); }
 .trust-desc{ margin: 2px 0 0; font-size: .82rem; color: var(--ink-600); }
@@ -343,7 +335,7 @@
 .serv-row:focus-visible,
 .btn-glass:focus-visible,
 .btn-wa:focus-visible{
-  outline: 2px solid var(--brand-600);
+  outline: 2px solid var(--focus-ring);
   outline-offset:2px;
 }
 

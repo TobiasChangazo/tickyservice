@@ -3,26 +3,6 @@
    Los botones del cierre reutilizan .hero-btn de styles.css
    ========================================================= */
 
-/* Tokens scopeados a .about: styles.css ya define --primary y --ease globales */
-.about {
-  --primary: #6C4BE8;
-  --primary-50: #F1EDFD;
-  --primary-200: #CFC3F8;
-  --text: #1C1833;
-  --text-muted: #6B6785;
-  --text-body: #5B5675;
-  --label: #8A85A3;
-  --line: #EEEBF5;
-  --cyan: #22D3EE;
-  --cyan-bg: #E0F8FC;
-  --cyan-border: #B5EEF8;
-  --cyan-text: #0E7490;
-  --cyan-icon: #0891B2;
-  --dark: #1C1833;
-  --wa: #25D366;
-  --ease: cubic-bezier(.22, 1, .36, 1);
-}
-
 /* Misma distancia al header que tienda y contacto */
 .about { padding-block: var(--space-9) var(--space-11); }
 
@@ -34,16 +14,16 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -.02em;
-  color: var(--text);
+  color: var(--ink-900);
 }
-.about-title span { color: var(--primary); }
+.about-title span { color: var(--brand-600); }
 
 .about-lead {
   max-width: 640px;
   margin: 0;
   font-size: 1.12rem;
   line-height: 1.6;
-  color: var(--text-body);
+  color: var(--ink-600);
 }
 
 /* ---------- Textos comunes ---------- */
@@ -53,18 +33,18 @@
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -.015em;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .about-p {
   margin: 0 0 16px;
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--text-body);
+  color: var(--ink-600);
 }
 .about-p strong {
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 /* ---------- Historia ---------- */
@@ -83,7 +63,7 @@
   overflow: hidden;
   border-radius: 24px;
   /* fondo mientras carga o si falta la foto */
-  background: radial-gradient(ellipse at 60% 35%, #5B4A8F 0%, #2E2458 55%, #1A1535 100%);
+  background: radial-gradient(ellipse at 60% 35%, var(--brand-500) 0%, var(--brand-900) 55%, var(--ink-950) 100%);
 }
 
 .about-photo img {
@@ -110,19 +90,19 @@
   flex-shrink: 0;
   width: 22px;
   height: 22px;
-  color: var(--primary);
+  color: var(--brand-600);
 }
 .about-location strong {
   display: block;
   font-size: .95rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 .about-location small {
   display: block;
   margin-top: 1px;
   font-size: .82rem;
-  color: var(--text-muted);
+  color: var(--ink-400);
 }
 
 .about-sign {
@@ -131,7 +111,7 @@
   gap: 12px;
   margin-top: 24px;
   padding-top: 22px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--paper-line);
 }
 
 .about-avatar {
@@ -143,10 +123,10 @@
   height: 48px;
   overflow: hidden;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--cyan));
+  background: linear-gradient(135deg, var(--brand-600), var(--accent-500));
   font-size: 1.05rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--white);
 }
 .about-avatar img {
   width: 100%;
@@ -158,17 +138,18 @@
   margin: 0;
   font-size: .95rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .about-sign-role {
   margin: 2px 0 0;
   font-size: .82rem;
-  color: var(--label);
+  color: var(--ink-400);
 }
 
 /* ---------- Números ---------- */
 .about-stats {
+  --focus-ring: var(--focus-ring-on-dark);
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -176,7 +157,7 @@
   padding: 34px 20px;
   overflow: hidden;
   border-radius: 24px;
-  background: var(--dark);
+  background: var(--ink-900);
   isolation: isolate;
 }
 
@@ -189,7 +170,7 @@
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(108, 75, 232, .45), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand-500) 45%, transparent), transparent 70%);
 }
 
 .stat {
@@ -204,15 +185,15 @@
   font-size: clamp(2rem, 3.5vw, 2.5rem);
   font-weight: 700;
   letter-spacing: -.02em;
-  color: #FFFFFF;
+  color: var(--white);
   font-variant-numeric: tabular-nums;
 }
 .stat-num small {
   font-size: .55em;
   font-weight: 600;
-  color: var(--cyan);
+  color: var(--accent-500);
 }
-.stat-accent { color: var(--cyan); }
+.stat-accent { color: var(--accent-500); }
 
 .stat-label {
   margin: 4px 0 0;
@@ -262,15 +243,15 @@
 
 .value-card {
   padding: 24px 22px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--paper-line);
   border-radius: 20px;
-  background: #FFFFFF;
+  background: var(--white);
   transition: border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .value-card:hover {
-  border-color: var(--primary-200);
+  border-color: var(--lilac-300);
   transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(60, 30, 140, .1);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--brand-700) 10%, transparent);
 }
 
 .value-icon {
@@ -281,30 +262,30 @@
   height: 46px;
   margin-bottom: 18px;
   border-radius: 14px;
-  background: var(--primary-50);
+  background: var(--lilac-100);
 }
 .value-icon svg {
   width: 23px;
   height: 23px;
-  color: var(--primary);
+  color: var(--brand-600);
 }
 
 /* El primer valor (guías gratis) en cian: es el diferencial principal */
-.value-card--cyan .value-icon { background: var(--cyan-bg); }
-.value-card--cyan .value-icon svg { color: var(--cyan-icon); }
+.value-card--cyan .value-icon { background: var(--accent-bg); }
+.value-card--cyan .value-icon svg { color: var(--accent-icon); }
 
 .value-title {
   margin: 0 0 8px;
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .value-desc {
   margin: 0;
   font-size: .9rem;
   line-height: 1.55;
-  color: var(--text-muted);
+  color: var(--ink-400);
 }
 
 /* ---------- Proceso ---------- */
@@ -326,7 +307,7 @@
   left: 12.5%;
   right: 12.5%;
   height: 2px;
-  background: repeating-linear-gradient(90deg, var(--primary-200) 0 8px, transparent 8px 16px);
+  background: repeating-linear-gradient(90deg, var(--lilac-300) 0 8px, transparent 8px 16px);
 }
 
 .step {
@@ -343,25 +324,25 @@
   width: 48px;
   height: 48px;
   margin: 0 auto 16px;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--brand-600);
   border-radius: 50%;
-  background: #FFFFFF;
+  background: var(--white);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--primary);
+  color: var(--brand-600);
 }
 .step-dot svg { width: 20px; height: 20px; }
 
 .step--done .step-dot {
-  background: var(--primary);
-  color: #FFFFFF;
+  background: var(--brand-600);
+  color: var(--white);
 }
 
 .step-title {
   margin: 0 0 6px;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .step-desc {
@@ -369,7 +350,7 @@
   margin: 0 auto;
   font-size: .88rem;
   line-height: 1.5;
-  color: var(--text-muted);
+  color: var(--ink-400);
 }
 
 .step-tag {
@@ -377,21 +358,22 @@
   margin-top: 10px;
   padding: 3px 9px;
   border-radius: 6px;
-  background: var(--cyan-bg);
-  border: 1px solid var(--cyan-border);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
   font-size: .75rem;
   font-weight: 500;
-  color: var(--cyan-text);
+  color: var(--accent-text);
 }
 
 /* ---------- Cierre ---------- */
 .about-cta {
+  --focus-ring: var(--focus-ring-on-dark);
   position: relative;
   margin-top: 72px;
   padding: 52px 56px;
   overflow: hidden;
   border-radius: 28px;
-  background: linear-gradient(135deg, #5536C8 0%, #3E2596 55%, #2E1C6E 100%);
+  background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-700) 55%, var(--brand-900) 100%);
   isolation: isolate;
 }
 
@@ -412,7 +394,7 @@
   font-size: 5rem;
   font-weight: 600;
   line-height: .6;
-  color: var(--cyan);
+  color: var(--accent-500);
 }
 
 .about-quote {
@@ -427,7 +409,7 @@
 .about-quote span {
   font-style: normal;
   font-weight: 600;
-  color: var(--cyan);
+  color: var(--accent-500);
 }
 
 .about-cta-actions {
@@ -455,7 +437,7 @@
 
 /* ---------- Foco ---------- */
 .value-card:focus-within {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
 }
 
@@ -501,7 +483,7 @@
     right: auto;
     width: 2px;
     height: auto;
-    background: repeating-linear-gradient(180deg, var(--primary-200) 0 8px, transparent 8px 16px);
+    background: repeating-linear-gradient(180deg, var(--lilac-300) 0 8px, transparent 8px 16px);
   }
   .step {
     display: grid;

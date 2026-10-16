@@ -28,31 +28,6 @@
    </section>
    ========================================================= */
 
-/* Tokens scopeados a .contact: styles.css ya define --primary y --ease globales */
-.contact {
-  --primary: #6C4BE8;
-  --primary-dark: #4527B0;
-  --primary-50: #F1EDFD;
-  --primary-200: #CFC3F8;
-  --text: #1C1833;
-  --text-muted: #6B6785;
-  --label: #8A85A3;
-  --faint: #A8A3BF;
-  --line: #EEEBF5;
-  --pill-border: #E3DFEF;
-  --input-bg: #FAF9FD;
-  --cyan: #22D3EE;
-  --cyan-bg: #E0F8FC;
-  --cyan-border: #B5EEF8;
-  --cyan-text: #0E7490;
-  --cyan-icon: #0891B2;
-  --dark: #1C1833;
-  --wa: #25D366;
-  --wa-text: #0B2E18;
-  --danger: #E5484D;
-  --ease: cubic-bezier(.22, 1, .36, 1);
-}
-
 /* Misma distancia al header que tienda y guías */
 .contact { padding-block: var(--space-9) var(--space-11); }
 
@@ -71,13 +46,13 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -.015em;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .contact-sub {
   margin: 0;
   font-size: 1.05rem;
-  color: #5B5675;
+  color: var(--ink-600);
 }
 
 .contact-tip {
@@ -88,23 +63,23 @@
   max-width: 360px;
   padding: 12px 16px;
   border-radius: 14px;
-  background: var(--cyan-bg);
-  border: 1px solid var(--cyan-border);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
   text-decoration: none;
   transition: border-color .2s var(--ease);
 }
-.contact-tip:hover { border-color: var(--cyan); }
+.contact-tip:hover { border-color: var(--accent-500); }
 .contact-tip svg {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  color: var(--cyan-icon);
+  color: var(--accent-icon);
 }
 .contact-tip p {
   margin: 0;
   font-size: .85rem;
   line-height: 1.4;
-  color: var(--cyan-text);
+  color: var(--accent-text);
 }
 
 /* ---------- Grid ---------- */
@@ -120,22 +95,22 @@
   display: block; /* pisa el flex/gap del .contact-form viejo de styles.css */
   color-scheme: light; /* evita que el modo oscuro del sistema pinte los inputs */
   padding: 30px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--paper-line);
   border-radius: 22px;
-  background: #FFFFFF;
+  background: var(--white);
 }
 
 .form-title {
   margin: 0 0 4px;
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 
 .form-sub {
   margin: 0 0 24px;
   font-size: .9rem;
-  color: var(--text-muted);
+  color: var(--ink-400);
 }
 
 .form-field {
@@ -151,11 +126,11 @@
   padding: 0;
   font-size: .82rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
 }
 .form-label span {
   font-weight: 400;
-  color: var(--faint);
+  color: var(--ink-400);
 }
 
 /* Inputs */
@@ -164,23 +139,23 @@
   width: 100%;
   box-sizing: border-box;
   padding: 13px 16px;
-  border: 1px solid var(--pill-border);
+  border: 1px solid var(--lilac-200);
   border-radius: 12px;
-  background: var(--input-bg);
+  background: var(--lilac-050);
   font: inherit;
   font-size: .95rem;
-  color: var(--text);
+  color: var(--ink-900);
   outline: none;
   -webkit-appearance: none;
   appearance: none;
   transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
 }
-.form-input::placeholder { color: var(--faint); }
-.form-input:hover { border-color: var(--primary-200); }
+.form-input::placeholder { color: var(--ink-400); }
+.form-input:hover { border-color: var(--lilac-300); }
 .form-input:focus {
-  border-color: var(--primary);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(108, 75, 232, .12);
+  border-color: var(--brand-600);
+  background: var(--white);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-500) 12%, transparent);
 }
 textarea.form-input {
   min-height: 96px;
@@ -191,7 +166,7 @@ textarea.form-input {
   margin: -4px 0 12px;
   font-size: .85rem;
   line-height: 1.5;
-  color: var(--text-muted);
+  color: var(--ink-400);
 }
 
 /* Error: validación nativa, visible solo después de interactuar */
@@ -203,7 +178,7 @@ textarea.form-input {
 }
 .form-input:user-invalid {
   border-color: var(--danger);
-  box-shadow: 0 0 0 4px rgba(229, 72, 77, .1);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger) 10%, transparent);
 }
 .form-input:user-invalid + .form-error { display: block; }
 
@@ -217,7 +192,7 @@ textarea.form-input {
   padding: 15px;
   border: none;
   border-radius: 999px;
-  background: var(--wa);
+  background: var(--wa-green);
   font: inherit;
   font-size: 1rem;
   font-weight: 600;
@@ -228,17 +203,17 @@ textarea.form-input {
 .form-submit svg { width: 20px; height: 20px; }
 .form-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 211, 102, .3);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--wa-green) 30%, transparent);
 }
 
 .form-alt {
   margin: 12px 0 0;
   text-align: center;
   font-size: .82rem;
-  color: var(--label);
+  color: var(--ink-400);
 }
 .form-alt a {
-  color: var(--primary);
+  color: var(--brand-600);
   font-weight: 500;
   text-decoration: none;
 }
@@ -246,11 +221,12 @@ textarea.form-input {
 
 /* ---------- Panel oscuro ---------- */
 .contact-panel {
+  --focus-ring: var(--focus-ring-on-dark);
   position: relative;
   overflow: hidden;
   padding: 28px;
   border-radius: 22px;
-  background: var(--dark);
+  background: var(--ink-900);
   isolation: isolate;
 }
 
@@ -263,7 +239,7 @@ textarea.form-input {
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(108, 75, 232, .5), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand-500) 50%, transparent), transparent 70%);
 }
 
 .panel-label {
@@ -310,15 +286,15 @@ textarea.form-input {
 }
 .channel-icon svg { width: 21px; height: 21px; }
 
-.channel-icon--wa   { background: rgba(37, 211, 102, .15); color: #4ADE80; }
-.channel-icon--ig   { background: rgba(236, 72, 153, .15); color: #F472B6; }
-.channel-icon--mail { background: rgba(34, 211, 238, .14); color: var(--cyan); }
+.channel-icon--wa   { background: color-mix(in srgb, var(--wa-green) 15%, transparent); color: var(--wa-green); }
+.channel-icon--ig   { background: color-mix(in srgb, var(--ig-pink) 15%, transparent); color: var(--ig-pink); }
+.channel-icon--mail { background: color-mix(in srgb, var(--accent-500) 14%, transparent); color: var(--accent-500); }
 
 .channel-title {
   display: block;
   font-size: .95rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--white);
 }
 
 .channel-sub {
@@ -337,7 +313,7 @@ textarea.form-input {
   transition: color .2s var(--ease), transform .2s var(--ease);
 }
 .channel:hover .channel-arrow {
-  color: var(--cyan);
+  color: var(--accent-500);
   transform: translate(2px, -2px);
 }
 
@@ -354,9 +330,9 @@ textarea.form-input {
 }
 .contact .hours-row strong {
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--white);
 }
-.hours-row.is-closed strong { color: rgba(255, 255, 255, .45); }
+.hours-row.is-closed strong { color: rgba(255, 255, 255, .55); } /* .45 no llegaba a 4.5:1 */
 
 /* Mapa */
 .contact-map {
@@ -364,7 +340,7 @@ textarea.form-input {
   height: 150px;
   overflow: hidden;
   border-radius: 14px;
-  background: #2A2448;
+  background: var(--ink-800);
 }
 
 .contact-map iframe {
@@ -406,14 +382,14 @@ textarea.form-input {
   width: 38px;
   height: 38px;
   border-radius: 50% 50% 50% 0;
-  background: var(--primary);
-  box-shadow: 0 0 0 8px rgba(108, 75, 232, .25);
+  background: var(--brand-600);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand-500) 25%, transparent);
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 .map-pin svg {
   width: 17px;
   height: 17px;
-  color: #FFFFFF;
+  color: var(--white);
   transform: rotate(45deg);
 }
 
@@ -432,7 +408,7 @@ textarea.form-input {
   margin: 0;
   font-size: .9rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--white);
   text-shadow: 0 1px 4px rgba(0, 0, 0, .4);
 }
 
@@ -443,10 +419,10 @@ textarea.form-input {
   flex-shrink: 0;
   padding: 7px 12px;
   border-radius: 999px;
-  background: #FFFFFF;
+  background: var(--white);
   font-size: .82rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--ink-900);
   text-decoration: none;
   transition: transform .2s var(--ease);
 }
@@ -454,19 +430,19 @@ textarea.form-input {
 .map-go svg {
   width: 15px;
   height: 15px;
-  color: var(--primary);
+  color: var(--brand-600);
 }
 
 /* ---------- Foco ---------- */
 .form-submit:focus-visible,
 .contact-tip:focus-visible,
 .form-alt a:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
 }
 .channel:focus-visible,
 .map-go:focus-visible {
-  outline: 2px solid var(--cyan);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
