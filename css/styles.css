@@ -25,7 +25,7 @@ body{
 }
 
 /* Cuadrícula decorativa global (blueprint): fija al viewport, detrás de todo.
-   Sobre las secciones con fondo propio (opaco) queda tapada; ahí se usa .grid-bg. */
+   Sobre las secciones con fondo propio (opaco) queda tapada; ahí cada sección pinta la suya. */
 body::before{
   content:'';
   position:fixed;
@@ -128,51 +128,6 @@ a{ text-decoration:none; color:inherit; }
 }
 .section__title{ font-size: var(--fs-2xl); color: var(--ink-900); }
 .section__desc{ color: var(--ink-600); font-size: var(--fs-md); margin-block-start: var(--space-4); }
-
-/* ===== FONDO DE MARCA (gradiente: SOLO hero y footer) ===== */
-.brand-surface{
-  --focus-ring: var(--focus-ring-on-dark);
-  position:relative;
-  background: linear-gradient(160deg, var(--brand-700), var(--brand-900));
-  overflow:hidden;
-  isolation:isolate;
-}
-.brand-surface::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background: radial-gradient(80% 60% at 30% 0%, transparent 0%, color-mix(in srgb, var(--brand-900) 55%, transparent) 100%);
-  pointer-events:none;
-  z-index:0;
-}
-.brand-surface > *{ position:relative; z-index:1; }
-
-/* Cuadrícula decorativa reutilizable: capa local para secciones con fondo
-   propio (opaco), donde la capa global de body queda tapada.
-   background-attachment:fixed mantiene la misma fase que la capa global
-   (ambas se calculan contra el viewport), así las líneas no se desfasan
-   entre secciones al hacer scroll. */
-.grid-bg{
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  background-attachment: fixed;
-  background-position: 0 0;
-  -webkit-mask-image: var(--grid-mask);
-  mask-image: var(--grid-mask);
-}
-.brand-surface .grid-bg{
-  --grid-line: var(--grid-line-on-dark);
-  /* Dentro de .brand-surface todos los hijos quedan position:relative con
-     z-index:1 (regla de arriba); igualamos acá para pintar por encima del
-     watermark y el degradado oscuro (::before/::after) y no perder contraste. */
-  z-index:1;
-}
 
 /* ===== COMPONENTES: Header / Nav =====
    Mobile (≤ 900px): header de 64px con lupa y botón de menú; el menú es
@@ -566,43 +521,106 @@ a{ text-decoration:none; color:inherit; }
 }
 .contact-note .icon{ color: var(--brand-700); flex-shrink:0; margin-block-start:.15em; }
 
-/* ===== COMPONENTES: Footer (sin cambios de estructura/color) ===== */
-.site-footer{ color: var(--on-brand); padding-block: var(--space-10) var(--space-7); }
-.footer__grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--space-8); padding-block-end: var(--space-8); border-block-end: 1px solid rgba(255,255,255,.16); }
-.footer__brand{ display:flex; align-items:center; gap: var(--space-2); font-weight:700; font-size: var(--fs-lg); margin-block-end: var(--space-3); }
-.footer__brand img{ block-size:2rem; inline-size:auto; }
-.footer__logo{ border-radius: var(--r-sm); }
-.footer__brand .footer__wordmark{ block-size:1.75rem; }
-.footer__desc{ color: rgba(255,255,255,.72); font-size: var(--fs-sm); max-width:32ch; }
-.footer__desc + .footer__desc{ margin-block-start: var(--space-2); }
-.footer__heading{ font-size: var(--fs-sm); text-transform:uppercase; letter-spacing:.06em; margin-block-end: var(--space-4); color: rgba(255,255,255,.9); }
-.footer__list{ display:flex; flex-direction:column; gap: var(--space-3); }
-.footer__list li, .footer__list a{ color: rgba(255,255,255,.75); font-size: var(--fs-sm); font-weight:400; }
-.footer__list a:hover{ color:var(--white); }
-.footer__legal{ display:flex; flex-wrap:wrap; justify-content:center; text-align:center; gap: var(--space-3); padding-block-start: var(--space-6); font-size: var(--fs-xs); color: rgba(255,255,255,.65); }
+/* ===== COMPONENTES: Footer =====
+   Fondo tinta oscura. Mobile: marca + íconos, dos columnas de links y la
+   ubicación con el ©; abajo deja 112px para que el botón flotante no
+   tape el texto. Desktop: marca | secciones | equipos. */
+.site-footer{
+  --focus-ring: var(--focus-ring-on-dark);
+  padding-block: 2.5rem 7rem;                   /* 40px 112px */
+  background: var(--ink-900);
+  color: var(--white);
+}
+.site-footer > .container{ width: min(100% - 2.5rem, var(--container-max)); }
+.footer__inner{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1.75rem 1rem;                            /* 28px 16px */
+}
+.footer__about{ grid-column: 1 / -1; display:flex; flex-direction:column; gap: .75rem; }
+.footer__brand{ display:inline-flex; align-items:center; align-self:flex-start; min-block-size: 44px; }
+.footer__wordmark{ block-size: 24px; inline-size:auto; }
+.footer__desc{ font-size: .875rem; line-height:1.55; color: rgba(255,255,255,.74); max-width: 36ch; }
 
-@media (max-width: 900px){ .footer__grid{ grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
-@media (max-width: 480px){ .footer__grid{ grid-template-columns: minmax(0,1fr); } }
+.site-footer .footer__social{ display:flex; gap: 10px; margin-block-start: .5rem; }
+.footer__icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  inline-size: 48px;
+  block-size: 48px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.08);
+  color: var(--white);
+  transition: background-color var(--dur) var(--ease);
+}
+.footer__icon .icon{ width:20px; height:20px; stroke-width:2; }
+.footer__icon--wa .icon{ width:22px; height:22px; color: var(--wa-green); }
+.footer__icon:hover{ background: rgba(255,255,255,.16); }
+.footer__icon:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 14px; }
 
-/* ===== COMPONENTES: Botón flotante de WhatsApp ===== */
+.footer__nav{ display:flex; flex-direction:column; min-inline-size:0; }
+.footer__heading{
+  margin-block-end: 6px;
+  font-size: .6875rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: var(--accent-500);
+}
+.footer__list a{
+  display:flex;
+  align-items:center;
+  min-block-size: 44px;                         /* diseño: 36px; se sube a 44 para el toque */
+  font-size: .875rem;
+  color: rgba(255,255,255,.86);
+}
+.footer__list a:hover{ color: var(--white); }
+.footer__list a:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 0; border-radius: 6px; }
+
+.footer__legal{
+  grid-column: 1 / -1;
+  display:flex;
+  flex-direction:column;
+  gap: .5rem;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid rgba(255,255,255,.12);
+}
+.footer__loc{ display:flex; align-items:center; gap: 8px; font-size: .8125rem; color: rgba(255,255,255,.80); }
+.footer__loc .icon{ width:16px; height:16px; stroke-width:2; color: var(--accent-500); }
+.footer__copy{ font-size: .75rem; color: rgba(255,255,255,.64); }
+
+@media (min-width: 768px){
+  .site-footer{ padding-block: 3.5rem 2.5rem; }
+  .footer__inner{ grid-template-columns: minmax(0,2fr) minmax(0,1fr) minmax(0,1fr); column-gap: 3rem; }
+  .footer__about{ grid-column: auto; }
+  /* Todo a la izquierda: a la derecha quedaría debajo del botón flotante */
+  .footer__legal{ flex-direction:row; flex-wrap:wrap; align-items:center; gap: .5rem 2rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .footer__icon{ transition:none; }
+}
+
+/* ===== COMPONENTES: Botón flotante de WhatsApp =====
+   56x56, radio 18, a 16px de los bordes. */
 .float-wa{
   position: fixed;
-  inset-inline-end: var(--space-5);
-  inset-block-end: calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
+  inset-inline-end: 16px;
+  inset-block-end: calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 60;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   inline-size:56px;
   block-size:56px;
-  border-radius:50%;
-  background: var(--ok);
-  color:var(--white);
-  box-shadow: var(--sh-3);
+  border-radius:18px;
+  background: var(--wa-green);
+  color: var(--wa-text);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--ink-900) 28%, transparent);
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.float-wa .icon{ width:1.6em; height:1.6em; }
-.float-wa:hover{ transform: translateY(-3px); color:var(--white); }
+.float-wa .icon{ width:26px; height:26px; }
+.float-wa:hover{ transform: translateY(-3px); }
+.float-wa:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 3px; border-radius: 18px; }
 .float-wa__tooltip{
   position:absolute;
   inset-inline-end: calc(100% + var(--space-3));
@@ -620,6 +638,9 @@ a{ text-decoration:none; color:inherit; }
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 .float-wa:hover .float-wa__tooltip, .float-wa:focus-visible .float-wa__tooltip{ opacity:1; transform: translateY(-50%) translateX(0); }
+@media (prefers-reduced-motion: reduce){
+  .float-wa, .float-wa__tooltip{ transition:none; }
+}
 
 /* ===== GUÍAS — DISEÑO EDITORIAL (hub + detalle de guía) =====
    Filas numeradas y barras de nivel en vez de chips/cards. Reutiliza

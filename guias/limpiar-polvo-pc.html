@@ -33,6 +33,7 @@
     <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
     <symbol id="icon-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
     <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
     <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5v14l11-7z"/></symbol>
     <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
@@ -261,49 +262,42 @@
 <!-- COMPONENTE: footer (copiar igual en todas las páginas) -->
 <!-- Incluye el botón flotante de WhatsApp. En las páginas de guias/
      los links e imágenes llevan el prefijo ../ -->
-<footer class="site-footer brand-surface">
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="footer__grid">
-      <div>
-        <a class="footer__brand" href="../index.html">
-          <img class="footer__logo" src="../img/marca/favicon.png" alt="" width="32" height="32">
-          <img class="footer__wordmark" src="../img/marca/logo-wordmark-blanco.png" alt="TickyService" width="1250" height="268">
-        </a>
-        <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó.</p>
-        <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
-      </div>
-      <div>
-        <h3 class="footer__heading">Secciones</h3>
-        <ul class="footer__list">
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__about">
+      <a class="footer__brand" href="../index.html">
+        <img class="footer__wordmark" src="../img/marca/logo-wordmark-blanco.png" alt="TickyService" width="1250" height="268">
+      </a>
+      <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó.</p>
+      <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
+      <ul class="footer__social" role="list">
+        <li><a class="footer__icon footer__icon--wa" href="https://wa.me/5492233024504" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></a></li>
+        <li><a class="footer__icon" href="https://instagram.com/tickyservice" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a></li>
+        <li><a class="footer__icon" href="mailto:contacto@tickyservice.com.ar" aria-label="Email: contacto@tickyservice.com.ar"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg></a></li>
+      </ul>
+    </div>
+    <nav class="footer__nav" aria-label="Secciones">
+      <p class="footer__heading mono">Secciones</p>
+      <ul class="footer__list" role="list">
           <li><a href="../guias.html">Guías</a></li>
           <li><a href="../servicios.html">Servicios</a></li>
           <li><a href="../tienda.html">Tienda</a></li>
           <li><a href="../contacto.html">Contacto</a></li>
           <li><a href="../nosotros.html">Nosotros</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Servicio técnico</h3>
-        <ul class="footer__list">
-          <li><a href="../servicios.html#diagnostico">Diagnóstico guiado</a></li>
-          <li><a href="../guias.html">Guías paso a paso</a></li>
-          <li><a href="../servicios.html">Servicios por equipo</a></li>
-          <li><a href="../index.html#faq">Preguntas frecuentes</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Contacto</h3>
-        <ul class="footer__list">
-          <li><a href="https://wa.me/5492233024504">WhatsApp</a></li>
-          <li><a href="https://instagram.com/tickyservice">Instagram</a></li>
-          <li><a href="mailto:contacto@tickyservice.com.ar">contacto@tickyservice.com.ar</a></li>
-          <li>Mar de Ajó, Partido de la Costa</li>
-        </ul>
-      </div>
-    </div>
+      </ul>
+    </nav>
+    <nav class="footer__nav" aria-label="Equipos">
+      <p class="footer__heading mono">Equipos</p>
+      <ul class="footer__list" role="list">
+          <li><a href="../servicios.html">Notebook</a></li>
+          <li><a href="../servicios.html">PC</a></li>
+          <li><a href="../servicios.html">Joystick</a></li>
+          <li><a href="../servicios.html">Consola</a></li>
+      </ul>
+    </nav>
     <div class="footer__legal">
-      <span>© 2026 TickyService. Todos los derechos reservados.</span>
+      <p class="footer__loc"><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"></use></svg>Mar de Ajó, Partido de la Costa</p>
+      <p class="footer__copy">© 2026 TickyService. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
