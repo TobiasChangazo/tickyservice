@@ -369,7 +369,12 @@ a{ text-decoration:none; color:inherit; }
 .hero--compact .hero__title{ font-size: var(--fs-2xl); margin-block-end: var(--space-3); }
 .hero--compact .hero__lead{ font-size: var(--fs-md); margin-block-end: var(--space-2); }
 
-.hero--slogan{ min-block-size: min(64vh, 520px); display:flex; align-items:center; }
+.hero--slogan{
+  min-block-size: min(64vh, 520px); display:flex; align-items:center;
+  /* Tamaño del titular: el ancho de la columna de texto y la posición
+     del zorro se calculan a partir de él (ver bloque del zorro) */
+  --hero-head-fs: clamp(1.3rem, 5.6vw, 3.75rem);
+}
 .hero__headline{
   margin:0;
   max-width: 24ch;
@@ -377,7 +382,7 @@ a{ text-decoration:none; color:inherit; }
   font-family: var(--font-display);
   font-weight:800;
   text-transform:uppercase;
-  font-size: clamp(1.3rem, 5.6vw, 3.75rem);
+  font-size: var(--hero-head-fs);
   line-height:.95;
   letter-spacing:-.01em;
   overflow-wrap: break-word;
@@ -497,6 +502,25 @@ a{ text-decoration:none; color:inherit; }
   opacity:1;
   pointer-events:none;
   z-index:1;
+}
+/* Desde 768px el zorro convive con el texto: la columna de texto se limita
+   a --hero-text-w (la línea más larga del titular mide ~12.9em en Poppins;
+   13.4em deja margen) y el zorro arranca después de ella + un espacio,
+   sin superar los 620px de ancho. Así no se tocan en ningún ancho. */
+@media (min-width: 768px){
+  .hero--slogan{
+    --hero-head-fs: clamp(2.25rem, 3.9vw, 3.75rem);
+    --hero-text-w: calc(13.4 * var(--hero-head-fs));
+  }
+  .hero--slogan .hero__subhead,
+  .hero--slogan .hero__badges{ max-inline-size: var(--hero-text-w); }
+  .hero .hero__fox{
+    inline-size:auto;
+    inset-inline-start: max(
+      100% - 620px,
+      (100% - min(100% - 2 * var(--space-5), var(--container-max))) / 2 + var(--hero-text-w) + var(--space-7)
+    );
+  }
 }
 @media (max-width: 767px){
   .hero .hero__fox{ display:none; }
