@@ -60,13 +60,15 @@ function totalEnCategoria(catId) {
 function renderTabs() {
   const items = [{ id: 'todas', nombre: 'Todas' }, ...CATEGORIAS];
   $tabs.innerHTML = items.map(c => `
-    <button class="filter-tab ${state.categoria === c.id ? 'is-active' : ''}" data-cat="${c.id}">
+    <button type="button" class="filter-tab ${state.categoria === c.id ? 'is-active' : ''}" data-cat="${c.id}" aria-pressed="${state.categoria === c.id}">
       ${c.nombre}<span class="filter-count">${totalEnCategoria(c.id)}</span>
     </button>
   `).join('');
 }
 
+// En el home no hay filtro de dificultad (se muestra una leyenda)
 function renderPills() {
+  if (!$pills) return;
   $pills.innerHTML = NIVELES.map(n => `
     <button class="filter-pill ${state.nivel === n.id ? 'is-active' : ''}" data-nivel="${n.id}" ${n.id ? `data-level="${n.id}"` : ''}>
       ${n.id ? levelBars() : '<i data-lucide="layout-grid"></i>'}
@@ -134,7 +136,7 @@ $tabs.addEventListener('click', e => {
   render();
 });
 
-$pills.addEventListener('click', e => {
+if ($pills) $pills.addEventListener('click', e => {
   const btn = e.target.closest('[data-nivel]');
   if (!btn) return;
   state.nivel = Number(btn.dataset.nivel);

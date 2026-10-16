@@ -176,31 +176,32 @@
     </div>
   </section>
 
-  <!-- ============ CENTRO DE AYUDA ============ -->
-  <section class="section" id="centro-de-ayuda" aria-labelledby="help-title">
-    <div class="container">
-      <div class="section__head">
-        <span class="section__eyebrow">Empezá acá</span>
-        <h2 id="help-title" class="section__title">Antes de traerlo, probá resolverlo</h2>
-        <p class="section__desc">Filtrá por tipo de equipo y mirá nuestras guías destacadas. Cada una te dice qué podés hacer vos, qué necesita herramientas y qué es directamente trabajo de taller.</p>
+  <!-- ============ 02 — GUÍAS ============ -->
+  <section class="h-section home-guias" id="guias" aria-labelledby="guias-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">02 — Probá resolverlo</p>
+        <h2 class="h-title" id="guias-title">Guías paso a paso</h2>
+        <p class="h-text">Cada guía te dice si lo podés hacer vos, si necesitás herramientas o si ya es trabajo de taller.</p>
       </div>
 
+      <!-- Filtro por equipo, tarjetas y botón: los arma js/guias.js (modo preview) -->
       <div class="guias-section" id="guias-section">
+        <div class="filter-tabs" id="guias-tabs" role="group" aria-label="Filtrar por equipo"></div>
 
-        <p class="filter-label">Equipo</p>
-        <div class="filter-tabs" id="guias-tabs"></div>
-
-        <p class="filter-label">Dificultad</p>
-        <div class="filter-row">
-          <div class="filter-pills" id="guias-pills"></div>
-          <a class="btn-all" id="guias-all" href="guias.html">
-            <span>Ver las guías</span>
-            <i data-lucide="arrow-right"></i>
-          </a>
-        </div>
+        <!-- En el home la dificultad es una leyenda (no filtra); el filtro sigue en guias.html -->
+        <ul class="guias-leyenda" aria-label="Niveles de dificultad">
+          <li data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</li>
+          <li data-level="2"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Con herramientas</li>
+          <li data-level="3"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Taller</li>
+        </ul>
 
         <div class="guias-grid" id="guias-grid"></div>
 
+        <a class="btn-all" id="guias-all" href="guias.html">
+          <span>Ver las guías</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
