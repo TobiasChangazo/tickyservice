@@ -2,8 +2,8 @@
    TickyService — FAQ + CTA "¿Lo probaste y sigue igual?"
    Reemplaza al FAQ (acordeón <details>) y al bloque suelto
    del CTA de escalamiento (.escalate). Se apoya en los tokens
-   de styles.css (--brand-*, --ink-*, --lilac-*, --hero-accent,
-   --wa-green, --header-h, --ease), que debe cargarse antes.
+   de tokens.css (--brand-*, --ink-*, --lilac-*, --accent-*,
+   --wa-green, --wa-text, --header-h, --ease), que debe cargarse antes.
    El encabezado (eyebrow/título) reusa .section__eyebrow /
    .section__title, no vive acá.
 
@@ -31,11 +31,6 @@
      <div class="faq-list" id="faq-list"></div>
    </div>
    ========================================================= */
-
-:root{
-  /* Único token nuevo: no había un texto "on-dark" específico para el CTA */
-  --wa-text:#0B2E18;
-}
 
 /* ---------- Layout ---------- */
 .faq-section{
@@ -70,7 +65,7 @@
   width:180px;
   height:180px;
   border-radius:50%;
-  background: radial-gradient(circle, rgba(108,75,232,.55), transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand-500) 55%, transparent), transparent 70%);
 }
 
 .faq-cta-icon{
@@ -81,11 +76,11 @@
   height:44px;
   margin-block-end: var(--space-4);
   border-radius: var(--r-md);
-  background: rgba(34,211,238,.14);
+  background: color-mix(in srgb, var(--accent-500) 14%, transparent);
 }
-.faq-cta-icon svg{ width:22px; height:22px; color: var(--hero-accent); }
+.faq-cta-icon svg{ width:22px; height:22px; color: var(--accent-500); }
 
-.faq-cta-title{ margin: 0 0 var(--space-2); font-size: 1.35rem; font-weight:600; color:#fff; }
+.faq-cta-title{ margin: 0 0 var(--space-2); font-size: 1.35rem; font-weight:600; color:var(--on-brand); }
 
 .faq-cta-text{ margin: 0 0 var(--space-5); font-size: .92rem; line-height:1.55; color: rgba(255,255,255,.72); }
 
@@ -105,7 +100,7 @@
   transition: transform .2s var(--ease), box-shadow .2s var(--ease);
 }
 .faq-cta-wa svg{ width:18px; height:18px; }
-.faq-cta-wa:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,.35); }
+.faq-cta-wa:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px color-mix(in srgb, var(--wa-green) 35%, transparent); }
 
 .faq-cta-link{
   display:flex;
@@ -121,7 +116,7 @@
   transition: color .2s var(--ease), gap .2s var(--ease);
 }
 .faq-cta-link svg{ width:16px; height:16px; }
-.faq-cta-link:hover{ color:#fff; gap: var(--space-3); }
+.faq-cta-link:hover{ color:var(--on-brand); gap: var(--space-3); }
 
 /* ---------- Acordeón ---------- */
 .faq-list{ border-block-start: 1px solid var(--lilac-200); }
@@ -165,7 +160,7 @@
 .faq-toggle svg{ width:16px; height:16px; color: var(--ink-400); transition: color .3s var(--ease); }
 
 .faq-item.is-open .faq-toggle{ transform: rotate(45deg); background: var(--brand-600); border-color: var(--brand-600); }
-.faq-item.is-open .faq-toggle svg{ color:#fff; }
+.faq-item.is-open .faq-toggle svg{ color:var(--on-brand); }
 
 /* Animación de altura sin JS: grid 0fr → 1fr */
 .faq-a-wrap{

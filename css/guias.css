@@ -2,7 +2,8 @@
    TickyService — Sección "Guías destacadas"
    (tabs de equipo + pills de dificultad + botón ver todas + cards)
    Se apoya en los tokens de styles.css (--brand-*, --ink-*, --ok,
-   --warn, --danger, --paper-line*, --ease), que debe cargarse antes.
+   --warn, --danger, --accent-*, --paper-line*, --ease), definidos en
+   tokens.css, que debe cargarse antes.
 
    Markup mínimo (el resto lo arma guias.js):
 
@@ -22,14 +23,6 @@
      <div class="guias-grid" id="guias-grid"></div>
    </div>
    ========================================================= */
-
-:root{
-  /* Únicos tokens nuevos: no había un "badge cian" en el sitio */
-  --cyan-bg:#E0F8FC;
-  --cyan-border:#B5EEF8;
-  --cyan-text:#0E7490;
-  --cyan-icon:#0891B2;
-}
 
 /* ---------- Labels ---------- */
 .filter-label{
@@ -106,7 +99,7 @@
   gap: var(--space-2);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--r-pill);
-  background:#fff;
+  background:var(--surface);
   border: 1px solid var(--paper-line-strong);
   font: inherit;
   font-size: var(--fs-xs);
@@ -132,7 +125,7 @@
   padding: var(--space-3) var(--space-6);
   border-radius: var(--r-pill);
   background: var(--ink-900);
-  color:#fff;
+  color:var(--on-brand);
   font-size: var(--fs-sm);
   font-weight:500;
   text-decoration:none;
@@ -140,8 +133,8 @@
   transition: gap .25s var(--ease), background-color .25s var(--ease);
 }
 .btn-all svg,
-.btn-all i{ width:16px; height:16px; color: var(--hero-accent); }
-.btn-all:hover{ gap: var(--space-3); background:#0F0C22; }
+.btn-all i{ width:16px; height:16px; color: var(--accent-500); }
+.btn-all:hover{ gap: var(--space-3); background: var(--ink-950); }
 
 /* ---------- Indicador de nivel (3 barras ascendentes) ---------- */
 .level{
@@ -198,23 +191,23 @@
   color: var(--ink-400);
 }
 
-/* Badge de categoría (solo se muestra en "Todas") */
+/* Badge de categoría (solo se muestra en "Todas"), en acento verde agua */
 .guia-badge{
   display:inline-flex;
   align-items:center;
   gap:5px;
   padding: 3px 9px;
   border-radius: var(--r-sm);
-  background: var(--cyan-bg);
-  border: 1px solid var(--cyan-border);
-  color: var(--cyan-text);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-text);
   font-size: var(--fs-xs);
   font-weight:500;
   letter-spacing:0;
   text-transform:none;
 }
 .guia-badge svg,
-.guia-badge i{ width:14px; height:14px; color: var(--cyan-icon); }
+.guia-badge i{ width:14px; height:14px; color: var(--accent-icon); }
 
 .guia-title{
   margin: 0 0 var(--space-2);

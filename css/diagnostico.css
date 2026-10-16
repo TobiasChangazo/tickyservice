@@ -1,8 +1,8 @@
 /* =========================================================
    TickyService — Diagnóstico por síntoma
    Panel oscuro: lista de síntomas + detalle con pasos
-   Se apoya en los tokens de styles.css (--ink-900, --brand-600,
-   --hero-accent, --wa-green, --ease), que debe cargarse antes.
+   Se apoya en los tokens de tokens.css (--ink-*, --brand-*,
+   --accent-*, --wa-green, --wa-text, --ease), que debe cargarse antes.
    El encabezado (eyebrow/título/bajada) usa .section__head ya
    existente en styles.css, no vive acá.
 
@@ -17,15 +17,6 @@
    </div>
    ========================================================= */
 
-:root{
-  /* Tokens nuevos: no había un panel oscuro con esta paleta en el sitio */
-  --diag-list-bg:#16132B;
-  --diag-line: rgba(255,255,255,.08);
-  --diag-text: rgba(255,255,255,.85);
-  --diag-muted: rgba(255,255,255,.5);
-  --wa-text:#0B2E18;
-}
-
 /* ---------- Panel ---------- */
 .diag-panel{
   display:grid;
@@ -39,8 +30,8 @@
 /* ---------- Lista de síntomas ---------- */
 .diag-list{
   padding: 18px;
-  background: var(--diag-list-bg);
-  border-right: 1px solid var(--diag-line);
+  background: var(--ink-950);
+  border-right: 1px solid var(--line-on-dark);
 }
 
 .diag-list-label{
@@ -80,10 +71,10 @@
   transition: color .2s var(--ease);
 }
 
-.diag-item:hover{ background: rgba(255,255,255,.05); color:#fff; }
+.diag-item:hover{ background: rgba(255,255,255,.05); color:var(--on-brand); }
 
-.diag-item.is-active{ background: rgba(108,75,232,.28); color:#fff; }
-.diag-item.is-active svg{ color: var(--hero-accent); }
+.diag-item.is-active{ background: color-mix(in srgb, var(--brand-500) 35%, transparent); color:var(--on-brand); }
+.diag-item.is-active svg{ color: var(--accent-500); }
 
 /* ---------- Detalle ---------- */
 .diag-detail{
@@ -111,21 +102,21 @@
   width:48px;
   height:48px;
   border-radius: var(--r-md);
-  background: rgba(34,211,238,.12);
+  background: color-mix(in srgb, var(--accent-500) 12%, transparent);
 }
-.diag-icon svg{ width:24px; height:24px; color: var(--hero-accent); }
+.diag-icon svg{ width:24px; height:24px; color: var(--accent-500); }
 
 .diag-detail-title{
   margin:0;
   font-size: 1.5rem;
   font-weight:600;
-  color:#fff;
+  color:var(--on-brand);
 }
 
 .diag-meta{
   margin: 3px 0 0;
   font-size: .82rem;
-  color: var(--diag-muted);
+  color: var(--muted-on-dark);
 }
 
 /* Pasos */
@@ -147,17 +138,17 @@
   width:28px;
   height:28px;
   border-radius:50%;
-  border: 1.5px solid rgba(34,211,238,.5);
+  border: 1.5px solid color-mix(in srgb, var(--accent-500) 50%, transparent);
   font-size: .8rem;
   font-weight:600;
-  color: var(--hero-accent);
+  color: var(--accent-500);
 }
 
 .diag-step-text{
   margin: 3px 0 0;
   font-size: .98rem;
   line-height:1.55;
-  color: var(--diag-text);
+  color: var(--text-on-dark);
 }
 
 /* Cierre + WhatsApp */
@@ -179,7 +170,7 @@
   line-height:1.5;
   color: rgba(255,255,255,.75);
 }
-.diag-result-text strong{ color:#fff; font-weight:700; }
+.diag-result-text strong{ color:var(--on-brand); font-weight:700; }
 
 .btn-wa{
   display:inline-flex;
@@ -200,13 +191,13 @@
 .btn-wa svg{ width:18px; height:18px; }
 .btn-wa:hover{
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37,211,102,.3);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--wa-green) 30%, transparent);
 }
 
 /* Foco */
 .diag-item:focus-visible,
 .btn-wa:focus-visible{
-  outline: 2px solid var(--hero-accent);
+  outline: 2px solid var(--accent-500);
   outline-offset:2px;
 }
 
@@ -222,7 +213,7 @@
   .diag-list{
     padding: 14px;
     border-right:none;
-    border-block-end: 1px solid var(--diag-line);
+    border-block-end: 1px solid var(--line-on-dark);
   }
   .diag-list-label{ display:none; }
 
@@ -246,7 +237,7 @@
     white-space:nowrap;
     scroll-snap-align:start;
   }
-  .diag-item.is-active{ border-color: rgba(108,75,232,.8); }
+  .diag-item.is-active{ border-color: color-mix(in srgb, var(--brand-500) 80%, transparent); }
 }
 
 /* ---------- Mobile ---------- */
