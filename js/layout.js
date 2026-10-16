@@ -123,46 +123,45 @@ const HEADER = `
   </div>
 </div>`;
 
+const EQUIPOS_FOOTER = [
+  { id: 'notebook', texto: 'Notebook' },
+  { id: 'pc',       texto: 'PC' },
+  { id: 'joystick', texto: 'Joystick' },
+  { id: 'consola',  texto: 'Consola' },
+];
+
 const FOOTER = `
-<footer class="site-footer brand-surface">
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="footer__grid">
-      <div>
-        <a class="footer__brand" href="index.html">
-          <img class="footer__logo" src="img/marca/logo-zorro.png" alt="" width="32" height="32">
-          <img class="footer__wordmark" src="img/marca/logo-wordmark-blanco.png" alt="TickyService" width="1250" height="268">
-        </a>
-        <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología.</p>
-        <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="footer__logo" href="index.html"><img src="img/marca/logo-wordmark-blanco.png" alt="TickyService, inicio" width="1250" height="268"></a>
+      <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología.</p>
+      <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
+      <div class="footer__social">
+        <a href="${waLink()}" aria-label="WhatsApp">${icono('icon-whatsapp', 'icon footer__wa')}</a>
+        <a href="${INSTAGRAM_URL}" aria-label="Instagram">${icono('i-instagram')}</a>
+        <a href="mailto:${EMAIL}" aria-label="Email: ${EMAIL}">${icono('i-mail')}</a>
       </div>
-      <div>
-        <h3 class="footer__heading">Secciones</h3>
+    </div>
+
+    <div class="footer__nav">
+      <nav aria-labelledby="footer-secciones">
+        <h2 class="footer__heading mono" id="footer-secciones">Secciones</h2>
         <ul class="footer__list">
           ${NAV.slice(1).map(l => `<li><a href="${l.href}">${l.texto}</a></li>`).join('\n          ')}
         </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Servicio técnico</h3>
+      </nav>
+      <nav aria-labelledby="footer-equipos">
+        <h2 class="footer__heading mono" id="footer-equipos">Equipos</h2>
         <ul class="footer__list">
-          <li><a href="servicios.html?eq=notebook">Notebook</a></li>
-          <li><a href="servicios.html?eq=pc">PC</a></li>
-          <li><a href="servicios.html?eq=joystick">Joystick</a></li>
-          <li><a href="servicios.html?eq=consola">Consola</a></li>
+          ${EQUIPOS_FOOTER.map(e => `<li><a href="servicios.html?eq=${e.id}">${e.texto}</a></li>`).join('\n          ')}
         </ul>
-      </div>
-      <div>
-        <h3 class="footer__heading">Contacto</h3>
-        <ul class="footer__list">
-          <li><a href="${waLink()}">WhatsApp</a></li>
-          <li><a href="${INSTAGRAM_URL}">Instagram</a></li>
-          <li><a href="mailto:${EMAIL}">${EMAIL}</a></li>
-          <li>${UBICACION}</li>
-        </ul>
-      </div>
+      </nav>
     </div>
+
     <div class="footer__legal">
-      <span>© 2026 TickyService. Todos los derechos reservados.</span>
+      <p class="footer__loc">${icono('i-map-pin')}${UBICACION}</p>
+      <p class="footer__copy">© 2026 TickyService. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>

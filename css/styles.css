@@ -25,7 +25,7 @@ body{
 }
 
 /* Cuadrícula decorativa global (blueprint): fija al viewport, detrás de todo.
-   Sobre las secciones con fondo propio (opaco) queda tapada; ahí se usa .grid-bg. */
+   Sobre las secciones con fondo propio (opaco) queda tapada. */
 body::before{
   content:'';
   position:fixed;
@@ -74,6 +74,9 @@ a{ text-decoration:none; color:inherit; }
 
 .icon-sprite{ position:absolute; width:0; height:0; overflow:hidden; }
 
+/* Etiquetas, números y metadatos (JetBrains Mono) */
+.mono{ font-family: var(--font-mono); }
+
 .icon{ width:1em; height:1em; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
 
 .skip-link{
@@ -119,50 +122,6 @@ a{ text-decoration:none; color:inherit; }
 }
 .section__title{ font-size: var(--fs-2xl); color: var(--ink-900); }
 .section__desc{ color: var(--ink-600); font-size: var(--fs-md); margin-block-start: var(--space-4); }
-
-/* ===== FONDO DE MARCA (gradiente: SOLO hero y footer) ===== */
-.brand-surface{
-  position:relative;
-  background: linear-gradient(160deg, var(--brand-700), var(--brand-900));
-  overflow:hidden;
-  isolation:isolate;
-}
-.brand-surface::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background: radial-gradient(80% 60% at 30% 0%, transparent 0%, color-mix(in srgb, var(--brand-900) 55%, transparent) 100%);
-  pointer-events:none;
-  z-index:0;
-}
-.brand-surface > *{ position:relative; z-index:1; }
-
-/* Cuadrícula decorativa reutilizable: capa local para secciones con fondo
-   propio (opaco), donde la capa global de body queda tapada.
-   background-attachment:fixed mantiene la misma fase que la capa global
-   (ambas se calculan contra el viewport), así las líneas no se desfasan
-   entre secciones al hacer scroll. */
-.grid-bg{
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  background-attachment: fixed;
-  background-position: 0 0;
-  -webkit-mask-image: var(--grid-mask);
-  mask-image: var(--grid-mask);
-}
-.brand-surface .grid-bg{
-  --grid-line: var(--grid-line-on-dark);
-  /* Dentro de .brand-surface todos los hijos quedan position:relative con
-     z-index:1 (regla de arriba); igualamos acá para pintar por encima del
-     watermark y el degradado oscuro (::before/::after) y no perder contraste. */
-  z-index:1;
-}
 
 /* ===== COMPONENTES: Header / Nav =====
    Desktop (≥ 900px): nav horizontal. Mobile (< 900px): lupa + botón de
@@ -533,23 +492,81 @@ html.menu-abierto body{ overflow:hidden; }
 }
 .contact-note .icon{ color: var(--brand-700); flex-shrink:0; margin-block-start:.15em; }
 
-/* ===== COMPONENTES: Footer (sin cambios de estructura/color) ===== */
-.site-footer{ color: var(--on-brand); padding-block: var(--space-10) var(--space-7); }
-.footer__grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--space-8); padding-block-end: var(--space-8); border-block-end: 1px solid rgba(255,255,255,.16); }
-.footer__brand{ display:flex; align-items:center; gap: var(--space-2); font-weight:700; font-size: var(--fs-lg); margin-block-end: var(--space-3); }
-.footer__brand img{ block-size:2rem; inline-size:auto; }
-.footer__logo{ border-radius: var(--r-sm); }
-.footer__brand .footer__wordmark{ block-size:1.75rem; }
-.footer__desc{ color: rgba(255,255,255,.72); font-size: var(--fs-sm); max-width:32ch; }
-.footer__desc + .footer__desc{ margin-block-start: var(--space-2); }
-.footer__heading{ font-size: var(--fs-sm); text-transform:uppercase; letter-spacing:.06em; margin-block-end: var(--space-4); color: rgba(255,255,255,.9); }
-.footer__list{ display:flex; flex-direction:column; gap: var(--space-3); }
-.footer__list li, .footer__list a{ color: rgba(255,255,255,.75); font-size: var(--fs-sm); font-weight:400; }
-.footer__list a:hover{ color:var(--on-brand); }
-.footer__legal{ display:flex; flex-wrap:wrap; justify-content:center; text-align:center; gap: var(--space-3); padding-block-start: var(--space-6); font-size: var(--fs-xs); color: rgba(255,255,255,.65); }
+/* ===== COMPONENTES: Footer =====
+   Fondo tinta. Mobile: una columna con logo, descripción, botones de
+   ícono, Secciones/Equipos en dos columnas y ubicación + ©. El padding
+   inferior deja lugar al botón flotante para que no tape el ©. */
+.site-footer{
+  background: var(--ink-900);
+  color: var(--on-brand);
+  padding: 40px 0 112px;
+}
+.footer__inner.container{ width: min(100% - 40px, var(--container-max)); }
+.footer__inner{ display:flex; flex-direction:column; gap:28px; }
 
-@media (max-width: 900px){ .footer__grid{ grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
-@media (max-width: 480px){ .footer__grid{ grid-template-columns: minmax(0,1fr); } }
+.footer__brand{ display:flex; flex-direction:column; gap:12px; }
+.footer__logo{ align-self:flex-start; display:inline-flex; align-items:center; min-block-size:44px; }
+.footer__logo img{ block-size:24px; inline-size:auto; }
+.footer__desc{ margin:0; max-width:36ch; font-size:14px; line-height:1.55; color: rgba(255,255,255,.74); }
+.footer__desc + .footer__desc{ margin-block-start:-8px; }
+
+.footer__social{ display:flex; gap:10px; margin-block-start:16px; }
+.footer__social a{
+  inline-size:48px;
+  block-size:48px;
+  border-radius:14px;
+  background: rgba(255,255,255,.08);
+  color: var(--on-brand);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: background-color var(--dur) var(--ease);
+}
+.footer__social a:hover{ background: rgba(255,255,255,.16); }
+.footer__social .icon{ width:20px; height:20px; stroke-width:2; }
+.footer__social .footer__wa{ width:22px; height:22px; color: var(--wa-green); }
+
+.footer__nav{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px; }
+.footer__heading{
+  margin: 0 0 6px;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: var(--accent-500);
+}
+.footer__list a{
+  min-block-size:44px;
+  display:flex;
+  align-items:center;
+  font-size:14px;
+  color: rgba(255,255,255,.86);
+}
+.footer__list a:hover{ color: var(--on-brand); text-decoration: underline; text-underline-offset:3px; }
+
+.footer__legal{
+  padding-block-start:20px;
+  border-block-start: 1px solid rgba(255,255,255,.12);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.footer__loc{ margin:0; display:flex; align-items:center; gap:8px; font-size:13px; color: rgba(255,255,255,.80); }
+.footer__loc .icon{ width:16px; height:16px; stroke-width:2; color: var(--accent-500); }
+.footer__copy{ margin:0; font-size:12px; color: rgba(255,255,255,.64); }
+
+@media (min-width: 768px){
+  .site-footer{ padding: 56px 0 96px; }
+  .footer__inner{
+    display:grid;
+    grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+    gap: 40px 64px;
+  }
+  .footer__legal{ grid-column: 1 / -1; flex-direction:row; flex-wrap:wrap; align-items:center; gap: 8px 32px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .footer__social a{ transition:none; }
+}
 
 /* ===== COMPONENTES: Botón flotante de WhatsApp ===== */
 .float-wa{

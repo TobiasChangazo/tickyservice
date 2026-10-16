@@ -18,10 +18,9 @@
 .h-head{ display:flex; flex-direction:column; gap:8px; margin-block-end:20px; max-width: 62ch; }
 
 /* Etiqueta de sección: "01 — EMPEZÁ ACÁ" */
-.h-label,
-.mono{ font-family: var(--font-mono); }
 .h-label{
   margin:0;
+  font-family: var(--font-mono);
   font-size:11px;
   font-weight:600;
   letter-spacing:.14em;
