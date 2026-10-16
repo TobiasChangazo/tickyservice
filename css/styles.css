@@ -254,8 +254,8 @@ a{ text-decoration:none; color:inherit; }
 }
 .nav__link:hover{ color: var(--ink-900); }
 .nav__link:hover::after{ transform: scaleX(.4); opacity:.35; }
-.nav__link[aria-current="page"]{ color: var(--brand-700); font-weight:600; }
-.nav__link[aria-current="page"]::after{ transform: scaleX(1); opacity:1; }
+.nav__link[aria-current]{ color: var(--brand-700); font-weight:600; }
+.nav__link[aria-current]::after{ transform: scaleX(1); opacity:1; }
 .nav__link:focus-visible{
   outline: 2px solid var(--brand-700);
   outline-offset: 4px;
