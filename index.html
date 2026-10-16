@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/guias.css">
-<link rel="stylesheet" href="css/servicios.css">
 <link rel="stylesheet" href="css/faq.css">
 <link rel="stylesheet" href="css/home.css">
 
@@ -246,20 +245,22 @@
     </div>
   </section>
 
-  <!-- ============ SERVICIOS (MATRIZ COMPACTA) ============ -->
-  <section class="section section--alt" id="servicios" aria-labelledby="servicios-title">
-    <div class="grid-bg" aria-hidden="true"></div>
-    <div class="container">
-      <div class="serv-head">
-        <div class="section__head">
-          <span class="section__eyebrow">Servicio técnico</span>
-          <h2 id="servicios-title" class="section__title">Un vistazo rápido por categoría</h2>
-          <p class="section__desc">Elegí el equipo y mirá qué hacemos en mantenimiento, reparación y software.</p>
-        </div>
-        <div class="serv-seg" id="serv-seg" role="tablist" aria-label="Equipo"></div>
+  <!-- ============ 04 — SERVICIOS ============ -->
+  <section class="h-section home-serv" id="servicios" aria-labelledby="servicios-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">04 — Qué reparamos</p>
+        <h2 class="h-title" id="servicios-title">Servicio técnico por equipo</h2>
       </div>
 
-      <div class="serv-panel" id="serv-panel" role="tabpanel"></div>
+      <!-- Filas generadas por js/servicios.js con los datos reales de cada equipo.
+           El panel completo con pestañas está en servicios.html. -->
+      <ul class="serv-resumen" id="serv-resumen"></ul>
+
+      <a class="h-link home-serv__all" href="servicios.html">
+        Ver todos los servicios
+        <i data-lucide="arrow-right"></i>
+      </a>
     </div>
   </section>
 

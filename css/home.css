@@ -481,8 +481,61 @@
   .paso__text{ font-size:15px; }
 }
 
+/* =========================================================
+   04 — SERVICIOS (resumen; filas generadas por js/servicios.js)
+   ========================================================= */
+.home-serv{ background: var(--lilac-050); }
+.home-serv .serv-resumen{
+  display:flex;
+  flex-direction:column;
+  margin:0;
+  overflow:hidden;
+  border-radius:18px;
+  background: var(--surface);
+  border:1px solid var(--lilac-200);
+}
+.serv-resumen li + li{ border-block-start: 1px solid var(--lilac-100); }
+.serv-res{
+  box-sizing:border-box;
+  block-size:100%;
+  min-block-size:76px;
+  padding: 14px 16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  transition: background-color var(--dur) var(--ease);
+}
+.serv-res:hover{ background: var(--lilac-025); }
+.serv-res__icon{
+  flex-shrink:0;
+  inline-size:44px;
+  block-size:44px;
+  border-radius:12px;
+  background: var(--lilac-100);
+  color: var(--brand-700);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.serv-res__icon svg{ width:20px; height:20px; }
+.serv-res__body{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.serv-res__name{ display:flex; flex-wrap:wrap; align-items:baseline; column-gap:8px; font-size:16px; font-weight:600; color: var(--ink-900); }
+.serv-res__count{ font-size:11px; font-weight:500; color: var(--ink-500); }
+.serv-res__desc{ font-size:13px; line-height:1.4; color: var(--ink-500); }
+.serv-res__chev{ flex-shrink:0; width:18px; height:18px; color: var(--brand-500); }
+.home-serv__all{ margin-block-start:12px; }
+
+@media (min-width: 900px){
+  .home-serv .serv-resumen{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .serv-resumen li + li{ border-block-start:0; }
+  .serv-resumen li:nth-child(n+3){ border-block-start: 1px solid var(--lilac-100); }
+  .serv-resumen li:nth-child(odd){ border-inline-end: 1px solid var(--lilac-100); }
+  .serv-res{ min-block-size:88px; padding: 18px 20px; }
+}
+
 @media (prefers-reduced-motion: reduce){
   .h-link svg,
+  .serv-res,
   .home-repara__wa,
   .home-guias .filter-tab, .home-guias .guia-card,
   .sintoma,
