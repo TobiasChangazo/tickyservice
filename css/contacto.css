@@ -356,8 +356,8 @@ textarea.form-input {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+    linear-gradient(var(--map-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--map-grid-line) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 .map-deco::after {
@@ -367,7 +367,7 @@ textarea.form-input {
   right: -10%;
   top: 56%;
   height: 8px;
-  background: rgba(255, 255, 255, .08);
+  background: var(--map-road);
   transform: rotate(-8deg);
 }
 

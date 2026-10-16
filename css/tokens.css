@@ -126,10 +126,21 @@
   --header-h: 4.25rem;
   --container-max: 1200px;
 
-  /* ---------- Cuadrícula decorativa (blueprint) ---------- */
+  /* ---------- Cuadrícula decorativa (blueprint) ----------
+     Todos los valores de las cuadrículas del sitio viven acá.
+     Subidos de forma pareja para que se note sin competir con el texto. */
   --grid-size: 48px;
-  --grid-line: rgba(0,0,0,.05);
+  --grid-line: rgba(0,0,0,.10);                 /* sobre fondos claros (antes .05) */
+  --grid-line-on-dark: rgba(255,255,255,.12);   /* hero y footer (antes .06) */
   --grid-focus: 30% 40%;
+  /* Desvanecido radial: llega hasta el 90% (antes 75%) */
+  --grid-mask: radial-gradient(circle at var(--grid-focus), black 0%, transparent 90%);
+
+  /* Mapa decorativo de contacto (antes .05 y .08) */
+  --map-grid-line: rgba(255,255,255,.10);
+  --map-road: rgba(255,255,255,.16);
+  /* Cuadrícula del cierre de nosotros (antes .035) */
+  --cta-grid-line: rgba(255,255,255,.07);
 }
 
 /* ---------- Guías — diseño editorial (hub + detalle) ---------- */
