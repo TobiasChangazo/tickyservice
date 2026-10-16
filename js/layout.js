@@ -7,6 +7,7 @@
      ...
      <div id="site-footer"></div>
 
+   Requiere js/config.js (WHATSAPP_NUMERO, waLink, INSTAGRAM_URL).
    Se carga sincrónico justo después de #site-header para que el
    header se pinte sin parpadeo; el footer se monta cuando termina
    de parsearse el documento. Sin fetch de parciales: funciona
@@ -27,8 +28,6 @@ const NAV = [
 const SECCION_DE = { 'guia.html': 'guias.html' };
 
 const UBICACION = 'Mar de Ajó | Partido de la Costa';
-const WHATSAPP_URL = 'https://wa.me/549232323232';
-const INSTAGRAM_URL = 'https://instagram.com/tickyservice';
 const EMAIL = 'contacto@tickyservice.com.ar';
 
 // Página actual: último segmento de la ruta ("" → index.html)
@@ -107,7 +106,7 @@ const FOOTER = `
       <div>
         <h3 class="footer__heading">Contacto</h3>
         <ul class="footer__list">
-          <li><a href="${WHATSAPP_URL}">WhatsApp</a></li>
+          <li><a href="${waLink()}">WhatsApp</a></li>
           <li><a href="${INSTAGRAM_URL}">Instagram</a></li>
           <li><a href="mailto:${EMAIL}">${EMAIL}</a></li>
           <li>${UBICACION}</li>
@@ -120,7 +119,7 @@ const FOOTER = `
   </div>
 </footer>
 
-<a class="float-wa" href="${WHATSAPP_URL}">
+<a class="float-wa" href="${waLink()}">
   <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
   <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
@@ -140,10 +139,20 @@ function montar(id, html) {
 document.body.insertAdjacentHTML('afterbegin', ICONOS);
 montar('site-header', HEADER);
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => montar('site-footer', FOOTER));
-} else {
+// Links declarativos: <a data-wa="mensaje opcional"> → href de WhatsApp
+function linksWhatsApp() {
+  document.querySelectorAll('a[data-wa]').forEach(a => { a.href = waLink(a.dataset.wa); });
+}
+
+function alTerminar() {
   montar('site-footer', FOOTER);
+  linksWhatsApp();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', alTerminar);
+} else {
+  alTerminar();
 }
 
 })();

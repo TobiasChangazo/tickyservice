@@ -4,9 +4,6 @@
    ========================================================= */
 (function(){
 
-// Mismo número que usa el resto del sitio (footer, botón flotante, etc.)
-const WHATSAPP_NUMERO = '549232323232';
-
 // Para cada síntoma:
 // - icono: nombre de Lucide
 // - equipos: texto de la línea de meta
@@ -130,9 +127,7 @@ let actual = SINTOMAS[0].id;
 const negrita = txt => txt.replace(/\{\{(.+?)\}\}/g, '<strong>$1</strong>');
 
 const linkWhatsApp = s =>
-  `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-    `Hola! Tengo un problema: ${s.titulo}. Ya probé los pasos del diagnóstico de la web.`
-  )}`;
+  waLink(`Hola! Tengo un problema: ${s.titulo}. Ya probé los pasos del diagnóstico de la web.`);
 
 function renderLista() {
   $items.innerHTML = SINTOMAS.map(s => `

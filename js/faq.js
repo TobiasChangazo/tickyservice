@@ -4,9 +4,6 @@
    ========================================================= */
 (function(){
 
-// Mismo número que en diagnóstico y servicios
-const WHATSAPP_NUMERO = '549232323232';
-
 // Lo que va entre {{ }} sale en negrita
 const FAQS = [
   {
@@ -52,9 +49,7 @@ let abierta = 0; // -1 para arrancar con todas cerradas
 const negrita = txt => txt.replace(/\{\{(.+?)\}\}/g, '<strong>$1</strong>');
 
 /* ---------- CTA ---------- */
-$wa.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-  'Hola! Probé lo de la web y el problema sigue. Les cuento:'
-)}`;
+$wa.href = waLink('Hola! Probé lo de la web y el problema sigue. Les cuento:');
 $wa.insertAdjacentHTML('afterbegin', WA_ICON);
 
 /* ---------- Acordeón ---------- */

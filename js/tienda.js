@@ -4,9 +4,6 @@
    ========================================================= */
 (function(){
 
-// Mismo número que en el resto del sitio
-const WHATSAPP_NUMERO = '549232323232';
-
 const FILTROS = [
   { id: 'todas',     nombre: 'Todas',     icono: 'layout-grid' },
   { id: 'notebooks', nombre: 'Notebooks', icono: 'laptop' },
@@ -41,10 +38,8 @@ const state = { filtro: 'todas', soloStock: false };
 /* ---------- Helpers ---------- */
 const formatoPrecio = n => '$' + n.toLocaleString('es-AR');
 
-const waLink = p =>
-  `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(
-    `Hola! Quiero consultar stock y precio de: ${p.nombre}.`
-  )}`;
+const linkProducto = p =>
+  waLink(`Hola! Quiero consultar stock y precio de: ${p.nombre}.`);
 
 const contar = id =>
   id === 'todas' ? PRODUCTOS.length : PRODUCTOS.filter(p => p.categoria === id).length;
@@ -98,7 +93,7 @@ function renderCard(p) {
     return `<article class="product-card is-out" aria-label="${p.nombre}, sin stock">${contenido}</article>`;
   }
 
-  const href = p.url || waLink(p);
+  const href = p.url || linkProducto(p);
   const externo = !p.url;
   return `
     <a class="product-card" href="${href}" ${externo ? 'target="_blank" rel="noopener"' : ''}

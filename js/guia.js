@@ -6,7 +6,6 @@
 (function(){
 
 const { CATEGORIAS, NIVELES, GUIAS } = window.TICKY_GUIAS;
-const WHATSAPP = '549232323232';
 
 const slug = new URLSearchParams(location.search).get('g');
 const guia = GUIAS.find(g => g.slug === slug);
@@ -19,8 +18,6 @@ const $layout = document.getElementById('gd-layout');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 
 const levelBar = nivel => `<span class="level-bar level-bar--${nivel.barra}" aria-hidden="true"><span></span><span></span><span></span></span>`;
-
-const waLink = texto => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
 
 /* ---------- Guía no encontrada ---------- */
 if (!guia) {

@@ -10,9 +10,6 @@
    ========================================================= */
 (function(){
 
-// Mismo número que usa el resto del sitio (footer, botón flotante, etc.)
-const WHATSAPP_NUMERO = '549232323232';
-
 const NIVELES = {
   1: 'Podés hacerlo vos',
   2: 'Requiere herramientas',
@@ -166,9 +163,6 @@ let actual = EQUIPOS.some(e => e.id === eqURL) ? eqURL : EQUIPOS[0].id;
 
 /* ---------- Helpers ---------- */
 const levelBars = () => '<span class="level"><b></b><b></b><b></b></span>';
-
-const waLink = texto =>
-  `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
 
 const totalServicios = eq =>
   eq.categorias.reduce((acc, c) => acc + c.servicios.length, 0);
