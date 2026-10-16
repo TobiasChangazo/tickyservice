@@ -129,7 +129,8 @@
 .hero-cta--ghost:hover{ background: rgba(255,255,255,.08); }
 .hero-cta:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 
-.hero__trust{
+/* .hero delante: le gana al reset ul[class]{padding:0} de styles.css */
+.hero .hero__trust{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: .5rem;
@@ -248,4 +249,130 @@
 }
 @media (prefers-reduced-motion: reduce){
   .sintoma{ transition:none; }
+}
+
+/* ---------- 02 — Guías paso a paso ---------- */
+.hguias{
+  background: var(--white);
+  border-block-start: 1px solid var(--line-soft);
+}
+.hguias__panel{ display:flex; flex-direction:column; gap: 1.25rem; }
+
+/* Filtro por equipo: chips que pasan a la línea siguiente (sin scroll) */
+.hguias__filtro{
+  display:flex;
+  flex-wrap:wrap;
+  gap: .5rem;
+  margin:0;
+  padding:0;
+  border:0;
+  min-inline-size:0;
+}
+.hchip{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  min-block-size: 44px;                         /* diseño: 40px; se sube a 44 para el toque */
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--chip-border);
+  background: var(--white);
+  font-size: .8125rem;                          /* 13px */
+  font-weight:500;
+  color: var(--ink-900);
+  cursor:pointer;
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.hchip:hover{ border-color: var(--brand-500); }
+.hchip__count{ font-size: .6875rem; color: var(--ink-500); }
+.filter-input:checked + .hchip{
+  background: var(--brand-700);
+  border-color: var(--brand-700);
+  color: var(--white);
+  font-weight:600;
+}
+.filter-input:checked + .hchip .hchip__count{ color: rgba(255,255,255,.75); }
+.filter-input:focus-visible + .hchip{ outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Barras de nivel del rediseño: 3 iguales de 4x12 */
+.hguias .level{ gap:2px; }
+.hguias .level b{ width:4px; height:12px; border-radius:1px; background: var(--level-off); }
+.hguias .level b:nth-child(n){ height:12px; }
+
+.hguias .hguias__leyenda{                      /* ídem reset de listas */
+  display:flex;
+  flex-wrap:wrap;
+  gap: 6px 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--lilac-050);
+}
+.hguias__leyenda li{
+  display:flex;
+  align-items:center;
+  gap: 6px;
+  font-size: .75rem;
+  color: var(--ink-500);
+}
+
+.hguias__grid{ display:grid; grid-template-columns: minmax(0,1fr); gap: .75rem; }
+.hcard{
+  display:flex;
+  flex-direction:column;
+  gap: .75rem;
+  block-size:100%;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  background: var(--white);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.hcard:hover{ border-color: var(--brand-500); box-shadow: var(--sh-2); }
+.hcard:hover .hcard__title{ color: var(--brand-700); }
+.hcard:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+.hcard__top{ display:flex; align-items:center; justify-content:space-between; gap: .5rem; }
+.hcard__meta{ display:flex; flex-wrap:wrap; align-items:center; gap: 8px; }
+.hcard__chip{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  block-size: 26px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: var(--accent-bg);
+  color: var(--accent-text);
+  font-size: .75rem;
+  font-weight:600;
+}
+.hcard__chip .icon{ width:14px; height:14px; stroke-width:2; }
+.hcard__type{ font-size: .65625rem; letter-spacing:.08em; color: var(--ink-500); }   /* 10.5px */
+.hcard__arrow{ width:18px; height:18px; stroke-width:2; color: var(--brand-500); }
+.hcard__title{ font-size: 1.0625rem; line-height:1.3; font-weight:600; color: var(--ink-900); }   /* 17px */
+.hcard__level{ display:flex; align-items:center; gap: 6px; font-size: .75rem; color: var(--ink-500); }
+
+.hguias__all{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  min-block-size: 54px;
+  margin-block-start: 1.25rem;
+  border-radius: 16px;
+  background: var(--ink-900);
+  color: var(--white);
+  font-size: .9375rem;
+  font-weight:600;
+  transition: background-color var(--dur) var(--ease);
+}
+.hguias__all .icon{ width:18px; height:18px; stroke-width:2; color: var(--accent-500); }
+.hguias__all:hover{ background: var(--ink-950); }
+.hguias__all:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+
+@media (min-width: 768px){
+  .hguias__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+  .hcard{ padding: 1.25rem; }
+  .hguias__all{ max-inline-size: 22rem; margin-inline: auto; margin-block-start: 2rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .hchip, .hcard, .hguias__all{ transition:none; }
 }
