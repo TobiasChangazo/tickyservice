@@ -521,3 +521,10 @@
 @media (prefers-reduced-motion: reduce){
   .hserv__row, .hlink .icon{ transition:none; }
 }
+
+/* ---------- 05 — FAQ (estilos de las preguntas en css/faq.css) ---------- */
+.hfaq{
+  background: var(--white);
+  border-block-start: 1px solid var(--line-soft);
+}
+.hfaq .sec-head{ margin-block-end: 1.25rem; }

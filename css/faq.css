@@ -1,224 +1,138 @@
 /* =========================================================
-   TickyService — FAQ + CTA "¿Lo probaste y sigue igual?"
-   Se apoya en los tokens de tokens.css (--brand-*, --ink-*,
-   --lilac-*, --accent-*, --wa-*, --header-h, --ease). El encabezado (eyebrow/título) reusa
-   .section__eyebrow / .section__title, no vive acá.
+   TickyService — FAQ del home (sección 05)
+   Se apoya en los tokens de tokens.css.
 
    Sin JavaScript: cada pregunta es un <details>/<summary>. Con el
    mismo name="faq" el navegador deja una sola abierta a la vez.
+   El home muestra las 4 primeras; "Ver todas las preguntas" es otro
+   <details> que despliega las 3 restantes en el lugar.
 
    Markup:
 
-   <div class="faq-section" id="faq">
-     <aside class="faq-aside">
-       <div class="section__head">...</div>
-       <div class="faq-cta">
-         <div class="faq-cta-icon"><svg class="icon">...</svg></div>
-         <p class="faq-cta-title">¿Lo probaste y sigue igual?</p>
-         <p class="faq-cta-text">...</p>
-         <a class="faq-cta-wa" href="https://wa.me/...">...</a>
-         <a class="faq-cta-link" href="contacto.html">Ir a contacto ...</a>
-       </div>
-     </aside>
-
-     <div class="faq-list">
-       <details class="faq-item" name="faq" open>
-         <summary class="faq-q">
-           <span class="faq-q-text">¿Cuánto tarda una reparación?</span>
-           <span class="faq-toggle"><svg class="icon">...</svg></span>
-         </summary>
-         <p class="faq-a">...</p>
-       </details>
-     </div>
+   <div class="faq-list">
+     <details class="faq-item" name="faq" open>
+       <summary class="faq-q">
+         <span class="faq-q-text">¿Cuánto tarda una reparación?</span>
+         <span class="faq-toggle" aria-hidden="true">
+           <svg class="icon faq-minus">...</svg><svg class="icon faq-plus">...</svg>
+         </span>
+       </summary>
+       <p class="faq-a">...</p>
+     </details>
+     ...
+     <details class="faq-more">
+       <summary class="faq-more__btn">Ver todas las preguntas</summary>
+       <div class="faq-list">(las demás .faq-item)</div>
+     </details>
    </div>
    ========================================================= */
 
-/* ---------- Layout ---------- */
-.faq-section{
-  display:grid;
-  grid-template-columns: 380px minmax(0,1fr);
-  gap: var(--space-11);
-  align-items:start;
-}
-
-.faq-aside{
-  position:sticky;
-  top: calc(var(--header-h) + var(--space-7));
-}
-.faq-aside .section__head{ margin-block-end: var(--space-7); }
-
-/* ---------- CTA ---------- */
-.faq-cta{
-  --focus-ring: var(--focus-ring-on-dark);
-  position:relative;
-  overflow:hidden;
-  padding: var(--space-6) var(--space-6) var(--space-6);
-  border-radius: var(--r-lg);
-  background: var(--ink-900);
-  isolation:isolate;
-}
-
-.faq-cta::before{
-  content:'';
-  position:absolute;
-  z-index:-1;
-  top:-60px;
-  right:-60px;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--brand-500) 55%, transparent), transparent 70%);
-}
-
-.faq-cta-icon{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:44px;
-  height:44px;
-  margin-block-end: var(--space-4);
-  border-radius: var(--r-md);
-  background: color-mix(in srgb, var(--accent-500) 14%, transparent);
-}
-.faq-cta-icon svg{ width:22px; height:22px; color: var(--accent-500); }
-
-.faq-cta-title{ margin: 0 0 var(--space-2); font-size: 1.35rem; font-weight:600; color:var(--white); }
-
-.faq-cta-text{ margin: 0 0 var(--space-5); font-size: .92rem; line-height:1.55; color: rgba(255,255,255,.72); }
-
-.faq-cta-wa{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: var(--space-2);
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--r-pill);
-  background: var(--wa-green);
-  color: var(--wa-text);
-  font-size: .95rem;
-  font-weight:600;
-  text-decoration:none;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
-}
-.faq-cta-wa svg{ width:18px; height:18px; }
-.faq-cta-wa:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px color-mix(in srgb, var(--wa-green) 35%, transparent); }
-
-.faq-cta-link{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: 6px;
-  margin-block-start: var(--space-3);
-  font-size: .9rem;
-  font-weight:500;
-  color: rgba(255,255,255,.75);
-  text-decoration:none;
-  -webkit-tap-highlight-color: transparent;
-  transition: color .2s var(--ease), gap .2s var(--ease);
-}
-.faq-cta-link svg{ width:16px; height:16px; }
-.faq-cta-link:hover{ color:var(--white); gap: var(--space-3); }
-
-/* ---------- Acordeón ---------- */
 .faq-list{
-  border-block-start: 1px solid var(--lilac-200);
+  display:flex;
+  flex-direction:column;
+  gap: .5rem;                                   /* 8px */
   /* Permite animar la altura hasta "auto" (navegadores que lo soportan) */
   interpolate-size: allow-keywords;
 }
 
+/* ---------- Pregunta ---------- */
 .faq-item{
-  border-block-end: 1px solid var(--lilac-200);
-  transition: border-color .3s var(--ease);
+  border-radius: 14px;
+  background: var(--white);
+  border: 1px solid var(--card-border);
+  transition: background-color var(--dur) var(--ease);
 }
-.faq-item[open]{ border-block-end-color: var(--lilac-300); }
+.faq-item[open]{ background: var(--lilac-025); }
 
 .faq-q{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap: var(--space-5);
-  width:100%;
-  padding: var(--space-5) 4px;
-  border:none;
-  background:none;
-  font: inherit;
-  text-align:left;
+  gap: .75rem;
+  min-block-size: 56px;
+  padding: .5rem 1rem;
+  font-size: .9375rem;                          /* 15px */
+  font-weight:600;
+  line-height:1.35;
+  color: var(--ink-900);
   cursor:pointer;
   list-style:none;
   -webkit-tap-highlight-color: transparent;
 }
 /* Sin el triángulo por defecto del <summary> */
 .faq-q::-webkit-details-marker{ display:none; }
+.faq-q:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 14px; }
 
-.faq-q-text{ margin:0; font-size: 1.05rem; font-weight:500; color: var(--ink-900); transition: color .2s var(--ease); }
-.faq-q:hover .faq-q-text,
-.faq-item[open] .faq-q-text{ color: var(--brand-600); }
-
+/* "+" con borde cuando está cerrada, "−" en círculo violeta cuando está abierta */
 .faq-toggle{
   display:flex;
   align-items:center;
   justify-content:center;
   flex-shrink:0;
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  border: 1px solid var(--lilac-300);
-  transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease);
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--lilac-350);
+  color: var(--brand-700);
 }
-.faq-toggle svg{ width:16px; height:16px; color: var(--ink-400); transition: color .3s var(--ease); }
-
-.faq-item[open] .faq-toggle{ transform: rotate(45deg); background: var(--brand-600); border-color: var(--brand-600); }
-.faq-item[open] .faq-toggle svg{ color:var(--white); }
-
-/* Animación de apertura sin JS (mejora progresiva: donde no hay
-   soporte para ::details-content, abre y cierra sin animación) */
-.faq-item::details-content{
-  block-size:0;
-  overflow:hidden;
-  transition: block-size .35s var(--ease), content-visibility .35s var(--ease) allow-discrete;
-}
-.faq-item[open]::details-content{ block-size:auto; }
+.faq-toggle .icon{ width:16px; height:16px; stroke-width:2; }
+.faq-minus{ display:none; }
+.faq-item[open] .faq-toggle{ background: var(--brand-700); border-color: var(--brand-700); color: var(--white); }
+.faq-item[open] .faq-minus{ display:block; }
+.faq-item[open] .faq-plus{ display:none; }
 
 .faq-a{
-  margin:0;
-  padding: 0 var(--space-11) var(--space-5) 4px;
-  font-size: .98rem;
-  line-height:1.65;
-  color: var(--ink-600);
+  padding: 0 1rem 1rem;
+  font-size: .875rem;                           /* 14px */
+  line-height:1.6;
+  color: var(--ink-500);
 }
 .faq-a strong{ color: var(--ink-900); font-weight:600; }
 
-/* ---------- Foco ---------- */
-.faq-q:focus-visible,
-.faq-cta-wa:focus-visible,
-.faq-cta-link:focus-visible{
-  outline: 3px solid var(--focus-ring);
-  outline-offset:2px;
-  border-radius: var(--r-sm);
+/* Animación de apertura (mejora progresiva) */
+.faq-item::details-content{
+  block-size:0;
+  overflow:hidden;
+  transition: block-size .3s var(--ease), content-visibility .3s var(--ease) allow-discrete;
 }
-.faq-cta-wa:focus-visible{ border-radius: var(--r-pill); }
+.faq-item[open]::details-content{ block-size:auto; }
+
+/* ---------- "Ver todas las preguntas" ---------- */
+.faq-more__btn{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  min-block-size: 44px;
+  margin-block-start: .5rem;
+  font-size: .9375rem;
+  font-weight:600;
+  color: var(--brand-700);
+  cursor:pointer;
+  list-style:none;
+}
+.faq-more__btn::-webkit-details-marker{ display:none; }
+.faq-more__btn .icon{ width:18px; height:18px; stroke-width:2; transition: transform var(--dur) var(--ease); }
+.faq-more[open] > .faq-more__btn .icon{ transform: rotate(180deg); }
+.faq-more__btn:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 6px; }
+.faq-more__menos{ display:none; }
+.faq-more[open] .faq-more__menos{ display:inline; }
+.faq-more[open] .faq-more__todas{ display:none; }
+.faq-more > .faq-list{ margin-block-start: .5rem; }
 
 @media (prefers-reduced-motion: reduce){
-  .faq-item, .faq-q-text, .faq-toggle, .faq-toggle svg,
-  .faq-cta-wa, .faq-cta-link{ transition:none; }
+  .faq-item, .faq-more__btn .icon{ transition:none; }
   .faq-item::details-content{ transition:none; }
 }
 
-/* ---------- Tablet / mobile ---------- */
-@media (max-width: 960px){
-  .faq-section{ grid-template-columns: minmax(0,1fr); gap:0; }
-
-  /* En mobile el CTA va al final, después de las preguntas */
-  .faq-aside{ position:static; display:contents; }
-  .faq-aside > :not(.faq-cta){ order:0; }
-  .faq-list{ order:1; margin-block-start: var(--space-6); }
-  .faq-cta{ order:2; margin-block-start: var(--space-7); }
-}
-
-@media (max-width: 600px){
-  .faq-q{ padding: var(--space-5) 2px; }
-  .faq-q-text{ font-size: 1rem; }
-  .faq-a{ padding: 0 var(--space-3) var(--space-5) 2px; }
-  .faq-cta{ padding: var(--space-6) var(--space-5) var(--space-5); }
+/* ---------- Desktop: título a la izquierda, preguntas a la derecha ---------- */
+@media (min-width: 768px){
+  .hfaq__inner{
+    display:grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    gap: 3rem;
+    align-items:start;
+  }
+  .hfaq__inner .sec-head{ position:sticky; top: calc(var(--header-h) + 2rem); }
+  .faq-q{ font-size: 1rem; padding-inline: 1.25rem; }
+  .faq-a{ padding-inline: 1.25rem; font-size: .9375rem; }
 }

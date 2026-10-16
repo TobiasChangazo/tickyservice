@@ -41,6 +41,7 @@
     <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
     <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
     <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="icon-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
     <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
     <symbol id="icon-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></symbol>
@@ -50,7 +51,7 @@
     <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
     <symbol id="icon-laptop" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></symbol>
     <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
-    <symbol id="icon-message-circle-question" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+    <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
     <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
     <symbol id="icon-power" viewBox="0 0 24 24"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></symbol>
     <symbol id="icon-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
@@ -466,82 +467,76 @@
     </div>
   </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="section" aria-labelledby="faq-title">
-    <div class="container">
-      <div class="faq-section" id="faq">
-        <aside class="faq-aside">
-          <div class="section__head">
-            <span class="section__eyebrow">Preguntas frecuentes</span>
-            <h2 id="faq-title" class="section__title">Lo que más nos preguntan</h2>
-            <p class="section__desc">Si tu duda no está acá, escribinos y te respondemos.</p>
-          </div>
+  <!-- ============ 05 FAQ ============
+       <details>/<summary>: las 4 primeras a la vista y el resto dentro de
+       "Ver todas las preguntas" (no hay una página de FAQ aparte). -->
+  <section class="hsec hfaq" id="faq" aria-labelledby="faq-title">
+    <div class="container hfaq__inner">
+      <div class="sec-head">
+        <p class="sec-label">05 — Preguntas frecuentes</p>
+        <h2 class="sec-title" id="faq-title">Lo que más nos preguntan</h2>
+      </div>
 
-          <div class="faq-cta">
-            <div class="faq-cta-icon"><svg class="icon" aria-hidden="true"><use href="#icon-message-circle-question"></use></svg></div>
-            <p class="faq-cta-title">¿Lo probaste y sigue igual?</p>
-            <p class="faq-cta-text">No le sigas metiendo mano, puede empeorar. Contanos qué probaste y seguimos nosotros.</p>
-            <a class="faq-cta-wa" href="https://wa.me/5492233024504?text=Hola!%20Prob%C3%A9%20lo%20de%20la%20web%20y%20el%20problema%20sigue.%20Les%20cuento%3A" target="_blank" rel="noopener">
-              <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-              <span>Escribinos por WhatsApp</span>
-            </a>
-            <a class="faq-cta-link" href="contacto.html">
-              Ir a contacto <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-            </a>
-          </div>
-        </aside>
+      <div class="faq-list">
+        <details class="faq-item" name="faq" open>
+          <summary class="faq-q">
+            <span class="faq-q-text">¿Cuánto tarda una reparación?</span>
+            <span class="faq-toggle" aria-hidden="true"><svg class="icon faq-minus" aria-hidden="true"><use href="#icon-minus"></use></svg><svg class="icon faq-plus" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
+          </summary>
+          <p class="faq-a">La mayoría de los diagnósticos están en <strong>24 a 48 horas</strong>, y te avisamos el tiempo estimado apenas confirmamos el presupuesto.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary class="faq-q">
+            <span class="faq-q-text">¿El presupuesto tiene costo?</span>
+            <span class="faq-toggle" aria-hidden="true"><svg class="icon faq-minus" aria-hidden="true"><use href="#icon-minus"></use></svg><svg class="icon faq-plus" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
+          </summary>
+          <p class="faq-a">No, <strong>el diagnóstico y el presupuesto son sin cargo</strong>. Solo abonás si decidís avanzar con la reparación.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary class="faq-q">
+            <span class="faq-q-text">¿Qué garantía tienen las reparaciones?</span>
+            <span class="faq-toggle" aria-hidden="true"><svg class="icon faq-minus" aria-hidden="true"><use href="#icon-minus"></use></svg><svg class="icon faq-plus" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
+          </summary>
+          <p class="faq-a">Todas nuestras reparaciones y repuestos instalados cuentan con <strong>garantía escrita</strong>, cuyo plazo te informamos junto con el presupuesto.</p>
+        </details>
+        <details class="faq-item" name="faq">
+          <summary class="faq-q">
+            <span class="faq-q-text">¿Hacen retiro a domicilio?</span>
+            <span class="faq-toggle" aria-hidden="true"><svg class="icon faq-minus" aria-hidden="true"><use href="#icon-minus"></use></svg><svg class="icon faq-plus" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
+          </summary>
+          <p class="faq-a">Sí, coordinamos el retiro y la entrega a domicilio en <strong>Mar de Ajó y alrededores</strong>. Consultanos la disponibilidad por WhatsApp.</p>
+        </details>
 
-        <div class="faq-list">
-          <details class="faq-item" name="faq" open>
-            <summary class="faq-q">
-              <span class="faq-q-text">¿Cuánto tarda una reparación?</span>
-              <span class="faq-toggle"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
-            </summary>
-            <p class="faq-a">La mayoría de los diagnósticos están en <strong>24 a 48 horas</strong>, y te avisamos el tiempo estimado apenas confirmamos el presupuesto.</p>
-          </details>
-          <details class="faq-item" name="faq">
-            <summary class="faq-q">
-              <span class="faq-q-text">¿El presupuesto tiene costo?</span>
-              <span class="faq-toggle"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
-            </summary>
-            <p class="faq-a">No, <strong>el diagnóstico y el presupuesto son sin cargo</strong>. Solo abonás si decidís avanzar con la reparación.</p>
-          </details>
-          <details class="faq-item" name="faq">
-            <summary class="faq-q">
-              <span class="faq-q-text">¿Qué garantía tienen las reparaciones?</span>
-              <span class="faq-toggle"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
-            </summary>
-            <p class="faq-a">Todas nuestras reparaciones y repuestos instalados cuentan con <strong>garantía escrita</strong>, cuyo plazo te informamos junto con el presupuesto.</p>
-          </details>
-          <details class="faq-item" name="faq">
-            <summary class="faq-q">
-              <span class="faq-q-text">¿Hacen retiro a domicilio?</span>
-              <span class="faq-toggle"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
-            </summary>
-            <p class="faq-a">Sí, coordinamos el retiro y la entrega a domicilio en <strong>Mar de Ajó y alrededores</strong>. Consultanos la disponibilidad por WhatsApp.</p>
-          </details>
-          <details class="faq-item" name="faq">
-            <summary class="faq-q">
-              <span class="faq-q-text">¿Qué formas de pago aceptan?</span>
-              <span class="faq-toggle"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
-            </summary>
-            <p class="faq-a"><strong>Efectivo, transferencia bancaria y tarjetas de débito y crédito</strong>.</p>
-          </details>
-          <details class="faq-item" name="faq">
-            <summary class="faq-q">
-              <span class="faq-q-text">¿Tengo que hacer backup de mis datos antes de traerlo?</span>
-              <span class="faq-toggle"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
-            </summary>
-            <p class="faq-a">Sí, siempre te lo vamos a pedir. Algunas reparaciones implican borrar o reinstalar el sistema, así que un backup previo te evita disgustos. <strong>Tenemos una guía corta</strong> para hacerlo antes de traer el equipo.</p>
-          </details>
-          <details class="faq-item" name="faq">
-            <summary class="faq-q">
-              <span class="faq-q-text">¿Hay equipos que no se pueden reparar?</span>
-              <span class="faq-toggle"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
-            </summary>
-            <p class="faq-a">Sí. Cuando el daño no tiene una reparación que valga la pena frente al costo de un equipo nuevo, o cuando ya no se consiguen repuestos, <strong>te lo decimos de entrada en el diagnóstico</strong>, sin vueltas.</p>
-          </details>
-        </div>
+        <details class="faq-more">
+          <summary class="faq-more__btn">
+            <span class="faq-more__todas">Ver todas las preguntas</span>
+            <span class="faq-more__menos">Ver menos preguntas</span>
+            <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+          </summary>
+          <div class="faq-list">
+            <details class="faq-item" name="faq">
+              <summary class="faq-q">
+                <span class="faq-q-text">¿Qué formas de pago aceptan?</span>
+                <span class="faq-toggle" aria-hidden="true"><svg class="icon faq-minus" aria-hidden="true"><use href="#icon-minus"></use></svg><svg class="icon faq-plus" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
+              </summary>
+              <p class="faq-a"><strong>Efectivo, transferencia bancaria y tarjetas de débito y crédito</strong>.</p>
+            </details>
+            <details class="faq-item" name="faq">
+              <summary class="faq-q">
+                <span class="faq-q-text">¿Tengo que hacer backup de mis datos antes de traerlo?</span>
+                <span class="faq-toggle" aria-hidden="true"><svg class="icon faq-minus" aria-hidden="true"><use href="#icon-minus"></use></svg><svg class="icon faq-plus" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
+              </summary>
+              <p class="faq-a">Sí, siempre te lo vamos a pedir. Algunas reparaciones implican borrar o reinstalar el sistema, así que un backup previo te evita disgustos. <strong>Tenemos una guía corta</strong> para hacerlo antes de traer el equipo.</p>
+            </details>
+            <details class="faq-item" name="faq">
+              <summary class="faq-q">
+                <span class="faq-q-text">¿Hay equipos que no se pueden reparar?</span>
+                <span class="faq-toggle" aria-hidden="true"><svg class="icon faq-minus" aria-hidden="true"><use href="#icon-minus"></use></svg><svg class="icon faq-plus" aria-hidden="true"><use href="#icon-plus"></use></svg></span>
+              </summary>
+              <p class="faq-a">Sí. Cuando el daño no tiene una reparación que valga la pena frente al costo de un equipo nuevo, o cuando ya no se consiguen repuestos, <strong>te lo decimos de entrada en el diagnóstico</strong>, sin vueltas.</p>
+            </details>
+          </div>
+        </details>
       </div>
     </div>
   </section>
