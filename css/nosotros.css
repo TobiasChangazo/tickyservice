@@ -72,6 +72,18 @@
   object-fit: cover;
 }
 
+/* Mientras no haya foto del taller: zorro de marca sobre el degradado,
+   por encima de la tarjeta de ubicación */
+.about-photo .about-photo__mark {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  height: 58%;
+  object-fit: contain;
+  opacity: .9;
+}
+
 .about-location {
   position: absolute;
   left: 16px;

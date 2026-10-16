@@ -56,7 +56,7 @@ const HEADER = `
 <header class="site-header">
   <div class="container header-bar">
     <a class="brand" href="index.html">
-      <img class="brand__logo" src="img/logo/logo1-trimmed.png" alt="TickyService" width="631" height="140">
+      <img class="brand__logo" src="img/marca/logo-wordmark.png" alt="TickyService" width="631" height="140">
     </a>
 
     <input type="checkbox" id="nav-toggle" class="sr-only nav-toggle-input">
@@ -82,8 +82,8 @@ const FOOTER = `
     <div class="footer__grid">
       <div>
         <a class="footer__brand" href="index.html">
-          <img class="footer__logo" src="img/logo/fondo.png" alt="" width="32" height="32">
-          <img class="footer__wordmark" src="img/logo/logo3-trimmed.png" alt="TickyService" width="1250" height="268">
+          <img class="footer__logo" src="img/marca/logo-zorro.png" alt="" width="32" height="32">
+          <img class="footer__wordmark" src="img/marca/logo-wordmark-blanco.png" alt="TickyService" width="1250" height="268">
         </a>
         <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología.</p>
         <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
