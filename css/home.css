@@ -1,0 +1,89 @@
+/* =========================================================
+   TickyService — Home (index.html)
+   Rediseño mobile-first según docs/rediseno-home-mobile.md:
+   hero → 01 síntomas → 02 guías → 03 reparación → 04 servicios → 05 FAQ.
+   Medidas, colores y espaciados copiados de docs/home-mobile.dc.html.
+   En ≥ 768px las mismas secciones se reacomodan en más columnas.
+   Colores: solo tokens de tokens.css.
+   ========================================================= */
+
+/* ---------- Base común de secciones ---------- */
+.h-wrap{
+  width: min(100% - 40px, var(--container-max));
+  margin-inline: auto;
+}
+
+.h-section{ padding-block: 40px; }
+
+.h-head{ display:flex; flex-direction:column; gap:8px; margin-block-end:20px; max-width: 62ch; }
+
+/* Etiqueta de sección: "01 — EMPEZÁ ACÁ" */
+.h-label,
+.mono{ font-family: var(--font-mono); }
+.h-label{
+  margin:0;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: var(--accent-ink);
+}
+.h-dark .h-label{ color: var(--accent-500); }
+
+.h-title{
+  margin:0;
+  font-size:26px;
+  line-height:1.15;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color: var(--ink-900);
+}
+.h-dark .h-title{ color: var(--on-brand); }
+
+.h-text{
+  margin:0;
+  font-size:15px;
+  line-height:1.55;
+  color: var(--ink-500);
+}
+.h-dark .h-text{ color: rgba(255,255,255,.80); }
+
+/* Link de texto con flecha ("Ver todos los servicios →") */
+.h-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-block-size:44px;
+  font-size:15px;
+  font-weight:600;
+  color: var(--brand-700);
+}
+.h-link svg{ width:18px; height:18px; transition: transform var(--dur) var(--ease); }
+.h-link:hover svg{ transform: translateX(3px); }
+
+/* Fondos con cuadrícula pareja de celda chica */
+.h-grid-dark{
+  background-color: var(--brand-900);
+  background-image:
+    linear-gradient(var(--grid-line-brand) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-brand) 1px, transparent 1px);
+  background-size: var(--grid-cell-sm) var(--grid-cell-sm);
+}
+.h-grid-lilac{
+  background-color: var(--lilac-050);
+  background-image:
+    linear-gradient(var(--grid-line-lilac) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-lilac) 1px, transparent 1px);
+  background-size: var(--grid-cell-sm) var(--grid-cell-sm);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .h-link svg{ transition:none; }
+}
+
+@media (min-width: 768px){
+  .h-section{ padding-block: 72px; }
+  .h-head{ margin-block-end: 28px; }
+  .h-title{ font-size: clamp(26px, 1.4rem + 1vw, 36px); }
+  .h-text{ font-size:16px; }
+}

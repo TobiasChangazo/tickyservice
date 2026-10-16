@@ -20,7 +20,15 @@
      --accent-500 sobre --brand-700 5.3 · --brand-900 6.8 · --ink-900 7.1
      --accent-500 sobre blanco 2.5 → NO usar como texto sobre claro:
        ahí va --accent-text (5.7 sobre --accent-bg) o --accent-icon (3.8)
-     --on-accent (--ink-900) sobre --accent-500 7.1 (blanco no pasa: 2.5)
+     --on-accent sobre --accent-500 5.8 (blanco no pasa: 2.5)
+     --accent-ink sobre blanco 5.9 · sobre --accent-bg 5.3
+     --ink-500 sobre blanco 9.0 · sobre --lilac-100 7.7
+
+   Rediseño del home (docs/rediseno-home-mobile.md): los colores de la
+   spec que difieren ±2 de un token existente lo reutilizan:
+     #2A0748 → --brand-900 · #1C1330 → --ink-900 · #FBF8FE → --lilac-050
+     #F3EAFB y #F0E8F8 → --lilac-100 · #F7F1FC → --lilac-025
+     #E6D9F3 → --lilac-200 · #E3F6F1 → --accent-bg
      --wa-text sobre --wa-green 7.5
    ========================================================= */
 
@@ -36,8 +44,10 @@
 
   /* ---------- Lila (superficies claras) ---------- */
   --lilac-400:#BC9CD5;  /* lila + 28% violeta medio: bordes */
+  --lilac-350:#C9B3E2;  /* bordes punteados / íconos + del FAQ (home) */
   --lilac-300:#D5B9EA;  /* OFICIAL */
-  --lilac-200:#E8D8F3;  /* lila 55% sobre blanco */
+  --lilac-250:#E0D2EF;  /* borde de chips de filtro (home) */
+  --lilac-200:#E8D8F3;  /* lila 55% sobre blanco: borde de tarjetas */
   --lilac-100:#F2EAF9;  /* lila 30% */
   --lilac-025:#F7F2FB;  /* lila 18% */
   --lilac-050:#FBF9FD;  /* lila 9%: fondo de página */
@@ -49,13 +59,15 @@
   --accent-border:#A4E4D9; /* acento 38% */
   --accent-text:#096B5A;   /* acento + 42% negro: texto sobre claro */
   --accent-icon:#0B8A74;   /* acento + 25% negro: íconos sobre claro */
-  --on-accent: var(--ink-900);
+  --accent-ink:#08715F;    /* etiquetas y chips en verde agua sobre claro */
+  --on-accent:#0B2E25;     /* texto sobre botones --accent-500 */
 
   /* ---------- Texto / neutros ---------- */
   --ink-950:#16132B;
   --ink-900:#1C1330;
   --ink-800:#2A2448;
   --ink-600:#4A3D63;
+  --ink-500:#4F4366;  /* texto secundario del home */
   --ink-400:#6E6286;  /* oscurecido para pasar AA sobre --lilac-100 */
   --on-brand:#FFFFFF;
 
@@ -63,6 +75,8 @@
   --surface:#FFFFFF;
   --line:#EEEBF5;
   --line-strong:#E3DFEF;
+  --line-lilac:#ECE2F6;   /* línea suave: header y separadores del home */
+  --level-off:#DDD3E8;    /* barra de nivel vacía */
 
   /* Sobre fondos oscuros (paneles --ink-900 / degradados de marca) */
   --line-on-dark: rgba(255,255,255,.08);
@@ -99,6 +113,7 @@
 
   /* ---------- Tipografía ---------- */
   --font-display:'Poppins','Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'Cascadia Mono',monospace; /* etiquetas, números, metadatos */
   --fs-2xs: clamp(.6875rem, .67rem + .1vw, .75rem);
   --fs-xs: clamp(.75rem, .72rem + .15vw, .8125rem);
   --fs-sm: clamp(.875rem, .85rem + .2vw, .9375rem);
@@ -139,7 +154,7 @@
   --dur: 180ms;
 
   /* ---------- Layout de soporte ---------- */
-  --header-h: 4.25rem;
+  --header-h: 4rem;
   --container-max: 1200px;
 
   /* ---------- Cuadrícula decorativa (blueprint) ----------
@@ -154,6 +169,10 @@
   --grid-fade: 90%;                           /* radio de la máscara radial */
   /* #000 en la máscara solo define opacidad, no es un color visible */
   --grid-mask: radial-gradient(circle at var(--grid-focus), #000 0%, transparent var(--grid-fade));
+  /* Cuadrícula pareja (sin máscara) del rediseño del home: celda chica */
+  --grid-cell-sm: 32px;
+  --grid-line-brand: rgba(255,255,255,.07);  /* hero, sección 03 y menú */
+  --grid-line-lilac: color-mix(in srgb, var(--brand-700) 6%, transparent); /* sección 01 */
 }
 
 @media (prefers-contrast: more){
