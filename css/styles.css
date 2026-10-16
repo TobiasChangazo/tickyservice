@@ -460,52 +460,8 @@ a{ text-decoration:none; color:inherit; }
 .chip--warn{ background: color-mix(in srgb, var(--warn) 14%, transparent); color:var(--warn-text); border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
 .chip--danger{ background: color-mix(in srgb, var(--danger) 10%, transparent); color:var(--danger-text); border-color: color-mix(in srgb, var(--danger) 40%, transparent); }
 
-/* ===== COMPONENTES: Hero ===== */
-.hero{ padding-block: var(--space-11) var(--space-12); }
-.hero__title{ font-size: var(--fs-3xl); color: var(--on-brand); margin-block-end: var(--space-4); }
-.hero__lead{ font-size: var(--fs-lg); color: rgba(255,255,255,.85); max-width: 58ch; margin-block-end: var(--space-7); font-weight:400; }
-.hero--compact{ padding-block: var(--space-9); }
-.hero--compact .hero__title{ font-size: var(--fs-2xl); margin-block-end: var(--space-3); }
-.hero--compact .hero__lead{ font-size: var(--fs-md); margin-block-end: var(--space-2); }
-
-.hero--slogan{ min-block-size: min(64vh, 520px); display:flex; align-items:center; }
-.hero__headline{
-  margin:0;
-  max-width: 24ch;
-  color: var(--on-brand);
-  font-family: var(--font-display);
-  font-weight:800;
-  text-transform:uppercase;
-  font-size: clamp(1.3rem, 5.6vw, 3.75rem);
-  line-height:.95;
-  letter-spacing:-.01em;
-  overflow-wrap: break-word;
-}
-.hero__headline-line1{ display:block; }
-.hero__headline-line2{ display:block; white-space:nowrap; margin-block-start:.45em; }
-.hero__accent{ color: var(--accent-500); }
-.hero__headline-sub{ display:block; margin-block-start:.45em; white-space:nowrap; }
-
-.hero__subhead{
-  margin: var(--space-5) 0 0;
-  max-width: 48ch;
-  font-family: inherit;
-  font-size: var(--fs-lg);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.5;
-  color: rgba(255,255,255,.78);
-}
-
-.hero__actions{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap: 24px;
-  margin-block-start: 1.75rem;
-}
-
-/* Botones del hero: oscuro sólido (primario) + link subrayado cian (ghost) */
+/* ===== COMPONENTES: Botones de cierre (nosotros) ===== */
+/* Oscuro sólido (primario) + link subrayado verde agua (ghost) */
 .hero-btn{
   display:inline-flex;
   align-items:center;
@@ -561,44 +517,6 @@ a{ text-decoration:none; color:inherit; }
   .hero-btn--ghost .icon{
     transition:none;
   }
-}
-
-.hero__badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap: 10px;
-  margin-block-start: 2rem;
-}
-.hero__badge{
-  display:inline-flex;
-  align-items:center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: .9rem;
-  font-weight:500;
-  color: var(--brand-900);
-  background:var(--white);
-  border:none;
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--brand-900) 25%, transparent);
-}
-.hero__badge .icon{ width:16px; height:16px; color: var(--brand-600); flex-shrink:0; }
-.hero .hero__fox{
-  position:absolute;
-  inset-block-start:0;
-  inset-inline-end:0;
-  inline-size: min(46vw, 620px);
-  block-size:100%;
-  background-image: url('../img/marca/logo-zorro-blanco.png');
-  background-repeat:no-repeat;
-  background-position: right center;
-  background-size: contain;
-  opacity:1;
-  pointer-events:none;
-  z-index:1;
-}
-@media (max-width: 767px){
-  .hero .hero__fox{ display:none; }
 }
 
 /* Breadcrumb */
@@ -930,11 +848,7 @@ a{ text-decoration:none; color:inherit; }
 }
 @media (max-width: 480px){
   .container{ width: min(100% - 2 * var(--space-4), var(--container-max)); }
-  .hero{ padding-block: var(--space-9) var(--space-10); }
   .section{ padding-block: var(--space-9); }
-  .hero__headline-line2, .hero__headline-sub{ white-space: normal; }
-  .hero__actions{ flex-direction:column; align-items:stretch; }
-  .hero__actions .btn{ width:100%; }
   .contact-form, .contact-info{ padding: var(--space-6); }
   .contact-info__socials{ flex-direction: column; align-items: stretch; }
   .contact-info__socials .btn{ width: 100%; }

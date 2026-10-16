@@ -50,3 +50,127 @@
   .sec-title{ font-size: clamp(1.625rem, 1.2rem + 1.2vw, 2.25rem); }
   .sec-text{ font-size: 1rem; }
 }
+
+/* ---------- Hero ----------
+   Fondo violeta oscuro con cuadrícula. En mobile sin zorro; desde 768px
+   el zorro va a la derecha y el texto se limita para no chocar con él. */
+.hero{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  padding-block: 2rem 1.75rem;                  /* 32px 28px */
+  background-color: var(--brand-900);
+  color: var(--white);
+  --focus-ring: var(--focus-ring-on-dark);
+}
+.hero__inner{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  gap: 1.25rem;                                 /* 20px */
+}
+.hero > .container{ width: min(100% - 2.5rem, var(--container-max)); }
+.hero__eyebrow{
+  font-size: .6875rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: var(--accent-500);
+}
+.hero__title{
+  font-size: 2.25rem;                           /* 36px */
+  line-height:1.06;
+  font-weight:800;
+  letter-spacing:-.02em;
+  color: var(--white);
+}
+.hero__accent{ color: var(--accent-500); }
+.hero__lead{
+  max-width: 20rem;                             /* 320px */
+  font-size: 1rem;
+  line-height:1.55;
+  color: rgba(255,255,255,.80);
+}
+
+.hero__actions{
+  display:flex;
+  flex-direction:column;
+  gap: .625rem;                                 /* 10px */
+  margin-block-start: .25rem;
+}
+.hero-cta{
+  display:flex;
+  align-items:center;
+  gap: .75rem;
+  min-block-size: 58px;
+  padding: 0 18px;
+  border-radius: 16px;
+  background: var(--accent-500);
+  color: var(--on-accent);
+  font-size: 1rem;
+  font-weight:700;
+  transition: background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.hero-cta span{ flex:1; }
+.hero-cta .icon{ width:20px; height:20px; stroke-width:2; }
+.hero-cta:hover{ background: var(--accent-300); }
+.hero-cta--ghost{
+  justify-content:center;
+  gap: .625rem;
+  min-block-size: 52px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,.32);
+  color: var(--white);
+  font-size: .9375rem;
+  font-weight:600;
+}
+.hero-cta--ghost .icon{ color: var(--wa-green); }
+.hero-cta--ghost:hover{ background: rgba(255,255,255,.08); }
+.hero-cta:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+
+.hero__trust{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: .5rem;
+  margin-block-start: .5rem;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid rgba(255,255,255,.14);
+}
+.hero__trust li{
+  display:flex;
+  flex-direction:column;
+  gap: .5rem;
+  font-size: .75rem;                            /* 12px */
+  line-height:1.35;
+  color: rgba(255,255,255,.86);
+}
+.hero__trust span{ max-width: 7.5em; }
+.hero__trust .icon{ width:20px; height:20px; stroke-width:2; color: var(--accent-500); }
+
+.hero__fox{ display:none; }
+
+@media (min-width: 768px){
+  .hero{ padding-block: 4.5rem 4rem; }
+  .hero__inner{ max-width: min(36rem, 58%); }
+  .hero__title{ font-size: clamp(2.5rem, 1.4rem + 2.6vw, 3.75rem); }
+  .hero__lead{ max-width: 30rem; font-size: 1.0625rem; }
+  .hero__actions{ flex-direction:row; flex-wrap:wrap; }
+  .hero-cta{ padding-inline: 22px; }
+  .hero__trust li{ font-size: .8125rem; }
+  /* Zorro a la derecha, detrás y sin tapar el texto */
+  .hero__fox{
+    display:block;
+    position:absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    z-index:0;
+    inline-size: min(42vw, 560px);
+    background: url('../img/marca/logo-zorro-blanco.png') no-repeat right 2rem center / contain;
+    opacity:.9;
+    pointer-events:none;
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-cta{ transition:none; }
+}
