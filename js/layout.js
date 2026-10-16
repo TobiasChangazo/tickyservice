@@ -27,7 +27,7 @@ const NAV = [
 // Páginas que no están en el menú pero pertenecen a una sección
 const SECCION_DE = { 'guia.html': 'guias.html' };
 
-const UBICACION = 'Mar de Ajó | Partido de la Costa';
+const UBICACION = 'Mar de Ajó, Partido de la Costa';
 const EMAIL = 'contacto@tickyservice.com.ar';
 
 // Página actual: último segmento de la ruta ("" → index.html)
