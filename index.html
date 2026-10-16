@@ -74,18 +74,6 @@
 
 <a class="skip-link" href="#main">Saltar al contenido principal</a>
 
-<!-- ============ ÍCONOS PROPIOS DE LA PÁGINA (menú y WhatsApp los agrega js/layout.js) ============ -->
-<svg class="icon-sprite" aria-hidden="true">
-  <defs>
-    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
-    <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></symbol>
-    <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5v14l11-7z"/></symbol>
-    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></symbol>
-    <symbol id="icon-fan" viewBox="0 0 24 24"><path d="M12 12c-3-1-3-6 0-9 3 3 3 8 0 9z"/><path d="M12 12c-3-1-3-6 0-9 3 3 3 8 0 9z" transform="rotate(120 12 12)"/><path d="M12 12c-3-1-3-6 0-9 3 3 3 8 0 9z" transform="rotate(240 12 12)"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
-  </defs>
-</svg>
-
 <div id="site-header"></div>
 <script src="js/config.js"></script>
 <script src="js/guias-data.js"></script>
@@ -94,35 +82,31 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero hero--slogan brand-surface" aria-labelledby="hero-title">
-    <div class="grid-bg" aria-hidden="true"></div>
+  <section class="home-hero h-grid-dark h-dark" id="inicio" aria-labelledby="hero-title">
+    <!-- Zorro decorativo: solo desde 768px y sin tocar el texto (css/home.css) -->
     <div class="hero__fox" aria-hidden="true"></div>
-    <div class="container">
-      <h1 id="hero-title" class="hero__headline">
-        <span class="hero__headline-line1">TU <span class="hero__accent">HARDWARE</span></span>
-        <span class="hero__headline-line2">EN MANOS DE CONFIANZA</span>
-        <span class="hero__headline-sub"><span class="hero__accent">RENDIMIENTO</span> AL MÁXIMO</span>
-      </h1>
-      <h2 class="hero__subhead">"Nuestras primeras computadoras nacieron no por codicia o ego, sino por el espíritu revolucionario de ayudar a la gente común a superar a las instituciones más poderosas".</h2> 
+    <div class="h-wrap home-hero__inner">
+      <p class="h-label">Servicio técnico · Mar de Ajó</p>
+      <h1 id="hero-title" class="home-hero__title">Tu hardware en manos de <span>confianza.</span></h1>
+      <p class="home-hero__lead">Antes de traerlo, probá resolverlo con nuestras guías paso a paso. Si no sale, lo reparamos con presupuesto sin cargo.</p>
 
-      <!-- Badges del hero: un <li class="hero__badge"> por ítem, editar acá -->
-      <ul class="hero__badges">
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"></use></svg>Reparación</li>
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-fan"></use></svg>Mantenimiento</li>
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>Repuestos con garantía</li>
-        <li class="hero__badge"><svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>Capacitación</li>
-      </ul>
-
-      <div class="hero__actions">
-        <a class="btn hero-btn hero-btn--primary" href="contacto.html">
-          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-          Contactanos
+      <div class="home-hero__ctas">
+        <a class="home-hero__cta" href="#sintomas">
+          <i data-lucide="search"></i>
+          <span>¿Qué le pasa a tu equipo?</span>
+          <i data-lucide="arrow-down"></i>
         </a>
-        <a class="btn hero-btn hero-btn--ghost" href="guias.html">
-          Ver guías
-          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+        <a class="home-hero__wa" href="contacto.html" data-wa="Hola! Quiero pedir un presupuesto.">
+          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+          Pedir presupuesto
         </a>
       </div>
+
+      <ul class="home-hero__trust">
+        <li><i data-lucide="search-check"></i>Diagnóstico sin cargo</li>
+        <li><i data-lucide="clock"></i>Entrega en 24 a 48 hs</li>
+        <li><i data-lucide="shield-check"></i>30 días de garantía</li>
+      </ul>
     </div>
   </section>
 

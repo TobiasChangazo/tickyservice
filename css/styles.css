@@ -425,57 +425,8 @@ html.menu-abierto body{ overflow:hidden; }
 .chip--warn{ background: color-mix(in srgb, var(--warn) 14%, transparent); color: var(--warn-text); border-color: color-mix(in srgb, var(--warn) 45%, transparent); }
 .chip--danger{ background: color-mix(in srgb, var(--danger) 10%, transparent); color: var(--danger-text); border-color: color-mix(in srgb, var(--danger) 40%, transparent); }
 
-/* ===== COMPONENTES: Hero ===== */
-.hero{ padding-block: var(--space-11) var(--space-12); }
-.hero__title{ font-size: var(--fs-3xl); color: var(--on-brand); margin-block-end: var(--space-4); }
-.hero__lead{ font-size: var(--fs-lg); color: rgba(255,255,255,.85); max-width: 58ch; margin-block-end: var(--space-7); font-weight:400; }
-.hero--compact{ padding-block: var(--space-9); }
-.hero--compact .hero__title{ font-size: var(--fs-2xl); margin-block-end: var(--space-3); }
-.hero--compact .hero__lead{ font-size: var(--fs-md); margin-block-end: var(--space-2); }
-
-.hero--slogan{
-  min-block-size: min(64vh, 520px); display:flex; align-items:center;
-  /* Tamaño del titular: el ancho de la columna de texto y la posición
-     del zorro se calculan a partir de él (ver bloque del zorro) */
-  --hero-head-fs: clamp(1.3rem, 5.6vw, 3.75rem);
-}
-.hero__headline{
-  margin:0;
-  max-width: 24ch;
-  color: var(--on-brand);
-  font-family: var(--font-display);
-  font-weight:800;
-  text-transform:uppercase;
-  font-size: var(--hero-head-fs);
-  line-height:.95;
-  letter-spacing:-.01em;
-  overflow-wrap: break-word;
-}
-.hero__headline-line1{ display:block; }
-.hero__headline-line2{ display:block; white-space:nowrap; margin-block-start:.45em; }
-.hero__accent{ color: var(--accent-500); }
-.hero__headline-sub{ display:block; margin-block-start:.45em; white-space:nowrap; }
-
-.hero__subhead{
-  margin: var(--space-5) 0 0;
-  max-width: 48ch;
-  font-family: inherit;
-  font-size: var(--fs-lg);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.5;
-  color: rgba(255,255,255,.78);
-}
-
-.hero__actions{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap: 24px;
-  margin-block-start: 1.75rem;
-}
-
-/* Botones del hero: oscuro sólido (primario) + link subrayado verde agua (ghost) */
+/* ===== COMPONENTES: Botones oscuros con ícono (cierre de nosotros) ===== */
+/* Oscuro sólido (primario) + link subrayado verde agua (ghost) */
 .hero-btn{
   display:inline-flex;
   align-items:center;
@@ -531,63 +482,6 @@ html.menu-abierto body{ overflow:hidden; }
   .hero-btn--ghost .icon{
     transition:none;
   }
-}
-
-.hero__badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap: 10px;
-  margin-block-start: 2rem;
-}
-.hero__badge{
-  display:inline-flex;
-  align-items:center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: .9rem;
-  font-weight:500;
-  color: var(--brand-900);
-  background:var(--surface);
-  border:none;
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--brand-900) 25%, transparent);
-}
-.hero__badge .icon{ width:16px; height:16px; color: var(--brand-600); flex-shrink:0; }
-.hero .hero__fox{
-  position:absolute;
-  inset-block-start:0;
-  inset-inline-end:0;
-  inline-size: min(46vw, 620px);
-  block-size:100%;
-  background-image: url('../img/marca/logo-zorro-blanco.png');
-  background-repeat:no-repeat;
-  background-position: right center;
-  background-size: contain;
-  opacity:1;
-  pointer-events:none;
-  z-index:1;
-}
-/* Desde 768px el zorro convive con el texto: la columna de texto se limita
-   a --hero-text-w (la línea más larga del titular mide ~12.9em en Poppins;
-   13.4em deja margen) y el zorro arranca después de ella + un espacio,
-   sin superar los 620px de ancho. Así no se tocan en ningún ancho. */
-@media (min-width: 768px){
-  .hero--slogan{
-    --hero-head-fs: clamp(2.25rem, 3.9vw, 3.75rem);
-    --hero-text-w: calc(13.4 * var(--hero-head-fs));
-  }
-  .hero--slogan .hero__subhead,
-  .hero--slogan .hero__badges{ max-inline-size: var(--hero-text-w); }
-  .hero .hero__fox{
-    inline-size:auto;
-    inset-inline-start: max(
-      100% - 620px,
-      (100% - min(100% - 2 * var(--space-5), var(--container-max))) / 2 + var(--hero-text-w) + var(--space-7)
-    );
-  }
-}
-@media (max-width: 767px){
-  .hero .hero__fox{ display:none; }
 }
 
 /* Breadcrumb */
@@ -867,11 +761,7 @@ html.menu-abierto body{ overflow:hidden; }
 }
 @media (max-width: 480px){
   .container{ width: min(100% - 2 * var(--space-4), var(--container-max)); }
-  .hero{ padding-block: var(--space-9) var(--space-10); }
   .section{ padding-block: var(--space-9); }
-  .hero__headline-line2, .hero__headline-sub{ white-space: normal; }
-  .hero__actions{ flex-direction:column; align-items:stretch; }
-  .hero__actions .btn{ width:100%; }
   .contact-form, .contact-info{ padding: var(--space-6); }
   .contact-info__socials{ flex-direction: column; align-items: stretch; }
   .contact-info__socials .btn{ width: 100%; }
