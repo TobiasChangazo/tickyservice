@@ -127,7 +127,7 @@ let actual = SINTOMAS[0].id;
 const negrita = txt => txt.replace(/\{\{(.+?)\}\}/g, '<strong>$1</strong>');
 
 const linkWhatsApp = s =>
-  waLink(`Hola! Tengo un problema: ${s.titulo}. Ya probé los pasos del diagnóstico de la web.`);
+  waLink(`Hola! Tengo un problema: ${s.titulo}. Ya probé los pasos del diagnóstico de la web y sigue igual. ¿Me pasan presupuesto y un turno?`);
 
 function renderLista() {
   $items.innerHTML = SINTOMAS.map(s => `
