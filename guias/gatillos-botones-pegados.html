@@ -33,7 +33,9 @@
   </defs>
 </svg>
 
-<!-- ============ HEADER ============ -->
+<!-- COMPONENTE: header (copiar igual en todas las páginas) -->
+<!-- Lo único que cambia por página es aria-current="page" en el link activo
+     (y el prefijo ../ en las páginas de guias/) -->
 <header class="site-header">
   <div class="container header-bar">
     <a class="brand" href="../index.html">
@@ -60,6 +62,7 @@
   </div>
 </header>
 <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
+<!-- /COMPONENTE: header -->
 
 <main id="main">
 
@@ -176,7 +179,9 @@
 
 </main>
 
-<!-- ============ FOOTER ============ -->
+<!-- COMPONENTE: footer (copiar igual en todas las páginas) -->
+<!-- Incluye el botón flotante de WhatsApp. En las páginas de guias/
+     los links e imágenes llevan el prefijo ../ -->
 <footer class="site-footer brand-surface">
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="container">
@@ -202,10 +207,10 @@
       <div>
         <h3 class="footer__heading">Servicio técnico</h3>
         <ul class="footer__list">
-          <li><a href="../servicios.html?eq=notebook">Notebook</a></li>
-          <li><a href="../servicios.html?eq=pc">PC</a></li>
-          <li><a href="../servicios.html?eq=joystick">Joystick</a></li>
-          <li><a href="../servicios.html?eq=consola">Consola</a></li>
+          <li><a href="../index.html#diagnostico">Diagnóstico guiado</a></li>
+          <li><a href="../guias.html">Guías paso a paso</a></li>
+          <li><a href="../servicios.html">Servicios por equipo</a></li>
+          <li><a href="../index.html#faq">Preguntas frecuentes</a></li>
         </ul>
       </div>
       <div>
@@ -214,23 +219,23 @@
           <li><a href="https://wa.me/549232323232">WhatsApp</a></li>
           <li><a href="https://instagram.com/tickyservice">Instagram</a></li>
           <li><a href="mailto:contacto@tickyservice.com.ar">contacto@tickyservice.com.ar</a></li>
-          <li>Mar de Ajó, Buenos Aires</li>
+          <li>Mar de Ajó | Partido de la Costa</li>
         </ul>
       </div>
     </div>
     <div class="footer__legal">
-      <span>© 2025 TickyService. Todos los derechos reservados.</span>
-      <span>Hecho con dedicación en Mar de Ajó.</span>
+      <span>© 2026 TickyService. Todos los derechos reservados.</span>
     </div>
   </div>
 </footer>
 
-<!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
+<!-- Botón flotante de WhatsApp -->
 <a class="float-wa" href="https://wa.me/549232323232">
   <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
   <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
 </a>
+<!-- /COMPONENTE: footer -->
 
 </body>
 </html>
