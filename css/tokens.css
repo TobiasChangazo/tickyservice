@@ -142,10 +142,18 @@
   --header-h: 4.25rem;
   --container-max: 1200px;
 
-  /* ---------- Cuadrícula decorativa (blueprint) ---------- */
+  /* ---------- Cuadrícula decorativa (blueprint) ----------
+     Todas las intensidades viven acá para subirlas/bajarlas parejo. */
   --grid-size: 48px;
-  --grid-line: rgba(0,0,0,.05);
+  --grid-line: rgba(0,0,0,.10);               /* sobre fondos claros (body, .grid-bg) */
+  --grid-line-on-dark: rgba(255,255,255,.12); /* .brand-surface: hero y footer */
+  --grid-line-map: rgba(255,255,255,.10);     /* mapa decorativo de contacto */
+  --grid-road-map: rgba(255,255,255,.16);     /* "calle" del mapa de contacto */
+  --grid-line-cta: rgba(255,255,255,.07);     /* cierre de nosotros */
   --grid-focus: 30% 40%;
+  --grid-fade: 90%;                           /* radio de la máscara radial */
+  /* #000 en la máscara solo define opacidad, no es un color visible */
+  --grid-mask: radial-gradient(circle at var(--grid-focus), #000 0%, transparent var(--grid-fade));
 }
 
 @media (prefers-contrast: more){

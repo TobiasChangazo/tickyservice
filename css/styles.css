@@ -37,8 +37,8 @@ body::before{
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
   background-position: 0 0;
-  -webkit-mask-image: radial-gradient(circle at var(--grid-focus), #000 0%, transparent 75%);
-  mask-image: radial-gradient(circle at var(--grid-focus), #000 0%, transparent 75%);
+  -webkit-mask-image: var(--grid-mask);
+  mask-image: var(--grid-mask);
 }
 
 h1,h2,h3,h4{
@@ -151,11 +151,11 @@ a{ text-decoration:none; color:inherit; }
   background-size: var(--grid-size) var(--grid-size);
   background-attachment: fixed;
   background-position: 0 0;
-  -webkit-mask-image: radial-gradient(circle at var(--grid-focus), #000 0%, transparent 75%);
-  mask-image: radial-gradient(circle at var(--grid-focus), #000 0%, transparent 75%);
+  -webkit-mask-image: var(--grid-mask);
+  mask-image: var(--grid-mask);
 }
 .brand-surface .grid-bg{
-  --grid-line: rgba(255,255,255,.06);
+  --grid-line: var(--grid-line-on-dark);
   /* Dentro de .brand-surface todos los hijos quedan position:relative con
      z-index:1 (regla de arriba); igualamos acá para pintar por encima del
      watermark y el degradado oscuro (::before/::after) y no perder contraste. */
