@@ -410,8 +410,80 @@
   .home-guias .guias-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
 }
 
+/* =========================================================
+   03 — ¿NO SE SOLUCIONÓ? (reparación)
+   ========================================================= */
+.home-repara{ background-color: var(--brand-700); color: var(--on-brand); }
+.home-repara__inner{ display:flex; flex-direction:column; gap:24px; }
+.home-repara .h-head{ margin:0; }
+
+/* Stepper vertical: círculo de 32px unido por una línea verde agua al 45% */
+.pasos{ margin:0; }
+.paso{ position:relative; display:flex; gap:16px; padding-block-end:22px; }
+.paso:last-child{ padding-block-end:0; }
+.paso:not(:last-child)::before{
+  content:'';
+  position:absolute;
+  inset-inline-start:15px;
+  inset-block: 36px 4px;
+  inline-size:2px;
+  background: color-mix(in srgb, var(--accent-500) 45%, transparent);
+}
+.paso__num{
+  flex-shrink:0;
+  inline-size:32px;
+  block-size:32px;
+  border-radius:999px;
+  background: var(--accent-500);
+  color: var(--on-accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:600;
+}
+.paso__body{ padding-block-start:4px; display:flex; flex-direction:column; gap:4px; }
+.paso__title{ margin:0; font-size:16px; font-weight:600; line-height:1.3; color: var(--on-brand); }
+.paso__text{ margin:0; font-size:14px; line-height:1.5; color: rgba(255,255,255,.78); }
+
+.home-repara__wa{
+  box-sizing:border-box;
+  block-size:56px;
+  padding: 0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border-radius:16px;
+  background: var(--wa-green);
+  color: var(--wa-text);
+  font-size:16px;
+  font-weight:700;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.home-repara__wa .icon{ width:22px; height:22px; }
+.home-repara__wa:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px color-mix(in srgb, var(--wa-green) 35%, transparent); }
+
+/* Desktop: texto + botón a la izquierda, stepper a la derecha */
+@media (min-width: 900px){
+  .home-repara__inner{
+    display:grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas: "head pasos" "wa pasos";
+    align-items:start;
+    column-gap:64px;
+    row-gap:28px;
+  }
+  .home-repara .h-head{ grid-area: head; }
+  .pasos{ grid-area: pasos; }
+  .home-repara__wa{ grid-area: wa; justify-self:start; }
+  .paso__title{ font-size:18px; }
+  .paso__text{ font-size:15px; }
+}
+
 @media (prefers-reduced-motion: reduce){
   .h-link svg,
+  .home-repara__wa,
   .home-guias .filter-tab, .home-guias .guia-card,
   .sintoma,
   .home-hero__cta, .home-hero__wa{ transition:none; }
