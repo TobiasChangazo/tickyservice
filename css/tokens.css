@@ -158,6 +158,11 @@
   --cta-grid-line: rgba(255,255,255,.07);
 }
 
+/* Header de 64px en mobile (rediseño) */
+@media (max-width: 900px){
+  :root{ --header-h: 4rem; }
+}
+
 /* ---------- Guías — diseño editorial (hub + detalle) ---------- */
 :root{
   --paper-line: color-mix(in srgb, var(--ink-900) 12%, transparent);

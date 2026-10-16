@@ -28,48 +28,79 @@
 <!-- ============ SPRITE DE ICONOS SVG ============ -->
 <svg class="icon-sprite" aria-hidden="true">
   <defs>
-    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
-    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
     <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"/></symbol>
     <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
     <symbol id="icon-book-open" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
     <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
     <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="icon-message-circle-heart" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M15.8 9.2a2.5 2.5 0 0 0-3.5 0l-.3.4-.35-.3a2.42 2.42 0 1 0-3.2 3.6l3.6 3.5 3.6-3.5c1.2-1.2 1.1-2.7.2-3.7"/></symbol>
     <symbol id="icon-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
     <symbol id="icon-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
   </defs>
 </svg>
 
 <!-- COMPONENTE: header (copiar igual en todas las páginas) -->
 <!-- Lo único que cambia por página es aria-current="page" en el link activo
-     (y el prefijo ../ en las páginas de guias/) -->
+     (y el prefijo ../ en las páginas de guias/). En mobile el menú se abre
+     con #menu (:target) y se cierra con cualquier link, sin JavaScript. -->
 <header class="site-header">
   <div class="container header-bar">
     <a class="brand" href="index.html">
       <img class="brand__logo" src="img/marca/logo-wordmark.png" alt="TickyService" width="631" height="140">
     </a>
 
-    <input type="checkbox" id="nav-toggle" class="sr-only nav-toggle-input">
-    <label for="nav-toggle" class="nav-toggle">
-      <svg class="icon nav-toggle__open" aria-hidden="true"><use href="#icon-menu"></use></svg>
-      <svg class="icon nav-toggle__close" aria-hidden="true"><use href="#icon-close"></use></svg>
-      <span class="sr-only">Abrir menú de navegación</span>
-    </label>
-
-    <nav class="nav" aria-label="Navegación principal">
+    <nav class="nav" id="menu" aria-label="Navegación principal">
+      <div class="nav__top">
+        <img class="nav__logo" src="img/marca/logo-wordmark-blanco.png" alt="" width="1250" height="268">
+        <a class="nav__close" href="#cerrar-menu" aria-label="Cerrar menú">
+          <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+        </a>
+      </div>
       <ul class="nav__list">
-        <li><a class="nav__link" href="index.html">Inicio</a></li>
-        <li><a class="nav__link" href="guias.html">Guías</a></li>
-        <li><a class="nav__link" href="servicios.html">Servicios</a></li>
-        <li><a class="nav__link" href="tienda.html">Tienda</a></li>
-        <li><a class="nav__link" href="contacto.html">Contacto</a></li>
-        <li><a class="nav__link" href="nosotros.html" aria-current="page">Nosotros</a></li>
+        <li><a class="nav__link" href="index.html"><span class="nav__num mono" aria-hidden="true">01</span><span class="nav__text">Inicio</span><span class="nav__dot" aria-hidden="true"></span></a></li>
+        <li><a class="nav__link" href="guias.html"><span class="nav__num mono" aria-hidden="true">02</span><span class="nav__text">Guías</span><span class="nav__count mono" aria-hidden="true">16</span><span class="nav__dot" aria-hidden="true"></span></a></li>
+        <li><a class="nav__link" href="servicios.html"><span class="nav__num mono" aria-hidden="true">03</span><span class="nav__text">Servicios</span><span class="nav__dot" aria-hidden="true"></span></a></li>
+        <li><a class="nav__link" href="tienda.html"><span class="nav__num mono" aria-hidden="true">04</span><span class="nav__text">Tienda</span><span class="nav__dot" aria-hidden="true"></span></a></li>
+        <li><a class="nav__link" href="contacto.html"><span class="nav__num mono" aria-hidden="true">05</span><span class="nav__text">Contacto</span><span class="nav__dot" aria-hidden="true"></span></a></li>
+        <li><a class="nav__link" href="nosotros.html" aria-current="page"><span class="nav__num mono" aria-hidden="true">06</span><span class="nav__text">Nosotros</span><span class="nav__dot" aria-hidden="true"></span></a></li>
       </ul>
+      <div class="nav__extra">
+        <a class="nav__cta" href="index.html#sintomas">
+          <svg class="icon" aria-hidden="true"><use href="#icon-search"></use></svg>
+          <span>¿Qué le pasa a tu equipo?</span>
+          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+        </a>
+        <div class="nav__social">
+          <a class="nav__social-link nav__social-link--wa" href="https://wa.me/5492233024504">
+            <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+            WhatsApp
+          </a>
+          <a class="nav__social-link" href="https://instagram.com/tickyservice">
+            <svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>
+            Instagram
+          </a>
+        </div>
+        <p class="nav__loc">
+          <svg class="icon" aria-hidden="true"><use href="#icon-map-pin"></use></svg>
+          Mar de Ajó, Partido de la Costa
+        </p>
+      </div>
     </nav>
+
+    <div class="header-actions">
+      <a class="header-btn" href="index.html#sintomas" aria-label="Buscar por síntoma">
+        <svg class="icon" aria-hidden="true"><use href="#icon-search"></use></svg>
+      </a>
+      <a class="header-btn header-btn--menu" href="#menu" aria-label="Abrir menú">
+        <svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
+      </a>
+    </div>
   </div>
 </header>
-<label for="nav-toggle" class="nav-backdrop"></label>
 <!-- /COMPONENTE: header -->
 
 <main id="main">

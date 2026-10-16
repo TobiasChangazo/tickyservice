@@ -174,16 +174,18 @@ a{ text-decoration:none; color:inherit; }
   z-index:1;
 }
 
-/* ===== COMPONENTES: Header / Nav ===== */
+/* ===== COMPONENTES: Header / Nav =====
+   Mobile (≤ 900px): header de 64px con lupa y botón de menú; el menú es
+   una capa a pantalla completa que se abre con :target, sin JavaScript:
+   el botón es <a href="#menu"> y cualquier link (incluido "Cerrar", que
+   apunta a #cerrar-menu) cambia el destino de la URL y lo cierra.
+   Desktop: la misma <nav> se muestra en línea y se ocultan los extras. */
 .site-header{
   position: sticky;
   top:0;
   z-index: 50;
-  background: color-mix(in srgb, var(--lilac-050) 85%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-block-end: 1px solid var(--lilac-200);
-  box-shadow: var(--sh-2);
+  background: color-mix(in srgb, var(--white) 94%, transparent);
+  border-block-end: 1px solid var(--line-soft);
 }
 .header-bar{
   display:flex;
@@ -195,67 +197,50 @@ a{ text-decoration:none; color:inherit; }
 .brand{
   display:inline-flex;
   align-items:center;
-  gap: var(--space-2);
-  font-weight:700;
-  font-size: var(--fs-lg);
+  min-block-size: 44px;
   color: var(--ink-900);
 }
-.brand:hover{ color: var(--brand-700); }
 .brand__logo{ block-size: 3.1rem; inline-size:auto; }
 
-.nav-toggle-input{ position:absolute; }
-.nav-toggle{
-  display:none;
-  position:relative;
+.header-actions{ display:flex; align-items:center; gap: var(--space-1); }
+.header-btn{
+  display:inline-flex;
   align-items:center;
   justify-content:center;
   inline-size: 44px;
   block-size: 44px;
-  border-radius: var(--r-sm);
-  color: var(--ink-900);
+  border-radius: 12px;
+  color: var(--brand-700);
   transition: background-color var(--dur) var(--ease);
 }
-.nav-toggle:hover{ background: var(--lilac-200); }
-.nav-toggle .icon{
-  position:absolute;
-  top:50%; left:50%;
-  width:1.5em; height:1.5em;
-  transform: translate(-50%,-50%);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
-}
-.nav-toggle-input:focus-visible + .nav-toggle{
-  outline: 3px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-/* Morph hamburguesa → X en vez de un corte seco con display:none */
-.nav-toggle__close{ opacity:0; transform: translate(-50%,-50%) rotate(-90deg) scale(.5); }
-.nav-toggle-input:checked + .nav-toggle .nav-toggle__open{ opacity:0; transform: translate(-50%,-50%) rotate(90deg) scale(.5); }
-.nav-toggle-input:checked + .nav-toggle .nav-toggle__close{ opacity:1; transform: translate(-50%,-50%) rotate(0) scale(1); }
-@media (prefers-reduced-motion: reduce){
-  .nav-toggle .icon{ transition:none; }
-}
+.header-btn .icon{ width:20px; height:20px; stroke-width:2; }
+.header-btn:hover{ background: var(--lilac-100); }
+.header-btn--menu{ display:none; background: var(--lilac-100); }
+.header-btn--menu:hover{ background: var(--lilac-200); }
+.header-btn:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 12px; }
 
-.nav{ display:flex; align-items:center; gap: var(--space-7); }
+/* --- Nav en línea (desktop) --- */
+.nav{ display:flex; align-items:center; margin-inline-start:auto; }
+.nav__top, .nav__extra, .nav__num, .nav__count, .nav__dot{ display:none; }
 .nav__list{ display:flex; align-items:center; gap: var(--space-2); }
-/* Nav — subrayado animado en vez del pill */
+/* Subrayado animado */
 .nav__link{
   position: relative;
   display:inline-flex;
   align-items:center;
+  min-block-size: 44px;
   padding: var(--space-2) 2px;
   margin-inline: var(--space-2);
   font-weight:500;
   font-size: var(--fs-sm);
   color: var(--ink-600);
-  background:none;
-  border-radius:0;
   transition: color .25s var(--ease);
 }
 .nav__link::after{
   content:'';
   position:absolute;
   left:0; right:0;
-  bottom:-2px;
+  bottom:4px;
   height:3px;
   border-radius:3px;
   background: var(--brand-700);
@@ -273,54 +258,156 @@ a{ text-decoration:none; color:inherit; }
   outline-offset: 4px;
   border-radius: 4px;
 }
-.nav-backdrop{ display:none; }
 
 @media (max-width: 900px){
-  .nav-toggle{ display:inline-flex; }
-  .nav{
-    position:absolute;
-    inset-inline:0;
-    top: var(--header-h);
+  .site-header .header-bar{               /* sin el margen de .container: 20px a la izquierda, 12px a la derecha */
+    inline-size:100%;
+    padding-inline: 20px 12px;
+  }
+  .brand__logo{ block-size: 24px; }
+  .header-btn--menu{ display:inline-flex; }
+
+  /* --- Menú a pantalla completa --- */
+  .nav{ display:none; }
+  .nav:target{
+    --focus-ring: var(--focus-ring-on-dark);
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    margin:0;
+    overflow-y:auto;
+    overscroll-behavior: contain;
+    background-color: var(--brand-900);
+    background-image:
+      linear-gradient(var(--grid-line-on-dark) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line-on-dark) 1px, transparent 1px);
+    background-size: var(--grid-size-sm) var(--grid-size-sm);
+    color: var(--white);
+    animation: menuIn .2s var(--ease);
+  }
+  @keyframes menuIn{ from{ opacity:0; } to{ opacity:1; } }
+
+  .nav__top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-shrink:0;
+    block-size: 64px;
+    padding-inline: 20px 12px;
+    border-block-end: 1px solid rgba(255,255,255,.12);
+  }
+  .nav__logo{ block-size: 24px; inline-size:auto; }
+  .nav__close{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.10);
+    color: var(--white);
+  }
+  .nav__close .icon{ width:20px; height:20px; stroke-width:2; }
+  .nav__close:hover{ background: rgba(255,255,255,.18); }
+  .nav__close:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 12px; }
+
+  .nav .nav__list{
     flex-direction:column;
     align-items:stretch;
     gap:0;
-    z-index:2;
-    background: var(--lilac-050);
-    border-block-end: 1px solid var(--lilac-200);
-    border-radius: 0 0 var(--r-lg) var(--r-lg);
-    box-shadow: var(--sh-3);
-    max-block-size:0;
-    overflow:hidden;
-    opacity:0;
-    transform: translateY(-6px);
-    transition: max-block-size var(--dur) var(--ease), opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    padding: 16px 20px 0;
   }
-  .nav__list{ flex-direction:column; align-items:stretch; gap: var(--space-1); padding: var(--space-4) var(--space-5) var(--space-5); }
-  .nav__link{ display:block; margin-inline:0; padding-block: var(--space-4); }
-  .nav-toggle-input:checked ~ .nav{ max-block-size: 32rem; opacity:1; transform:translateY(0); }
+  .nav__link{
+    display:flex;
+    gap: 16px;
+    min-block-size: 60px;
+    margin:0;
+    padding:0;
+    border-block-end: 1px solid rgba(255,255,255,.10);
+    font-size: 1.625rem;                        /* 26px */
+    font-weight:600;
+    letter-spacing:-.01em;
+    color: rgba(255,255,255,.88);
+  }
+  .nav__link::after{ display:none; }
+  .nav__link:hover{ color: var(--white); }
+  .nav__num{
+    display:block;
+    inline-size: 24px;
+    font-size: .75rem;
+    color: rgba(255,255,255,.56);
+  }
+  .nav__text{ flex:1; }
+  .nav__count{ display:block; font-size: .75rem; color: rgba(255,255,255,.56); }
+  .nav__link[aria-current="page"]{ color: var(--white); font-weight:700; }
+  .nav__link[aria-current="page"] .nav__num{ color: var(--accent-500); }
+  .nav__link[aria-current="page"] .nav__dot{
+    display:block;
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: var(--r-pill);
+    background: var(--accent-500);
+  }
+  .nav__link:focus-visible{ outline-offset: -3px; border-radius: 8px; }
 
-  /* Fondo oscurecido detrás del panel: separa el menú del contenido y,
-     al ser otro <label for="nav-toggle">, cerrarlo con un toque afuera
-     no necesita JavaScript. */
-  .nav-backdrop{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:1;
-    background: color-mix(in srgb, var(--ink-900) 45%, transparent);
-    cursor:pointer;
-    -webkit-tap-highlight-color: transparent;
+  .nav__extra{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    margin-block-start:auto;
+    padding: 20px;
   }
-  body:has(.nav-toggle-input:checked) .nav-backdrop{ display:block; }
+  .nav__cta{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    min-block-size: 56px;
+    padding: 0 18px;
+    border-radius: 16px;
+    background: var(--accent-500);
+    color: var(--on-accent);
+    font-size: 1rem;
+    font-weight:700;
+  }
+  .nav__cta span{ flex:1; }
+  .nav__cta .icon{ width:20px; height:20px; stroke-width:2; }
+  .nav__social{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .nav__social-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    min-block-size: 52px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(255,255,255,.28);
+    font-size: .875rem;
+    font-weight:600;
+  }
+  .nav__social-link .icon{ width:20px; height:20px; stroke-width:2; }
+  .nav__social-link--wa .icon{ color: var(--wa-green); }
+  .nav__social-link:hover{ background: rgba(255,255,255,.08); }
+  .nav__cta:focus-visible, .nav__social-link:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+  .nav__loc{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    margin-block-start: 6px;
+    font-size: .8125rem;
+    color: rgba(255,255,255,.74);
+  }
+  .nav__loc .icon{ width:16px; height:16px; color: var(--accent-500); }
+
+  /* Con el menú abierto: sin scroll detrás y sin el botón flotante encima */
+  html:has(.nav:target){ overflow:hidden; }
+  body:has(.nav:target) .float-wa{ display:none; }
 }
 @media (prefers-reduced-motion: reduce){
-  .nav{ transition:none; }
-}
-
-/* Header muy angosto: el logo + botón de menú pueden no entrar en ~320-340px */
-@media (max-width: 340px){
-  .header-bar{ gap: var(--space-2); }
-  .brand__logo{ block-size: 2.6rem; }
+  .nav__link, .nav__link::after, .header-btn{ transition:none; }
+  .nav:target{ animation:none; }
 }
 
 /* ===== COMPONENTES: Botones =====
