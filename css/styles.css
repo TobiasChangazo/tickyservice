@@ -99,6 +99,8 @@ a{ text-decoration:none; color:inherit; }
 /* Página servicios.html: arriba, misma distancia al header que .gh-header en guías */
 .serv-page{ padding-block-start: var(--space-9); }
 .section--alt{ background: var(--lilac-100); isolation:isolate; }
+/* Sección que sigue a otra sin duplicar el espacio entre ambas */
+.section--flush-top{ padding-block-start: 0; }
 
 .section__head{
   margin-bottom: var(--space-8);

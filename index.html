@@ -25,7 +25,6 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/guias.css">
-<link rel="stylesheet" href="css/diagnostico.css">
 <link rel="stylesheet" href="css/servicios.css">
 <link rel="stylesheet" href="css/faq.css">
 <link rel="stylesheet" href="css/home.css">
@@ -110,6 +109,73 @@
     </div>
   </section>
 
+  <!-- ============ 01 — SÍNTOMAS ============ -->
+  <section class="h-section h-grid-lilac" id="sintomas" aria-labelledby="sintomas-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">01 — Empezá acá</p>
+        <h2 class="h-title" id="sintomas-title">¿Qué le pasa a tu equipo?</h2>
+        <p class="h-text">Elegí el síntoma y te llevamos a los pasos para probar en casa.</p>
+      </div>
+
+      <ul class="sintomas">
+        <li>
+          <a class="sintoma" href="guia.html?g=notebook-no-enciende">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="power"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">No enciende</span>
+              <span class="sintoma__equipos">Notebook · PC · Consola</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="sintoma" href="guia.html?g=pasta-termica">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="flame"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">Se calienta</span>
+              <span class="sintoma__equipos">Notebook · PC · Consola</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="sintoma" href="guia.html?g=consola-se-apaga">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="refresh-cw"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">Se apaga solo</span>
+              <span class="sintoma__equipos">Notebook · PC · Consola</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="sintoma" href="guia.html?g=joystick-drift">
+            <span class="sintoma__top">
+              <span class="sintoma__icon"><i data-lucide="gamepad-2"></i></span>
+              <i data-lucide="arrow-up-right" class="sintoma__arrow"></i>
+            </span>
+            <span class="sintoma__body">
+              <span class="sintoma__title">Drift en el joystick</span>
+              <span class="sintoma__equipos">Joystick</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <a class="sintomas__otro" href="servicios.html#diagnostico">
+        Otro problema · Ver todos los síntomas
+        <i data-lucide="arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
   <!-- ============ CENTRO DE AYUDA ============ -->
   <section class="section" id="centro-de-ayuda" aria-labelledby="help-title">
     <div class="container">
@@ -135,21 +201,6 @@
 
         <div class="guias-grid" id="guias-grid"></div>
 
-      </div>
-
-      <!-- ===== Diagnóstico guiado ===== -->
-      <div class="section__head section__head--sub" id="diagnostico">
-        <span class="section__eyebrow">Diagnóstico</span>
-        <h3 class="section__subtitle">Diagnóstico guiado por síntoma</h3>
-        <p class="section__desc">Elegí lo que le pasa a tu equipo y probá estos pasos antes de escribirnos.</p>
-      </div>
-
-      <div class="diag-panel">
-        <div class="diag-list">
-          <p class="diag-list-label">Síntomas</p>
-          <div id="diag-items" role="tablist" aria-label="Síntomas"></div>
-        </div>
-        <div class="diag-detail" id="diag-detail" role="tabpanel" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -222,7 +273,6 @@
 <script>window.GUIAS_PREVIEW = true;</script>
 <script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
 <script src="js/guias.js"></script>
-<script src="js/diagnostico.js"></script>
 <script src="js/servicios.js"></script>
 <script src="js/faq.js"></script>
 

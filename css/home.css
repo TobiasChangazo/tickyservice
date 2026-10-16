@@ -199,9 +199,81 @@
   }
 }
 
+/* =========================================================
+   01 — SÍNTOMAS
+   ========================================================= */
+.sintomas{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:12px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.sintoma{
+  box-sizing:border-box;
+  block-size:100%;
+  min-block-size:136px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:12px;
+  border-radius:18px;
+  background: var(--surface);
+  border:1px solid var(--lilac-200);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink-900) 5%, transparent);
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.sintoma:hover{ border-color: var(--brand-500); transform: translateY(-2px); box-shadow: var(--sh-2); }
+.sintoma__top{ display:flex; justify-content:space-between; align-items:flex-start; }
+.sintoma__icon{
+  inline-size:42px;
+  block-size:42px;
+  border-radius:12px;
+  background: var(--lilac-100);
+  color: var(--brand-700);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.sintoma__icon svg{ width:20px; height:20px; }
+.sintoma__arrow{ width:18px; height:18px; color: var(--brand-500); }
+.sintoma__body{ display:flex; flex-direction:column; gap:4px; }
+.sintoma__title{ font-size:15px; font-weight:600; line-height:1.25; color: var(--ink-900); }
+.sintoma__equipos{ font-size:12px; color: var(--ink-500); }
+
+.sintomas__otro{
+  box-sizing:border-box;
+  margin-block-start:20px;
+  block-size:52px;
+  padding: 0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-radius:14px;
+  background: var(--surface);
+  border:1px dashed var(--lilac-350);
+  font-size:14px;
+  font-weight:600;
+  color: var(--brand-700);
+}
+.sintomas__otro:hover{ border-color: var(--brand-500); }
+.sintomas__otro svg{ width:18px; height:18px; flex-shrink:0; }
+
+@media (min-width: 768px){
+  .sintomas{ grid-template-columns: repeat(4, minmax(0,1fr)); gap:16px; }
+  .sintoma{ min-block-size:160px; padding:20px; }
+  .sintoma__title{ font-size:17px; }
+  .sintomas__otro{ max-inline-size: 420px; }
+}
+
 @media (prefers-reduced-motion: reduce){
   .h-link svg,
+  .sintoma,
   .home-hero__cta, .home-hero__wa{ transition:none; }
+  .sintoma:hover{ transform:none; }
   .home-hero__cta:hover, .home-hero__wa:hover{ transform:none; }
 }
 

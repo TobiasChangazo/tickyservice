@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/servicios.css">
+<link rel="stylesheet" href="css/diagnostico.css">
 
 </head>
 <body>
@@ -71,12 +72,32 @@
     </div>
   </section>
 
+  <!-- ============ DIAGNÓSTICO GUIADO (movido desde el home) ============ -->
+  <section class="section section--flush-top" id="diagnostico" aria-labelledby="diagnostico-title">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__eyebrow">Diagnóstico</span>
+        <h2 id="diagnostico-title" class="section__title">Diagnóstico guiado por síntoma</h2>
+        <p class="section__desc">Elegí lo que le pasa a tu equipo y probá estos pasos antes de escribirnos.</p>
+      </div>
+
+      <div class="diag-panel">
+        <div class="diag-list">
+          <p class="diag-list-label">Síntomas</p>
+          <div id="diag-items" role="tablist" aria-label="Síntomas"></div>
+        </div>
+        <div class="diag-detail" id="diag-detail" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <div id="site-footer"></div>
 
 <script src="https://unpkg.com/lucide@1.50.0/dist/umd/lucide.min.js"></script>
 <script src="js/servicios.js"></script>
+<script src="js/diagnostico.js"></script>
 
 </body>
 </html>
