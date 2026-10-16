@@ -1,110 +1,29 @@
 /* =========================================================
    TickyService — Contacto
-   Encabezado blanco + formulario que arma el mensaje de WhatsApp
+   Encabezado + formulario que abre WhatsApp con el mensaje
    + panel oscuro con canales, horarios y ubicación
+
+   Sin JavaScript: el formulario hace GET a https://wa.me/NUMERO con
+   un único campo name="text"; el navegador arma ?text=... solo.
+   La validación es nativa (required + minlength) y el error se
+   muestra con :user-invalid (recién después de que la persona
+   interactúa con el campo).
 
    Markup:
 
-   <section class="contact" id="contacto">
-     <div class="contact-head">
-       <div>
-         <p class="eyebrow">Hablemos</p>
-         <h1 class="contact-title">Contacto</h1>
-         <p class="contact-sub">Contanos qué le pasa a tu equipo y te respondemos en el día.</p>
-       </div>
-       <a class="contact-tip" href="/#diagnostico">
-         <i data-lucide="lightbulb"></i>
-         <p><strong>¿Probaste el diagnóstico?</strong> Capaz lo resolvés en 5 minutos, sin esperar a nadie. →</p>
-       </a>
-     </div>
-
+   <section class="contact">
+     <div class="contact-head">...<a class="contact-tip" href="index.html#diagnostico">...</a></div>
      <div class="contact-grid">
-
-       <!-- FORMULARIO -->
-       <form class="contact-form" id="contact-form" novalidate>
-         <h2 class="form-title">Mandanos tu consulta</h2>
-         <p class="form-sub">Completá esto y se arma el mensaje para enviarlo por WhatsApp.</p>
-
-         <fieldset class="form-field">
-           <legend class="form-label">¿Qué necesitás?</legend>
-           <div class="form-chips" id="chips-necesidad"></div>
-         </fieldset>
-
-         <fieldset class="form-field">
-           <legend class="form-label">¿Qué equipo?</legend>
-           <div class="form-chips" id="chips-equipo"></div>
-         </fieldset>
-
+       <form class="contact-form" action="https://wa.me/NUMERO" method="get" target="_blank">
          <div class="form-field">
-           <label class="form-label" for="c-nombre">Tu nombre</label>
-           <input class="form-input" id="c-nombre" name="nombre" type="text" placeholder="Ej: Juan" autocomplete="given-name" required>
-           <p class="form-error" id="err-nombre">Decinos tu nombre así te respondemos.</p>
+           <label class="form-label" for="c-mensaje">Tu consulta</label>
+           <p class="form-hint">...</p>
+           <textarea class="form-input" name="text" required minlength="20"></textarea>
+           <p class="form-error">...</p>
          </div>
-
-         <div class="form-field">
-           <label class="form-label" for="c-mensaje">Tu consulta <span>(opcional)</span></label>
-           <textarea class="form-input" id="c-mensaje" name="mensaje" rows="4" placeholder="Qué le pasa y qué ya probaste"></textarea>
-         </div>
-
-         <div class="form-preview">
-           <p class="form-preview-label"><i data-lucide="eye"></i>Así nos va a llegar</p>
-           <div class="form-bubble" id="c-preview"></div>
-         </div>
-
-         <button class="form-submit" type="submit">
-           <!-- el JS inserta el ícono de WhatsApp -->
-           <span>Enviar por WhatsApp</span>
-         </button>
-
-         <p class="form-alt">¿Preferís mail? <a href="mailto:contacto@tickyservice.com.ar">contacto@tickyservice.com.ar</a></p>
+         <button class="form-submit" type="submit">...</button>
        </form>
-
-       <!-- PANEL -->
-       <aside class="contact-panel">
-         <p class="panel-label">Canales</p>
-
-         <a class="channel" id="ch-wa" href="#" target="_blank" rel="noopener">
-           <span class="channel-icon channel-icon--wa"><!-- ícono WA por JS --></span>
-           <span><span class="channel-title">WhatsApp</span><span class="channel-sub">La vía más rápida · respondemos en el día</span></span>
-           <i data-lucide="arrow-up-right" class="channel-arrow"></i>
-         </a>
-
-         <a class="channel" href="https://instagram.com/tickyservice" target="_blank" rel="noopener">
-           <span class="channel-icon channel-icon--ig"><i data-lucide="instagram"></i></span>
-           <span><span class="channel-title">Instagram</span><span class="channel-sub">@tickyservice</span></span>
-           <i data-lucide="arrow-up-right" class="channel-arrow"></i>
-         </a>
-
-         <a class="channel" href="mailto:contacto@tickyservice.com.ar">
-           <span class="channel-icon channel-icon--mail"><i data-lucide="mail"></i></span>
-           <span><span class="channel-title">Email</span><span class="channel-sub">contacto@tickyservice.com.ar</span></span>
-           <i data-lucide="arrow-up-right" class="channel-arrow"></i>
-         </a>
-
-         <div class="panel-divider"></div>
-
-         <div class="panel-row-head">
-           <p class="panel-label">Horarios</p>
-           <span class="open-status" id="open-status"></span>
-         </div>
-         <div class="hours" id="hours"></div>
-
-         <div class="panel-divider"></div>
-
-         <p class="panel-label">Ubicación</p>
-         <div class="contact-map">
-           <!-- Opcional: reemplazá .map-deco + .map-pin por un <iframe> de Google Maps -->
-           <div class="map-deco"></div>
-           <div class="map-pin"><i data-lucide="wrench"></i></div>
-           <div class="map-bar">
-             <p>Mar de Ajó, Buenos Aires</p>
-             <a class="map-go" id="map-go" href="#" target="_blank" rel="noopener">
-               <i data-lucide="navigation"></i>Cómo llegar
-             </a>
-           </div>
-         </div>
-       </aside>
-
+       <aside class="contact-panel">canales, horarios (<dl class="hours">) y mapa</aside>
      </div>
    </section>
    ========================================================= */
@@ -239,44 +158,6 @@
   color: var(--faint);
 }
 
-/* Chips */
-.form-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.form-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 14px;
-  border-radius: 999px;
-  background: #FFFFFF;
-  border: 1px solid var(--pill-border);
-  font: inherit;
-  font-size: .88rem;
-  font-weight: 500;
-  color: #3A3558;
-  cursor: pointer;
-  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
-}
-.form-chip svg {
-  width: 16px;
-  height: 16px;
-  color: var(--label);
-}
-.form-chip:hover {
-  background: #FAF8FF;
-  border-color: var(--primary-200);
-}
-.form-chip[aria-checked="true"] {
-  background: var(--primary-50);
-  border-color: var(--primary);
-  color: var(--primary-dark);
-}
-.form-chip[aria-checked="true"] svg { color: var(--primary); }
-
 /* Inputs */
 .form-input {
   display: block;
@@ -306,54 +187,25 @@ textarea.form-input {
   resize: vertical;
 }
 
-/* Error */
+.form-hint {
+  margin: -4px 0 12px;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Error: validación nativa, visible solo después de interactuar */
 .form-error {
   display: none;
   margin: 6px 0 0;
   font-size: .8rem;
   color: var(--danger);
 }
-.form-field.has-error .form-input {
+.form-input:user-invalid {
   border-color: var(--danger);
   box-shadow: 0 0 0 4px rgba(229, 72, 77, .1);
 }
-.form-field.has-error .form-error { display: block; }
-
-/* Vista previa estilo WhatsApp */
-.form-preview {
-  margin: 4px 0 20px;
-  padding: 14px;
-  border-radius: 14px;
-  background: #EFEAE2;
-}
-
-.form-preview-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0 0 8px;
-  font-size: .7rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #8A8578;
-}
-.form-preview-label svg { width: 14px; height: 14px; }
-
-.form-bubble {
-  margin-left: auto;
-  max-width: 88%;
-  width: fit-content;
-  padding: 10px 12px;
-  border-radius: 12px 12px 2px 12px;
-  background: #D9FDD3;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .08);
-  font-size: .9rem;
-  line-height: 1.5;
-  color: #111111;
-  white-space: pre-line;
-  word-break: break-word;
-}
+.form-input:user-invalid + .form-error { display: block; }
 
 /* Enviar */
 .form-submit {
@@ -490,44 +342,7 @@ textarea.form-input {
 }
 
 /* Horarios */
-.panel-row-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-.panel-row-head .panel-label { margin: 0; }
-
-.open-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  font-size: .78rem;
-  font-weight: 500;
-}
-.open-status::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-.open-status.is-open {
-  background: rgba(74, 222, 128, .12);
-  border: 1px solid rgba(74, 222, 128, .3);
-  color: #86EFAC;
-}
-.open-status.is-open::before {
-  background: #4ADE80;
-  box-shadow: 0 0 0 3px rgba(74, 222, 128, .25);
-}
-.open-status.is-closed {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .15);
-  color: rgba(255, 255, 255, .7);
-}
-.open-status.is-closed::before { background: rgba(255, 255, 255, .4); }
+.hours { margin: 0; }
 
 .contact .hours-row {
   display: flex;
@@ -542,10 +357,6 @@ textarea.form-input {
   color: #FFFFFF;
 }
 .hours-row.is-closed strong { color: rgba(255, 255, 255, .45); }
-.hours-row.is-today span::after {
-  content: " · hoy";
-  color: var(--cyan);
-}
 
 /* Mapa */
 .contact-map {
@@ -647,7 +458,6 @@ textarea.form-input {
 }
 
 /* ---------- Foco ---------- */
-.form-chip:focus-visible,
 .form-submit:focus-visible,
 .contact-tip:focus-visible,
 .form-alt a:focus-visible {
@@ -661,7 +471,7 @@ textarea.form-input {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .form-chip, .form-input, .form-submit, .channel,
+  .form-input, .form-submit, .channel,
   .channel-arrow, .map-go, .contact-tip { transition: none; }
 }
 
@@ -681,9 +491,5 @@ textarea.form-input {
   .contact-panel {
     padding: 22px 18px;
     border-radius: 18px;
-  }
-  .form-chip {
-    padding: 8px 12px;
-    font-size: .85rem;
   }
 }

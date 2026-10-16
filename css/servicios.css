@@ -8,26 +8,30 @@
    reusa .section__head, .serv-head solo aporta el layout en fila
    con el selector.
 
+   Sin JavaScript: el selector son radios (name="serv-eq") y hay un
+   .serv-pane por equipo; con :has() se muestra el que está elegido.
+
    Markup:
 
-   <div class="serv-head">
-     <div class="section__head">
-       <span class="section__eyebrow">Servicio técnico</span>
-       <h2 class="section__title">Un vistazo rápido por categoría</h2>
-       <p class="section__desc">...</p>
+   <section class="section serv">
+     <div class="serv-head">
+       <div class="section__head">...</div>
+       <fieldset class="serv-seg">
+         <legend class="sr-only">Equipo</legend>
+         <input class="sr-only serv-radio" type="radio" name="serv-eq" id="serv-eq-pc" value="pc">
+         <label class="seg-btn" for="serv-eq-pc">... PC <span class="seg-count">8</span></label>
+       </fieldset>
      </div>
-     <div class="serv-seg" id="serv-seg" role="tablist" aria-label="Equipo"></div>
-   </div>
 
-   <div class="serv-panel" id="serv-panel" role="tabpanel"></div>
-
-   <div class="serv-trust">
-     <div class="trust-item">
-       <div class="trust-icon"><i data-lucide="search"></i></div>
-       <div><p class="trust-title">...</p><p class="trust-desc">...</p></div>
+     <div class="serv-panel">
+       <div class="serv-pane" data-eq="pc">
+         <div class="serv-banner">...</div>
+         <div class="serv-cols">...</div>
+       </div>
      </div>
-     ...
-   </div>
+
+     <div class="serv-trust">...</div>
+   </section>
    ========================================================= */
 
 :root{
@@ -53,6 +57,8 @@
 .serv-seg{
   display:inline-flex;
   flex-shrink:0;
+  margin:0;
+  min-inline-size:0;
   gap:4px;
   padding:5px;
   background:#fff;
@@ -81,7 +87,7 @@
 .seg-btn svg{ width:18px; height:18px; }
 .seg-btn:hover{ color: var(--ink-900); background: var(--lilac-025); }
 
-.seg-btn.is-active{ background: var(--brand-600); color:#fff; }
+.serv-radio:checked + .seg-btn{ background: var(--brand-600); color:#fff; }
 
 .seg-count{ font-size: .75rem; opacity:.6; }
 
@@ -91,6 +97,15 @@
   border-radius: var(--r-lg);
   overflow:hidden;
   box-shadow: var(--sh-3);
+}
+
+/* Un panel por equipo: solo se ve el elegido */
+.serv-pane{ display:none; }
+.serv:has(#serv-eq-notebook:checked) .serv-pane[data-eq="notebook"],
+.serv:has(#serv-eq-pc:checked) .serv-pane[data-eq="pc"],
+.serv:has(#serv-eq-joystick:checked) .serv-pane[data-eq="joystick"],
+.serv:has(#serv-eq-consola:checked) .serv-pane[data-eq="consola"]{
+  display:block;
 }
 
 /* Banner */
@@ -324,7 +339,7 @@
 .trust-desc{ margin: 2px 0 0; font-size: .82rem; color: var(--ink-600); }
 
 /* ---------- Foco ---------- */
-.seg-btn:focus-visible,
+.serv-radio:focus-visible + .seg-btn,
 .serv-row:focus-visible,
 .btn-glass:focus-visible,
 .btn-wa:focus-visible{

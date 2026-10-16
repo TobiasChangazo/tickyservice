@@ -3,29 +3,29 @@
    Sin franja violeta: título + aviso,
    filtros en pills + switch de stock, grilla de cards clickeables
 
+   Sin JavaScript: las pills son radios (name="shop-cat") y el switch
+   es un checkbox; con :has() se ocultan las cards que no coinciden.
+
    Markup:
 
-   <section class="shop" id="tienda">
-     <div class="shop-head">
-       <div>
-         <p class="eyebrow">Equipos y repuestos</p>
-         <h1 class="shop-title">Tienda</h1>
-         <p class="shop-sub">Equipos y repuestos para notebooks, PC, consolas y joysticks.</p>
-       </div>
-       <div class="shop-note">
-         <i data-lucide="info"></i>
-         <span>Precios de referencia. Tocá una card y te confirmamos stock y valor por WhatsApp.</span>
-       </div>
-     </div>
+   <section class="shop">
+     <div class="shop-head">...</div>
 
      <div class="shop-filters">
-       <div class="shop-pills" id="shop-pills"></div>
-       <button class="shop-toggle" id="shop-toggle" role="switch" aria-checked="false">
-         <span class="shop-switch"></span>Solo con stock
-       </button>
+       <fieldset class="shop-pills">
+         <legend class="sr-only">Categoría</legend>
+         <input class="sr-only shop-radio" type="radio" name="shop-cat" id="shop-cat-pc" value="pc">
+         <label class="shop-pill" for="shop-cat-pc">... PC <span class="shop-pill-count">1</span></label>
+       </fieldset>
+       <input class="sr-only shop-stock-input" type="checkbox" id="shop-stock" role="switch">
+       <label class="shop-toggle" for="shop-stock"><span class="shop-switch"></span>Solo con stock</label>
      </div>
 
-     <div class="shop-grid" id="shop-grid"></div>
+     <div class="shop-grid">
+       <a class="product-card" data-cat="pc" data-stock="1" href="https://wa.me/...">...</a>
+       <article class="product-card is-out" data-cat="repuestos" data-stock="3">...</article>
+     </div>
+     <p class="shop-empty">No hay productos con stock en esta categoría por ahora.</p>
    </section>
    ========================================================= */
 
@@ -114,6 +114,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
 }
 
 .shop-pill {
@@ -141,12 +145,12 @@
   background: #FAF8FF;
   border-color: var(--primary-200);
 }
-.shop-pill.is-active {
+.shop-radio:checked + .shop-pill {
   background: var(--primary-50);
   border-color: var(--primary);
   color: var(--primary-dark);
 }
-.shop-pill.is-active svg { color: var(--primary); }
+.shop-radio:checked + .shop-pill svg { color: var(--primary); }
 
 .shop-pill-count {
   font-size: .75rem;
@@ -189,8 +193,18 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
   transition: transform .2s var(--ease);
 }
-.shop-toggle[aria-checked="true"] .shop-switch { background: var(--primary); }
-.shop-toggle[aria-checked="true"] .shop-switch::after { transform: translateX(16px); }
+.shop-stock-input:checked + .shop-toggle .shop-switch { background: var(--primary); }
+.shop-stock-input:checked + .shop-toggle .shop-switch::after { transform: translateX(16px); }
+
+/* ---------- Filtros sin JS (radios + checkbox + :has()) ---------- */
+.shop:has(#shop-cat-notebooks:checked) .product-card:not([data-cat="notebooks"]),
+.shop:has(#shop-cat-pc:checked) .product-card:not([data-cat="pc"]),
+.shop:has(#shop-cat-consolas:checked) .product-card:not([data-cat="consolas"]),
+.shop:has(#shop-cat-joysticks:checked) .product-card:not([data-cat="joysticks"]),
+.shop:has(#shop-cat-repuestos:checked) .product-card:not([data-cat="repuestos"]),
+.shop:has(#shop-stock:checked) .product-card[data-stock="3"] {
+  display: none;
+}
 
 /* ---------- Grilla ---------- */
 .shop-grid {
@@ -384,18 +398,28 @@ a.product-card:hover .product-arrow svg {
   text-decoration-thickness: 1px;
 }
 
-/* Empty state */
+/* Empty state: solo si con "Solo con stock" no queda ninguna card
+   de la categoría elegida */
 .shop-empty {
-  grid-column: 1 / -1;
+  display: none;
   padding: 48px 0;
   text-align: center;
   font-size: .95rem;
   color: var(--text-muted);
 }
 
+.shop:has(#shop-cat-todas:checked):has(#shop-stock:checked):not(:has(.product-card:not([data-stock="3"]))) .shop-empty,
+.shop:has(#shop-cat-notebooks:checked):has(#shop-stock:checked):not(:has(.product-card[data-cat="notebooks"]:not([data-stock="3"]))) .shop-empty,
+.shop:has(#shop-cat-pc:checked):has(#shop-stock:checked):not(:has(.product-card[data-cat="pc"]:not([data-stock="3"]))) .shop-empty,
+.shop:has(#shop-cat-consolas:checked):has(#shop-stock:checked):not(:has(.product-card[data-cat="consolas"]:not([data-stock="3"]))) .shop-empty,
+.shop:has(#shop-cat-joysticks:checked):has(#shop-stock:checked):not(:has(.product-card[data-cat="joysticks"]:not([data-stock="3"]))) .shop-empty,
+.shop:has(#shop-cat-repuestos:checked):has(#shop-stock:checked):not(:has(.product-card[data-cat="repuestos"]:not([data-stock="3"]))) .shop-empty {
+  display: block;
+}
+
 /* ---------- Foco ---------- */
-.shop-pill:focus-visible,
-.shop-toggle:focus-visible,
+.shop-radio:focus-visible + .shop-pill,
+.shop-stock-input:focus-visible + .shop-toggle,
 .product-card:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 3px;

@@ -1,19 +1,39 @@
 /* =========================================================
-   TickyService — Diagnóstico por síntoma
-   Panel oscuro: lista de síntomas + detalle con pasos
+   TickyService — Diagnóstico guiado (equipo → síntoma → pasos)
+   Panel oscuro: equipo arriba, lista de síntomas a la izquierda
+   y detalle con pasos + WhatsApp a la derecha.
    Se apoya en los tokens de styles.css (--ink-900, --brand-600,
    --hero-accent, --wa-green, --ease), que debe cargarse antes.
    El encabezado (eyebrow/título/bajada) usa .section__head ya
    existente en styles.css, no vive acá.
 
+   Sin JavaScript: el equipo y el síntoma son radios. Cada equipo
+   tiene su propio grupo de síntomas (name="diag-s-<equipo>"), así
+   al cambiar de equipo siempre queda un síntoma válido elegido.
+   Con :has() se muestra el grupo y el detalle que corresponden.
+
    Markup:
 
    <div class="diag-panel">
+     <fieldset class="diag-equipos">
+       <legend class="diag-list-label">1 · ¿Qué equipo es?</legend>
+       <div class="diag-equipos__opts">
+         <input class="sr-only diag-radio" type="radio" name="diag-eq" id="diag-eq-pc" value="pc">
+         <label class="diag-eq" for="diag-eq-pc">...</label>
+       </div>
+     </fieldset>
      <div class="diag-list">
-       <p class="diag-list-label">Síntomas</p>
-       <div id="diag-items" role="tablist" aria-label="Síntomas"></div>
+       <fieldset class="diag-sintomas" data-eq="pc">
+         <legend class="diag-list-label">2 · ¿Qué le pasa a tu PC?</legend>
+         <div class="diag-items">
+           <input class="sr-only diag-radio" type="radio" name="diag-s-pc" id="diag-pc-lento" value="lento">
+           <label class="diag-item" for="diag-pc-lento">...</label>
+         </div>
+       </fieldset>
      </div>
-     <div class="diag-detail" id="diag-detail" role="tabpanel" aria-live="polite"></div>
+     <div class="diag-details">
+       <article class="diag-detail" data-s="lento">... <a class="btn-wa" data-eq="pc">...</a></article>
+     </div>
    </div>
    ========================================================= */
 
@@ -30,21 +50,67 @@
 .diag-panel{
   display:grid;
   grid-template-columns: 340px minmax(0,1fr);
+  grid-template-rows: auto 1fr;
   background: var(--ink-900);
   border-radius: var(--r-lg);
   overflow:hidden;
   box-shadow: var(--sh-3);
 }
 
-/* ---------- Lista de síntomas ---------- */
+/* ---------- Paso 1: equipo ---------- */
+.diag-equipos{
+  grid-column: 1 / -1;
+  margin:0;
+  padding: 18px;
+  border:0;
+  border-block-end: 1px solid var(--diag-line);
+  background: var(--diag-list-bg);
+  min-inline-size:0;
+}
+
+.diag-equipos__opts,
+.diag-items{ clear:both; }
+
+.diag-equipos__opts{
+  display:flex;
+  flex-wrap:wrap;
+  gap: var(--space-2);
+  padding-inline: var(--space-3);
+}
+
+.diag-eq{
+  display:inline-flex;
+  align-items:center;
+  gap: var(--space-2);
+  padding: 9px var(--space-4);
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(255,255,255,.12);
+  font-size: .92rem;
+  font-weight:500;
+  color: rgba(255,255,255,.72);
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+.diag-eq svg{ width:18px; height:18px; color: rgba(255,255,255,.4); }
+.diag-eq:hover{ background: rgba(255,255,255,.05); color:#fff; }
+.diag-radio:checked + .diag-eq{ background: rgba(108,75,232,.28); border-color: rgba(108,75,232,.8); color:#fff; }
+.diag-radio:checked + .diag-eq svg{ color: var(--hero-accent); }
+
+/* ---------- Paso 2: lista de síntomas ---------- */
 .diag-list{
   padding: 18px;
   background: var(--diag-list-bg);
   border-right: 1px solid var(--diag-line);
 }
 
+/* float saca a la <legend> del borde del fieldset y la deja como
+   un título más (el contenido que sigue hace clear) */
 .diag-list-label{
-  margin: 6px var(--space-3) var(--space-3);
+  float:left;
+  width:100%;
+  padding:0 var(--space-3);
+  margin: 6px 0 var(--space-3);
   font-size: .7rem;
   font-weight:600;
   letter-spacing:.12em;
@@ -82,13 +148,52 @@
 
 .diag-item:hover{ background: rgba(255,255,255,.05); color:#fff; }
 
-.diag-item.is-active{ background: rgba(108,75,232,.28); color:#fff; }
-.diag-item.is-active svg{ color: var(--hero-accent); }
+.diag-radio:checked + .diag-item{ background: rgba(108,75,232,.28); color:#fff; }
+.diag-radio:checked + .diag-item svg{ color: var(--hero-accent); }
+
+/* Un grupo de síntomas por equipo: solo se ve el del equipo elegido */
+.diag-sintomas{
+  display:none;
+  margin:0;
+  padding:0;
+  border:0;
+  min-inline-size:0;
+}
+.diag-panel:has(#diag-eq-notebook:checked) .diag-sintomas[data-eq="notebook"],
+.diag-panel:has(#diag-eq-pc:checked) .diag-sintomas[data-eq="pc"],
+.diag-panel:has(#diag-eq-joystick:checked) .diag-sintomas[data-eq="joystick"],
+.diag-panel:has(#diag-eq-consola:checked) .diag-sintomas[data-eq="consola"]{
+  display:block;
+}
 
 /* ---------- Detalle ---------- */
+/* Se muestra solo el detalle del síntoma elegido para el equipo elegido.
+   Al pasar de display:none a block la animación de entrada se repite. */
 .diag-detail{
+  display:none;
   padding: 32px 36px;
   animation: diagIn .35s var(--ease);
+}
+
+.diag-panel:has(#diag-eq-notebook:checked):has(#diag-notebook-no-enciende:checked) .diag-detail[data-s="no-enciende"],
+.diag-panel:has(#diag-eq-notebook:checked):has(#diag-notebook-se-apaga:checked) .diag-detail[data-s="se-apaga"],
+.diag-panel:has(#diag-eq-notebook:checked):has(#diag-notebook-se-calienta:checked) .diag-detail[data-s="se-calienta"],
+.diag-panel:has(#diag-eq-notebook:checked):has(#diag-notebook-pantalla:checked) .diag-detail[data-s="pantalla"],
+.diag-panel:has(#diag-eq-notebook:checked):has(#diag-notebook-lento:checked) .diag-detail[data-s="lento"],
+.diag-panel:has(#diag-eq-notebook:checked):has(#diag-notebook-sin-internet:checked) .diag-detail[data-s="sin-internet"],
+.diag-panel:has(#diag-eq-pc:checked):has(#diag-pc-no-enciende:checked) .diag-detail[data-s="no-enciende"],
+.diag-panel:has(#diag-eq-pc:checked):has(#diag-pc-se-apaga:checked) .diag-detail[data-s="se-apaga"],
+.diag-panel:has(#diag-eq-pc:checked):has(#diag-pc-se-calienta:checked) .diag-detail[data-s="se-calienta"],
+.diag-panel:has(#diag-eq-pc:checked):has(#diag-pc-pantalla:checked) .diag-detail[data-s="pantalla"],
+.diag-panel:has(#diag-eq-pc:checked):has(#diag-pc-lento:checked) .diag-detail[data-s="lento"],
+.diag-panel:has(#diag-eq-pc:checked):has(#diag-pc-sin-internet:checked) .diag-detail[data-s="sin-internet"],
+.diag-panel:has(#diag-eq-joystick:checked):has(#diag-joystick-drift:checked) .diag-detail[data-s="drift"],
+.diag-panel:has(#diag-eq-consola:checked):has(#diag-consola-no-enciende:checked) .diag-detail[data-s="no-enciende"],
+.diag-panel:has(#diag-eq-consola:checked):has(#diag-consola-se-apaga:checked) .diag-detail[data-s="se-apaga"],
+.diag-panel:has(#diag-eq-consola:checked):has(#diag-consola-se-calienta:checked) .diag-detail[data-s="se-calienta"],
+.diag-panel:has(#diag-eq-consola:checked):has(#diag-consola-no-lee-discos:checked) .diag-detail[data-s="no-lee-discos"],
+.diag-panel:has(#diag-eq-consola:checked):has(#diag-consola-sin-internet:checked) .diag-detail[data-s="sin-internet"]{
+  display:block;
 }
 
 @keyframes diagIn{
@@ -198,13 +303,23 @@
   transition: transform .2s var(--ease), box-shadow .2s var(--ease);
 }
 .btn-wa svg{ width:18px; height:18px; }
+
+/* Cada detalle trae un link de WhatsApp por equipo (el mensaje nombra
+   el equipo); se deja visible solo el del equipo elegido */
+.diag-panel:has(#diag-eq-notebook:checked) .btn-wa[data-eq]:not([data-eq="notebook"]),
+.diag-panel:has(#diag-eq-pc:checked) .btn-wa[data-eq]:not([data-eq="pc"]),
+.diag-panel:has(#diag-eq-joystick:checked) .btn-wa[data-eq]:not([data-eq="joystick"]),
+.diag-panel:has(#diag-eq-consola:checked) .btn-wa[data-eq]:not([data-eq="consola"]){
+  display:none;
+}
 .btn-wa:hover{
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(37,211,102,.3);
 }
 
 /* Foco */
-.diag-item:focus-visible,
+.diag-radio:focus-visible + .diag-eq,
+.diag-radio:focus-visible + .diag-item,
 .btn-wa:focus-visible{
   outline: 2px solid var(--hero-accent);
   outline-offset:2px;
@@ -212,29 +327,32 @@
 
 @media (prefers-reduced-motion: reduce){
   .diag-detail{ animation:none; }
-  .diag-item, .diag-item svg, .btn-wa{ transition:none; }
+  .diag-eq, .diag-item, .diag-item svg, .btn-wa{ transition:none; }
 }
 
 /* ---------- Tablet ---------- */
 @media (max-width: 960px){
   .diag-panel{ grid-template-columns: minmax(0,1fr); }
 
+  .diag-equipos{ padding: 14px; }
+  .diag-equipos__opts{ padding-inline:0; }
+
   .diag-list{
     padding: 14px;
     border-right:none;
     border-block-end: 1px solid var(--diag-line);
   }
-  .diag-list-label{ display:none; }
+  .diag-list-label{ padding-inline:0; }
 
   /* Síntomas como chips con scroll horizontal */
-  #diag-items{
+  .diag-items{
     display:flex;
     gap: var(--space-2);
     overflow-x:auto;
     scrollbar-width:none;
     scroll-snap-type: x proximity;
   }
-  #diag-items::-webkit-scrollbar{ display:none; }
+  .diag-items::-webkit-scrollbar{ display:none; }
 
   .diag-item{
     width:auto;
@@ -246,7 +364,7 @@
     white-space:nowrap;
     scroll-snap-align:start;
   }
-  .diag-item.is-active{ border-color: rgba(108,75,232,.8); }
+  .diag-radio:checked + .diag-item{ border-color: rgba(108,75,232,.8); }
 }
 
 /* ---------- Mobile ---------- */

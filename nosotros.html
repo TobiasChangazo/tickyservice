@@ -29,7 +29,13 @@
     <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
     <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
     <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"/></symbol>
-    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="icon-book-open" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-message-circle-heart" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M15.8 9.2a2.5 2.5 0 0 0-3.5 0l-.3.4-.35-.3a2.42 2.42 0 1 0-3.2 3.6l3.6 3.5 3.6-3.5c1.2-1.2 1.1-2.7.2-3.7"/></symbol>
+    <symbol id="icon-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+    <symbol id="icon-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
   </defs>
 </svg>
 
@@ -83,7 +89,7 @@
           <img src="img/nosotros/taller.webp" alt="Trabajando en el taller de TickyService" loading="lazy">
           -->
           <figcaption class="about-location">
-            <i data-lucide="map-pin"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-map-pin"></use></svg>
             <span>
               <strong>Mar de Ajó, Partido de la Costa</strong>
               <!-- COMPLETAR: sacá "retiro a coordinar" si no hacés retiro -->
@@ -120,11 +126,10 @@
       </div>
 
       <!-- ---------- Números ---------- -->
-      <!-- data-count anima el número al entrar en pantalla -->
       <div class="about-stats">
         <div class="stat">
           <!-- COMPLETAR: cantidad real de equipos reparados -->
-          <p class="stat-num"><span class="stat-accent">+</span><span data-count="1500">1.500</span></p>
+          <p class="stat-num"><span class="stat-accent">+</span>1.500</p>
           <p class="stat-label">equipos reparados</p>
         </div>
         <div class="stat">
@@ -132,11 +137,11 @@
           <p class="stat-label">entrega promedio</p>
         </div>
         <div class="stat">
-          <p class="stat-num"><span data-count="30">30</span><small> días</small></p>
+          <p class="stat-num">30<small> días</small></p>
           <p class="stat-label">de garantía</p>
         </div>
         <div class="stat">
-          <p class="stat-num"><span id="stat-guias" data-count="16">16</span></p>
+          <p class="stat-num">16</p>
           <p class="stat-label">guías gratis publicadas</p>
         </div>
       </div>
@@ -155,22 +160,22 @@
 
         <div class="about-values">
           <article class="value-card value-card--cyan">
-            <span class="value-icon"><i data-lucide="book-open"></i></span>
+            <span class="value-icon"><svg class="icon" aria-hidden="true"><use href="#icon-book-open"></use></svg></span>
             <h3 class="value-title">Primero, te ayudamos gratis</h3>
             <p class="value-desc">Guías y diagnóstico por síntoma para que resuelvas lo simple sin gastar un peso.</p>
           </article>
           <article class="value-card">
-            <span class="value-icon"><i data-lucide="receipt"></i></span>
+            <span class="value-icon"><svg class="icon" aria-hidden="true"><use href="#icon-receipt"></use></svg></span>
             <h3 class="value-title">Precio antes de tocar</h3>
             <p class="value-desc">Diagnóstico sin cargo. Te pasamos el presupuesto y trabajamos solo si lo aprobás.</p>
           </article>
           <article class="value-card">
-            <span class="value-icon"><i data-lucide="message-circle-heart"></i></span>
+            <span class="value-icon"><svg class="icon" aria-hidden="true"><use href="#icon-message-circle-heart"></use></svg></span>
             <h3 class="value-title">Te decimos la verdad</h3>
             <p class="value-desc">Si arreglarlo no conviene, te lo decimos de entrada y te asesoramos sobre qué hacer.</p>
           </article>
           <article class="value-card">
-            <span class="value-icon"><i data-lucide="shield-check"></i></span>
+            <span class="value-icon"><svg class="icon" aria-hidden="true"><use href="#icon-shield-check"></use></svg></span>
             <h3 class="value-title">Garantía de verdad</h3>
             <p class="value-desc">30 días en mano de obra y repuestos. Si algo falla, lo resolvemos sin vueltas.</p>
           </article>
@@ -206,7 +211,7 @@
             <span class="step-tag">Sin sorpresas</span>
           </li>
           <li class="step step--done">
-            <span class="step-dot"><i data-lucide="check"></i></span>
+            <span class="step-dot"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg></span>
             <h3 class="step-title">Lo retirás</h3>
             <p class="step-desc">Funcionando, probado y con garantía.</p>
             <span class="step-tag">30 días de garantía</span>
@@ -297,9 +302,5 @@
   <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
 </a>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="js/guias-data.js"></script>
-<script src="js/nosotros.js"></script>
 </body>
 </html>

@@ -29,11 +29,12 @@
     <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
     <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
     <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"/></symbol>
-    <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></symbol>
-    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
-    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></symbol>
-    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
-    <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+    <symbol id="icon-lightbulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="icon-navigation" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></symbol>
+    <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
   </defs>
 </svg>
 
@@ -76,45 +77,27 @@
           <p class="contact-sub">Contanos qué le pasa a tu equipo y te respondemos en el día.</p>
         </div>
         <a class="contact-tip" href="index.html#diagnostico">
-          <i data-lucide="lightbulb"></i>
+          <svg class="icon" aria-hidden="true"><use href="#icon-lightbulb"></use></svg>
           <p><strong>¿Probaste el diagnóstico?</strong> Capaz lo resolvés en 5 minutos, sin esperar a nadie. →</p>
         </a>
       </div>
 
       <div class="contact-grid">
 
-        <!-- FORMULARIO -->
-        <form class="contact-form" id="contact-form" novalidate>
+        <!-- FORMULARIO: sin JS, el navegador arma la URL https://wa.me/NUMERO?text=... con el textarea -->
+        <form class="contact-form" action="https://wa.me/549232323232" method="get" target="_blank">
           <h2 class="form-title">Mandanos tu consulta</h2>
-          <p class="form-sub">Completá esto y se arma el mensaje para enviarlo por WhatsApp.</p>
-
-          <fieldset class="form-field">
-            <legend class="form-label">¿Qué necesitás?</legend>
-            <div class="form-chips" id="chips-necesidad"></div>
-          </fieldset>
-
-          <fieldset class="form-field">
-            <legend class="form-label">¿Qué equipo?</legend>
-            <div class="form-chips" id="chips-equipo"></div>
-          </fieldset>
+          <p class="form-sub">Escribí tu mensaje y se abre WhatsApp con el texto listo para enviar.</p>
 
           <div class="form-field">
-            <label class="form-label" for="c-nombre">Tu nombre</label>
-            <input class="form-input" id="c-nombre" name="nombre" type="text" placeholder="Ej: Juan" autocomplete="given-name" required aria-describedby="err-nombre">
-            <p class="form-error" id="err-nombre">Decinos tu nombre así te respondemos.</p>
-          </div>
-
-          <div class="form-field">
-            <label class="form-label" for="c-mensaje">Tu consulta <span>(opcional)</span></label>
-            <textarea class="form-input" id="c-mensaje" name="mensaje" rows="4" placeholder="Qué le pasa y qué ya probaste"></textarea>
-          </div>
-
-          <div class="form-preview">
-            <p class="form-preview-label"><i data-lucide="eye"></i>Así nos va a llegar</p>
-            <div class="form-bubble" id="c-preview" aria-live="polite"></div>
+            <label class="form-label" for="c-mensaje">Tu consulta</label>
+            <p class="form-hint" id="c-mensaje-hint">Contanos tu nombre, qué necesitás (reparación, presupuesto o comprar algo), qué equipo es (notebook, PC, joystick, consola u otro) y qué le pasa.</p>
+            <textarea class="form-input" id="c-mensaje" name="text" rows="6" required minlength="20" maxlength="1000" aria-describedby="c-mensaje-hint" placeholder="Ej: Hola! Soy Juan. Quiero pedir presupuesto para mi notebook: no enciende y ya probé con otro cargador."></textarea>
+            <p class="form-error">Escribí al menos 20 caracteres así entendemos qué le pasa a tu equipo.</p>
           </div>
 
           <button class="form-submit" type="submit">
+            <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
             <span>Enviar por WhatsApp</span>
           </button>
 
@@ -125,42 +108,48 @@
         <aside class="contact-panel" aria-label="Canales, horarios y ubicación">
           <p class="panel-label">Canales</p>
 
-          <a class="channel" id="ch-wa" href="https://wa.me/549232323232" target="_blank" rel="noopener">
-            <span class="channel-icon channel-icon--wa"></span>
+          <a class="channel" href="https://wa.me/549232323232" target="_blank" rel="noopener">
+            <span class="channel-icon channel-icon--wa"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></span>
             <span><span class="channel-title">WhatsApp</span><span class="channel-sub">La vía más rápida · respondemos en el día</span></span>
-            <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+            <svg class="icon channel-arrow" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg>
           </a>
 
           <a class="channel" href="https://instagram.com/tickyservice" target="_blank" rel="noopener">
-            <span class="channel-icon channel-icon--ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></span>
+            <span class="channel-icon channel-icon--ig"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></span>
             <span><span class="channel-title">Instagram</span><span class="channel-sub">@tickyservice</span></span>
-            <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+            <svg class="icon channel-arrow" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg>
           </a>
 
           <a class="channel" href="mailto:contacto@tickyservice.com.ar">
-            <span class="channel-icon channel-icon--mail"><i data-lucide="mail"></i></span>
+            <span class="channel-icon channel-icon--mail"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg></span>
             <span><span class="channel-title">Email</span><span class="channel-sub">contacto@tickyservice.com.ar</span></span>
-            <i data-lucide="arrow-up-right" class="channel-arrow"></i>
+            <svg class="icon channel-arrow" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg>
           </a>
 
           <div class="panel-divider"></div>
 
-          <div class="panel-row-head">
-            <p class="panel-label">Horarios</p>
-            <span class="open-status" id="open-status"></span>
-          </div>
-          <div class="hours" id="hours"></div>
+          <p class="panel-label">Horarios</p>
+          <dl class="hours">
+            <div class="hours-row">
+              <dt>Lunes a viernes</dt>
+              <dd><strong>09:00 – 20:00</strong></dd>
+            </div>
+            <div class="hours-row is-closed">
+              <dt>Sábados y domingos</dt>
+              <dd><strong>Cerrado</strong></dd>
+            </div>
+          </dl>
 
           <div class="panel-divider"></div>
 
           <p class="panel-label">Ubicación</p>
           <div class="contact-map">
             <div class="map-deco" aria-hidden="true"></div>
-            <div class="map-pin" aria-hidden="true"><i data-lucide="wrench"></i></div>
+            <div class="map-pin" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"></use></svg></div>
             <div class="map-bar">
               <p>Mar de Ajó, Buenos Aires</p>
-              <a class="map-go" id="map-go" href="#" target="_blank" rel="noopener">
-                <i data-lucide="navigation"></i>Cómo llegar
+              <a class="map-go" href="https://maps.google.com/?q=Mar+de+Aj%C3%B3,+Buenos+Aires" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#icon-navigation"></use></svg>Cómo llegar
               </a>
             </div>
           </div>
@@ -226,8 +215,5 @@
   <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
 </a>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="js/contacto.js"></script>
 </body>
 </html>

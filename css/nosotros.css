@@ -220,6 +220,23 @@
   color: rgba(255, 255, 255, .6);
 }
 
+/* Entrada de los números solo con CSS (reemplaza al contador en JS):
+   suben y aparecen cuando la franja entra en pantalla. Mejora
+   progresiva: sin soporte de animation-timeline se ven quietos. */
+@keyframes statIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .stat {
+      animation: statIn linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+  }
+}
+
 /* ---------- Bloques ---------- */
 .about-block { margin-top: 72px; }
 

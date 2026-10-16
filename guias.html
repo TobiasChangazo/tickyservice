@@ -18,24 +18,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/guias.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ComputerRepairService",
-  "name": "TickyService",
-  "description": "Servicio técnico, repuestos y tienda de tecnología: notebooks, PC, consolas y joysticks.",
-  "image": "img/logo/fondo.png",
-  "telephone": "+549232323232",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Mar de Ajó",
-    "addressRegion": "Buenos Aires",
-    "addressCountry": "AR"
-  },
-  "areaServed": "Mar de Ajó y alrededores"
-}
-</script>
 </head>
 <body class="gh-page">
 
@@ -47,6 +29,12 @@
     <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
     <symbol id="icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
     <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="icon-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></symbol>
+    <symbol id="icon-gamepad" viewBox="0 0 24 24"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></symbol>
+    <symbol id="icon-gamepad-2" viewBox="0 0 24 24"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></symbol>
+    <symbol id="icon-laptop" viewBox="0 0 24 24"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></symbol>
+    <symbol id="icon-layout-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
     <symbol id="icon-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5v14l11-7z"/></symbol>
   </defs>
 </svg>
@@ -102,32 +90,218 @@
   <section class="gh-filters-section" aria-labelledby="library-title">
     <h2 id="library-title" class="sr-only">Biblioteca de guías</h2>
     <div class="container">
-      <div class="guias-section" id="guias-section">
+      <div class="guias-section">
 
-        <p class="filter-label">Equipo</p>
-        <div class="filter-tabs" id="guias-tabs"></div>
+        <fieldset class="filter-group">
+          <legend class="filter-label">Equipo</legend>
+          <div class="filter-tabs">
+            <input class="sr-only filter-input" type="radio" name="g-cat" id="g-cat-todas" value="todas" checked>
+            <label class="filter-tab" for="g-cat-todas">Todas<span class="filter-count">16</span></label>
+            <input class="sr-only filter-input" type="radio" name="g-cat" id="g-cat-notebook" value="notebook">
+            <label class="filter-tab" for="g-cat-notebook">Notebook<span class="filter-count">3</span></label>
+            <input class="sr-only filter-input" type="radio" name="g-cat" id="g-cat-pc" value="pc">
+            <label class="filter-tab" for="g-cat-pc">PC<span class="filter-count">6</span></label>
+            <input class="sr-only filter-input" type="radio" name="g-cat" id="g-cat-joystick" value="joystick">
+            <label class="filter-tab" for="g-cat-joystick">Joystick<span class="filter-count">3</span></label>
+            <input class="sr-only filter-input" type="radio" name="g-cat" id="g-cat-consola" value="consola">
+            <label class="filter-tab" for="g-cat-consola">Consola<span class="filter-count">4</span></label>
+          </div>
+        </fieldset>
 
-        <p class="filter-label">Dificultad</p>
         <div class="filter-row">
-          <div class="filter-pills" id="guias-pills"></div>
+          <fieldset class="filter-group">
+            <legend class="filter-label">Dificultad</legend>
+            <div class="filter-pills">
+              <input class="sr-only filter-input" type="radio" name="g-nivel" id="g-nivel-todas" value="todas" checked>
+              <label class="filter-pill" for="g-nivel-todas"><svg class="icon" aria-hidden="true"><use href="#icon-layout-grid"></use></svg>Todas</label>
+              <input class="sr-only filter-input" type="radio" name="g-nivel" id="g-nivel-1" value="1">
+              <label class="filter-pill" for="g-nivel-1" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</label>
+              <input class="sr-only filter-input" type="radio" name="g-nivel" id="g-nivel-2" value="2">
+              <label class="filter-pill" for="g-nivel-2" data-level="2"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Requiere herramientas</label>
+              <input class="sr-only filter-input" type="radio" name="g-nivel" id="g-nivel-3" value="3">
+              <label class="filter-pill" for="g-nivel-3" data-level="3"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Es trabajo de taller</label>
+            </div>
+          </fieldset>
         </div>
 
         <div class="gh-featured">
-          <a class="gh-featured__media" href="guia.html?g=pasta-termica">
+          <a class="gh-featured__media" href="guias/pasta-termica.html">
             <span class="gh-featured__badge">Video destacado</span>
             <span class="gh-featured__play" aria-hidden="true"><svg class="icon"><use href="#icon-play"></use></svg></span>
             <span class="gh-featured__note">[ Reemplazar por el thumbnail real del video ]</span>
           </a>
           <div class="gh-featured__body">
             <p class="gh-meta">Video · 8 min · PC y notebook</p>
-            <h3 class="gh-featured__title"><a href="guia.html?g=pasta-termica">Cómo limpiar la pasta térmica sin arruinar nada</a></h3>
+            <h3 class="gh-featured__title"><a href="guias/pasta-termica.html">Cómo limpiar la pasta térmica sin arruinar nada</a></h3>
             <p class="gh-featured__desc">El 70% de los equipos que entran por "se apaga solo" son temperatura. Te mostramos cuánta pasta va, con qué se limpia y en qué momento conviene frenar y traerlo.</p>
             <p class="gh-level"><span class="level-bar level-bar--warn" aria-hidden="true"><span></span><span></span><span></span></span>Requiere herramientas — destornillador, alcohol isopropílico, pasta</p>
-            <a class="gh-link-arrow" href="guia.html?g=pasta-termica">Ver el video paso a paso →</a>
+            <a class="gh-link-arrow" href="guias/pasta-termica.html">Ver el video paso a paso →</a>
           </div>
         </div>
 
-        <div class="guias-grid" id="guias-grid"></div>
+        <ul class="guias-grid" role="list">
+          <li class="guia-item" data-cat="notebook" data-nivel="1">
+            <a class="guia-card" href="guias/notebook-no-enciende.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-laptop"></use></svg>Notebook</span>Guía · 5 min de lectura</p>
+                <h3 class="guia-title">Notebook que no enciende: primeros pasos</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="notebook" data-nivel="1">
+            <a class="guia-card" href="guias/bateria-notebook-no-carga.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-laptop"></use></svg>Notebook</span>Guía · 4 min de lectura</p>
+                <h3 class="guia-title">Batería de notebook que no carga: qué revisar</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="notebook" data-nivel="1">
+            <a class="guia-card" href="guias/backup-antes-del-taller.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-laptop"></use></svg>Notebook</span>Checklist · 3 min de lectura</p>
+                <h3 class="guia-title">Backup antes de llevar el equipo al taller</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="pc" data-nivel="2">
+            <a class="guia-card" href="guias/pasta-termica.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-cpu"></use></svg>PC</span>Video · 8 min de video</p>
+                <h3 class="guia-title">Cómo limpiar la pasta térmica sin arruinar nada</h3>
+                <span class="guia-level" data-level="2"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Requiere herramientas</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="pc" data-nivel="1">
+            <a class="guia-card" href="guias/pc-lenta.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-cpu"></use></svg>PC</span>Checklist · 4 min de lectura</p>
+                <h3 class="guia-title">PC lenta: 6 cosas para probar antes de traerla</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="pc" data-nivel="1">
+            <a class="guia-card" href="guias/ssd-o-pc-nueva.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-cpu"></use></svg>PC</span>Guía · 5 min de lectura</p>
+                <h3 class="guia-title">Cuándo conviene sumar un SSD en vez de comprar una PC nueva</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="pc" data-nivel="3">
+            <a class="guia-card" href="guias/pc-no-bootea.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-cpu"></use></svg>PC</span>Guía · 6 min de lectura</p>
+                <h3 class="guia-title">PC no bootea: pantalla negra al encender</h3>
+                <span class="guia-level" data-level="3"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Es trabajo de taller</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="pc" data-nivel="2">
+            <a class="guia-card" href="guias/limpiar-polvo-pc.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-cpu"></use></svg>PC</span>Video · 7 min de video</p>
+                <h3 class="guia-title">Cómo limpiar el polvo por dentro de tu PC</h3>
+                <span class="guia-level" data-level="2"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Requiere herramientas</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="pc" data-nivel="1">
+            <a class="guia-card" href="guias/sin-wifi.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-cpu"></use></svg>PC</span>Checklist · 3 min de lectura</p>
+                <h3 class="guia-title">Sin wifi o internet: diagnóstico rápido</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="joystick" data-nivel="1">
+            <a class="guia-card" href="guias/joystick-drift.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad-2"></use></svg>Joystick</span>Video · 6 min de video</p>
+                <h3 class="guia-title">Joystick con drift: cómo detectarlo y calibrarlo</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="joystick" data-nivel="1">
+            <a class="guia-card" href="guias/joystick-bluetooth.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad-2"></use></svg>Joystick</span>Guía · 4 min de lectura</p>
+                <h3 class="guia-title">Mi joystick no conecta por bluetooth</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="joystick" data-nivel="2">
+            <a class="guia-card" href="guias/gatillos-botones-pegados.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad-2"></use></svg>Joystick</span>Checklist · 3 min de lectura</p>
+                <h3 class="guia-title">Limpieza de gatillos y botones pegados</h3>
+                <span class="guia-level" data-level="2"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Requiere herramientas</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="consola" data-nivel="2">
+            <a class="guia-card" href="guias/consola-no-lee-discos.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad"></use></svg>Consola</span>Guía · 5 min de lectura</p>
+                <h3 class="guia-title">La consola no lee discos: guía de limpieza</h3>
+                <span class="guia-level" data-level="2"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Requiere herramientas</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="consola" data-nivel="1">
+            <a class="guia-card" href="guias/vincular-joystick-consola.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad"></use></svg>Consola</span>Video · 3 min de video</p>
+                <h3 class="guia-title">Cómo vincular un joystick nuevo a tu consola</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="consola" data-nivel="3">
+            <a class="guia-card" href="guias/consola-se-apaga.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad"></use></svg>Consola</span>Guía · 5 min de lectura</p>
+                <h3 class="guia-title">Consola que se apaga sola jugando</h3>
+                <span class="guia-level" data-level="3"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Es trabajo de taller</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+          <li class="guia-item" data-cat="consola" data-nivel="1">
+            <a class="guia-card" href="guias/actualizar-consola.html">
+              <div>
+                <p class="guia-meta"><span class="guia-badge"><svg class="icon" aria-hidden="true"><use href="#icon-gamepad"></use></svg>Consola</span>Checklist · 4 min de lectura</p>
+                <h3 class="guia-title">Actualizar el sistema de tu consola paso a paso</h3>
+                <span class="guia-level" data-level="1"><span class="level" aria-hidden="true"><b></b><b></b><b></b></span>Podés hacerlo vos</span>
+              </div>
+              <svg class="icon guia-arrow" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+            </a>
+          </li>
+        </ul>
+        <p class="guias-empty">No hay guías con este filtro.</p>
 
       </div>
 
@@ -200,10 +374,6 @@
   <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
 </a>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="js/guias-data.js"></script>
-<script src="js/guias.js"></script>
 
 </body>
 </html>

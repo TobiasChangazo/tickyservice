@@ -1,25 +1,40 @@
 /* =========================================================
-   TickyService — Sección "Guías destacadas"
+   TickyService — Sección "Guías destacadas" (home y guias.html)
    (tabs de equipo + pills de dificultad + botón ver todas + cards)
    Se apoya en los tokens de styles.css (--brand-*, --ink-*, --ok,
    --warn, --danger, --paper-line*, --ease), que debe cargarse antes.
 
-   Markup mínimo (el resto lo arma guias.js):
+   Sin JavaScript: los filtros son <input type="radio"> (uno por
+   opción) y la tarjeta se oculta con :has() cuando no coincide.
 
-   <div class="guias-section" id="guias-section">
-     <p class="filter-label">Equipo</p>
-     <div class="filter-tabs" id="guias-tabs"></div>
+   Markup:
 
-     <p class="filter-label">Dificultad</p>
+   <div class="guias-section">
+     <fieldset class="filter-group">
+       <legend class="filter-label">Equipo</legend>
+       <div class="filter-tabs">
+         <input class="sr-only filter-input" type="radio" name="g-cat" id="g-cat-todas" value="todas" checked>
+         <label class="filter-tab" for="g-cat-todas">Todas<span class="filter-count">16</span></label>
+         <input class="sr-only filter-input" type="radio" name="g-cat" id="g-cat-pc" value="pc">
+         <label class="filter-tab" for="g-cat-pc">PC<span class="filter-count">6</span></label>
+         ...
+       </div>
+     </fieldset>
+
      <div class="filter-row">
-       <div class="filter-pills" id="guias-pills"></div>
-       <a class="btn-all" id="guias-all" href="guias.html">
-         <span>Ver las guías</span>
-         <i data-lucide="arrow-right"></i>
-       </a>
+       <fieldset class="filter-group">
+         <legend class="filter-label">Dificultad</legend>
+         <div class="filter-pills"> (mismo patrón, name="g-nivel", id="g-nivel-1"...) </div>
+       </fieldset>
+       <a class="btn-all" href="guias.html">...</a>   (solo en la home)
      </div>
 
-     <div class="guias-grid" id="guias-grid"></div>
+     <ul class="guias-grid" role="list">
+       <li class="guia-item" data-cat="pc" data-nivel="2">
+         <a class="guia-card" href="guias/pasta-termica.html">...</a>
+       </li>
+     </ul>
+     <p class="guias-empty">No hay guías con este filtro.</p>
    </div>
    ========================================================= */
 
@@ -31,8 +46,17 @@
   --cyan-icon:#0891B2;
 }
 
+/* ---------- Grupos de filtros (fieldset sin estilo propio) ---------- */
+.filter-group{
+  margin:0;
+  padding:0;
+  border:0;
+  min-inline-size:0;
+}
+
 /* ---------- Labels ---------- */
 .filter-label{
+  padding:0;
   margin: 0 0 var(--space-3);
   font-size: .72rem;
   font-weight: 600;
@@ -76,20 +100,20 @@
 }
 
 .filter-tab:hover{ color: var(--ink-900); }
-.filter-tab.is-active{ color: var(--brand-700); font-weight:600; }
-.filter-tab.is-active::after{ transform: scaleX(1); }
+.filter-input:checked + .filter-tab{ color: var(--brand-700); font-weight:600; }
+.filter-input:checked + .filter-tab::after{ transform: scaleX(1); }
 
 .filter-count{
   margin-inline-start:4px;
   font-size: var(--fs-xs);
   color: var(--ink-400);
 }
-.filter-tab.is-active .filter-count{ color: var(--brand-500); }
+.filter-input:checked + .filter-tab .filter-count{ color: var(--brand-500); }
 
 /* ---------- Fila: pills + botón ---------- */
 .filter-row{
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   flex-wrap:wrap;
   gap: var(--space-4);
 }
@@ -118,10 +142,9 @@
 }
 
 .filter-pill:hover{ background: var(--lilac-025); border-color: var(--lilac-300); color: var(--ink-900); }
-.filter-pill.is-active{ background: var(--lilac-100); border-color: var(--brand-600); color: var(--brand-700); }
+.filter-input:checked + .filter-pill{ background: var(--lilac-100); border-color: var(--brand-600); color: var(--brand-700); }
 
-.filter-pill svg,
-.filter-pill i{ width:16px; height:16px; color: var(--brand-600); flex-shrink:0; }
+.filter-pill svg{ width:16px; height:16px; color: var(--brand-600); flex-shrink:0; }
 
 /* Botón "ver todas": oscuro sólido, se empuja a la derecha de la fila */
 .btn-all{
@@ -139,8 +162,7 @@
   white-space:nowrap;
   transition: gap .25s var(--ease), background-color .25s var(--ease);
 }
-.btn-all svg,
-.btn-all i{ width:16px; height:16px; color: var(--hero-accent); }
+.btn-all svg{ width:16px; height:16px; color: var(--hero-accent); }
 .btn-all:hover{ gap: var(--space-3); background:#0F0C22; }
 
 /* ---------- Indicador de nivel (3 barras ascendentes) ---------- */
@@ -213,8 +235,7 @@
   letter-spacing:0;
   text-transform:none;
 }
-.guia-badge svg,
-.guia-badge i{ width:14px; height:14px; color: var(--cyan-icon); }
+.guia-badge svg{ width:14px; height:14px; color: var(--cyan-icon); }
 
 .guia-title{
   margin: 0 0 var(--space-2);
@@ -245,7 +266,7 @@
 
 /* Empty state */
 .guias-empty{
-  grid-column: 1 / -1;
+  display:none;
   padding-block: var(--space-9);
   text-align:center;
   font-size: var(--fs-md);
@@ -253,16 +274,56 @@
 }
 .guias-empty a{ color: var(--brand-700); font-weight:600; text-decoration:none; }
 
+/* ---------- Filtros sin JS (radios + :has()) ---------- */
+/* Equipo: oculta las tarjetas de otros equipos */
+.guias-section:has(#g-cat-notebook:checked) .guia-item:not([data-cat="notebook"]),
+.guias-section:has(#g-cat-pc:checked) .guia-item:not([data-cat="pc"]),
+.guias-section:has(#g-cat-joystick:checked) .guia-item:not([data-cat="joystick"]),
+.guias-section:has(#g-cat-consola:checked) .guia-item:not([data-cat="consola"]),
+/* Dificultad: oculta las tarjetas de otros niveles */
+.guias-section:has(#g-nivel-1:checked) .guia-item:not([data-nivel="1"]),
+.guias-section:has(#g-nivel-2:checked) .guia-item:not([data-nivel="2"]),
+.guias-section:has(#g-nivel-3:checked) .guia-item:not([data-nivel="3"]){
+  display:none;
+}
+
+/* El badge de equipo solo se muestra en "Todas" */
+.guias-section:has(.filter-input[name="g-cat"]:not([value="todas"]):checked) .guia-badge{ display:none; }
+
+/* Sin resultados: se muestra el aviso si no existe ninguna tarjeta
+   con la combinación elegida (equipo + dificultad) */
+.guias-section:has(#g-cat-todas:checked):has(#g-nivel-1:checked):not(:has(.guia-item[data-nivel="1"])) .guias-empty,
+.guias-section:has(#g-cat-todas:checked):has(#g-nivel-2:checked):not(:has(.guia-item[data-nivel="2"])) .guias-empty,
+.guias-section:has(#g-cat-todas:checked):has(#g-nivel-3:checked):not(:has(.guia-item[data-nivel="3"])) .guias-empty,
+.guias-section:has(#g-cat-notebook:checked):has(#g-nivel-todas:checked):not(:has(.guia-item[data-cat="notebook"])) .guias-empty,
+.guias-section:has(#g-cat-notebook:checked):has(#g-nivel-1:checked):not(:has(.guia-item[data-cat="notebook"][data-nivel="1"])) .guias-empty,
+.guias-section:has(#g-cat-notebook:checked):has(#g-nivel-2:checked):not(:has(.guia-item[data-cat="notebook"][data-nivel="2"])) .guias-empty,
+.guias-section:has(#g-cat-notebook:checked):has(#g-nivel-3:checked):not(:has(.guia-item[data-cat="notebook"][data-nivel="3"])) .guias-empty,
+.guias-section:has(#g-cat-pc:checked):has(#g-nivel-todas:checked):not(:has(.guia-item[data-cat="pc"])) .guias-empty,
+.guias-section:has(#g-cat-pc:checked):has(#g-nivel-1:checked):not(:has(.guia-item[data-cat="pc"][data-nivel="1"])) .guias-empty,
+.guias-section:has(#g-cat-pc:checked):has(#g-nivel-2:checked):not(:has(.guia-item[data-cat="pc"][data-nivel="2"])) .guias-empty,
+.guias-section:has(#g-cat-pc:checked):has(#g-nivel-3:checked):not(:has(.guia-item[data-cat="pc"][data-nivel="3"])) .guias-empty,
+.guias-section:has(#g-cat-joystick:checked):has(#g-nivel-todas:checked):not(:has(.guia-item[data-cat="joystick"])) .guias-empty,
+.guias-section:has(#g-cat-joystick:checked):has(#g-nivel-1:checked):not(:has(.guia-item[data-cat="joystick"][data-nivel="1"])) .guias-empty,
+.guias-section:has(#g-cat-joystick:checked):has(#g-nivel-2:checked):not(:has(.guia-item[data-cat="joystick"][data-nivel="2"])) .guias-empty,
+.guias-section:has(#g-cat-joystick:checked):has(#g-nivel-3:checked):not(:has(.guia-item[data-cat="joystick"][data-nivel="3"])) .guias-empty,
+.guias-section:has(#g-cat-consola:checked):has(#g-nivel-todas:checked):not(:has(.guia-item[data-cat="consola"])) .guias-empty,
+.guias-section:has(#g-cat-consola:checked):has(#g-nivel-1:checked):not(:has(.guia-item[data-cat="consola"][data-nivel="1"])) .guias-empty,
+.guias-section:has(#g-cat-consola:checked):has(#g-nivel-2:checked):not(:has(.guia-item[data-cat="consola"][data-nivel="2"])) .guias-empty,
+.guias-section:has(#g-cat-consola:checked):has(#g-nivel-3:checked):not(:has(.guia-item[data-cat="consola"][data-nivel="3"])) .guias-empty{
+  display:block;
+}
+
 /* ---------- Foco ---------- */
-.filter-tab:focus-visible,
-.filter-pill:focus-visible,
+.filter-input:focus-visible + .filter-tab,
+.filter-input:focus-visible + .filter-pill,
 .btn-all:focus-visible,
 .guia-card:focus-visible{
   outline: 3px solid var(--focus-ring);
   outline-offset:2px;
   border-radius: var(--r-sm);
 }
-.filter-pill:focus-visible,
+.filter-input:focus-visible + .filter-pill,
 .btn-all:focus-visible{ border-radius: var(--r-pill); }
 
 @media (prefers-reduced-motion: reduce){
