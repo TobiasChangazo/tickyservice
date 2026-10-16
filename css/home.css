@@ -1,0 +1,52 @@
+/* =========================================================
+   TickyService — Home (rediseño mobile first)
+   Flujo del MVP en secciones numeradas:
+   01 ¿Qué le pasa? → 02 Guías → 03 ¿No se solucionó? →
+   04 Servicios → 05 FAQ.
+   Medidas, colores y espaciados tomados del diseño de Claude
+   Design (home-mobile.dc.html). Se apoya en tokens.css.
+   Mobile: una columna. Desde 768px las secciones se reacomodan
+   en más columnas.
+   ========================================================= */
+
+/* ---------- Sección del home ---------- */
+.hsec{ padding-block: 2.5rem; }                 /* 40px */
+.hsec > .container{ width: min(100% - 2.5rem, var(--container-max)); } /* 20px de lado */
+
+/* ---------- Encabezado de sección ---------- */
+.sec-head{
+  display:flex;
+  flex-direction:column;
+  gap: .5rem;
+  max-width: 40rem;
+  margin-block-end: 1.25rem;
+}
+/* Etiqueta: "01 — EMPEZÁ ACÁ" */
+.sec-label{
+  font-family: var(--font-mono);
+  font-size: .6875rem;                          /* 11px */
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: var(--accent-text);
+}
+.sec-label--dark{ color: var(--accent-500); }   /* sobre fondos oscuros */
+.sec-title{
+  font-size: 1.625rem;                          /* 26px */
+  line-height:1.15;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color: var(--ink-900);
+}
+.sec-text{
+  font-size: .9375rem;                          /* 15px */
+  line-height:1.55;
+  color: var(--ink-500);
+}
+
+@media (min-width: 768px){
+  .hsec{ padding-block: 4rem; }
+  .sec-head{ margin-block-end: 2rem; }
+  .sec-title{ font-size: clamp(1.625rem, 1.2rem + 1.2vw, 2.25rem); }
+  .sec-text{ font-size: 1rem; }
+}

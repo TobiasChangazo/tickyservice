@@ -18,7 +18,7 @@
      --brand-700 sobre blanco 13.2 · sobre --lilac-100 11.2
      blanco sobre --brand-600 10.1 (botón primario)
      --accent-500 sobre --brand-700 5.3 · sobre --ink-900 7.1
-     --accent-text sobre --accent-bg 5.7 · --accent-icon 3.8 (ícono)
+     --accent-text sobre --accent-bg 5.3 · --accent-icon 3.8 (ícono)
      --ink-400 sobre --lilac-050 6.2 · sobre --lilac-200 4.8
      --wa-text sobre --wa-green 7.5
      --focus-ring sobre claros ≥ 11 · --focus-ring-on-dark sobre oscuros ≥ 9
@@ -46,7 +46,7 @@
   --accent-200:#B5EEE3;  /* texto claro sobre fotos oscuras */
   --accent-bg:#E2F6F2;   /* fondo de badges y avisos */
   --accent-border:#A3E3D6;
-  --accent-text:#076B5A; /* texto verde agua sobre claro */
+  --accent-text:#08715F; /* texto verde agua sobre claro (valor del rediseño del home) */
   --accent-icon:#0B8A74; /* íconos verde agua sobre claro */
 
   /* ---------- Color — texto y neutros ---------- */
@@ -54,6 +54,7 @@
   --ink-900:#1C1330;     /* texto base y paneles oscuros */
   --ink-800:#2A2448;     /* superficies dentro de paneles oscuros */
   --ink-600:#4A3D63;     /* texto secundario */
+  --ink-500:#4F4366;     /* texto secundario del rediseño del home */
   --ink-400:#635779;     /* texto apagado (labels, metadatos) */
   --white:#FFFFFF;
   --on-brand: var(--white);
@@ -77,6 +78,17 @@
   --focus-ring: var(--brand-700);
   --focus-ring-on-dark:#FFD166;
 
+  /* ---------- Color — rediseño del home (Claude Design) ----------
+     Los demás colores del diseño ya existían (±2): #2A0748 = --brand-900,
+     #1C1330 = --ink-900, #FBF8FE ≈ --lilac-050, #F3EAFB ≈ --lilac-100,
+     #F7F1FC ≈ --lilac-025, #F0E8F8 ≈ --lilac-100, #E3F6F1 ≈ --accent-bg */
+  --card-border:#E6D9F3;  /* borde de tarjetas */
+  --line-soft:#ECE2F6;    /* bordes y separadores suaves */
+  --chip-border:#E0D2EF;  /* borde de chips de filtro */
+  --lilac-350:#C9B3E2;    /* borde punteado y círculo "+" (decorativos) */
+  --level-off:#DDD3E8;    /* barra de nivel apagada */
+  --on-accent:#0B2E25;    /* texto sobre botón verde agua (5.8:1) */
+
   /* ---------- Color — marcas de terceros ---------- */
   --wa-green:#25D366;    /* SOLO botones e íconos de WhatsApp */
   --wa-text:#0B2E18;     /* texto sobre --wa-green */
@@ -84,6 +96,7 @@
 
   /* ---------- Tipografía ---------- */
   --font-display:'Poppins','Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'Cascadia Mono',monospace; /* solo etiquetas, números y metadatos */
   --fs-2xs: clamp(.6875rem, .67rem + .1vw, .75rem);
   --fs-xs: clamp(.75rem, .72rem + .15vw, .8125rem);
   --fs-sm: clamp(.875rem, .85rem + .2vw, .9375rem);
@@ -131,7 +144,9 @@
      Subidos de forma pareja para que se note sin competir con el texto. */
   --grid-size: 48px;
   --grid-line: rgba(0,0,0,.10);                 /* sobre fondos claros (antes .05) */
-  --grid-line-on-dark: rgba(255,255,255,.12);   /* hero y footer (antes .06) */
+  --grid-line-on-dark: rgba(255,255,255,.07);   /* hero, sección 03 y menú (rediseño: 7%, celda chica) */
+  --grid-size-sm: 32px;                         /* celda de la cuadrícula del rediseño */
+  --grid-line-brand: rgba(71,12,120,.06);       /* sección 01 del home (violeta oscuro al 6%) */
   --grid-focus: 30% 40%;
   /* Desvanecido radial: llega hasta el 90% (antes 75%) */
   --grid-mask: radial-gradient(circle at var(--grid-focus), black 0%, transparent 90%);

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
 
 /* ===== RESET MODERNO ===== */
 *,*::before,*::after{ box-sizing:border-box; }
@@ -73,6 +73,17 @@ a{ text-decoration:none; color:inherit; }
 }
 
 .icon-sprite{ position:absolute; width:0; height:0; overflow:hidden; }
+
+/* Tipografía mono: solo etiquetas, números y metadatos */
+.mono{ font-family: var(--font-mono); }
+
+/* Cuadrícula del rediseño (celda de 32px) sobre fondos oscuros */
+.grid-dark{
+  background-image:
+    linear-gradient(var(--grid-line-on-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-on-dark) 1px, transparent 1px);
+  background-size: var(--grid-size-sm) var(--grid-size-sm);
+}
 
 .icon{ width:1em; height:1em; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
 
