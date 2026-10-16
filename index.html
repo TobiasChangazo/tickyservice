@@ -264,32 +264,21 @@
     </div>
   </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="section" aria-labelledby="faq-title">
-    <div class="container">
-      <div class="faq-section" id="faq">
-        <aside class="faq-aside">
-          <div class="section__head">
-            <span class="section__eyebrow">Preguntas frecuentes</span>
-            <h2 id="faq-title" class="section__title">Lo que más nos preguntan</h2>
-            <p class="section__desc">Si tu duda no está acá, escribinos y te respondemos.</p>
-          </div>
-
-          <div class="faq-cta">
-            <div class="faq-cta-icon"><i data-lucide="message-circle-question"></i></div>
-            <p class="faq-cta-title">¿Lo probaste y sigue igual?</p>
-            <p class="faq-cta-text">No le sigas metiendo mano, puede empeorar. Contanos qué probaste y seguimos nosotros.</p>
-            <a class="faq-cta-wa" id="faq-wa" href="#" target="_blank" rel="noopener">
-              <span>Escribinos por WhatsApp</span>
-            </a>
-            <a class="faq-cta-link" href="contacto.html">
-              Ir a contacto <i data-lucide="arrow-right"></i>
-            </a>
-          </div>
-        </aside>
-
-        <div class="faq-list" id="faq-list"></div>
+  <!-- ============ 05 — FAQ ============ -->
+  <section class="h-section home-faq" id="faq" aria-labelledby="faq-title">
+    <div class="h-wrap">
+      <div class="h-head">
+        <p class="h-label">05 — Preguntas frecuentes</p>
+        <h2 class="h-title" id="faq-title">Lo que más nos preguntan</h2>
       </div>
+
+      <!-- Preguntas y respuestas de js/faq.js: se ven las primeras 4 y el botón despliega el resto -->
+      <div class="faq-list" id="faq-list" data-limite="4"></div>
+
+      <button type="button" class="h-link faq-mas" id="faq-mas" aria-controls="faq-list">
+        Ver todas las preguntas
+        <i data-lucide="chevron-down"></i>
+      </button>
     </div>
   </section>
 
