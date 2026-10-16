@@ -44,6 +44,7 @@
   padding:0;
   border:0;
   min-inline-size:0;
+  max-inline-size:100%; /* en mobile la fila de pills scrollea adentro, no estira la página */
 }
 
 /* ---------- Labels ---------- */
