@@ -600,8 +600,125 @@ a{ text-decoration:none; color:inherit; }
   .footer__icon{ transition:none; }
 }
 
+/* Newsletter compacto del footer: fila completa entre los links y el © */
+.footer__news{
+  grid-column: 1 / -1;
+  display:flex;
+  flex-direction:column;
+  gap: .75rem;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid rgba(255,255,255,.12);
+}
+.footer__news-text{ font-size: .875rem; line-height:1.55; color: rgba(255,255,255,.74); max-width: 36ch; }
+@media (min-width: 768px){
+  .footer__news{
+    display:grid;
+    grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    column-gap: 3rem;
+    align-items:start;
+  }
+}
+
+/* ===== COMPONENTES: Newsletter =====
+   Formulario de suscripción sobre fondo oscuro (footer y sección 06
+   del home). js/site.js lo manda con fetch y muestra el estado en
+   .news-estado; sin JS es un POST común a /api/subscribe.
+   .news-hp es el honeypot: fuera de pantalla, solo lo completan bots. */
+.news-form{ display:flex; flex-direction:column; gap: .75rem; }
+.news-form__fila{ display:flex; flex-direction:column; gap: .625rem; }
+.news-field{ display:flex; flex-direction:column; gap: .375rem; }
+.news-label{ font-size: .8125rem; font-weight:600; color: var(--white); }
+.news-input{
+  inline-size:100%;
+  min-block-size: 48px;
+  padding-inline: 1rem;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  color: var(--white);
+  font: inherit;
+  font-size: .9375rem;
+  color-scheme: dark;
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.news-input::placeholder{ color: rgba(255,255,255,.62); }
+.news-input:hover{ border-color: rgba(255,255,255,.42); }
+.news-input:focus{ background: rgba(255,255,255,.12); }
+.news-input:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+.news-input:user-invalid{ border-color: var(--danger-on-dark); }
+
+.news-check{
+  display:flex;
+  align-items:flex-start;
+  gap: .625rem;
+  font-size: .8125rem;
+  line-height:1.45;
+  color: rgba(255,255,255,.80);
+  cursor:pointer;
+}
+.news-check input{
+  inline-size:18px;
+  block-size:18px;
+  margin: 1px 0 0;
+  flex-shrink:0;
+  accent-color: var(--accent-500);
+  cursor:pointer;
+}
+.news-check input:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+.news-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+  min-block-size: 48px;
+  padding-inline: 1.5rem;
+  border:0;
+  border-radius: var(--r-pill);
+  background: var(--accent-500);
+  color: var(--on-accent);
+  font: inherit;
+  font-size: .9375rem;
+  font-weight:700;
+  white-space:nowrap;
+  cursor:pointer;
+  transition: background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.news-btn .icon{ width:18px; height:18px; stroke-width:2; }
+.news-btn:hover{ background: var(--accent-300); }
+.news-btn:active{ transform: translateY(1px); }
+.news-btn:disabled{ opacity:.7; cursor:progress; }
+.news-btn:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+
+.news-estado{
+  padding: .625rem .875rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  font-size: .875rem;
+  line-height:1.45;
+  color: rgba(255,255,255,.80);
+}
+.news-estado:empty{ display:none; }
+.news-estado[data-estado="ok"]{ color: var(--ok-on-dark); font-weight:600; }
+.news-estado[data-estado="error"]{ color: var(--danger-on-dark); }
+
+.news-hp{ position:absolute; inset-inline-start:-10000px; inline-size:1px; block-size:1px; overflow:hidden; }
+
+/* Footer: checkbox y botón en la misma fila desde 768px */
+.news-form__pie{ display:flex; flex-direction:column; gap: .75rem; }
+
+@media (min-width: 768px){
+  .news-form__fila{ flex-direction:row; }
+  .news-form__fila .news-input{ flex:1; min-inline-size:0; }
+  .news-form__pie{ flex-direction:row; align-items:center; justify-content:space-between; gap: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .news-input, .news-btn{ transition:none; }
+}
+
 /* ===== COMPONENTES: Botón flotante de WhatsApp =====
-   56x56, radio 18, a 16px de los bordes. */
+   56x56, radio 18, a 16px de los bordes. El mensaje lo arma
+   js/site.js (en las guías incluye el nombre de la guía). */
 .float-wa{
   position: fixed;
   inset-inline-end: 16px;

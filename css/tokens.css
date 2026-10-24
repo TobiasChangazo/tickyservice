@@ -72,6 +72,7 @@
   --warn-text:#6B4A0A;
   --danger:#C8384A;
   --danger-text:#8C2436;
+  --danger-on-dark:#FCA5A5; /* errores sobre paneles oscuros y --brand-700 (≥ 7:1) */
 
   /* Anillo de foco: violeta sobre fondos claros; los paneles oscuros
      redefinen --focus-ring con --focus-ring-on-dark */
@@ -92,6 +93,8 @@
   /* ---------- Color — marcas de terceros ---------- */
   --wa-green:#25D366;    /* SOLO botones e íconos de WhatsApp */
   --wa-text:#0B2E18;     /* texto sobre --wa-green */
+  --wa-chat:#EFEAE2;     /* fondo del chat en la vista previa del mensaje (contacto) */
+  --wa-bubble:#D9FDD3;   /* burbuja de mensaje enviado (texto --ink-900 encima) */
   --ig-pink:#F472B6;     /* ícono de Instagram sobre oscuro */
 
   /* ---------- Tipografía ---------- */

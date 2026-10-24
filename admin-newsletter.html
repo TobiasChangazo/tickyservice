@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Newsletter (admin) — TickyService</title>
+<!-- Página interna: no se linkea desde el sitio y no se indexa (también lo dice vercel.json) -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#470C78">
+<link rel="icon" type="image/png" href="img/marca/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/contacto.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<svg class="icon-sprite" aria-hidden="true">
+  <defs>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></symbol>
+  </defs>
+</svg>
+
+<main class="adm" id="main">
+  <div class="container">
+
+    <header class="adm__head">
+      <img class="adm__logo" src="img/marca/logo-wordmark.png" alt="TickyService" width="631" height="140">
+      <p class="gh-eyebrow">Uso interno · no compartir este link</p>
+      <h1 class="adm__title">Avisar de un video nuevo</h1>
+      <p class="adm__lead">Pegá el título y el link del video de Instagram, mirá cómo queda el mail y mandalo a todos los suscriptores.</p>
+      <p class="adm__resumen" id="adm-resumen" hidden></p>
+    </header>
+
+    <div class="adm__grid">
+
+      <form class="adm-card" id="adm-form" novalidate>
+        <div class="form-field">
+          <label class="form-label" for="a-titulo">Título del video</label>
+          <input class="form-input" id="a-titulo" type="text" required maxlength="150" placeholder="Ej: Cómo sacar el drift de tu joystick">
+          <p class="form-error">Poné el título del video.</p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="a-link">Link de Instagram</label>
+          <input class="form-input" id="a-link" type="url" required pattern="https://.+" placeholder="https://www.instagram.com/reel/...">
+          <p class="form-error">Pegá el link completo, empezando con https://</p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="a-clave">Clave de administración</label>
+          <input class="form-input" id="a-clave" type="password" required autocomplete="current-password">
+          <p class="form-error">Poné la clave (ADMIN_KEY).</p>
+        </div>
+
+        <div class="adm-actions">
+          <button class="adm-btn adm-btn--ghost" type="button" id="btn-preview">
+            <svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg>
+            Ver vista previa
+          </button>
+          <button class="adm-btn adm-btn--ghost" type="button" id="btn-prueba">
+            <svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
+            Mandarme una prueba
+          </button>
+          <button class="adm-btn adm-btn--primary" type="submit" id="btn-enviar" disabled>
+            <svg class="icon" aria-hidden="true"><use href="#icon-send"></use></svg>
+            Enviar a suscriptores
+          </button>
+        </div>
+        <p class="adm-nota" id="adm-nota">El botón de enviar se activa después de ver la vista previa.</p>
+        <p class="adm-estado" id="adm-estado" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="adm-card adm-preview" aria-labelledby="prev-title">
+        <h2 class="adm-subtitle" id="prev-title">Vista previa del mail</h2>
+        <p class="adm-asunto"><span>Asunto:</span> <strong id="prev-asunto">—</strong></p>
+        <div class="adm-frame">
+          <p class="adm-frame__vacio" id="prev-vacio">Completá los datos y apretá “Ver vista previa”.</p>
+          <iframe id="prev-frame" title="Vista previa del mail" sandbox="allow-popups allow-popups-to-escape-sandbox" hidden></iframe>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="adm-card adm-progreso" id="adm-progreso" aria-labelledby="prog-title" hidden>
+      <h2 class="adm-subtitle" id="prog-title">Envío</h2>
+      <progress class="adm-barra" id="prog-barra" max="100" value="0" aria-labelledby="prog-title"></progress>
+      <dl class="adm-stats">
+        <div><dt>Enviados</dt><dd id="st-enviados">0</dd></div>
+        <div><dt>Fallaron</dt><dd id="st-fallidos">0</dd></div>
+        <div><dt>Pendientes</dt><dd id="st-pendientes">0</dd></div>
+        <div><dt>Cupo de Gmail hoy</dt><dd id="st-cupo">—</dd></div>
+      </dl>
+      <p class="adm-estado" id="prog-mensaje" role="status" aria-live="polite"></p>
+      <button class="adm-btn adm-btn--ghost" type="button" id="btn-reintentar" hidden>Reintentar los que fallaron</button>
+      <details class="adm-errores" id="prog-errores" hidden>
+        <summary>Ver errores</summary>
+        <ul id="prog-errores-lista"></ul>
+      </details>
+    </section>
+
+  </div>
+</main>
+
+<script src="js/admin-newsletter.js" defer></script>
+</body>
+</html>

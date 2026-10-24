@@ -2,7 +2,7 @@
    TickyService — Home (rediseño mobile first)
    Flujo del MVP en secciones numeradas:
    01 ¿Qué le pasa? → 02 Guías → 03 ¿No se solucionó? →
-   04 Servicios → 05 FAQ.
+   04 Servicios → 05 FAQ → 06 Newsletter.
    Medidas, colores y espaciados tomados del diseño de Claude
    Design (home-mobile.dc.html). Se apoya en tokens.css.
    Mobile: una columna. Desde 768px las secciones se reacomodan
@@ -528,3 +528,37 @@
   border-block-start: 1px solid var(--line-soft);
 }
 .hfaq .sec-head{ margin-block-end: 1.25rem; }
+
+/* ---------- 06 — Newsletter ----------
+   Tarjeta violeta con cuadrícula. Los campos y estados son el
+   componente .news-form de styles.css (el mismo del footer). */
+.hnews{
+  background: var(--lilac-050);
+  border-block-start: 1px solid var(--line-soft);
+}
+.hnews__card{
+  --focus-ring: var(--focus-ring-on-dark);
+  display:flex;
+  flex-direction:column;
+  gap: 1.5rem;
+  padding: 1.75rem 1.25rem;                     /* 28px 20px */
+  border-radius: 22px;
+  background-color: var(--brand-700);
+  color: var(--white);
+  box-shadow: var(--sh-3);
+}
+.hnews .sec-head{ margin:0; }
+.hnews .sec-title{ color: var(--white); }
+.hnews .sec-text{ color: rgba(255,255,255,.80); }
+.hnews__form .news-btn{ inline-size:100%; }
+
+@media (min-width: 768px){
+  .hnews__card{
+    display:grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    column-gap: 3rem;
+    align-items:center;
+    padding: 3rem;
+  }
+  .hnews__form .news-btn{ inline-size:auto; align-self:flex-start; }
+}

@@ -3,8 +3,11 @@
    Encabezado + formulario que abre WhatsApp con el mensaje
    + panel oscuro con canales, horarios y ubicación
 
-   Sin JavaScript: el formulario hace GET a https://wa.me/NUMERO con
-   un único campo name="text"; el navegador arma ?text=... solo.
+   Con JavaScript (js/contacto.js) el mensaje junta nombre, titular
+   del turno y consulta; se ve en .form-preview ("Así nos va a
+   llegar") y se abre WhatsApp. Sin JavaScript el formulario hace
+   GET a https://wa.me/NUMERO con el único campo con name="text"
+   y la vista previa queda oculta (atributo hidden).
    La validación es nativa (required + minlength) y el error se
    muestra con :user-invalid (recién después de que la persona
    interactúa con el campo).
@@ -181,6 +184,43 @@ textarea.form-input {
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger) 10%, transparent);
 }
 .form-input:user-invalid + .form-error { display: block; }
+
+/* Vista previa: imita el chat de WhatsApp */
+.form-preview {
+  margin: 0 0 22px;
+  padding: 14px;
+  border-radius: 14px;
+  background: var(--wa-chat);
+}
+.form-preview[hidden] { display: none; }
+
+.form-preview-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+.form-preview-label svg { width: 14px; height: 14px; }
+
+.form-bubble {
+  width: fit-content;
+  max-width: 88%;
+  margin: 0 0 0 auto;
+  padding: 10px 12px;
+  border-radius: 12px 12px 2px 12px;
+  background: var(--wa-bubble);
+  box-shadow: 0 1px 1px color-mix(in srgb, var(--ink-900) 8%, transparent);
+  font-size: .9rem;
+  line-height: 1.5;
+  color: var(--ink-900);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
 
 /* Enviar */
 .form-submit {

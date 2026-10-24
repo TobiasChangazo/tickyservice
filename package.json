@@ -1,0 +1,10 @@
+{
+  "name": "tickyservice",
+  "private": true,
+  "description": "Sitio estático de TickyService + funciones de Vercel para el newsletter (carpeta api/).",
+  "type": "module",
+  "dependencies": {
+    "@upstash/redis": "1.39.0",
+    "nodemailer": "10.0.16"
+  }
+}

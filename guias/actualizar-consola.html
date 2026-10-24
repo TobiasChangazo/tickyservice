@@ -71,7 +71,7 @@
           <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
         </a>
         <div class="nav__social">
-          <a class="nav__social-link nav__social-link--wa" href="https://wa.me/5492233024504">
+          <a class="nav__social-link nav__social-link--wa" href="https://wa.me/5492257637016?text=Hola%20TickyService!%20Vengo%20de%20la%20web%20y%20quer%C3%ADa%20hacer%20una%20consulta%20sobre%20mi%20equipo.">
             <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
             WhatsApp
           </a>
@@ -170,7 +170,7 @@
                 <svg class="icon" aria-hidden="true"><use href="#icon-circle-check"></use></svg>
                 Sí, se solucionó
               </a>
-              <a class="gd-check__btn gd-check__btn--no" href="https://wa.me/5492233024504?text=Hola!%20Segu%C3%AD%20la%20gu%C3%ADa%20%22Actualizar%20el%20sistema%20de%20tu%20consola%20paso%20a%20paso%22%20(Consola)%20y%20sigue%20igual.%20%C2%BFMe%20pasan%20presupuesto%20y%20un%20turno%3F" target="_blank" rel="noopener">
+              <a class="gd-check__btn gd-check__btn--no" href="https://wa.me/5492257637016?text=Hola!%20Segu%C3%AD%20la%20gu%C3%ADa%20%22Actualizar%20el%20sistema%20de%20tu%20consola%20paso%20a%20paso%22%20(Consola)%20y%20sigue%20igual.%20%C2%BFMe%20pasan%20presupuesto%20y%20un%20turno%3F" target="_blank" rel="noopener">
                 <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
                 No, sigue igual
               </a>
@@ -203,7 +203,7 @@
               </a>
               <a class="gh-link-arrow" href="../guias.html">Ver todas las guías →</a>
             </div>
-            <p class="gd-resuelto__again">¿Volvió a fallar? <a href="https://wa.me/5492233024504?text=Hola!%20Segu%C3%AD%20la%20gu%C3%ADa%20%22Actualizar%20el%20sistema%20de%20tu%20consola%20paso%20a%20paso%22%20(Consola)%20y%20sigue%20igual.%20%C2%BFMe%20pasan%20presupuesto%20y%20un%20turno%3F" target="_blank" rel="noopener">Escribinos por WhatsApp</a></p>
+            <p class="gd-resuelto__again">¿Volvió a fallar? <a href="https://wa.me/5492257637016?text=Hola!%20Segu%C3%AD%20la%20gu%C3%ADa%20%22Actualizar%20el%20sistema%20de%20tu%20consola%20paso%20a%20paso%22%20(Consola)%20y%20sigue%20igual.%20%C2%BFMe%20pasan%20presupuesto%20y%20un%20turno%3F" target="_blank" rel="noopener">Escribinos por WhatsApp</a></p>
           </section>
         </div>
 
@@ -243,7 +243,7 @@
 </main>
 
 <!-- COMPONENTE: footer (copiar igual en todas las páginas) -->
-<!-- Incluye el botón flotante de WhatsApp. En las páginas de guias/
+<!-- Incluye el newsletter compacto y el botón flotante de WhatsApp. En las páginas de guias/
      los links e imágenes llevan el prefijo ../ -->
 <footer class="site-footer">
   <div class="container footer__inner">
@@ -254,7 +254,7 @@
       <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó.</p>
       <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
       <ul class="footer__social" role="list">
-        <li><a class="footer__icon footer__icon--wa" href="https://wa.me/5492233024504" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></a></li>
+        <li><a class="footer__icon footer__icon--wa" href="https://wa.me/5492257637016?text=Hola%20TickyService!%20Vengo%20de%20la%20web%20y%20quer%C3%ADa%20hacer%20una%20consulta%20sobre%20mi%20equipo." aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></a></li>
         <li><a class="footer__icon" href="https://instagram.com/tickyservice" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a></li>
         <li><a class="footer__icon" href="mailto:contacto@tickyservice.com.ar" aria-label="Email: contacto@tickyservice.com.ar"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg></a></li>
       </ul>
@@ -278,6 +278,31 @@
           <li><a href="../servicios.html">Consola</a></li>
       </ul>
     </nav>
+    <div class="footer__news">
+      <div>
+        <p class="footer__heading mono" id="fnews-title">Newsletter</p>
+        <p class="footer__news-text">Te avisamos por mail cada vez que subimos un video tutorial.</p>
+      </div>
+      <form class="news-form" data-newsletter action="/api/subscribe" method="post" aria-labelledby="fnews-title">
+        <div class="news-form__fila">
+          <label class="sr-only" for="fn-nombre">Tu nombre</label>
+          <input class="news-input" id="fn-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="given-name" required maxlength="60">
+          <label class="sr-only" for="fn-email">Tu email</label>
+          <input class="news-input" id="fn-email" name="email" type="email" placeholder="Tu email" autocomplete="email" required maxlength="254">
+        </div>
+        <div class="news-form__pie">
+          <label class="news-check" for="fn-acepto">
+            <input id="fn-acepto" name="acepto" type="checkbox" required>
+            <span>Acepto recibir mails de TickyService con los videos nuevos. Me puedo dar de baja cuando quiera.</span>
+          </label>
+          <button class="news-btn" type="submit"><span>Suscribirme</span></button>
+        </div>
+        <div class="news-hp" aria-hidden="true">
+          <label>No completar este campo <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <p class="news-estado" role="status" aria-live="polite"></p>
+      </form>
+    </div>
     <div class="footer__legal">
       <p class="footer__loc"><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"></use></svg>Mar de Ajó, Partido de la Costa</p>
       <p class="footer__copy">© 2026 TickyService. Todos los derechos reservados.</p>
@@ -285,13 +310,13 @@
   </div>
 </footer>
 
-<!-- Botón flotante de WhatsApp -->
-<a class="float-wa" href="https://wa.me/5492233024504">
+<!-- Botón flotante de WhatsApp (js/site.js arma el mensaje con TICKY) -->
+<a class="float-wa" href="https://wa.me/5492257637016?text=Hola!%20Prob%C3%A9%20la%20gu%C3%ADa%20'Actualizar%20el%20sistema%20de%20tu%20consola%20paso%20a%20paso'%20y%20no%20se%20solucion%C3%B3." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp" data-wa-guia="Actualizar el sistema de tu consola paso a paso">
   <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-  <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
 </a>
 <!-- /COMPONENTE: footer -->
 
+<script src="../js/site.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,3 @@
+# Archivos del repo que no tienen que quedar públicos en el sitio
+.env.example
+.vscode/

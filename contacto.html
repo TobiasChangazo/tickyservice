@@ -35,6 +35,7 @@
     <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
     <symbol id="icon-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
     <symbol id="icon-lightbulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
     <symbol id="icon-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
     <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
     <symbol id="icon-navigation" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></symbol>
@@ -75,7 +76,7 @@
           <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
         </a>
         <div class="nav__social">
-          <a class="nav__social-link nav__social-link--wa" href="https://wa.me/5492233024504">
+          <a class="nav__social-link nav__social-link--wa" href="https://wa.me/5492257637016?text=Hola%20TickyService!%20Vengo%20de%20la%20web%20y%20quer%C3%ADa%20hacer%20una%20consulta%20sobre%20mi%20equipo.">
             <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
             WhatsApp
           </a>
@@ -121,16 +122,41 @@
 
       <div class="contact-grid">
 
-        <!-- FORMULARIO: sin JS, el navegador arma la URL https://wa.me/NUMERO?text=... con el textarea -->
-        <form class="contact-form" action="https://wa.me/5492233024504" method="get" target="_blank">
+        <!-- FORMULARIO: js/contacto.js arma el mensaje con nombre + titular del turno +
+             consulta, lo muestra en "Así nos va a llegar" y abre WhatsApp.
+             Sin JS hace GET a https://wa.me/NUMERO y solo viaja el textarea (name="text");
+             por eso nombre y titular no llevan name. -->
+        <form class="contact-form" id="contact-form" action="https://wa.me/5492257637016" method="get" target="_blank">
           <h2 class="form-title">Mandanos tu consulta</h2>
-          <p class="form-sub">Escribí tu mensaje y se abre WhatsApp con el texto listo para enviar.</p>
+          <p class="form-sub">Completá los datos y se abre WhatsApp con el mensaje listo para enviar.</p>
+
+          <div class="form-field">
+            <label class="form-label" for="c-nombre">Tu nombre</label>
+            <input class="form-input" id="c-nombre" type="text" required maxlength="60" autocomplete="given-name" placeholder="Ej: Juan">
+            <p class="form-error">Decinos tu nombre así sabemos con quién hablamos.</p>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="c-titular">Titular del turno <span>(nombre y apellido)</span></label>
+            <p class="form-hint" id="c-titular-hint">La persona dueña del equipo, a nombre de quien queda el turno. Puede ser otra persona (por ejemplo, si escribís por tu hijo o tu pareja). Si sos vos, poné tu nombre y apellido.</p>
+            <input class="form-input" id="c-titular" type="text" required minlength="3" maxlength="80" autocomplete="name" aria-describedby="c-titular-hint" placeholder="Ej: María Pérez">
+            <p class="form-error">Poné nombre y apellido de la persona a nombre de quien queda el turno.</p>
+          </div>
 
           <div class="form-field">
             <label class="form-label" for="c-mensaje">Tu consulta</label>
-            <p class="form-hint" id="c-mensaje-hint">Contanos tu nombre, qué necesitás (reparación, presupuesto o comprar algo), qué equipo es (notebook, PC, joystick, consola u otro) y qué le pasa.</p>
-            <textarea class="form-input" id="c-mensaje" name="text" rows="6" required minlength="20" maxlength="1000" aria-describedby="c-mensaje-hint" placeholder="Ej: Hola! Soy Juan. Quiero pedir presupuesto para mi notebook: no enciende y ya probé con otro cargador."></textarea>
+            <p class="form-hint" id="c-mensaje-hint">Qué necesitás (reparación, presupuesto o comprar algo), qué equipo es (notebook, PC, joystick, consola u otro) y qué le pasa.</p>
+            <textarea class="form-input" id="c-mensaje" name="text" rows="5" required minlength="20" maxlength="1000" aria-describedby="c-mensaje-hint" placeholder="Ej: Quiero pedir presupuesto para mi notebook: no enciende y ya probé con otro cargador."></textarea>
             <p class="form-error">Escribí al menos 20 caracteres así entendemos qué le pasa a tu equipo.</p>
+          </div>
+
+          <!-- Vista previa: queda oculta sin JS (no habría cómo armarla) -->
+          <div class="form-preview" id="c-preview-box" hidden>
+            <p class="form-preview-label">
+              <svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg>
+              Así nos va a llegar
+            </p>
+            <p class="form-bubble" id="c-preview"></p>
           </div>
 
           <button class="form-submit" type="submit">
@@ -145,7 +171,7 @@
         <aside class="contact-panel" aria-label="Canales, horarios y ubicación">
           <p class="panel-label">Canales</p>
 
-          <a class="channel" href="https://wa.me/5492233024504" target="_blank" rel="noopener">
+          <a class="channel" href="https://wa.me/5492257637016?text=Hola%20TickyService!%20Vengo%20de%20la%20web%20y%20quer%C3%ADa%20hacer%20una%20consulta%20sobre%20mi%20equipo." target="_blank" rel="noopener">
             <span class="channel-icon channel-icon--wa"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></span>
             <span><span class="channel-title">WhatsApp</span><span class="channel-sub">La vía más rápida · respondemos en el día</span></span>
             <svg class="icon channel-arrow" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg>
@@ -199,7 +225,7 @@
 </main>
 
 <!-- COMPONENTE: footer (copiar igual en todas las páginas) -->
-<!-- Incluye el botón flotante de WhatsApp. En las páginas de guias/
+<!-- Incluye el newsletter compacto y el botón flotante de WhatsApp. En las páginas de guias/
      los links e imágenes llevan el prefijo ../ -->
 <footer class="site-footer">
   <div class="container footer__inner">
@@ -210,7 +236,7 @@
       <p class="footer__desc">Servicio técnico, repuestos y tienda de tecnología en Mar de Ajó.</p>
       <p class="footer__desc">Calidad y rapidez en cada reparación.</p>
       <ul class="footer__social" role="list">
-        <li><a class="footer__icon footer__icon--wa" href="https://wa.me/5492233024504" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></a></li>
+        <li><a class="footer__icon footer__icon--wa" href="https://wa.me/5492257637016?text=Hola%20TickyService!%20Vengo%20de%20la%20web%20y%20quer%C3%ADa%20hacer%20una%20consulta%20sobre%20mi%20equipo." aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg></a></li>
         <li><a class="footer__icon" href="https://instagram.com/tickyservice" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a></li>
         <li><a class="footer__icon" href="mailto:contacto@tickyservice.com.ar" aria-label="Email: contacto@tickyservice.com.ar"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg></a></li>
       </ul>
@@ -234,6 +260,31 @@
           <li><a href="servicios.html">Consola</a></li>
       </ul>
     </nav>
+    <div class="footer__news">
+      <div>
+        <p class="footer__heading mono" id="fnews-title">Newsletter</p>
+        <p class="footer__news-text">Te avisamos por mail cada vez que subimos un video tutorial.</p>
+      </div>
+      <form class="news-form" data-newsletter action="/api/subscribe" method="post" aria-labelledby="fnews-title">
+        <div class="news-form__fila">
+          <label class="sr-only" for="fn-nombre">Tu nombre</label>
+          <input class="news-input" id="fn-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="given-name" required maxlength="60">
+          <label class="sr-only" for="fn-email">Tu email</label>
+          <input class="news-input" id="fn-email" name="email" type="email" placeholder="Tu email" autocomplete="email" required maxlength="254">
+        </div>
+        <div class="news-form__pie">
+          <label class="news-check" for="fn-acepto">
+            <input id="fn-acepto" name="acepto" type="checkbox" required>
+            <span>Acepto recibir mails de TickyService con los videos nuevos. Me puedo dar de baja cuando quiera.</span>
+          </label>
+          <button class="news-btn" type="submit"><span>Suscribirme</span></button>
+        </div>
+        <div class="news-hp" aria-hidden="true">
+          <label>No completar este campo <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <p class="news-estado" role="status" aria-live="polite"></p>
+      </form>
+    </div>
     <div class="footer__legal">
       <p class="footer__loc"><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"></use></svg>Mar de Ajó, Partido de la Costa</p>
       <p class="footer__copy">© 2026 TickyService. Todos los derechos reservados.</p>
@@ -241,12 +292,13 @@
   </div>
 </footer>
 
-<!-- Botón flotante de WhatsApp -->
-<a class="float-wa" href="https://wa.me/5492233024504">
+<!-- Botón flotante de WhatsApp (js/site.js arma el mensaje con TICKY) -->
+<a class="float-wa" href="https://wa.me/5492257637016?text=Hola%20TickyService!%20Vengo%20de%20la%20web%20y%20quer%C3%ADa%20hacer%20una%20consulta%20sobre%20mi%20equipo." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
   <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-  <span class="sr-only">Escribinos por WhatsApp</span>
   <span class="float-wa__tooltip" aria-hidden="true">Escribinos por WhatsApp</span>
 </a>
 <!-- /COMPONENTE: footer -->
+<script src="js/site.js" defer></script>
+<script src="js/contacto.js" defer></script>
 </body>
 </html>
