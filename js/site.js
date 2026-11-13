@@ -85,3 +85,23 @@ document.querySelectorAll('form[data-newsletter]').forEach((form) => {
     }
   });
 });
+
+/* ---------- Videos de Google Drive ----------
+   Un link con data-drive-video="ID_DEL_ARCHIVO" abre el video en Drive
+   si no hay JS. Con JS, al hacer clic se reemplaza por el reproductor
+   embebido (recién ahí se carga, así la página no se pone lenta). */
+document.querySelectorAll('[data-drive-video]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://drive.google.com/file/d/${link.dataset.driveVideo}/preview`;
+    iframe.title = link.getAttribute('aria-label') || 'Video';
+    iframe.allow = 'autoplay; fullscreen';
+    iframe.allowFullscreen = true;
+
+    const caja = document.createElement('div');
+    caja.className = link.className;
+    caja.appendChild(iframe);
+    link.replaceWith(caja);
+  });
+});

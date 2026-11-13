@@ -823,9 +823,13 @@ a{ text-decoration:none; color:inherit; }
   background: var(--lilac-200);
   overflow:hidden;
 }
-.gh-featured__badge{ position:absolute; inset-block-start: var(--space-4); inset-inline-start: var(--space-4); font-size: var(--fs-2xs); font-weight:700; text-transform:uppercase; letter-spacing:.08em; color: var(--brand-700); }
-.gh-featured__play{ display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background: var(--brand-600); color:var(--white); transition: transform var(--dur) var(--ease); }
+.gh-featured__badge{ position:absolute; z-index:1; inset-block-start: var(--space-4); inset-inline-start: var(--space-4); padding: .3em .7em; border-radius: 999px; background: var(--white); font-size: var(--fs-2xs); font-weight:700; text-transform:uppercase; letter-spacing:.08em; color: var(--brand-700); }
+/* Miniatura del video: nítida al centro (el video es vertical) y la misma desenfocada de fondo */
+.gh-featured__thumb-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter: blur(24px) brightness(.6); transform: scale(1.2); }
+.gh-featured__thumb{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.gh-featured__play{ position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background: var(--brand-600); color:var(--white); transition: transform var(--dur) var(--ease); }
 .gh-featured__play .icon{ width:1.6rem; height:1.6rem; margin-inline-start:3px; }
+.gh-featured__media iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 .gh-featured__media:hover .gh-featured__play{ transform: scale(1.08); }
 .gh-featured__note{ position:absolute; inset-block-end: var(--space-4); inset-inline-start: var(--space-4); font-size: var(--fs-2xs); color: var(--ink-400); }
 .gh-featured__body{ display:flex; flex-direction:column; }
