@@ -252,10 +252,23 @@
 }
 
 /* ---------- 02 — Guías paso a paso ---------- */
+/* Fondo: foto del gabinete con una sombra negra encima para que se lea el texto */
 .hguias{
-  background: var(--white);
-  border-block-start: 1px solid var(--line-soft);
+  --focus-ring: var(--focus-ring-on-dark);
+  background:
+    linear-gradient(rgb(0 0 0 / .55), rgb(0 0 0 / .7)),
+    url("../img/servicios/pc.jpg") center / cover no-repeat,
+    var(--ink-900);
 }
+.hguias .sec-label{ color: var(--accent-500); }
+.hguias .sec-title{ color: var(--white); }
+.hguias .sec-text{ color: rgba(255,255,255,.80); }
+/* Cuadros con 25% de transparencia para que se vea la foto (al pasar el mouse quedan sólidos) */
+.hguias .hcard,
+.hguias .hchip,
+.hguias .hguias__leyenda{ background: rgb(255 255 255 / .75); }
+.hguias .hcard:hover,
+.hguias .filter-input:not(:checked) + .hchip:hover{ background: var(--white); }
 .hguias__panel{ display:flex; flex-direction:column; gap: 1.25rem; }
 
 /* Filtro por equipo: chips que pasan a la línea siguiente (sin scroll) */
@@ -305,7 +318,6 @@
   gap: 6px 16px;
   padding: 12px 14px;
   border-radius: 12px;
-  background: var(--lilac-050);
 }
 .hguias__leyenda li{
   display:flex;
@@ -358,6 +370,7 @@
   min-block-size: 54px;
   margin-block-start: 1.25rem;
   border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.25);      /* se distingue sobre la foto oscura */
   background: var(--ink-900);
   color: var(--white);
   font-size: .9375rem;
