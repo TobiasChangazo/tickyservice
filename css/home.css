@@ -381,6 +381,23 @@
 .hguias__all:hover{ background: var(--ink-950); }
 .hguias__all:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 
+/* Mobile: la sección es muy alta (las tarjetas van una abajo de otra) y con "cover"
+   la foto se agrandaba y pixelaba. Acá ocupa el ancho de la pantalla arriba y se
+   funde a negro hacia abajo. La foto es 768x1376 → alto ≈ 179vw. */
+@media (max-width: 767px){
+  .hguias{
+    background:
+      linear-gradient(rgb(0 0 0 / .55), rgb(0 0 0 / .72) 110vw, var(--ink-900) 179vw),
+      url("../img/servicios/pc.jpg") center top / 100% auto no-repeat,
+      var(--ink-900);
+  }
+  /* Debajo de la foto el fondo es negro: con 75% las tarjetas quedaban grises */
+  .hguias .hcard,
+  .hguias .filter-input:not(:checked) + .hchip,
+  .hguias .hguias__leyenda{ background: rgb(255 255 255 / .94); }
+  .hguias .hcard:hover,
+  .hguias .filter-input:not(:checked) + .hchip:hover{ background: var(--white); }
+}
 @media (min-width: 768px){
   .hguias__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
   .hcard{ padding: 1.25rem; }

@@ -86,21 +86,26 @@ document.querySelectorAll('form[data-newsletter]').forEach((form) => {
   });
 });
 
-/* ---------- Videos de Google Drive ----------
-   Un link con data-drive-video="ID_DEL_ARCHIVO" abre el video en Drive
+/* ---------- Videos de YouTube ----------
+   Un link con data-youtube-video="ID_DEL_VIDEO" abre el video en YouTube
    si no hay JS. Con JS, al hacer clic se reemplaza por el reproductor
-   embebido (recién ahí se carga, así la página no se pone lenta). */
-document.querySelectorAll('[data-drive-video]').forEach((link) => {
+   embebido (recién ahí se carga, así la página no se pone lenta).
+   Se usa youtube-nocookie (no guarda cookies hasta que se reproduce) y
+   rel=0 para que al final solo sugiera videos del mismo canal. */
+document.querySelectorAll('[data-youtube-video]').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
+    const id = encodeURIComponent(link.dataset.youtubeVideo);
     const iframe = document.createElement('iframe');
-    iframe.src = `https://drive.google.com/file/d/${link.dataset.driveVideo}/preview`;
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0`;
     iframe.title = link.getAttribute('aria-label') || 'Video';
-    iframe.allow = 'autoplay; fullscreen';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     iframe.allowFullscreen = true;
 
     const caja = document.createElement('div');
     caja.className = link.className;
+    caja.classList.add('is-playing');
     caja.appendChild(iframe);
     link.replaceWith(caja);
   });

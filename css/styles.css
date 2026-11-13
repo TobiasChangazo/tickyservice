@@ -830,6 +830,7 @@ a{ text-decoration:none; color:inherit; }
 .gh-featured__play{ position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; background: var(--brand-600); color:var(--white); transition: transform var(--dur) var(--ease); }
 .gh-featured__play .icon{ width:1.6rem; height:1.6rem; margin-inline-start:3px; }
 .gh-featured__media iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.gh-featured__media.is-playing{ background:#000; }
 .gh-featured__media:hover .gh-featured__play{ transform: scale(1.08); }
 .gh-featured__note{ position:absolute; inset-block-end: var(--space-4); inset-inline-start: var(--space-4); font-size: var(--fs-2xs); color: var(--ink-400); }
 .gh-featured__body{ display:flex; flex-direction:column; }
@@ -847,6 +848,18 @@ a{ text-decoration:none; color:inherit; }
 
 @media (max-width: 900px){
   .gh-featured{ grid-template-columns: minmax(0,1fr); }
+}
+/* Mobile: el video es vertical, así que la caja también. La miniatura queda 4:5
+   y al darle play pasa a 9:16 (sin franjas negras ni controles de Drive amontonados),
+   sin pasarse del alto de la pantalla. */
+@media (max-width: 700px){
+  .gh-featured{ gap: var(--space-6); }
+  .gh-featured__media{ aspect-ratio: 4/5; }
+  .gh-featured__media.is-playing{
+    aspect-ratio: 9/16;
+    inline-size: min(100%, calc(85svh * 9 / 16));
+    justify-self: center;
+  }
 }
 @media (max-width: 700px){
   .gh-footer-row{ justify-content:flex-start; }
