@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>TickyService · Home mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.sv{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+details[open] .faq-plus{display:none}
+details:not([open]) .faq-minus{display:none}
+</style>
+</helmet>
+
+<div style="position: relative; width: 390px; min-height: 4560px; display: flex; flex-direction: column; background: #FBF8FE; font-family: 'Poppins', system-ui, sans-serif; color: #1C1330; overflow: hidden">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position: sticky; top: 0; z-index: 5; height: 64px; box-sizing: border-box; padding: 0 12px 0 20px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.94); border-bottom: 1px solid #ECE2F6">
+    <a href="#inicio" aria-label="TickyService, inicio" style="display: flex; align-items: center">
+      <img src="/_blob/7c219ea51b3afabbef71293dc0a38e73" alt="TickyService" style="height: 24px; width: auto; display: block">
+    </a>
+    <div style="display: flex; align-items: center; gap: 4px">
+      <a href="#sintomas" aria-label="Buscar por síntoma" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; color: #470C78">
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+      </a>
+      <a href="Menu.dc.html" aria-label="Abrir menú" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #F3EAFB; color: #470C78">
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" x2="20" y1="7" y2="7"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="14" y1="17" y2="17"></line></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="inicio" style="position: relative; padding: 32px 20px 28px; background-color: #2A0748; background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 32px 32px; color: #FFFFFF; overflow: hidden">
+
+    <div style="position: relative; display: flex; flex-direction: column; gap: 20px">
+      <p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.14em; font-weight: 600; color: #0FB89B">SERVICIO TÉCNICO · MAR DE AJÓ</p>
+
+      <h1 style="margin: 0; font-size: 36px; line-height: 1.06; font-weight: 800; letter-spacing: -0.02em">Tu hardware en manos de <span style="color: #0FB89B">confianza.</span></h1>
+
+      <p style="margin: 0; font-size: 16px; line-height: 1.55; color: rgba(255,255,255,0.80); max-width: 320px">Antes de traerlo, probá resolverlo con nuestras guías paso a paso. Si no sale, lo reparamos con presupuesto sin cargo.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px">
+        <a href="#sintomas" style="height: 58px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center; gap: 12px; border-radius: 16px; background: #0FB89B; color: #0B2E25; font-size: 16px; font-weight: 700">
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <span style="flex: 1">¿Qué le pasa a tu equipo?</span>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+        </a>
+        <a href="https://wa.me/[TU_NUMERO]" style="height: 52px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 16px; border: 1.5px solid rgba(255,255,255,0.32); color: #FFFFFF; font-size: 15px; font-weight: 600">
+          <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 20px; height: 20px; fill: #25D366"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"></path></svg>
+          Pedir presupuesto
+        </a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 8px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14)">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="color: #0FB89B"><path d="m8 11 2 2 4-4"></path><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          <p style="margin: 0; font-size: 12px; line-height: 1.35; color: rgba(255,255,255,0.86)">Diagnóstico<br>sin cargo</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="color: #0FB89B"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <p style="margin: 0; font-size: 12px; line-height: 1.35; color: rgba(255,255,255,0.86)">Entrega en<br>24 a 48 hs</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="color: #0FB89B"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <p style="margin: 0; font-size: 12px; line-height: 1.35; color: rgba(255,255,255,0.86)">30 días de<br>garantía</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 SÍNTOMAS ============ -->
+  <section id="sintomas" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 20px; background-color: #FBF8FE; background-image: linear-gradient(rgba(71,12,120,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(71,12,120,0.06) 1px, transparent 1px); background-size: 32px 32px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.14em; font-weight: 600; color: #08715F">01 — EMPEZÁ ACÁ</p>
+      <h2 style="margin: 0; font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">¿Qué le pasa a tu equipo?</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4F4366">Elegí el síntoma y te llevamos a los pasos para probar en casa.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <a href="#guias" style="min-height: 136px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E6D9F3; box-shadow: 0 1px 2px rgba(28,19,48,0.05)">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div style="width: 42px; height: 42px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center">
+            <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"></path><path d="M18.4 6.6a9 9 0 1 1-12.77.04"></path></svg>
+          </div>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.25">No enciende</span>
+          <span style="font-size: 12px; color: #4F4366">Notebook · PC · Consola</span>
+        </div>
+      </a>
+      <a href="#guias" style="min-height: 136px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E6D9F3; box-shadow: 0 1px 2px rgba(28,19,48,0.05)">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div style="width: 42px; height: 42px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center">
+            <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+          </div>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.25">Se calienta</span>
+          <span style="font-size: 12px; color: #4F4366">Notebook · PC · Consola</span>
+        </div>
+      </a>
+      <a href="#guias" style="min-height: 136px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E6D9F3; box-shadow: 0 1px 2px rgba(28,19,48,0.05)">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div style="width: 42px; height: 42px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center">
+            <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+          </div>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.25">Se apaga solo</span>
+          <span style="font-size: 12px; color: #4F4366">Notebook · PC · Consola</span>
+        </div>
+      </a>
+      <a href="#guias" style="min-height: 136px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E6D9F3; box-shadow: 0 1px 2px rgba(28,19,48,0.05)">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+          <div style="width: 42px; height: 42px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center">
+            <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258A4 4 0 0 0 17.32 5z"></path></svg>
+          </div>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.25">Drift en el joystick</span>
+          <span style="font-size: 12px; color: #4F4366">Joystick</span>
+        </div>
+      </a>
+    </div>
+
+    <a href="#guias" style="height: 52px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; border-radius: 14px; background: #FFFFFF; border: 1px dashed #C9B3E2; font-size: 14px; font-weight: 600; color: #470C78">
+      Otro problema · Ver todos los síntomas
+      <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+    </a>
+  </section>
+
+  <!-- ============ 02 GUÍAS ============ -->
+  <section id="guias" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 20px; background: #FFFFFF; border-top: 1px solid #ECE2F6">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.14em; font-weight: 600; color: #08715F">02 — PROBÁ RESOLVERLO</p>
+      <h2 style="margin: 0; font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">Guías paso a paso</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #4F4366">Cada guía te dice si lo podés hacer vos, si necesitás herramientas o si ya es trabajo de taller.</p>
+    </div>
+
+    <div role="group" aria-label="Filtrar por equipo" style="display: flex; flex-wrap: wrap; gap: 8px">
+      <button type="button" aria-pressed="true" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid #470C78; background: #470C78; color: #FFFFFF; font: 600 13px 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px">Todas <span class="mono" style="font-size: 11px; opacity: 0.75">16</span></button>
+      <button type="button" aria-pressed="false" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid #E0D2EF; background: #FFFFFF; color: #1C1330; font: 500 13px 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px">Notebook <span class="mono" style="font-size: 11px; color: #4F4366">3</span></button>
+      <button type="button" aria-pressed="false" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid #E0D2EF; background: #FFFFFF; color: #1C1330; font: 500 13px 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px">PC <span class="mono" style="font-size: 11px; color: #4F4366">6</span></button>
+      <button type="button" aria-pressed="false" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid #E0D2EF; background: #FFFFFF; color: #1C1330; font: 500 13px 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px">Joystick <span class="mono" style="font-size: 11px; color: #4F4366">3</span></button>
+      <button type="button" aria-pressed="false" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid #E0D2EF; background: #FFFFFF; color: #1C1330; font: 500 13px 'Poppins', sans-serif; display: flex; align-items: center; gap: 6px">Consola <span class="mono" style="font-size: 11px; color: #4F4366">4</span></button>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 12px 14px; border-radius: 12px; background: #FBF8FE">
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4F4366"><span style="display: flex; gap: 2px"><span style="width: 4px; height: 12px; border-radius: 1px; background: #2E9E6B"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span></span>Podés hacerlo vos</span>
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4F4366"><span style="display: flex; gap: 2px"><span style="width: 4px; height: 12px; border-radius: 1px; background: #C98A15"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #C98A15"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span></span>Con herramientas</span>
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4F4366"><span style="display: flex; gap: 2px"><span style="width: 4px; height: 12px; border-radius: 1px; background: #C8384A"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #C8384A"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #C8384A"></span></span>Taller</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <a href="#" style="padding: 16px; display: flex; flex-direction: column; gap: 12px; border-radius: 18px; border: 1px solid #E6D9F3; background: #FFFFFF">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span style="display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 8px; background: #E3F6F1; color: #08715F; font-size: 12px; font-weight: 600"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"></path></svg>Notebook</span>
+            <span class="mono" style="font-size: 10.5px; letter-spacing: 0.08em; color: #4F4366">GUÍA · 5 MIN</span>
+          </div>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </div>
+        <span style="font-size: 17px; line-height: 1.3; font-weight: 600">Notebook que no enciende: primeros pasos</span>
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4F4366"><span style="display: flex; gap: 2px"><span style="width: 4px; height: 12px; border-radius: 1px; background: #2E9E6B"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span></span>Podés hacerlo vos</span>
+      </a>
+
+      <a href="#" style="padding: 16px; display: flex; flex-direction: column; gap: 12px; border-radius: 18px; border: 1px solid #E6D9F3; background: #FFFFFF">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span style="display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 8px; background: #E3F6F1; color: #08715F; font-size: 12px; font-weight: 600"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258A4 4 0 0 0 17.32 5z"></path></svg>Joystick</span>
+            <span class="mono" style="font-size: 10.5px; letter-spacing: 0.08em; color: #4F4366">VIDEO · 6 MIN</span>
+          </div>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </div>
+        <span style="font-size: 17px; line-height: 1.3; font-weight: 600">Joystick con drift: cómo detectarlo y calibrarlo</span>
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4F4366"><span style="display: flex; gap: 2px"><span style="width: 4px; height: 12px; border-radius: 1px; background: #2E9E6B"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span></span>Podés hacerlo vos</span>
+      </a>
+
+      <a href="#" style="padding: 16px; display: flex; flex-direction: column; gap: 12px; border-radius: 18px; border: 1px solid #E6D9F3; background: #FFFFFF">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span style="display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 10px; border-radius: 8px; background: #E3F6F1; color: #08715F; font-size: 12px; font-weight: 600"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M2 15h2"></path><path d="M2 9h2"></path><path d="M20 15h2"></path><path d="M20 9h2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path></svg>PC</span>
+            <span class="mono" style="font-size: 10.5px; letter-spacing: 0.08em; color: #4F4366">VIDEO · 8 MIN</span>
+          </div>
+          <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </div>
+        <span style="font-size: 17px; line-height: 1.3; font-weight: 600">Cómo limpiar la pasta térmica sin arruinar nada</span>
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #4F4366"><span style="display: flex; gap: 2px"><span style="width: 4px; height: 12px; border-radius: 1px; background: #C98A15"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #C98A15"></span><span style="width: 4px; height: 12px; border-radius: 1px; background: #DDD3E8"></span></span>Requiere herramientas</span>
+      </a>
+    </div>
+
+    <a href="#" style="height: 54px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 16px; background: #1C1330; color: #FFFFFF; font-size: 15px; font-weight: 600">
+      Ver las 16 guías
+      <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #0FB89B"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+    </a>
+  </section>
+
+  <!-- ============ 03 REPARACIÓN ============ -->
+  <section id="reparacion" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 24px; background-color: #470C78; background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 32px 32px; color: #FFFFFF">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.14em; font-weight: 600; color: #0FB89B">03 — ¿NO SE SOLUCIONÓ?</p>
+      <h2 style="margin: 0; font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">Lo reparamos nosotros</h2>
+      <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.80)">Si la guía no alcanza, seguís con nosotros sin empezar de cero.</p>
+    </div>
+
+    <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+      <li style="display: flex; gap: 16px">
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <span class="mono" style="width: 32px; height: 32px; border-radius: 999px; background: #0FB89B; color: #0B2E25; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">1</span>
+          <span style="flex: 1; width: 2px; background: rgba(15,184,155,0.45); margin: 4px 0"></span>
+        </div>
+        <div style="padding: 4px 0 22px; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 16px; font-weight: 600">Escribinos por WhatsApp</span>
+          <span style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.78)">Contanos qué guía probaste y qué pasó.</span>
+        </div>
+      </li>
+      <li style="display: flex; gap: 16px">
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <span class="mono" style="width: 32px; height: 32px; border-radius: 999px; background: #0FB89B; color: #0B2E25; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">2</span>
+          <span style="flex: 1; width: 2px; background: rgba(15,184,155,0.45); margin: 4px 0"></span>
+        </div>
+        <div style="padding: 4px 0 22px; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 16px; font-weight: 600">Presupuesto sin cargo</span>
+          <span style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.78)">Te decimos cuánto sale antes de tocar nada.</span>
+        </div>
+      </li>
+      <li style="display: flex; gap: 16px">
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <span class="mono" style="width: 32px; height: 32px; border-radius: 999px; background: #0FB89B; color: #0B2E25; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">3</span>
+        </div>
+        <div style="padding: 4px 0 0; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 16px; font-weight: 600">Turno y entrega en 24 a 48 hs</span>
+          <span style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.78)">Con 30 días de garantía en mano de obra y repuestos.</span>
+        </div>
+      </li>
+    </ol>
+
+    <a href="https://wa.me/[TU_NUMERO]" style="height: 56px; display: flex; align-items: center; justify-content: center; gap: 10px; border-radius: 16px; background: #25D366; color: #0B2E18; font-size: 16px; font-weight: 700">
+      <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 22px; height: 22px; fill: #0B2E18"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"></path></svg>
+      Pedir presupuesto y turno
+    </a>
+  </section>
+
+  <!-- ============ 04 SERVICIOS ============ -->
+  <section id="servicios" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 20px; background: #FBF8FE">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.14em; font-weight: 600; color: #08715F">04 — QUÉ REPARAMOS</p>
+      <h2 style="margin: 0; font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">Servicio técnico por equipo</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; border-radius: 18px; background: #FFFFFF; border: 1px solid #E6D9F3; overflow: hidden">
+      <a href="#" style="min-height: 76px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid #F0E8F8">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"></path></svg></div>
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+          <span style="display: flex; align-items: baseline; gap: 8px; font-size: 16px; font-weight: 600">Notebook <span class="mono" style="font-size: 11px; font-weight: 500; color: #4F4366">9 servicios</span></span>
+          <span style="font-size: 13px; color: #4F4366">Limpieza, SSD, bisagras, teclado, Windows</span>
+        </div>
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="m9 18 6-6-6-6"></path></svg>
+      </a>
+      <a href="#" style="min-height: 76px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid #F0E8F8">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M2 15h2"></path><path d="M2 9h2"></path><path d="M20 15h2"></path><path d="M20 9h2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path></svg></div>
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+          <span style="display: flex; align-items: baseline; gap: 8px; font-size: 16px; font-weight: 600">PC <span class="mono" style="font-size: 11px; font-weight: 500; color: #4F4366">8 servicios</span></span>
+          <span style="font-size: 13px; color: #4F4366">Armado, RAM, placa de video, Windows</span>
+        </div>
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="m9 18 6-6-6-6"></path></svg>
+      </a>
+      <a href="#" style="min-height: 76px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid #F0E8F8">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258A4 4 0 0 0 17.32 5z"></path></svg></div>
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+          <span style="display: flex; align-items: baseline; gap: 8px; font-size: 16px; font-weight: 600">Joystick <span class="mono" style="font-size: 11px; font-weight: 500; color: #4F4366">5 servicios</span></span>
+          <span style="font-size: 13px; color: #4F4366">Drift, pin de carga, gatillos y botones</span>
+        </div>
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="m9 18 6-6-6-6"></path></svg>
+      </a>
+      <a href="#" style="min-height: 76px; padding: 14px 16px; display: flex; align-items: center; gap: 14px">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #F3EAFB; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="10" y1="12" y2="12"></line><line x1="8" x2="8" y1="10" y2="14"></line><line x1="15" x2="15.01" y1="13" y2="13"></line><line x1="18" x2="18.01" y1="11" y2="11"></line><rect width="20" height="12" x="2" y="6" rx="2"></rect></svg></div>
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+          <span style="display: flex; align-items: baseline; gap: 8px; font-size: 16px; font-weight: 600">Consola <span class="mono" style="font-size: 11px; font-weight: 500; color: #4F4366">6 servicios</span></span>
+          <span style="font-size: 13px; color: #4F4366">Lente lectora, fuente, puerto HDMI</span>
+        </div>
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px; color: #7A509E"><path d="m9 18 6-6-6-6"></path></svg>
+      </a>
+    </div>
+
+    <a href="#" style="align-self: flex-start; min-height: 44px; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #470C78">
+      Ver todos los servicios
+      <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+    </a>
+  </section>
+
+  <!-- ============ 05 FAQ ============ -->
+  <section id="faq" style="padding: 40px 20px; display: flex; flex-direction: column; gap: 16px; background: #FFFFFF; border-top: 1px solid #ECE2F6">
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px">
+      <p class="mono" style="margin: 0; font-size: 11px; letter-spacing: 0.14em; font-weight: 600; color: #08715F">05 — PREGUNTAS FRECUENTES</p>
+      <h2 style="margin: 0; font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em">Lo que más nos preguntan</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <details open="" style="border-radius: 14px; background: #F7F1FC; border: 1px solid #E6D9F3">
+        <summary style="min-height: 56px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600">
+          ¿Cuánto tarda una reparación?
+          <span class="faq-minus" style="width: 28px; height: 28px; border-radius: 999px; background: #470C78; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path></svg></span>
+          <span class="faq-plus" style="width: 28px; height: 28px; border-radius: 999px; border: 1px solid #C9B3E2; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </summary>
+        <p style="margin: 0; padding: 0 16px 16px; font-size: 14px; line-height: 1.6; color: #4F4366">La mayoría de los diagnósticos están en 24 a 48 horas, y te avisamos el tiempo estimado apenas confirmamos el presupuesto.</p>
+      </details>
+      <details style="border-radius: 14px; background: #FFFFFF; border: 1px solid #E6D9F3">
+        <summary style="min-height: 56px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600">
+          ¿El presupuesto tiene costo?
+          <span class="faq-minus" style="width: 28px; height: 28px; border-radius: 999px; background: #470C78; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path></svg></span>
+          <span class="faq-plus" style="width: 28px; height: 28px; border-radius: 999px; border: 1px solid #C9B3E2; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </summary>
+        <p style="margin: 0; padding: 0 16px 16px; font-size: 14px; line-height: 1.6; color: #4F4366">[RESPUESTA]</p>
+      </details>
+      <details style="border-radius: 14px; background: #FFFFFF; border: 1px solid #E6D9F3">
+        <summary style="min-height: 56px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600">
+          ¿Qué garantía tienen las reparaciones?
+          <span class="faq-minus" style="width: 28px; height: 28px; border-radius: 999px; background: #470C78; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path></svg></span>
+          <span class="faq-plus" style="width: 28px; height: 28px; border-radius: 999px; border: 1px solid #C9B3E2; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </summary>
+        <p style="margin: 0; padding: 0 16px 16px; font-size: 14px; line-height: 1.6; color: #4F4366">[RESPUESTA]</p>
+      </details>
+      <details style="border-radius: 14px; background: #FFFFFF; border: 1px solid #E6D9F3">
+        <summary style="min-height: 56px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600">
+          ¿Hacen retiro a domicilio?
+          <span class="faq-minus" style="width: 28px; height: 28px; border-radius: 999px; background: #470C78; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path></svg></span>
+          <span class="faq-plus" style="width: 28px; height: 28px; border-radius: 999px; border: 1px solid #C9B3E2; color: #470C78; display: flex; align-items: center; justify-content: center"><svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </summary>
+        <p style="margin: 0; padding: 0 16px 16px; font-size: 14px; line-height: 1.6; color: #4F4366">[RESPUESTA]</p>
+      </details>
+    </div>
+
+    <a href="#" style="align-self: flex-start; min-height: 44px; display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #470C78">
+      Ver todas las preguntas
+      <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+    </a>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="flex: 1; padding: 40px 20px 112px; display: flex; flex-direction: column; gap: 28px; background: #1C1330; color: #FFFFFF">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <img src="/_blob/892e11bf89b3bd4f2170329405212107" alt="TickyService" style="height: 24px; width: auto; align-self: flex-start">
+      <p style="margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.74)">Servicio técnico, repuestos y tienda de tecnología.</p>
+    </div>
+
+    <div style="display: flex; gap: 10px">
+      <a href="https://wa.me/[TU_NUMERO]" aria-label="WhatsApp" style="width: 48px; height: 48px; border-radius: 14px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 22px; height: 22px; fill: #25D366"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"></path></svg>
+      </a>
+      <a href="#" aria-label="Instagram" style="width: 48px; height: 48px; border-radius: 14px; background: rgba(255,255,255,0.08); color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+      </a>
+      <a href="mailto:contacto@tickyservice.com.ar" aria-label="Email" style="width: 48px; height: 48px; border-radius: 14px; background: rgba(255,255,255,0.08); color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+      </a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+      <nav aria-label="Secciones" style="display: flex; flex-direction: column">
+        <p class="mono" style="margin: 0 0 6px; font-size: 11px; letter-spacing: 0.14em; color: #0FB89B">SECCIONES</p>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Guías</a>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Servicios</a>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Tienda</a>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Contacto</a>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Nosotros</a>
+      </nav>
+      <nav aria-label="Equipos" style="display: flex; flex-direction: column">
+        <p class="mono" style="margin: 0 0 6px; font-size: 11px; letter-spacing: 0.14em; color: #0FB89B">EQUIPOS</p>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Notebook</a>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">PC</a>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Joystick</a>
+        <a href="#" style="min-height: 36px; display: flex; align-items: center; font-size: 14px; color: rgba(255,255,255,0.86)">Consola</a>
+      </nav>
+    </div>
+
+    <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 8px">
+      <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.80)">
+        <svg class="sv" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px; color: #0FB89B"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Mar de Ajó, Partido de la Costa
+      </span>
+      <span style="font-size: 12px; color: rgba(255,255,255,0.64)">© 2026 TickyService. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- Botón flotante: posición en el primer viewport (844px) -->
+  <a href="https://wa.me/[TU_NUMERO]" aria-label="Escribinos por WhatsApp" style="position: absolute; top: 764px; right: 16px; z-index: 6; width: 56px; height: 56px; border-radius: 18px; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(28,19,48,0.28)">
+    <svg viewBox="0 0 24 24" aria-hidden="true" style="width: 26px; height: 26px; fill: #0B2E18"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.3.7-1.4 1.3-2.1 1.4-.5.1-1.2.2-3.5-.7-2.9-1.2-4.8-4.1-5-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.2.1.4.2.4.4.1.2.1.9-.2 1.6z"></path></svg>
+  </a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":4560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
