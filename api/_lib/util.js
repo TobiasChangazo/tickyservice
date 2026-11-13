@@ -5,8 +5,9 @@
 import crypto from 'node:crypto';
 import { redis, K } from './redis.js';
 
-// Gmail personal: ~500 destinatarios por día. Dejamos margen.
-export const LIMITE_DIARIO = Number(process.env.GMAIL_LIMITE_DIARIO) || 450;
+// Brevo gratis: 300 por día. Gmail personal: ~500. Dejamos margen.
+// Se puede ajustar con MAIL_LIMITE_DIARIO en Vercel.
+export const LIMITE_DIARIO = Number(process.env.MAIL_LIMITE_DIARIO || process.env.GMAIL_LIMITE_DIARIO) || 280;
 
 /* ---------- URL pública del sitio (para links de los mails) ---------- */
 export function urlDelSitio(req) {
