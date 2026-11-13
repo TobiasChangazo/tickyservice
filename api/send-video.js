@@ -3,9 +3,9 @@
    { clave, accion, titulo, link, reintentarFallidos }
 
    accion:
-   - "estado"  → cuántos suscriptores hay y cuánto cupo de Gmail queda hoy
+   - "estado"  → cuántos suscriptores hay y cuánto cupo de mails queda hoy
    - "preview" → asunto + HTML del mail tal cual va a llegar
-   - "prueba"  → manda el mail solo a GMAIL_USER
+   - "prueba"  → manda el mail solo al remitente (MAIL_FROM)
    - "enviar"  → manda UNA tanda (NEWSLETTER_LOTE mails). La página la
                  llama una y otra vez hasta que no quedan pendientes.
 
@@ -15,7 +15,7 @@
    ========================================================= */
 import crypto from 'node:crypto';
 import { redis, K, hayBaseConfigurada } from './_lib/redis.js';
-import { crearTransporte, enviarCorreo, mailVideo } from './_lib/correo.js';
+import { crearTransporte, enviarCorreo, mailVideo, remitente } from './_lib/correo.js';
 import {
   claveValida, ipDe, superaLimite, esUrlHttps, cupoDeHoy, enviadosHoy, sumarEnvios,
   urlDelSitio, urlDeBaja, LIMITE_DIARIO,
@@ -70,9 +70,9 @@ export default async function handler(req, res) {
 
     if (accion === 'prueba') {
       if (await cupoDeHoy() <= 0) {
-        return res.status(429).json({ ok: false, error: 'Ya se usó el cupo diario de Gmail. Probá mañana.' });
+        return res.status(429).json({ ok: false, error: 'Ya se usó el cupo diario de mails. Probá mañana.' });
       }
-      const para = process.env.GMAIL_USER;
+      const para = remitente();
       const urlBaja = urlDeBaja(sitio, 'ejemplo');
       const transporte = crearTransporte();
       try {

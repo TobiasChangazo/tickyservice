@@ -1,5 +1,5 @@
 /* =========================================================
-   TickyService — envío de mails (Nodemailer + SMTP de Gmail)
+   TickyService — envío de mails (Nodemailer + SMTP de Brevo o Gmail)
    y plantillas del newsletter.
 
    Las plantillas usan tablas y estilos en línea: es lo único que
@@ -21,11 +21,30 @@ const C = {
 };
 
 /* ---------- Transporte ----------
+   Usa Brevo (o cualquier SMTP) si están SMTP_USER y SMTP_PASS.
+   Si no, cae a Gmail con GMAIL_USER + GMAIL_APP_PASSWORD.
    pool: true reutiliza una sola conexión para toda la tanda.
    Siempre cerrarlo al terminar (en serverless no queda nadie que lo cierre). */
+export function remitente() {
+  return process.env.MAIL_FROM || process.env.GMAIL_USER || '';
+}
+
 export function crearTransporte({ pool = false } = {}) {
+  if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+    if (!remitente()) throw new Error('Falta MAIL_FROM en las variables de entorno.');
+    const port = Number(process.env.SMTP_PORT) || 587;
+    return nodemailer.createTransport({
+      host: process.env.SMTP_HOST || 'smtp-relay.brevo.com',
+      port,
+      secure: port === 465,
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS.trim() },
+      pool,
+      maxConnections: 1,
+    });
+  }
+
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    throw new Error('Faltan GMAIL_USER o GMAIL_APP_PASSWORD en las variables de entorno.');
+    throw new Error('Faltan SMTP_USER/SMTP_PASS (Brevo) o GMAIL_USER/GMAIL_APP_PASSWORD en las variables de entorno.');
   }
   return nodemailer.createTransport({
     service: 'gmail',
@@ -40,7 +59,7 @@ export function crearTransporte({ pool = false } = {}) {
 
 export function enviarCorreo(transporte, { para, asunto, html, texto, urlBaja }) {
   return transporte.sendMail({
-    from: { name: 'TickyService', address: process.env.GMAIL_USER },
+    from: { name: 'TickyService', address: remitente() },
     to: para,
     subject: asunto,
     html,
