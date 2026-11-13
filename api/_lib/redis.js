@@ -39,3 +39,16 @@ export function hayBaseConfigurada() {
     (process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN)
   );
 }
+
+/* Con automaticDeserialization: false, HGETALL devuelve una lista plana
+   ["campo", "valor", ...] en vez de un objeto. Esto la pasa a objeto
+   (o null si la clave no existe). */
+export async function leerHash(clave) {
+  const crudo = await redis.hgetall(clave);
+  if (!crudo) return null;
+  if (!Array.isArray(crudo)) return Object.keys(crudo).length ? crudo : null;
+  if (!crudo.length) return null;
+  const obj = {};
+  for (let i = 0; i < crudo.length; i += 2) obj[crudo[i]] = crudo[i + 1];
+  return obj;
+}

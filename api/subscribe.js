@@ -4,7 +4,7 @@
    Acepta JSON (desde site.js) o un formulario común (sin JS).
    "website" es el honeypot: las personas no lo ven, los bots sí.
    ========================================================= */
-import { redis, K, hayBaseConfigurada } from './_lib/redis.js';
+import { redis, K, hayBaseConfigurada, leerHash } from './_lib/redis.js';
 import { crearTransporte, enviarCorreo, mailBienvenida } from './_lib/correo.js';
 import {
   limpiarNombre, limpiarEmail, nuevoToken, ipDe, superaLimite,
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
       return responder(req, res, 429, { ok: false, error: 'Hiciste muchos intentos seguidos. Probá de nuevo en un rato.' });
     }
 
-    const actual = await redis.hgetall(K.sub(email));
+    const actual = await leerHash(K.sub(email));
 
     if (actual?.estado === 'activo') {
       return responder(req, res, 200, {

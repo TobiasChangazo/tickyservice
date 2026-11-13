@@ -14,7 +14,7 @@
    diario) se vuelve a apretar "Enviar" y sigue sin repetir mails.
    ========================================================= */
 import crypto from 'node:crypto';
-import { redis, K, hayBaseConfigurada } from './_lib/redis.js';
+import { redis, K, hayBaseConfigurada, leerHash } from './_lib/redis.js';
 import { crearTransporte, enviarCorreo, mailVideo, remitente } from './_lib/correo.js';
 import {
   claveValida, ipDe, superaLimite, esUrlHttps, cupoDeHoy, enviadosHoy, sumarEnvios,
@@ -121,7 +121,7 @@ async function enviarTanda({ titulo, link, sitio, reintentar }) {
   let enviadosLote = 0;
 
   if (lote.length) {
-    const subs = await Promise.all(lote.map((email) => redis.hgetall(K.sub(email))));
+    const subs = await Promise.all(lote.map((email) => leerHash(K.sub(email))));
     const transporte = crearTransporte({ pool: true });
     try {
       for (const sub of subs) {
